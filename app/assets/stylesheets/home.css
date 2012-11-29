@@ -1,0 +1,21 @@
+#welcome_container {
+	width:800px; 
+	height:285px; 
+	position:fixed; 
+	left: 50%; 
+	top:50%; 
+	margin-left:-400px;
+	margin-top:-142.5px
+}
+
+#welcome_banner {
+	width:450px; 
+	height:285px; 
+	float:left
+}
+
+#welcome_form_container {
+	width:350px;
+	height:285px;
+	float:right
+}

@@ -1,0 +1,53 @@
+<!-- WELCOME_CONTAINER -->
+<div id="welcome_container">
+	
+	<!-- BANNER -->
+	<div id="welcome_banner">
+		<img src="/assets/welcome_banner.png" alt="민족사관고등학교 동문회에 오신 것을 환영합니다"/>
+	</div>
+	
+	<!-- FORM_CONTAINER -->
+	<div id="welcome_form_container">
+		
+		<!-- SIGNIN_FORM -->
+		<div id="welcome_signin_form">
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+				
+				<ul>
+					<li><%= f.email_field :email %></li>
+					<li><%= f.password_field :password %></li>
+				</ul>
+				
+				<% if devise_mapping.rememberable? -%>
+					<div><%= f.check_box :remember_me %> 로그인 상태 유지</div>
+				<% end -%>
+				
+				<div><%= f.submit "Sign in" %></div>
+				
+			<% end %>
+		</div>
+		
+		<!-- SIGNUP_FORM -->
+		<div id="welcome_signup_form">
+		
+			<div id="signup_message">
+				<img src="/assets/welcome_signup_message.png" alt="처음 뵙네요. 반갑습니다!"/>
+			</div>
+			
+			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+				
+				<ul id="new_user_container">
+					<li><%= f.text_field :name %></li>
+					<li><%= f.text_field :student_number %></li>
+					<li><%= f.text_field :email %></li>
+					<li><%= f.password_field :password %></li>
+					<li><%= f.password_field :password_confirmation %></li>
+				</ul>
+				
+				<div><%= f.submit "Sign up" %></div>
+				
+			<% end %>
+		</div>
+	</div>
+	
+</div>

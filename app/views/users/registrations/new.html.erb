@@ -1,0 +1,50 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <% if !resource.errors[:student_number].empty? %>
+	<% resource.errors[:student_number].each do |msg| %>
+		<%= msg %><br/>
+	<% end %>
+  <% end %>
+  
+  <% if !resource.errors[:wave].empty? %>
+	<% resource.errors[:wave].each do |msg| %>
+		<%= msg %><br/>
+	<% end %>
+  <% end %>
+
+
+  <div><%= f.label :name %><br />
+  <% if !resource.errors[:name].empty? %>
+	<% resource.errors[:name].each do |msg| %>
+		<%= msg %><br/>
+	<% end %>
+  <% end %>
+  <%= f.text_field :name %></div>
+  
+  <div><%= f.label :student_number %><br />
+  <%= f.text_field :student_number %></div>
+  
+  <div><%= f.label :email %><br />
+  <% if !resource.errors[:email].empty? %>
+	<% resource.errors[:email].each do |msg| %>
+		<%= msg %><br/>
+	<% end %>
+  <% end %>
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %><br />
+  <% if !resource.errors[:password].empty? %>
+	<% resource.errors[:password].each do |msg| %>
+		<%= msg %><br/>
+	<% end %>
+  <% end %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "links" %>
