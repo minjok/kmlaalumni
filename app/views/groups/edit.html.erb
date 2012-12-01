@@ -1,0 +1,24 @@
+<div>소모임 설정</div>
+<div>
+	<%= form_for(@group) do |f| %>
+	
+		<ul>
+			<% if !@group.errors[:name].empty? %>
+				<% @group.errors[:name].each do |msg| %>
+					<%= msg %><br/>
+			<% end %>
+			<% end %>
+			<li><%= f.text_field :name %></li>
+			
+			<% if !resource.errors[:description].empty? %>
+				<% resource.errors[:description].each do |msg| %>
+					<%= msg %><br/>
+				<% end %>
+			<% end %>
+			<li><%= f.text_area :description %></li>
+		</ul>
+		
+		<div><%= f.submit '소모임 만들기' %></div>
+		
+	<% end %>
+</div>

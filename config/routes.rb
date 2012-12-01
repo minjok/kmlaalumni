@@ -1,11 +1,40 @@
 Kmlaalumni::Application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  
+  #	*** ROOT ***	#
+  root to: 'home#index'
+  
+  
+  #	*** DEVISE ***	#
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   devise_scope :user do
-	get "signup", :to => "devise/registrations#new"
+	get 	'signup',	to: 'devise/registrations#new',		as: 'signup'
+	get 	'login',	to: 'devise/sessions#new',			as: 'login'
+	delete	'logout',	to: 'devise/sessions#destroy',		as: 'logout'
   end
   
-  match '/welcome' => 'home#welcome'
+  
+  #	*** RESOURCES ***	#
+  resources :groups
+  
+  resources :membership do
+	
+	member do
+		post :add
+		post :delete
+	end
+	
+  end
+  
+  
+  #	*** SIMPLIFIED ROUTES ***	#
+  match '/welcome', 			to: 'home#welcome', 		as: 'welcome'
+  match '/add_member/:id',		to: 'membership#add', 		as: 'add_member'
+  match '/delete_member/:id', 	to: 'membership#delete', 	as: 'delete_member'
+  
+  
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -53,9 +82,7 @@ Kmlaalumni::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  root :to => 'home#index'
+  
 
   # See how all your routes lay out with "rake routes"
 

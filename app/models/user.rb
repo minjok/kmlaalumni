@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 			:recoverable, 
 			:rememberable, 
 			:trackable
+		  # :validatable
 		  # :token_authenticatable 
 		  # :encryptable
 	      # :confirmable 
@@ -25,6 +26,11 @@ class User < ActiveRecord::Base
 		  # :omniauthable
 		  
 		  
+	#	*** ASSOCIATIONS ***	# 
+	has_many :groups,      through: :memberships
+	has_many :memberships, dependent: :destroy
+	
+	
 	#	*** VALIDATIONS ***	#
 	validates_presence_of		:name,
 									message: "이름을 입력해주세요"
@@ -38,10 +44,10 @@ class User < ActiveRecord::Base
 	validates_uniqueness_of		:student_number,
 									message: "입력하신 학번으로 이미 가입된 동문이 있습니다"
 
-	validates_uniqueness_of		:email, case_sensitive: false, allow_blank: true, if: :email_changed? ,
+	validates_uniqueness_of		:email, case_sensitive: false,
 									message: "이미 사용 중인 이메일입니다"
 									
-	validates_format_of 		:email, with: /\A[^@]+@[^@]+\z/, allow_blank: true, if: :email_changed? ,
+	validates_format_of 		:email, with: /\A[^@]+@[^@]+\z/,
 									message: "이메일 형식이 올바르지 않습니다"
 									
 	validates_presence_of   	:password, on: :create,
@@ -50,7 +56,7 @@ class User < ActiveRecord::Base
 	validates_confirmation_of   :password, on: :create,
 									message: "비밀번호가 일치하지 않습니다"
 									
-	validates_length_of 		:password, within: 6..20, allow_blank: true,
+	validates_length_of 		:password, within: 6..20,
 									message: "비밀번호는 6-20자내외로 입력해주세요"
 		  
 		  
@@ -60,8 +66,10 @@ class User < ActiveRecord::Base
 														:name => self.name, :student_number => self.student_number).first
 		if alumniVerification.nil?
 			self.errors.add(:student_number, "동문 확인에 실패했습니다. 이름과 학번을 다시 확인해주세요")
+			false
 		else
 			self.wave = (self.student_number[0..1].to_i + 5) % 100
+			true
 		end
 	end
 	
