@@ -3,7 +3,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	def create
 		build_resource
 		
-		if resource.process_student_number && resource.save
+		if resource.has_correct_name_and_student_number?
+			resource.compute_wave
+		else
+			resource.errors.add(:student_number, "동문 확인에 실패했습니다. 이름과 학번을 다시 확인해주세요")
+		end
+		
+		if resource.save
 			sign_in(resource_name, resource)
 			respond_with resource, location: after_sign_up_path_for(resource)
 		else

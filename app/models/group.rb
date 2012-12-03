@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
 	#	*** ASSOCIATIONS ***	# 
 	has_many :users,		through: :memberships
 	has_many :memberships,	dependent: :destroy
+	has_many :postings, 	dependent: :destroy
 	
 	
 	#	*** VALIDATIONS ***	#
@@ -23,11 +24,7 @@ class Group < ActiveRecord::Base
 	end
 	
 	def has_other_admins_than?(user)
-		unless Membership.other_admins_exist?(user, self)
-			self.errors.add(:membership, "소모임을 나가시기 전에 소모임의 새로운 관리자를 선임하셔야 합니다")
-			false
-		end	
-		true
+		Membership.other_admins_exist?(user, self)
 	end
 							
 end

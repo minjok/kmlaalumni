@@ -27,8 +27,9 @@ class User < ActiveRecord::Base
 		  
 		  
 	#	*** ASSOCIATIONS ***	# 
-	has_many :groups,      through: :memberships
-	has_many :memberships, dependent: :destroy
+	has_many :groups,      	through: :memberships
+	has_many :memberships, 	dependent: :destroy
+	has_many :postings, 	dependent: :destroy
 	
 	
 	#	*** VALIDATIONS ***	#
@@ -61,16 +62,21 @@ class User < ActiveRecord::Base
 		  
 		  
 	# *** METHODS *** #
-	def process_student_number
-		alumniVerification = AlumniVerification.where("name = :name AND student_number = :student_number",
-														:name => self.name, :student_number => self.student_number).first
-		if alumniVerification.nil?
-			self.errors.add(:student_number, "동문 확인에 실패했습니다. 이름과 학번을 다시 확인해주세요")
-			false
-		else
-			self.wave = (self.student_number[0..1].to_i + 5) % 100
-			true
-		end
+	def is_member_of(group)
+		Membership.exists?(self, group)
+	end
+	
+	def is_admin_of(group)
+		Membership.exists_as_admin?(self, group)
+	end
+	
+	def has_correct_name_and_student_number?
+		AlumniVerification.where("name = :name AND student_number = :student_number",
+									:name => self.name, :student_number => self.student_number).first.blank?
+	end
+	
+	def compute_wave
+		self.wave = (self.student_number[0..1].to_i + 5) % 100
 	end
 	
 end

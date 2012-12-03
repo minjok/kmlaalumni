@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(:version => 20121130103035) do
   end
 
   create_table "postings", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "group_id",   :null => false
+    t.text     "content",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

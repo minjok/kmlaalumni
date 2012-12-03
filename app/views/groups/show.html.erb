@@ -15,3 +15,17 @@
 		<% end %>
 	<% end %>
 </div>
+<% unless @membership.blank? %>
+	<div>
+		<%= form_for [@group, @posting] do |f| %>
+			<%= f.text_area :content %>
+			<div><%= f.submit '올리기' %></div>
+		<% end %>
+	</div>
+<% end %>
+<div>
+	<% @group.postings.each do |posting| %>
+		<div><%= posting.user.name %></div>
+		<div><%= posting.content %></div>
+	<% end %>
+</div>

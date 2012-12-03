@@ -15,7 +15,16 @@ Kmlaalumni::Application.routes.draw do
   
   
   #	*** RESOURCES ***	#
-  resources :groups
+  resources :groups do
+	resource :postings do
+  
+		member do
+			post :create
+			post :delete
+		end
+		
+	end
+  end
   
   resources :membership do
 	

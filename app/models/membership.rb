@@ -10,6 +10,10 @@ class Membership < ActiveRecord::Base
 		not where("user_id = ? AND group_id = ?", user, group).first.blank?
 	end
 	
+	def self.exists_as_admin?(user, group)
+		not where("user_id = ? AND group_id = ? AND admin = ?", user, group, true).first.blank?
+	end
+	
 	def self.other_members_exist?(user, group)
 		not where("user_id != ? AND group_id = ?", user, group).first.blank?
 	end
