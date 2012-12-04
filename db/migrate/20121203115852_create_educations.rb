@@ -1,8 +1,10 @@
 class CreateEducations < ActiveRecord::Migration
   def change
     create_table :educations do |t|
-
-      t.timestamps
+	
+		t.integer	:user_id,	null: false
+		t.integer	:school_id, null: false
+		
     end
   end
 end

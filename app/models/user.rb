@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
 	#	*** ASSOCIATIONS ***	# 
 	has_many :groups,      	through: :memberships
 	has_many :memberships, 	dependent: :destroy
+	
+	has_many :schools,		through: :educations
+	has_many :educations,	dependent: :destroy
+	
 	has_many :postings, 	dependent: :destroy
 	
 	
