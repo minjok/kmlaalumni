@@ -48,11 +48,6 @@ ActiveRecord::Schema.define(:version => 20121203115852) do
     t.string "name", :null => false
   end
 
-  create_table "student_numbers", :force => true do |t|
-    t.string  "name",           :null => false
-    t.integer "student_number", :null => false
-  end
-
   create_table "users", :force => true do |t|
     t.string   "name",                                   :null => false
     t.integer  "wave",                                   :null => false

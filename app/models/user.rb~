@@ -67,19 +67,20 @@ class User < ActiveRecord::Base
 		  
 	# *** METHODS *** #
 	def is_member_of(group)
-	  Membership.exists?(self, group)
+		Membership.exists?(self, group)
 	end
 	
 	def is_admin_of(group)
-	  Membership.exists_as_admin?(self, group)
+		Membership.exists_as_admin?(self, group)
 	end
 	
 	def has_correct_name_and_student_number?
-	  not AlumniVerification.where("name = ? AND student_number = ?", self.name, self.student_number).first.blank?
+		AlumniVerification.where("name = :name AND student_number = :student_number",
+									:name => self.name, :student_number => self.student_number).first.blank?
 	end
 	
 	def compute_wave
-	  self.wave = (self.student_number[0..1].to_i + 5) % 100
+		self.wave = (self.student_number[0..1].to_i + 5) % 100
 	end
 	
 end

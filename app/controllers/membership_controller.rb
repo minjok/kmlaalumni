@@ -1,3 +1,4 @@
+# encoding: utf-8
 class MembershipController < ApplicationController
 	
 	respond_to :html

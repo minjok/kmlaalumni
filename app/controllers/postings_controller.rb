@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PostingsController < ApplicationController
 	
 	respond_to :html

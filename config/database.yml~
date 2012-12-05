@@ -4,8 +4,8 @@ development:
   database: kmlaalumni_development
   pool: 5
   port: 5432
-  username: yeaz
-  password:	yeaz11235813  
+  username: minjok
+  password:	kmla1996
 
 test:
   adapter: postgresql
@@ -13,13 +13,13 @@ test:
   database: kmlaalumni_test
   pool: 5
   port: 5432
-  username: yeaz
-  password: yeaz11235813
+  username: minjok
+  password: kmla1996
 
 production:
   adapter: postgresql
   encoding: utf-8
   database: kmlaalumni_production
   pool: 5
-  username: yeaz
-  password: yeaz11235813
+  username: minjok
+  password: kmla1996
