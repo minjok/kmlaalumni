@@ -1,0 +1,48 @@
+<script text="javascript">
+  $(document).ready( function() {
+    var page = 1;
+    var numPages = 0;
+    var loading = true;
+    
+    function getNumPages() {
+      $.ajax({
+        url: '/postings/num_pages',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+          numPages = data;
+        }
+      });
+    }
+    
+    function appendNextPage() {
+      $.ajax({
+        url: '/postings/feed?page=' + page,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          loading = false;
+        }
+      });
+    }
+    
+    function nearBottomOfPage() {
+      return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
+    }
+  
+    getNumPages();
+    appendNextPage();
+    
+    $(window).scroll(function(){
+      if (page >= numPages || loading) {
+        return;
+      }
+
+      if(nearBottomOfPage()) {
+        loading=true;
+        page++;
+        appendNextPage();
+      }
+    });
+  });
+</script>

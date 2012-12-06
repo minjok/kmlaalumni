@@ -12,12 +12,6 @@
 <div>
 	<%= link_to '로그아웃', logout_url, method: :delete %>
 </div>
-<div id="feed">
-  <% @feed_postings.each do |posting| %>
-    <div>
-        <%= posting.user.name %></br>
-        <%= posting.created_at %></br>
-        <%= posting.content %>
-    </div>
-  <% end %>
+<div id="postings">
 </div>
+<%= render partial: 'postings/pagination_script' %>

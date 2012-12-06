@@ -26,6 +26,13 @@ Kmlaalumni::Application.routes.draw do
 	end
   end
   
+  resources :postings do
+    collection do
+      get :feed
+      get :num_pages
+    end
+  end
+  
   resources :membership do
 	
 	member do

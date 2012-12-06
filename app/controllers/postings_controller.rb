@@ -1,7 +1,7 @@
 # encoding: utf-8
 class PostingsController < ApplicationController
 	
-	respond_to :html
+	respond_to :html, :xml
 	
 	def create
 		
@@ -23,5 +23,30 @@ class PostingsController < ApplicationController
 	
 	def delete
 	end
+    
+    def num_pages
+        @postings = getPostings(params)
+        respond_to do |format|
+          format.json { render json: @postings.num_pages }
+        end
+    end
+    
+    def feed
+        @postings = getPostings(params)
+        respond_to do |format|
+          format.js
+        end
+    end
+    
+    protected
+      def getPostings(params)
+        if params.has_key?(:group_id)
+          target_groups =  params[:group_id]
+        else 
+          target_groups = current_user.groups
+        end
+        
+        return Posting.where(group_id: target_groups).order('created_at DESC').page(params[:page]).per(10)
+      end
 	
 end
