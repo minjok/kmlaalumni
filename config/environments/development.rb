@@ -35,6 +35,15 @@ Kmlaalumni::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
-  # Sets the default url for mail
+  # Mailer settings
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port:  "587",
+    domain: "localhost:3000",
+    authentication: :plain,
+    user_name: "yeaz90@gmail.com",
+    password: "yeaz11235813",
+    tls: true
+  }
 end

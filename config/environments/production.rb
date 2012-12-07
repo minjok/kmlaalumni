@@ -65,6 +65,15 @@ Kmlaalumni::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  # Sets the default url for mail
+  # Mailer settings
   config.action_mailer.default_url_options = { host: 'kmlaalumni.herokuapp.com' }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port:  "587",
+    domain: "kmlaalumni.herokuapp.com",
+    authentication: :plain,
+    user_name: "yeaz90@gmail.com",
+    password: "yeaz11235813",
+    tls: true
+  }
 end
