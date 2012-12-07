@@ -17,7 +17,7 @@
     
     function appendNextPage() {
       $.ajax({
-        url: '/postings/feed?page=' + page,
+        url: '<%= paginate_url %>' + page,
         type: 'get',
         dataType: 'script',
         success: function() {

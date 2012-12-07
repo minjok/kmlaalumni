@@ -11,11 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203115852) do
+ActiveRecord::Schema.define(:version => 20121207003351) do
 
   create_table "alumni_verifications", :force => true do |t|
     t.string "name",           :null => false
     t.string "student_number", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content",    :null => false
+    t.integer  "user_id"
+    t.integer  "posting_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "educations", :force => true do |t|
@@ -31,15 +39,15 @@ ActiveRecord::Schema.define(:version => 20121203115852) do
   end
 
   create_table "memberships", :force => true do |t|
-    t.integer "user_id",                     :null => false
-    t.integer "group_id",                    :null => false
     t.boolean "admin",    :default => false, :null => false
+    t.integer "user_id"
+    t.integer "group_id"
   end
 
   create_table "postings", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "group_id",   :null => false
     t.text     "content",    :null => false
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -64,8 +72,12 @@ ActiveRecord::Schema.define(:version => 20121203115852) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

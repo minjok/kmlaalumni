@@ -16,17 +16,12 @@ Kmlaalumni::Application.routes.draw do
   
   #	*** RESOURCES ***	#
   resources :groups do
-	resource :postings do
-  
-		member do
-			post :create
-			post :delete
-		end
-		
-	end
+	resources :postings
   end
-  
+    
   resources :postings do
+    resources :comments
+    
     collection do
       get :feed
       get :num_pages

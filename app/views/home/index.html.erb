@@ -14,4 +14,4 @@
 </div>
 <div id="postings">
 </div>
-<%= render partial: 'postings/pagination_script' %>
+<%= render partial: 'postings/pagination_script', locals: {paginate_url: '/postings/feed?page='} %>

@@ -1,7 +1,18 @@
 <div class='posting'>
   <div class='author'><%= posting.user.name %></div>
   <div class='date'><%= posting.created_at %></div>
-  <p>
-    <%= posting.content %>
-  </p>
+  <div><%= posting.content %></div>
+  <div>
+      <%= form_for [posting, Comment.new] do |f| %>
+        <%= f.text_area :content %>
+        <div><%= f.submit '댓글 달기' %></div>
+      <% end %>
+  </div>
+  <div id="<%= 'posting_' + posting.id.to_s() + '_comments'%>">
+    <% posting.comments.each do |c| %>
+        <div><%= c.user.name %></div>
+        <div><%= c.created_at %></div>
+        <div><%= c.content %></div>
+    <% end %>
+  </div>
 </div>

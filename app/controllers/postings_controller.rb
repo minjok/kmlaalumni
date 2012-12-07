@@ -1,7 +1,7 @@
 # encoding: utf-8
 class PostingsController < ApplicationController
 	
-	respond_to :html, :xml
+	respond_to :html
 	
 	def create
 		
@@ -40,8 +40,8 @@ class PostingsController < ApplicationController
     
     protected
       def getPostings(params)
-        if params.has_key?(:group_id)
-          target_groups =  params[:group_id]
+        if params.has_key?(:group)
+          target_groups =  params[:group]
         else 
           target_groups = current_user.groups
         end

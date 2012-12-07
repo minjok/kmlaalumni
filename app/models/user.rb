@@ -1,7 +1,7 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
 	
-	#	*** ATTRIBUTES ***	#
+	# *** ATTRIBUTES *** #
 	attr_accessible :name, 
 					:wave,
 					:student_number,
@@ -11,22 +11,22 @@ class User < ActiveRecord::Base
 					:remember_me
 
 
-	#	*** DEVISE ***	#
+	# *** DEVISE *** #
 	devise	:database_authenticatable,
 			:registerable,
 			:recoverable, 
 			:rememberable, 
-			:trackable
+			:trackable,
+            :confirmable
 		  # :validatable
 		  # :token_authenticatable 
 		  # :encryptable
-	      # :confirmable 
 		  # :lockable 
 		  # :timeoutable
 		  # :omniauthable
 		  
 		  
-	#	*** ASSOCIATIONS ***	# 
+	# *** ASSOCIATIONS *** # 
 	has_many :groups,      	through: :memberships
 	has_many :memberships, 	dependent: :destroy
 	
@@ -34,16 +34,17 @@ class User < ActiveRecord::Base
 	has_many :educations,	dependent: :destroy
 	
 	has_many :postings, 	dependent: :destroy
+    has_many :comments,     dependent: :destroy
 	
 	
-	#	*** VALIDATIONS ***	#
+	# *** VALIDATIONS *** #
 	validates_presence_of		:name,
 									message: "이름을 입력해주세요"
 	
 	validates_presence_of		:wave,
 									message: "가입 도중 에러가 발생했습니다"
 	
-	validates_inclusion_of 		:wave, in: 1..(Time.now.year-1995),
+	validates_inclusion_of 		:wave, in: 1..(Time.now.year-1998),
 									message: "가입 도중 에러가 발생했습니다"
 	
 	validates_uniqueness_of		:student_number,

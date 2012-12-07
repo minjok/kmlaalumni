@@ -38,8 +38,8 @@ class GroupsController < ApplicationController
 	def show
 		@group = Group.find(params[:id])
 		@membership = Membership.where("user_id = ? AND group_id = ?", current_user, @group).first
-		@posting = Posting.new
-	end
+        @comment = Comment.new
+    end
 	
 	def destroy
 		@group = Group.find(params[:id])
