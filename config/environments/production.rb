@@ -67,6 +67,8 @@ Kmlaalumni::Application.configure do
   
   # Mailer settings
   config.action_mailer.default_url_options = { host: 'kmlaalumni.herokuapp.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port:  "587",
@@ -74,6 +76,5 @@ Kmlaalumni::Application.configure do
     authentication: :plain,
     user_name: "yeaz90@gmail.com",
     password: "yeaz11235813",
-    tls: true
   }
 end
