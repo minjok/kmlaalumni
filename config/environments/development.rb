@@ -44,8 +44,8 @@ Kmlaalumni::Application.configure do
     port:  "587",
     domain: "localhost:3000",
     authentication: :plain,
-    user_name: "yeaz90@gmail.com",
-    password: "yeaz11235813",
+    user_name: "kmlaalumnidev@gmail.com",
+    password: "kmlaalumnid3v",
     enable_starttls_auto: true
   }
 end
