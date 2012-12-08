@@ -76,5 +76,6 @@ Kmlaalumni::Application.configure do
     authentication: :plain,
     user_name: "yeaz90@gmail.com",
     password: "yeaz11235813",
+    enable_starttls_auto: true
   }
 end
