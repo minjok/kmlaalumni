@@ -14,7 +14,7 @@
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 				
 				<ul>
-					<li><%= f.email_field :email %></li>
+					<li><%= f.text_field :username %></li>
 					<li><%= f.password_field :password %></li>
 				</ul>
 				
@@ -39,9 +39,9 @@
 				<ul id="new_user_container">
 					<li><%= f.text_field :name %></li>
 					<li><%= f.text_field :student_number %></li>
-					<li><%= f.text_field :email %></li>
+					<li><%= f.text_field :username %></li>
+                    <li><%= f.email_field :email %></li>
 					<li><%= f.password_field :password %></li>
-					<li><%= f.password_field :password_confirmation %></li>
 				</ul>
 				
 				<div><%= f.submit "Sign up" %></div>

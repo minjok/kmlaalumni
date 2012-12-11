@@ -5,19 +5,20 @@ class User < ActiveRecord::Base
 	attr_accessible :name, 
 					:wave,
 					:student_number,
+                    :username,
 					:email, 
 					:password, 
 					:password_confirmation, 
 					:remember_me
-
+    
 
 	# *** DEVISE *** #
 	devise	:database_authenticatable,
 			:registerable,
 			:recoverable, 
 			:rememberable, 
-			:trackable,
-            :confirmable
+			:trackable
+          # :confirmable
 		  # :validatable
 		  # :token_authenticatable 
 		  # :encryptable
@@ -49,17 +50,29 @@ class User < ActiveRecord::Base
 	
 	validates_uniqueness_of		:student_number,
 									message: "입력하신 학번으로 이미 가입된 동문이 있습니다"
-
-	validates_uniqueness_of		:email, case_sensitive: false,
+                                    
+    validates_presence_of       :username,
+                                    message: "아이디를 입력해주세요"
+    
+    validates_uniqueness_of     :username,
+                                    message: "이미 사용 중인 아이디입니다"
+                                    
+    validates_length_of         :username, within: 0..20,
+                                    message: "아이디는 20자내외로 입력해주세요"
+    
+    validates_format_of         :username, with: /^\w+$/,
+                                    message: "아이디에는 영문자와 숫자만 기입할 수 있습니다"
+                                  
+	validates_uniqueness_of		:email,
 									message: "이미 사용 중인 이메일입니다"
 									
 	validates_format_of 		:email, with: /\A[^@]+@[^@]+\z/,
 									message: "이메일 형식이 올바르지 않습니다"
 									
-	validates_presence_of   	:password, on: :create,
+	validates_presence_of   	:password,
 									message: "비밀번호를 입력해주세요"
 									
-	validates_confirmation_of   :password, on: :create,
+	validates_confirmation_of   :password, if: :password_required?,
 									message: "비밀번호가 일치하지 않습니다"
 									
 	validates_length_of 		:password, within: 6..20,
@@ -67,7 +80,15 @@ class User < ActiveRecord::Base
 		  
 		  
 	# *** METHODS *** #
-	def is_member_of(group)
+	def after_active_sign_in_path_for(resource)
+      respond_to root_path
+    end
+    
+    def after_inactive_sign_up_path_for(resource)
+      respond_to root_path
+    end
+    
+    def is_member_of(group)
 	  Membership.exists?(self, group)
 	end
 	
@@ -82,5 +103,9 @@ class User < ActiveRecord::Base
 	def compute_wave
 	  self.wave = (self.student_number[0..1].to_i + 5) % 100
 	end
-	
+    
+	protected
+      def password_required?
+        !persisted? || !password.nil? || !password_confirmation.nil?
+      end
 end
