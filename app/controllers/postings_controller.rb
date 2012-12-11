@@ -37,7 +37,7 @@ class PostingsController < ApplicationController
           format.js
         end
     end
-    
+  
     protected
       def getPostings(params)
         if params.has_key?(:group)

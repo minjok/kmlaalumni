@@ -25,6 +25,7 @@ Kmlaalumni::Application.routes.draw do
     collection do
       get :feed
       get :num_pages
+      get :get_update_form
     end
   end
   
@@ -42,6 +43,7 @@ Kmlaalumni::Application.routes.draw do
   match '/welcome', 			to: 'home#welcome', 		as: 'welcome'
   match '/add_member/:id',		to: 'membership#add', 		as: 'add_member'
   match '/delete_member/:id', 	to: 'membership#delete', 	as: 'delete_member'
+  match '/get_update_form',     to: 'settings#get_update_form', as: 'get_update_form'
   
   
   

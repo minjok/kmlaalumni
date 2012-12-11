@@ -8,8 +8,11 @@ class User < ActiveRecord::Base
                     :username,
 					:email, 
 					:password, 
-					:password_confirmation, 
+					:password_confirmation,
+                    :current_password,
 					:remember_me
+                    
+    attr_accessor   :current_password
     
 
 	# *** DEVISE *** #
@@ -69,13 +72,13 @@ class User < ActiveRecord::Base
 	validates_format_of 		:email, with: /\A[^@]+@[^@]+\z/,
 									message: "이메일 형식이 올바르지 않습니다"
 									
-	validates_presence_of   	:password,
+	validates_presence_of   	:password, if: :password_required?,
 									message: "비밀번호를 입력해주세요"
 									
 	validates_confirmation_of   :password, if: :password_required?,
 									message: "비밀번호가 일치하지 않습니다"
 									
-	validates_length_of 		:password, within: 6..20,
+	validates_length_of 		:password, within: 6..20, if: :password_required?,
 									message: "비밀번호는 6-20자내외로 입력해주세요"
 		  
 		  

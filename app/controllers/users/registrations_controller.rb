@@ -25,5 +25,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
-	
+
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    password_changed = !params[:user][:password].blank?
+   
+    successfully_updated = if password_changed
+      p "HIT"
+      resource.update_with_password(params[:user])
+    else
+      resource.update_without_password(params[:user])
+    end
+       
+    if successfully_updated
+      set_flash_message :notice, :updated
+      # Sign in the user bypassing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to after_update_path_for(resource)
+    else
+      render "edit"
+    end
+  end
+  
 end
