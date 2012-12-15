@@ -25,4 +25,4 @@
 <% end %>
 <div id="postings">
 </div>
-<%= render partial: 'postings/pagination_script', locals: {paginate_url: ('/postings/feed?group=' + @group.id.to_s() + '&page=').html_safe} %>
+<%= render partial: 'postings/posting_script', locals: {paginate_url: ('/postings/feed?group=' + @group.id.to_s() + '&page=').html_safe} %>

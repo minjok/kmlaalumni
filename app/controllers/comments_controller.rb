@@ -22,4 +22,16 @@ class CommentsController < ApplicationController
   def destroy
   end
   
+  def feed
+    @comments = getComments(params)
+    @posting = params[:posting]
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  protected
+    def getComments(params)
+      return Comment.where(posting_id: params[:posting]).order('created_at')
+    end
 end
