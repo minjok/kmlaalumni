@@ -1,0 +1,27 @@
+<script text="javascript">
+  $(document).ready( function() {
+  
+    function process_click(type, url) {
+      form = '#' + type + '_update_form'
+      if ($(form).is(':empty')) {
+        $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'script',
+        });
+      } else {
+        $(form).empty();
+      }
+    }
+    
+    $("#email_update_link").click( function(event) {
+      event.preventDefault();
+      process_click('email', this.href);
+    });
+    
+    $("#password_update_link").click( function(event) {
+      event.preventDefault();
+      process_click('password', this.href);
+    });
+  });
+</script>

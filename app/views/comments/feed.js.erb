@@ -1,0 +1,1 @@
+$('#posting_' + <%= @posting.to_s() %> + '_comments').html("<%= escape_javascript(render(@comments)) %>");
