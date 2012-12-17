@@ -1,0 +1,8 @@
+<% if !@school.errors.blank? %>
+  <% for msg in @school.errors[:name] %>
+    $('#add_education_form').prepend("<div><%= msg %></div>");
+  <% end %>
+<% else %>
+  $('#add_education_form').empty();
+  $('#educations').prepend("<div>학교: <%= @school.name %></div>");
+<% end %>

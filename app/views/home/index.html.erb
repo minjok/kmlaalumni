@@ -5,8 +5,8 @@
 	<%= link_to '새로운 소모임 만들기', new_group_url %>
 </div>
 <div>
-	<% current_user.groups.each do |group| %>
-			<%= link_to group.name, group_url(group) %>
+	<% for group in current_user.groups %>
+        <%= link_to group.name, group_url(group) %>
 	<% end %>
 </div>
 <div>

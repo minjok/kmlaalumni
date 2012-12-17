@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
 
-  def get_update_form
-    @section = params[:section] + "_update_form"
+  def get_form
+    @section = params[:section] + "_form"
     respond_to do |format|
       format.js
     end

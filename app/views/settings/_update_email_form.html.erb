@@ -1,0 +1,7 @@
+<%= form_for(current_user, :url => registration_path(:user), :html => { :method => :put }) do |f| %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+<div><%= f.submit "저장" %></div>
+<% end %>

@@ -25,7 +25,6 @@ Kmlaalumni::Application.routes.draw do
     collection do
       get :feed
       get :num_pages
-      get :get_update_form
     end
   end
   
@@ -35,21 +34,24 @@ Kmlaalumni::Application.routes.draw do
     end
   end
   
-  resources :membership do
-	
-	member do
-		post :add
-		post :delete
-	end
-	
+  resources :education do
+    collection do
+      post :add
+    end
   end
   
+  #	*** ROUTES ***	#
+  match '/welcome',             to: 'home#welcome',               as: 'welcome'
   
-  #	*** SIMPLIFIED ROUTES ***	#
-  match '/welcome', 			to: 'home#welcome', 		as: 'welcome'
-  match '/add_member/:id',		to: 'membership#add', 		as: 'add_member'
-  match '/delete_member/:id', 	to: 'membership#delete', 	as: 'delete_member'
-  match '/get_update_form',     to: 'settings#get_update_form', as: 'get_update_form'
+  match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
+  match '/delete_member/:id',   to: 'membership#delete',          as: 'delete_member'
+  
+  match 'add_education',        to: 'education#add',              as: 'add_education'
+  match '/get_school_suggestions', to: 'education#get_school_suggestions',   as: 'get_school_suggestions'
+  
+  match '/get_form',            to: 'settings#get_form',          as: 'get_form'
+  
+  
   
   
   

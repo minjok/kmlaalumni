@@ -31,7 +31,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     password_changed = !params[:user][:password].blank?
    
     successfully_updated = if password_changed
-      p "HIT"
       resource.update_with_password(params[:user])
     else
       resource.update_without_password(params[:user])

@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  $(function() {
+    $('#school_name_field').autocomplete({
+      minLength: 1,
+      source: '<%= get_school_suggestions_url(:json) %>',
+      focus: function(event, ui) {
+               $('#school_name_field').val(ui.item.name);
+               return false;
+             },
+      select: function(event, ui) {
+                $('#school_name_field').val(ui.item.name);
+                return false;
+              }
+    })
+
+  .data( "autocomplete" )._renderItem = function( ul, item ) {
+     return $( "<li></li>" ).data( "item.autocomplete", item )
+                            .append( "<a>" + item.name + "</a>" )
+                            .appendTo( ul );
+        };
+  });
+</script>

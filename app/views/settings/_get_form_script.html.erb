@@ -1,0 +1,32 @@
+<script text="javascript">
+  $(document).ready( function() {
+  
+    function process_click(type, url) {
+      form = '#' + type
+      if ($(form).is(':empty')) {
+        $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'script',
+        });
+      } else {
+        $(form).empty();
+      }
+    }
+    
+    $("#update_email_link").click( function(event) {
+      event.preventDefault();
+      process_click('update_email_form', this.href);
+    });
+    
+    $("#add_education_link").click( function(event) {
+      event.preventDefault();
+      process_click('add_education_form', this.href);
+    });
+    
+    $("#update_password_link").click( function(event) {
+      event.preventDefault();
+      process_click('update_password_form', this.href);
+    });
+  });
+</script>

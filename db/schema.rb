@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20121207003351) do
   end
 
   create_table "educations", :force => true do |t|
-    t.integer "user_id",   :null => false
-    t.integer "school_id", :null => false
+    t.integer "user_id"
+    t.integer "school_id"
   end
 
   create_table "groups", :force => true do |t|

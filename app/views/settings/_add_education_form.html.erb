@@ -1,0 +1,6 @@
+<%= form_tag add_education_url, remote:true do %>
+  <%= text_field_tag :school_name, params[:term], id: 'school_name_field' %>
+  <%= submit_tag '추가하기' %>
+<% end %> 
+
+<%= render 'settings/autocomplete_script' %>
