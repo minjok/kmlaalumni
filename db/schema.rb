@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20121207003351) do
     t.string   "name",                                   :null => false
     t.integer  "wave",                                   :null => false
     t.string   "student_number",                         :null => false
-    t.string   "username",                               :null => false
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"

@@ -6,6 +6,9 @@ class HomeController < ApplicationController
   end
 	
   def welcome
+    unless !user_signed_in?
+      redirect_to root_url
+    end
   end
 	
 end

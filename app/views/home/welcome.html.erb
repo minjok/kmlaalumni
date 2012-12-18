@@ -14,7 +14,7 @@
 			<%= form_for(resource, url: session_path(resource_name), html: {id:'signin_form'}) do |f| %>
 				
 				<ul>
-					<li><%= f.text_field :username %></li>
+					<li><%= f.text_field :email %></li>
 					<li><%= f.password_field :password %></li>
 				</ul>
 				
@@ -44,7 +44,6 @@
                 <div id="authenticate_alumni_link_container"><%= link_to "동문 인증", verify_alumni_url, id: 'authenticate_alumni_link' %></div>
                 
                 <ul id="signup_form_new_user_info_section", style="display:none;">
-                  <li><%= f.text_field :username %></li>
                   <li><%= f.email_field :email %></li>
 				  <li><%= f.password_field :password %></li>
                 </ul>

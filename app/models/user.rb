@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 	attr_accessible :name, 
 					:wave,
 					:student_number,
-                    :username,
 					:email, 
 					:password, 
 					:password_confirmation,
@@ -53,19 +52,7 @@ class User < ActiveRecord::Base
 	
 	validates_uniqueness_of		:student_number,
 									message: "입력하신 학번으로 이미 가입된 동문이 있습니다"
-                                    
-    validates_presence_of       :username,
-                                    message: "아이디를 입력해주세요"
-    
-    validates_uniqueness_of     :username,
-                                    message: "이미 사용 중인 아이디입니다"
-                                    
-    validates_length_of         :username, within: 0..20,
-                                    message: "아이디는 20자내외로 입력해주세요"
-    
-    validates_format_of         :username, with: /^\w+$/,
-                                    message: "아이디에는 영문자와 숫자만 기입할 수 있습니다"
-                                  
+                                   
 	validates_uniqueness_of		:email,
 									message: "이미 사용 중인 이메일입니다"
 									
