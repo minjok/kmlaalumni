@@ -7,11 +7,11 @@
 	</div>
 	
 	<!-- FORM_CONTAINER -->
-	<div id="welcome_form_container">
+	<div id="form_container">
 		
 		<!-- SIGNIN_FORM -->
-		<div id="welcome_signin_form">
-			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		<div id="signin_form">
+			<%= form_for(resource, url: session_path(resource_name), html: {id:'signin_form'}) do |f| %>
 				
 				<ul>
 					<li><%= f.text_field :username %></li>
@@ -28,26 +28,57 @@
 		</div>
 		
 		<!-- SIGNUP_FORM -->
-		<div id="welcome_signup_form">
+		<div id="signup_form_container">
 		
 			<div id="signup_message">
 				<img src="/assets/welcome_signup_message.png" alt="처음 뵙네요. 반갑습니다!"/>
 			</div>
 			
-			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-				
-				<ul id="new_user_container">
-					<li><%= f.text_field :name %></li>
-					<li><%= f.text_field :student_number %></li>
-					<li><%= f.text_field :username %></li>
-                    <li><%= f.email_field :email %></li>
-					<li><%= f.password_field :password %></li>
+			<%= form_for(resource, url: registration_path(resource_name), html: {id:'signup_form'} ) do |f| %>
+				<div id="authenticate_alumni_message"></div>
+                <ul id="signup_form_authenticate_alumni_section">
+                  <li><%= f.text_field :name %></li>
+                  <li><%= f.text_field :student_number %></li>
 				</ul>
 				
-				<div><%= f.submit "Sign up" %></div>
-				
+                <div id="authenticate_alumni_link_container"><%= link_to "동문 인증", verify_alumni_url, id: 'authenticate_alumni_link' %></div>
+                
+                <ul id="signup_form_new_user_info_section", style="display:none;">
+                  <li><%= f.text_field :username %></li>
+                  <li><%= f.email_field :email %></li>
+				  <li><%= f.password_field :password %></li>
+                </ul>
+                
+				<div id="signup_form_submit", style="display:none;"><%= f.submit "Sign up" %></div>
 			<% end %>
 		</div>
 	</div>
-	
 </div>
+
+<script text="javascript">
+  $(document).ready( function() {
+    $('#authenticate_alumni_link').click( function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: this.href + "?" + $('#signup_form').serialize(),
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+          if (data.status) {
+            $('#authenticate_alumni_message').html(data.name + " 동문님 환영합니다! 아래 정보들을 입력해주세요");
+            $('#signup_form_authenticate_alumni_section').hide();
+            $('#authenticate_alumni_link_container').hide();
+            $('#signup_form_new_user_info_section').show();
+            $('#signup_form_submit').show();
+          } else {
+            $('#authenticate_alumni_message').html("동문 인증에 실패했습니다. 다시 한 번 이름과 학번을 입력해주세요");
+            $('#signup_form_authenticate_alumni_section').show();
+            $('#authenticate_alumni_link_container').show();
+            $('#signup_form_new_user_info_section').hide();
+            $('#signup_form_submit').hide();
+          }
+        }
+      });
+    });
+  });
+</script>

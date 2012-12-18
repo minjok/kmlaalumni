@@ -18,6 +18,11 @@ class EducationController < ApplicationController
   def delete
   end
   
+  def update
+    @education = Education.find(params[:id])
+    @education.update_attributes(params[:education)
+  end
+  
   def get_school_suggestions
     if params[:term]
       query = params[:term].downcase.strip

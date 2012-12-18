@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(:version => 20121207003351) do
   create_table "educations", :force => true do |t|
     t.integer "user_id"
     t.integer "school_id"
+    t.string  "major"
+    t.string  "degree"
+    t.date    "entrance_year"
+    t.date    "graduation_year"
   end
 
   create_table "groups", :force => true do |t|

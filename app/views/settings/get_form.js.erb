@@ -1,1 +1,1 @@
-$("#<%= @section %>").html("<%= escape_javascript(render @section) %>");
+$("#<%= @form_container %>").html("<%= escape_javascript(render @section, locals: {education: @education}) %>");

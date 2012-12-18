@@ -4,6 +4,10 @@ class CreateEducations < ActiveRecord::Migration
 	
 		t.references	:user
 		t.references	:school
+        t.string        :major
+        t.string        :degree
+        t.date          :entrance_year
+        t.date          :graduation_year
 		
     end
   end

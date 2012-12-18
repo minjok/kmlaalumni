@@ -11,6 +11,7 @@ Kmlaalumni::Application.routes.draw do
 	get 	'signup',	to: 'devise/registrations#new',		as: 'signup'
 	get 	'login',	to: 'devise/sessions#new',			as: 'login'
 	delete	'logout',	to: 'devise/sessions#destroy',		as: 'logout'
+    get     'verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
   end
   
   
@@ -42,7 +43,7 @@ Kmlaalumni::Application.routes.draw do
   
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
-  
+    
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
   match '/delete_member/:id',   to: 'membership#delete',          as: 'delete_member'
   

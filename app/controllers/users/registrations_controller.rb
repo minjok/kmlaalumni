@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Users::RegistrationsController < Devise::RegistrationsController
-	
+
   def create
     build_resource
     
@@ -43,6 +43,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to after_update_path_for(resource)
     else
       render "edit"
+    end
+  end
+  
+  def verify_alumni
+    build_resource
+    result = {"name" => resource.name, "status" => resource.has_correct_name_and_student_number?}
+    respond_to do |format|
+      format.json { render json: result }
     end
   end
   

@@ -18,7 +18,7 @@
 
 <div>
   이메일: <%= current_user.email %>
-  <%= link_to "수정", get_form_url(section: :update_email), id: "update_email_link" %>
+  <%= link_to "수정", get_form_url(section: :update_email_form), class: "get_form_link" %>
   <div id="update_email_form"></div>
 </div>
 
@@ -26,14 +26,16 @@
   <div id="educations">
     <% for education in current_user.educations %>
       <div>학교: <%= education.school.name %></div>
+      <%= link_to "학력사항 수정", get_form_url(section: :update_education_form, id: education.id), class: "get_form_link" %> 
+      <div id="update_education_form_<%= education.id.to_s %>"></div>
     <% end %>
   </div>
-  <%= link_to "학교 추가하기", get_form_url(section: :add_education), id: "add_education_link" %>
+  <%= link_to "학교 추가하기", get_form_url(section: :add_education_form), class: "get_form_link" %>
   <div id="add_education_form"></div>
 </div>
 
 <div>
-  <%= link_to "비밀번호 수정", get_form_url(section: :update_password), id: "update_password_link" %>
+  <%= link_to "비밀번호 수정", get_form_url(section: :update_password_form), class: "get_form_link" %>
   <div id="update_password_form"></div>
 </div>
 

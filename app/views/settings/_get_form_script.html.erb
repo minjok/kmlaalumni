@@ -1,32 +1,24 @@
 <script text="javascript">
   $(document).ready( function() {
   
-    function process_click(type, url) {
-      form = '#' + type
-      if ($(form).is(':empty')) {
+    function process_click(form_container_id, url) {
+      form_container = '#' + form_container_id
+      if ($(form_container).is(':empty')) {
         $.ajax({
           url: url,
           type: 'get',
           dataType: 'script',
         });
       } else {
-        $(form).empty();
+        $(form_container).empty();
       }
     }
     
-    $("#update_email_link").click( function(event) {
+    $(".get_form_link").click( function(event) {
       event.preventDefault();
-      process_click('update_email_form', this.href);
+      form_container_id = $(this).next().attr('id');
+      process_click(form_container_id, this.href);
     });
-    
-    $("#add_education_link").click( function(event) {
-      event.preventDefault();
-      process_click('add_education_form', this.href);
-    });
-    
-    $("#update_password_link").click( function(event) {
-      event.preventDefault();
-      process_click('update_password_form', this.href);
-    });
+
   });
 </script>
