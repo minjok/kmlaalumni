@@ -14,15 +14,15 @@
 			<%= form_for(resource, url: session_path(resource_name), html: {id:'signin_form'}) do |f| %>
 				
 				<ul>
-					<li><%= f.text_field :email %></li>
-					<li><%= f.password_field :password %></li>
+					<li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
+					<li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
 				</ul>
 				
 				<% if devise_mapping.rememberable? -%>
 					<div><%= f.check_box :remember_me %> 로그인 상태 유지</div>
 				<% end -%>
 				
-				<div><%= f.submit "Sign in" %></div>
+				<div><%= f.submit "로그인" %></div>
 				
 			<% end %>
 		</div>
@@ -35,17 +35,17 @@
 			</div>
 			
 			<%= form_for(resource, url: registration_path(resource_name), html: {id:'signup_form'} ) do |f| %>
-				<div id="authenticate_alumni_message"></div>
+				<div id="message"></div>
                 <ul id="signup_form_authenticate_alumni_section">
-                  <li><%= f.text_field :name %></li>
-                  <li><%= f.text_field :student_number %></li>
+                  <li><%= f.text_field :name, placeholder: "이름", autocomplete: :off %></li>
+                  <li><%= f.text_field :student_number, placeholder: "학번", autocomplete: :off %></li>
 				</ul>
 				
-                <div id="authenticate_alumni_link_container"><%= link_to "동문 인증", verify_alumni_url, id: 'authenticate_alumni_link' %></div>
+                <div id="verify_alumni_link_container"><%= link_to "동문 인증", verify_alumni_url, id: 'verify_alumni_link' %></div>
                 
                 <ul id="signup_form_new_user_info_section", style="display:none;">
-                  <li><%= f.email_field :email %></li>
-				  <li><%= f.password_field :password %></li>
+                  <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
+				  <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
                 </ul>
                 
 				<div id="signup_form_submit", style="display:none;"><%= f.submit "Sign up" %></div>
@@ -56,7 +56,7 @@
 
 <script text="javascript">
   $(document).ready( function() {
-    $('#authenticate_alumni_link').click( function(event) {
+    $('#verify_alumni_link').click( function(event) {
       event.preventDefault();
       $.ajax({
         url: this.href + "?" + $('#signup_form').serialize(),
@@ -64,15 +64,15 @@
         dataType: 'json',
         success: function(data) {
           if (data.status) {
-            $('#authenticate_alumni_message').html(data.name + " 동문님 환영합니다! 아래 정보들을 입력해주세요");
+            $('#message').html(data.wave + "기 " + data.name + " 동문님 환영합니다!");
             $('#signup_form_authenticate_alumni_section').hide();
-            $('#authenticate_alumni_link_container').hide();
+            $('#verify_alumni_link_container').hide();
             $('#signup_form_new_user_info_section').show();
             $('#signup_form_submit').show();
           } else {
-            $('#authenticate_alumni_message').html("동문 인증에 실패했습니다. 다시 한 번 이름과 학번을 입력해주세요");
+            $('#message').html("동문 인증에 실패했습니다. 다시 한 번 이름과 학번을 입력해주세요");
             $('#signup_form_authenticate_alumni_section').show();
-            $('#authenticate_alumni_link_container').show();
+            $('#verify_alumni_link_container').show();
             $('#signup_form_new_user_info_section').hide();
             $('#signup_form_submit').hide();
           }

@@ -4,7 +4,6 @@ class Education < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :school
 	
-	
 	#	*** METHODS ***	#
 	def self.exists?(user, school)
 		not where("user_id = ? AND school_id = ?", user, school).first.blank?

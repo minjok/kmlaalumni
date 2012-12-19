@@ -1,0 +1,7 @@
+<% if @comment.errors.blank? %>
+  $('#posting_' + <%= @posting.id.to_s %> + '_comments').append('<%= escape_javascript(render @comment) %>');
+  $('#posting_' + <%= @posting.id.to_s %> + '_comment_error_message').empty();
+  $('#posting_' + <%= @posting.id.to_s %> + '_comment_content').val('');
+<% else %>
+   $('#posting_' + <%= @posting.id.to_s %> + '_comment_error_message').html('<%= @comment.errors.first[1] %>');
+<% end %>

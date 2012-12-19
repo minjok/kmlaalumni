@@ -1,27 +1,30 @@
 # encoding: utf-8
 class PostingsController < ApplicationController
 	
-	respond_to :html
-	
 	def create
-		
 		@posting = Posting.new(params[:posting])
-		@posting.group_id = params[:group_id]
-		@posting.user_id = current_user.id
+        @posting.user_id = current_user.id
+        if @posting.platform == Posting::PLATFORM['GROUP']
+		  @posting.group_id = params[:group_id]
+          if !current_user.is_member_of(@posting.group)
+            @posting.errors.add(:membership, "이 그룹의 멤버만 포스팅을 올릴 수 있습니다")
+          end
+        end
 		
-		if !current_user.is_member_of(@posting.group)
-			@posting.errors.add(:membership, "이 그룹의 멤버만 포스팅을 올릴 수 있습니다")
-		end
-		
-		if @posting.save
-			respond_with @posting, location: group_url(@posting.group)
-		else
-			respond_with @posting, action: group_url(@posting.group)
-		end
-		
+		@posting.save if @posting.errors.blank?
+        
+        respond_to do |format|
+          format.js
+        end
 	end
 	
-	def delete
+	def destroy
+      posting = Posting.find(params[:id])
+      @posting_id = posting.id
+      posting.destroy
+      respond_to do |format|
+        format.js
+      end 
 	end
     
     def num_pages
@@ -40,13 +43,17 @@ class PostingsController < ApplicationController
   
     protected
       def getPostings(params)
-        if params.has_key?(:group)
-          target_groups =  params[:group]
-        else 
-          target_groups = current_user.groups
+        postings = case params[:platform]
+          when 'newsfeed' then 
+            Posting.where('group_id = ? OR platform = ?', current_user.groups, Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
+          when 'wall' then
+            Posting.where('platform = ?', Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
+          when 'group' then
+            Posting.where('group_id = ?', params[:group_id]).order('updated_at DESC').page(params[:page]).per(10)
+          else nil
         end
         
-        return Posting.where(group_id: target_groups).order('created_at DESC').page(params[:page]).per(10)
+        postings
       end
 	
 end

@@ -23,7 +23,7 @@
     
     function getNumPages() {
       $.ajax({
-        url: '/postings/num_pages',
+        url: '/postings/num_pages?' + <%= serialized_paginate_params %>,
         type: 'get',
         dataType: 'json',
         success: function(data) {
@@ -34,7 +34,7 @@
     
     function appendNextPage() {
       $.ajax({
-        url: '<%= paginate_url %>' + page,
+        url: '/postings/feed?' + <%= serialized_paginate_params %> + '&page=' + page,
         type: 'get',
         dataType: 'script',
         success: function() {

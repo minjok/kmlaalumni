@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20121207003351) do
 
   create_table "postings", :force => true do |t|
     t.text     "content",    :null => false
+    t.integer  "platform",   :null => false
     t.integer  "user_id"
     t.integer  "group_id"
     t.datetime "created_at", :null => false

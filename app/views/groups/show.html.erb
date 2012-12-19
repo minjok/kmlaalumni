@@ -17,12 +17,14 @@
 </div>
 <% unless @membership.blank? %>
 	<div>
-		<%= form_for [@group, Posting.new] do |f| %>
-			<%= f.text_area :content %>
-			<div><%= f.submit '올리기' %></div>
-		<% end %>
+      <div id="posting_error_message"></div>
+      <%= form_for [@group, Posting.new], remote: true do |f| %>
+	    <%= f.text_area :content %>
+        <%= f.hidden_field :platform, value: Posting::PLATFORM['GROUP'] %>
+	    <div><%= submit_tag '올리기' %></div>
+      <% end %>
 	</div>
 <% end %>
 <div id="postings">
 </div>
-<%= render partial: 'postings/posting_script', locals: {paginate_url: ('/postings/feed?group=' + @group.id.to_s() + '&page=').html_safe} %>
+<%= render partial: 'postings/posting_script', locals: {serialized_paginate_params: ("'platform=group&group_id=" + @group.id.to_s() + "'").html_safe} %>

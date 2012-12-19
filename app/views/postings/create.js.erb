@@ -1,0 +1,7 @@
+<% if @posting.errors.blank? %>
+  $('#postings').prepend("<%= escape_javascript(render @posting) %>");
+  $('#posting_error_message').empty();
+  $('#posting_content').val('');
+<% else %>
+  $('#posting_error_message').html("<%= @posting.errors.first[1] %>");
+<% end %>

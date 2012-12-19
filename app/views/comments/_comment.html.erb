@@ -1,16 +1,19 @@
-<div><%= comment.user.name %></div>
-<div><%= comment.created_at %></div>
-<% if comment.content.length < 300 %>
-  <div><%= comment.content %></div>
-<% else %>
-  <div class="comment_preview">
-    <%= comment.content[0, 299] %></br>
-    ...
-  </div>
-  <div>
-    <%= link_to "더 읽기", comment_url(comment), class: "read_more_link" %>
-  </div>
-  <div class="comment" style="display:none">
-    <%= comment.content %>
-  </div>
-<% end %>
+<div id="<%= 'posting_' + comment.posting.id.to_s + '_comment_' + comment.id.to_s %>">
+  <div><%= comment.user.name %></div>
+  <div><%= comment.created_at %></div>
+  <div><%= link_to "[X]", comment_url(comment), method: :delete, remote: true %></div>
+  <% if comment.content.length < 300 %>
+    <div><%= comment.content %></div>
+  <% else %>
+    <div class="comment_preview">
+      <%= comment.content[0, 299] %></br>
+      ...
+    </div>
+    <div>
+      <%= link_to "더 읽기", comment_url(comment), class: "read_more_link" %>
+    </div>
+    <div class="comment" style="display:none">
+      <%= comment.content %>
+    </div>
+  <% end %>
+</div>

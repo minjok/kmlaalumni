@@ -20,7 +20,7 @@ class EducationController < ApplicationController
   
   def update
     @education = Education.find(params[:id])
-    @education.update_attributes(params[:education)
+    @education.update_attributes(params[:education])
   end
   
   def get_school_suggestions

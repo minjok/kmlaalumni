@@ -53,11 +53,14 @@ class User < ActiveRecord::Base
 	validates_uniqueness_of		:student_number,
 									message: "입력하신 학번으로 이미 가입된 동문이 있습니다"
                                    
-	validates_uniqueness_of		:email,
+	validates_presence_of       :email,
+                                    message: "이메일을 입력해주세요"
+    
+    validates_uniqueness_of		:email,
 									message: "이미 사용 중인 이메일입니다"
 									
 	validates_format_of 		:email, with: /\A[^@]+@[^@]+\z/,
-									message: "이메일 형식이 올바르지 않습니다"
+									message: "올바른 이메일 형식이 아닙니다"
 									
 	validates_presence_of   	:password, if: :password_required?,
 									message: "비밀번호를 입력해주세요"

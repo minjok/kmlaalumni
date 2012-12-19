@@ -8,10 +8,10 @@ Kmlaalumni::Application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   devise_scope :user do
-	get 	'signup',	to: 'devise/registrations#new',		as: 'signup'
-	get 	'login',	to: 'devise/sessions#new',			as: 'login'
-	delete	'logout',	to: 'devise/sessions#destroy',		as: 'logout'
-    get     'verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
+	get 	'/signup',	to: 'devise/registrations#new',		as: 'signup'
+	get 	'/login',	to: 'devise/sessions#new',			as: 'login'
+	delete	'/logout',	to: 'devise/sessions#destroy',		as: 'logout'
+    get     '/verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
   end
   
   
@@ -43,11 +43,13 @@ Kmlaalumni::Application.routes.draw do
   
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
+  
+  match '/wall',                to: 'wall#index',                 as: 'wall'
     
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
   match '/delete_member/:id',   to: 'membership#delete',          as: 'delete_member'
   
-  match 'add_education',        to: 'education#add',              as: 'add_education'
+  match '/add_education',        to: 'education#add',              as: 'add_education'
   match '/get_school_suggestions', to: 'education#get_school_suggestions',   as: 'get_school_suggestions'
   
   match '/get_form',            to: 'settings#get_form',          as: 'get_form'

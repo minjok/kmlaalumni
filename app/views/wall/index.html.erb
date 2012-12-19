@@ -1,0 +1,12 @@
+<div>동문회 담벼락</div>
+<div>
+  <div id="posting_error_message"></div>
+  <%= form_for Posting.new, remote: true do |f| %>
+	<%= f.text_area :content %>
+    <%= f.hidden_field :platform, value: Posting::PLATFORM['WALL'] %>
+	<div><%= submit_tag '올리기' %></div>
+  <% end %>
+</div>
+<div id="postings">
+</div>
+<%= render partial: 'postings/posting_script', locals: { serialized_paginate_params: ("'platform=wall'").html_safe } %>

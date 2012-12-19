@@ -1,6 +1,7 @@
-<div class='posting'>
+<div id="<%= 'posting_' + posting.id.to_s %>">
   <div class='author'><%= posting.user.name %></div>
   <div class='date'><%= posting.created_at %></div>
+  <div><%= link_to "[X]", posting_url(posting), method: :delete, remote: true %></div>
   <div>
     <% if posting.content.length < 300 %>
       <div><%= posting.content %></div>
@@ -18,14 +19,15 @@
     <% end %>
   </div>
   <div>
-      <%= form_for [posting, Comment.new] do |f| %>
+      <div id="<%= 'posting_' + posting.id.to_s + '_comment_error_message'%>"></div>
+      <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
         <%= f.text_area :content %>
         <div><%= f.submit '댓글 달기' %></div>
       <% end %>
   </div>
-  <div id="<%= 'posting_' + posting.id.to_s() + '_comments'%>">
+  <div id="<%= 'posting_' + posting.id.to_s + '_comments'%>">
     <% if posting.comments.length > 3 %>
-      <div id="<%= 'posting_' + posting.id.to_s() + '_get_more_comments_link'%>">
+      <div id="<%= 'posting_' + posting.id.to_s + '_get_more_comments_link'%>">
         <%= link_to "댓글 모두 보기", feed_comments_url(posting: posting.id), class: 'get_more_comments_link' %>
       </div>
     <% end %>
