@@ -30,14 +30,17 @@ class User < ActiveRecord::Base
 		  
 		  
 	# *** ASSOCIATIONS *** # 
-	has_many :groups,      	through: :memberships
-	has_many :memberships, 	dependent: :destroy
+	has_many :groups, through: :memberships
+	has_many :memberships, dependent: :destroy
 	
-	has_many :schools,		through: :educations
-	has_many :educations,	dependent: :destroy
+	has_many :schools, through: :educations
+	has_many :educations, dependent: :destroy
 	
-	has_many :postings, 	dependent: :destroy
-    has_many :comments,     dependent: :destroy
+    has_many :organizations, through: :employments
+	has_many :employments, dependent: :destroy
+    
+	has_many :postings, dependent: :destroy
+    has_many :comments, dependent: :destroy
 	
 	
 	# *** VALIDATIONS *** #

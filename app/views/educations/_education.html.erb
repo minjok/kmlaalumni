@@ -7,10 +7,14 @@
     <div><%= education.degree %></div>
   <% end %>
   <% if education.entrance_year %>
-    <div><%= education.entrance_year.year %></div>
-  <% end %>
-  <% if education.graduation_year %>
-    <div>to <%= education.graduation_year.year %></div>
+    <div>
+      <%= education.entrance_year.year %> ~
+      <% if education.graduation_year %>
+        <%= education.graduation_year.year %>
+      <% else %>
+         현재
+      <% end %>
+    </div>
   <% end %>
 </div>
 <% if update %>

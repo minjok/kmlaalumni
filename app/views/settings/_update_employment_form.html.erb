@@ -1,0 +1,13 @@
+<%= form_for(@employment, html: { method: :put}, remote: true)  do |f| %>
+
+  <div>직위<br />
+  <%= f.text_field :position %></div>
+  
+  <div>기간<br />
+  <%= f.date_select :start_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
+  ~
+  <%= f.date_select :end_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
+
+  <div><%= f.submit "저장" %></div>
+  
+<% end %>

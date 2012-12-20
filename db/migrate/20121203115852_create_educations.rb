@@ -8,7 +8,8 @@ class CreateEducations < ActiveRecord::Migration
         t.string        :degree
         t.date          :entrance_year
         t.date          :graduation_year
-		
+		t.timestamps
+        
     end
   end
 end

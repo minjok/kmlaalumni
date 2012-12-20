@@ -1,0 +1,7 @@
+<% if @employment.valid? %>
+  $("<%= '#update_employment_form_' + @employment.id.to_s + '_error_message'%>").empty();
+  $("<%= '#update_employment_form_' + @employment.id.to_s + '_container'%>").empty();
+  $("<%='#employment_' + @employment.id.to_s %>").html("<%= escape_javascript(render partial: 'employments/employment', locals:{employment: @employment, update: false}) %>");
+<% else %>
+  $("<%= '#update_employment_form_' + @employment.id.to_s + '_error_message'%>").html('<%= @employment.errors.first[1] %>');
+<% end %>

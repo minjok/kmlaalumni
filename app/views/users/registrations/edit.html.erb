@@ -5,24 +5,31 @@
     <%= errors %>
   <% end %>
 </div>
-
+<h3>기본 설정</h3>
 <div>
-  이름: <%= current_user.name %>
+  <h4>이름</h4>
+  <div id='name'><%= current_user.name %></div>
 </div>
 <div>
-  기수: <%= current_user.wave %>
+  <h4>기수</h4>
+  <div id='wave'><%= current_user.wave %></div>
 </div>
-
 <div>
-  이메일: 
+  <h4>이메일</h4> 
   <div id='email'><%= current_user.email %></div>
   <%= link_to "수정", get_form_url(section: :update_email_form), id: 'update_email_form_link', class: 'get_form_link' %>
   <div id='update_email_error_message'></div>
   <div id="update_email_form_container" class="get_form_container"></div>
 </div>
-
 <div>
-  학교: 
+  <h4>비밀번호</h4>
+  <%= link_to "수정", get_form_url(section: :update_password_form), id: 'update_password_form_link', class: 'get_form_link' %>
+  <div id='update_password_error_message'></div>
+  <div id="update_password_form_container" class="get_form_container"></div>
+</div>
+
+<h3>학력</h3>
+<div>
   <div id="add_education_form_error_message"></div>
   <%= render 'settings/add_education_form' %>
   <div id="educations">
@@ -32,11 +39,15 @@
   </div>
 </div>
 
+<h3>직장</h3>
 <div>
-  비밀번호:
-  <%= link_to "수정", get_form_url(section: :update_password_form), id: 'update_password_form_link', class: 'get_form_link' %>
-  <div id='update_password_error_message'></div>
-  <div id="update_password_form_container" class="get_form_container"></div>
+  <div id="add_employment_form_error_message"></div>
+  <%= render 'settings/add_employment_form' %>
+  <div id="employments">
+    <% for employment in current_user.employments %>
+      <%= render partial: 'employments/employment', locals:{employment: employment, update: true} %>
+    <% end %>
+  </div>
 </div>
 
 <script text="javascript">

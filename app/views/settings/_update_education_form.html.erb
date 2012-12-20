@@ -6,10 +6,9 @@
   <div>학위과정<br />
   <%= f.text_field :degree %></div>
   
-  <div>입학년도<br />
-  <%= f.date_select :entrance_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
-  
-  <div>졸업(예정)년도<br />
+  <div>기간<br />
+  <%= f.date_select :entrance_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
+   ~
   <%= f.date_select :graduation_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
 
   <div><%= f.submit "저장" %></div>

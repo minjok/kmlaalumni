@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207003351) do
+ActiveRecord::Schema.define(:version => 20121220144956) do
 
   create_table "alumni_verifications", :force => true do |t|
     t.string "name",           :null => false
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(:version => 20121207003351) do
     t.date    "graduation_year"
   end
 
+  create_table "employments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.string   "position"
+    t.date     "start_year"
+    t.date     "end_year"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "name",        :null => false
     t.text     "description", :null => false
@@ -46,6 +56,10 @@ ActiveRecord::Schema.define(:version => 20121207003351) do
     t.boolean "admin",    :default => false, :null => false
     t.integer "user_id"
     t.integer "group_id"
+  end
+
+  create_table "organizations", :force => true do |t|
+    t.string "name", :null => false
   end
 
   create_table "postings", :force => true do |t|

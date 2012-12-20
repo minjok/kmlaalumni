@@ -1,0 +1,6 @@
+<% if @organization.valid? %>
+  $('#employments').prepend("<%= escape_javascript(render partial: 'employments/employment', locals:{employment: @employment, update: true}) %>");
+  $('#add_employment_form_error_message').empty();
+<% else %>
+  $('#add_employment_form_error_message').html("<%= @organization.errors.first[1] %>");
+<% end %>
