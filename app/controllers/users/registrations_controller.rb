@@ -43,12 +43,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def verify_alumni
-    build_resource
-    verified = resource.has_correct_name_and_student_number?
-    resource.compute_wave if verified
+    @user = User.new
+    @user.name = params[:name]
+    @user.student_number = params[:student_number]
+    @verified = resource.has_correct_name_and_student_number?
+    resource.compute_wave if @verified
     
     respond_to do |format|
-      format.json { render json: {"name" => resource.name, "wave" => resource.wave, "status" => verified} }
+      format.js
     end
   end
   

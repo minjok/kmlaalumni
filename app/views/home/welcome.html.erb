@@ -30,25 +30,28 @@
 		<!-- SIGNUP_FORM -->
 		<div id="signup_form_container">
 		
-			<div id="signup_message">
+			<div id="signup_title">
 				<img src="/assets/welcome_signup_message.png" alt="처음 뵙네요. 반갑습니다!"/>
 			</div>
 			
+            <div id="signup_message"></div>
+            <div id="verify_alumni_form_container">
+              <%= form_tag verify_alumni_url, id:'verify_alumni_form', method: 'get' do %>
+                <%= text_field_tag :name, nil, placeholder: "이름", autocomplete: :off %>
+                <%= text_field_tag :student_number, nil, placeholder: "학번", autocomplete: :off %>
+                <div><%= submit_tag "동문 인증" %></div>
+              <% end %>
+            </div>
 			<%= form_for(resource, url: registration_path(resource_name), html: {id:'signup_form'} ) do |f| %>
-				<div id="message"></div>
-                <ul id="signup_form_authenticate_alumni_section">
-                  <li><%= f.text_field :name, placeholder: "이름", autocomplete: :off %></li>
-                  <li><%= f.text_field :student_number, placeholder: "학번", autocomplete: :off %></li>
-				</ul>
-				
-                <div id="verify_alumni_link_container"><%= link_to "동문 인증", verify_alumni_url, id: 'verify_alumni_link' %></div>
-                
-                <ul id="signup_form_new_user_info_section", style="display:none;">
-                  <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
-				  <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
-                </ul>
-                
-				<div id="signup_form_submit", style="display:none;"><%= f.submit "Sign up" %></div>
+              <ul id="signup_form_verify_alumni_section", style="display:none;">
+                <li id="signup_form_verify_alumni_name"><%= f.text_field :name %></li>
+                <li id="signup_form_verify_alumni_student_number"><%= f.text_field :student_number %></li>
+              </ul>
+              <ul id="signup_form_new_user_info_section", style="display:none;">
+                <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
+                <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+              </ul>
+            <div id="signup_form_submit", style="display:none;"><%= f.submit "Sign up" %></div>
 			<% end %>
 		</div>
 	</div>
@@ -56,28 +59,13 @@
 
 <script text="javascript">
   $(document).ready( function() {
-    $('#verify_alumni_link').click( function(event) {
-      event.preventDefault();
+    $('#verify_alumni_form').submit( function(event) {
       $.ajax({
-        url: this.href + "?" + $('#signup_form').serialize(),
+        url: $(this).attr('action') + "?" + $(this).serialize(),
         type: 'get',
-        dataType: 'json',
-        success: function(data) {
-          if (data.status) {
-            $('#message').html(data.wave + "기 " + data.name + " 동문님 환영합니다!");
-            $('#signup_form_authenticate_alumni_section').hide();
-            $('#verify_alumni_link_container').hide();
-            $('#signup_form_new_user_info_section').show();
-            $('#signup_form_submit').show();
-          } else {
-            $('#message').html("동문 인증에 실패했습니다. 다시 한 번 이름과 학번을 입력해주세요");
-            $('#signup_form_authenticate_alumni_section').show();
-            $('#verify_alumni_link_container').show();
-            $('#signup_form_new_user_info_section').hide();
-            $('#signup_form_submit').hide();
-          }
-        }
+        dataType: 'script',
       });
+      return false;
     });
   });
 </script>

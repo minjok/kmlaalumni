@@ -1,0 +1,15 @@
+<% if @verified %>
+  $('#signup_message').html("<%= @user.wave.to_s + '기 ' + @user.name + ' 동문님 환영합니다!'%>");
+  $('#signup_form_new_user_info_section').show();
+  $('#signup_form_submit').show();
+  $('#verify_alumni_form_container').hide();
+  $("#signup_form_verify_alumni_name > #user_name").val('<%= @user.name %>');
+  $("#signup_form_verify_alumni_student_number > #user_student_number").val('<%= @user.student_number %>');
+<% else %>
+  $('#signup_message').html("동문 인증에 실패했습니다. 다시 한 번 이름과 학번을 입력해주세요");
+  $('#signup_form_new_user_info_section').hide();
+  $('#signup_form_submit').hide();
+  $('#verify_alumni_form_container').show();
+  $("#signup_form_verify_alumni_name > #user_name").val('');
+  $("#signup_form_verify_alumni_student_number > #user_student_number").val('');
+<% end %>
