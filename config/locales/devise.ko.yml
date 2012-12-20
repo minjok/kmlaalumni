@@ -15,7 +15,7 @@ ko:
       unauthenticated: '로그인하거나 가입하셔야 합니다.'
       unconfirmed: '계정 확인 하셔야 이용하실 수 있습니다.'
       locked: '계정이 잠겼습니다.'
-      invalid: '이메일이나 패스워드가 다릅니다.'
+      invalid: '이메일이나 패스워드가 틀립니다.'
       invalid_token: '잘못된 인증 토큰 입니다.'
       timeout: '세션이 만료되어습니다, 계속하시려면 로그인해주세요.'
       inactive: '계정이 아직 활성화 되지 않았습니다. '

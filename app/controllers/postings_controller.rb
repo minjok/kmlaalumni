@@ -11,7 +11,7 @@ class PostingsController < ApplicationController
           end
         end
 		
-		@posting.save if @posting.errors.blank?
+		@posting.save if @posting.valid?
         
         respond_to do |format|
           format.js

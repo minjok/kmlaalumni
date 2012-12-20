@@ -2,16 +2,12 @@ class SettingsController < ApplicationController
 
   def get_form
     @section = params[:section]
-    @form_container = params[:section]
-    @education = nil
-    
-    if params[:id] 
-      @form_container += "_" + params[:id]
-      if @section == 'update_education_form'
-        @education = Education.find(params[:id])
-      end
-    end
-    
+    @form_container_id = params[:section]
+    @form_container_id += '_' + params[:id] if params.has_key?(:id) && !params[:id].blank?
+    @form_container_id += '_container'
+
+    @education =  Education.find(params[:id]) if @section == 'update_education_form'
+   
     respond_to do |format|
       format.js
     end

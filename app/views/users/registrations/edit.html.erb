@@ -1,4 +1,4 @@
-<h2>User Settings</h2>
+<h2>내 정보 설정</h2>
 
 <div>
   <% resource.errors.each do |errors| %>
@@ -14,27 +14,42 @@
 </div>
 
 <div>
-  이메일: <%= current_user.email %>
-  <%= link_to "수정", get_form_url(section: :update_email_form), class: "get_form_link" %>
-  <div id="update_email_form"></div>
+  이메일: 
+  <div id='email'><%= current_user.email %></div>
+  <%= link_to "수정", get_form_url(section: :update_email_form), id: 'update_email_form_link', class: 'get_form_link' %>
+  <div id='update_email_error_message'></div>
+  <div id="update_email_form_container" class="get_form_container"></div>
 </div>
 
 <div>
+  학교: 
+  <div id="add_education_form_error_message"></div>
+  <%= render 'settings/add_education_form' %>
   <div id="educations">
     <% for education in current_user.educations %>
-      <div>학교: <%= education.school.name %></div>
-      <%= link_to "학력사항 수정", get_form_url(section: :update_education_form, id: education.id), class: "get_form_link" %> 
-      <div id="update_education_form_<%= education.id.to_s %>"></div>
+      <%= render partial: 'educations/education', locals:{education: education, update: true} %>
     <% end %>
   </div>
-  <%= link_to "학교 추가하기", get_form_url(section: :add_education_form), class: "get_form_link" %>
-  <div id="add_education_form"></div>
 </div>
 
 <div>
-  <%= link_to "비밀번호 수정", get_form_url(section: :update_password_form), class: "get_form_link" %>
-  <div id="update_password_form"></div>
+  비밀번호:
+  <%= link_to "수정", get_form_url(section: :update_password_form), id: 'update_password_form_link', class: 'get_form_link' %>
+  <div id='update_password_error_message'></div>
+  <div id="update_password_form_container" class="get_form_container"></div>
 </div>
 
-<%= render 'settings/get_form_script' %>
-
+<script text="javascript">
+  $(document).ready( function() {
+    
+    $('body').on('click', '.get_form_link', function(event) {
+      event.preventDefault();
+      $('.get_form_container').empty();
+      $.ajax({
+          url: this.href,
+          type: 'get',
+          dataType: 'script',
+      });
+    });
+  });
+</script>

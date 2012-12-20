@@ -1,0 +1,7 @@
+<% if @education.valid? %>
+  $("<%= '#update_education_form_' + @education.id.to_s + '_error_message'%>").empty();
+  $("<%= '#update_education_form_' + @education.id.to_s + '_container'%>").empty();
+  $("<%='#education_' + @education.id.to_s %>").html("<%= escape_javascript(render partial: 'educations/education', locals:{education: @education, update: false}) %>");
+<% else %>
+  $("<%= '#update_education_form_' + @education.id.to_s + '_error_message'%>").html('<%= @education.errors.first[1] %>');
+<% end %>

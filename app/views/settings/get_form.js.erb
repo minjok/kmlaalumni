@@ -1,1 +1,5 @@
-$("#<%= @form_container %>").html("<%= escape_javascript(render @section, locals: {education: @education}) %>");
+<% if @section == 'update_email_form' || @section == 'update_password_form' %>
+  $('#<%= @form_container_id %>').html("<%= escape_javascript(render @section) %>");
+<% elsif @section == 'update_education_form' %>
+  $('#<%= @form_container_id %>').html("<%= escape_javascript(render @section, locals:{education: @education}) %>");
+<% end %>

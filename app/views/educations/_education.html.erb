@@ -1,0 +1,18 @@
+<div id="<%= 'education_' + education.id.to_s %>">
+  <div><%= education.school.name %></div>
+  <% if education.major %>
+    <div><%= education.major %></div>
+  <% end %>
+  <% if education.degree %>
+    <div><%= education.degree %></div>
+  <% end %>
+  <% if education.entrance_year %>
+    <div><%= education.entrance_year.year %></div>
+  <% end %>
+  <% if education.graduation_year %>
+    <div>to <%= education.graduation_year.year %></div>
+  <% end %>
+</div>
+<% if update %>
+  <%= render partial: 'settings/update_education_form_link', locals: {education: education} %>
+<% end %>

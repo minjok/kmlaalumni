@@ -1,15 +1,15 @@
-<%= form_for(@education, :url => education_path(@education), :html => { :method => :put }) do |f| %>
+<%= form_for(@education, html: { method: :put}, remote: true)  do |f| %>
 
-  <div><%= f.label :major %><br />
+  <div>전공<br />
   <%= f.text_field :major %></div>
   
-  <div><%= f.label :degree %><br />
+  <div>학위과정<br />
   <%= f.text_field :degree %></div>
   
-  <div><%= f.label :entrance_year %><br />
-  <%= f.date_select :entrance_year, start_year: 1996, end_year: (Time.now.year + 5), discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
+  <div>입학년도<br />
+  <%= f.date_select :entrance_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
   
-  <div><%= f.label :graduation_year %><br />
+  <div>졸업(예정)년도<br />
   <%= f.date_select :graduation_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
 
   <div><%= f.submit "저장" %></div>

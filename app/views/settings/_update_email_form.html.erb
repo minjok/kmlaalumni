@@ -1,7 +1,7 @@
-<%= form_for(current_user, :url => registration_path(:user), :html => { :method => :put }) do |f| %>
+<%= form_for(current_user, url: registration_path(:user), html: { method: :put }, remote: true) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.text_field :email %></div>
+  <div>이메일<br />
+  <%= f.text_field :email, autocomplete: :off %></div>
 
 <div><%= f.submit "저장" %></div>
 <% end %>

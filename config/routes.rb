@@ -11,7 +11,10 @@ Kmlaalumni::Application.routes.draw do
 	get 	'/signup',	to: 'devise/registrations#new',		as: 'signup'
 	get 	'/login',	to: 'devise/sessions#new',			as: 'login'
 	delete	'/logout',	to: 'devise/sessions#destroy',		as: 'logout'
+    
     get     '/verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
+    get     '/settings',      to: 'devise/registrations#edit',         as: 'settings'
+    
   end
   
   
@@ -35,11 +38,7 @@ Kmlaalumni::Application.routes.draw do
     end
   end
   
-  resources :education do
-    collection do
-      post :add
-    end
-  end
+  resources :educations
   
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
@@ -49,8 +48,7 @@ Kmlaalumni::Application.routes.draw do
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
   match '/delete_member/:id',   to: 'membership#delete',          as: 'delete_member'
   
-  match '/add_education',        to: 'education#add',              as: 'add_education'
-  match '/get_school_suggestions', to: 'education#get_school_suggestions',   as: 'get_school_suggestions'
+ match '/get_school_suggestions', to: 'educations#get_school_suggestions',   as: 'get_school_suggestions'
   
   match '/get_form',            to: 'settings#get_form',          as: 'get_form'
   

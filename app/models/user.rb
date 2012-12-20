@@ -97,6 +97,22 @@ class User < ActiveRecord::Base
 	  self.wave = (self.student_number[0..1].to_i + 5) % 100
 	end
     
+    def update_with_password(params, *options)
+     current_password = params.delete(:current_password)
+
+     result = if valid_password?(current_password)
+       update_attributes(params, *options)
+     else
+       params.delete(:password)
+       self.assign_attributes(params, *options)
+       self.valid?
+       self.errors.add(:current_password, current_password.blank? ? '현재 비밀번호를 입력해주세요' : '현재 비밀번호를 올바르게 입력해주세요')
+       false
+     end
+
+     result
+    end
+      
 	protected
       def password_required?
         !persisted? || !password.nil? || !password_confirmation.nil?

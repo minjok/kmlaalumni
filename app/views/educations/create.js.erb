@@ -1,0 +1,6 @@
+<% if @school.valid? %>
+  $('#educations').prepend("<%= escape_javascript(render partial: 'educations/education', locals:{education: @education, update: true}) %>");
+  $('#add_education_form_error_message').empty();
+<% else %>
+  $('#add_education_form_error_message').html("<%= @school.errors.first[1] %>");
+<% end %>

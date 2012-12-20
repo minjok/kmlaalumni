@@ -1,0 +1,3 @@
+<%= link_to "수정", get_form_url(section: :update_education_form, id: education.id), id: 'update_education_form_' + education.id.to_s + '_link', class: 'get_form_link' %> 
+<div id="update_education_form_<%= education.id.to_s %>_error_message"></div>
+<div id="update_education_form_<%= education.id.to_s %>_container" class="get_form_container"></div>
