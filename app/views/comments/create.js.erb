@@ -1,7 +1,8 @@
+<% posting_name = 'posting_' + @comment.posting_id.to_s %>
 <% if @comment.errors.blank? %>
-  $('#posting_' + <%= @posting.id.to_s %> + '_comments').append('<%= escape_javascript(render @comment) %>');
-  $('#posting_' + <%= @posting.id.to_s %> + '_comment_error_message').empty();
-  $('#posting_' + <%= @posting.id.to_s %> + '_comment_content').val('');
+  $("<%= '#' + posting_name + '_comments' %>").append('<%= escape_javascript(render @comment) %>');
+  $("<%= '#' + posting_name + '_comment_error_message' %>").empty();
+  $("<%= '#' + posting_name + '_comment_content' %>").val('');
 <% else %>
-   $('#posting_' + <%= @posting.id.to_s %> + '_comment_error_message').html('<%= @comment.errors.first[1] %>');
+   $("<%= '#' + posting_name + '_comment_error_message' %>").html('<%= @comment.errors.first[1] %>');
 <% end %>

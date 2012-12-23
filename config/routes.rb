@@ -50,8 +50,10 @@ Kmlaalumni::Application.routes.draw do
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
   match '/delete_member/:id',   to: 'membership#delete',          as: 'delete_member'
   
-  match '/like/:id',            to: 'likes#add',                  as: 'like'
-  match '/dislike/:id',         to: 'likes#delete',               as: 'dislike'
+  match '/like_posting/:id',            to: 'postings#like',                  as: 'like_posting'
+  match '/dislike_posting/:id',         to: 'postings#dislike',               as: 'dislike_posting'
+  match '/like_comment/:id',            to: 'comments#like',                  as: 'like_comment'
+  match '/dislike_comment/:id',         to: 'comments#dislike',               as: 'dislike_comment'
   
   match '/get_school_suggestions', to: 'educations#get_school_suggestions',   as: 'get_school_suggestions'
   match '/get_organization_suggestions', to: 'employments#get_organization_suggestions', as: 'get_organization_suggestions'

@@ -1,0 +1,7 @@
+<% if @like.errors.blank? %>
+  <% posting_name = 'posting_' + @posting.id.to_s %>
+  $("#<%= posting_name + '_likes' %>").prepend("<span><%= @like.user.name %></span>")
+  $("#<%= posting_name + '_like_link' %>").html('좋아요 취소');
+  $("#<%= posting_name + '_like_link' %>").attr('href', '<%= dislike_posting_url(@posting) %>');
+<% else %>
+<% end %>

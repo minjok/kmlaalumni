@@ -1,17 +1,19 @@
-<div id="<%= 'posting_' + posting.id.to_s %>">
+<% posting_name = 'posting_' + posting.id.to_s %>
+<div id='<%= posting_name %>'>
+  <div id="<%= posting_name + '_error_message'%>"></div>
   <div class='author'><%= posting.user.name %></div>
   <div class='date'><%= posting.created_at %></div>
   <div>
-    <% if current_user.likes?(posting.id, Like::PLATFORM['POSTING']) %>
-      <%= link_to "좋아요 취소", dislike_url(posting, platform: Like::PLATFORM['POSTING']), id:'posting_' + posting.id.to_s + '_like_link', remote: true %>
+    <% if current_user.likes?(posting) %>
+      <%= link_to "좋아요 취소", dislike_posting_url(posting), id: posting_name + '_like_link', remote: true %>
     <% else %>
-      <%= link_to "좋아요", like_url(posting, platform: Like::PLATFORM['POSTING']), id:'posting_' + posting.id.to_s + '_like_link', remote: true %>
+      <%= link_to "좋아요", like_posting_url(posting), id: posting_name + '_like_link', remote: true %>
     <% end %>
     <% if current_user.wrote?(posting) %>
       <%= link_to "포스트 삭제", posting_url(posting), method: :delete, remote: true %>
     <% end %>
   </div>
-  <div id="<%= 'posting_' + posting.id.to_s + '_likes' %>">
+  <div id="<%= posting_name + '_likes' %>">
     <% if !posting.likes.blank? %>
       <% for like in posting.likes %>
         <span><%= like.user.name %></span>
@@ -35,16 +37,16 @@
     <% end %>
   </div>
   <div>
-      <div id="<%= 'posting_' + posting.id.to_s + '_comment_error_message'%>"></div>
+      <div id="<%= posting_name + '_comment_error_message'%>"></div>
       <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
         <%= f.text_area :content %>
         <div><%= f.submit '댓글 달기' %></div>
       <% end %>
   </div>
-  <div id="<%= 'posting_' + posting.id.to_s + '_comments'%>">
+  <div id="<%= posting_name + '_comments'%>">
     <% if posting.comments.length > 3 %>
-      <div id="<%= 'posting_' + posting.id.to_s + '_get_more_comments_link'%>">
-        <%= link_to "댓글 모두 보기", feed_comments_url(posting: posting.id), class: 'get_more_comments_link' %>
+      <div id="<%= posting_name + '_get_more_comments_link'%>">
+        <%= link_to posting.comments.length.to_s + "개의 댓글 모두 보기", feed_comments_url(posting_id: posting.id), class: 'get_more_comments_link' %>
       </div>
     <% end %>
     

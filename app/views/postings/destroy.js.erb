@@ -1,1 +1,6 @@
-$('<%= '#posting_' + @posting_id.to_s %>').remove();
+<% posting_name = 'posting_' + @posting_id %>
+<% if @destroyed %>
+  $("<%= '#' + posting_name %>").remove();
+<% else %>
+  $("<%= '#' + posting_name + '_error_message' %>").html('<%= @posting.errors.first[1] %>');
+<% end %>

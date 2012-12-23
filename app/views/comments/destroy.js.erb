@@ -1,1 +1,6 @@
-$('<%= '#posting_' + @posting_id.to_s + '_comment_' + @comment_id.to_s %>').remove();
+<% comment_name = 'comment_' + @comment_id %>
+<% if @destroyed %>
+  $("<%= '#' + comment_name %>").remove();
+<% else %>
+  $("<%= '#' + comment_name + '_error_message' %>").html('<%= @comment.errors.first[1] %>');
+<% end %>

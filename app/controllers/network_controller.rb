@@ -4,6 +4,7 @@ class NetworkController < ApplicationController
   end
   
   def search
+  
     @users = nil
     name = params[:name].strip
     wave = params[:wave]

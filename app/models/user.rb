@@ -121,8 +121,14 @@ class User < ActiveRecord::Base
       content.user === self
     end
     
-    def likes?(platform_id, platform)
-      Like.exists?(self.id, platform_id, platform)
+    def likes?(content)
+      if content.kind_of? Posting
+        Like.exists_for_posting?(self, content)
+      elsif content.kind_of? Comment
+        Like.exists_for_comment?(self, content)
+      else
+        nil
+      end
     end
     
 	protected

@@ -4,17 +4,14 @@ class Like < ActiveRecord::Base
   belongs_to :user
   belongs_to :posting
   belongs_to :comment
-  
-  # *** CONSTANTS *** #
-  PLATFORM = {'POSTING' => 1, 'COMMENT' => 2 }
-  
+    
   # *** METHODS *** #
-  def self.exists?(user_id, platform_id, platform)
-    if platform == PLATFORM['POSTING']
-      not where("user_id = ? AND posting_id = ?", user_id, platform_id).first.blank?
-    elsif platform == PLATFORM['COMMENT']
-      not where("user_id = ? AND comment_id = ?", user_id, platform_id).first.blank?
-    end
+  def self.exists_for_posting?(user, posting)
+    not where("user_id = ? AND posting_id = ?", user, posting).first.blank?
+  end
+  
+  def self.exists_for_comment?(user, comment)
+    not where("user_id = ? AND comment_id = ?", user, comment).first.blank?
   end
   
 end

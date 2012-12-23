@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(:version => 20121223023742) do
   end
 
   create_table "educations", :force => true do |t|
-    t.integer "user_id"
-    t.integer "school_id"
-    t.string  "major"
-    t.string  "degree"
-    t.date    "entrance_year"
-    t.date    "graduation_year"
+    t.integer  "user_id"
+    t.integer  "school_id"
+    t.string   "major"
+    t.string   "degree"
+    t.date     "entrance_year"
+    t.date     "graduation_year"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "employments", :force => true do |t|
@@ -53,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20121223023742) do
   end
 
   create_table "likes", :force => true do |t|
-    t.integer  "platform",   :null => false
     t.integer  "user_id"
     t.integer  "posting_id"
     t.integer  "comment_id"
@@ -88,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20121223023742) do
     t.string   "name",                                   :null => false
     t.integer  "wave",                                   :null => false
     t.string   "student_number",                         :null => false
+    t.string   "phone_number"
+    t.string   "address"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
