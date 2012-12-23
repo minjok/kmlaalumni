@@ -54,7 +54,8 @@ Kmlaalumni::Application.routes.draw do
   match '/get_organization_suggestions', to: 'employments#get_organization_suggestions', as: 'get_organization_suggestions'
   match '/get_form',            to: 'settings#get_form',          as: 'get_form'
   
-  
+  match '/network',             to: 'network#index',              as: 'network'
+  match '/search_alumni',       to: 'network#search',             as: 'search_alumni'
   
   
   

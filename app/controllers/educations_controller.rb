@@ -29,7 +29,7 @@ class EducationsController < ApplicationController
   def get_school_suggestions
     if params[:term]
       query = params[:term].downcase.strip
-      @schools = School.where('LOWER(name) LIKE ?', "#{query}%").limit(5)
+      @schools = School.where('LOWER(name) LIKE ?', "%#{query}%").limit(5)
     else
       @schools = School.all
     end

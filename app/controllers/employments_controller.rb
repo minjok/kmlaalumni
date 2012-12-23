@@ -29,7 +29,7 @@ class EmploymentsController < ApplicationController
   def get_organization_suggestions
     if params[:term]
       query = params[:term].downcase.strip
-      @organizations = Organization.where('LOWER(name) LIKE ?', "#{query}%").limit(5)
+      @organizations = Organization.where('LOWER(name) LIKE ?', "%#{query}%").limit(5)
     else
       @organizations = Organization.all
     end

@@ -11,6 +11,8 @@
   <%= link_to '동문회 담벼락', wall_url %>
 </div>
 <div>
+  <%= link_to '동문 검색', network_url %>
+<div>
 	<% for group in current_user.groups %>
         <%= link_to group.name, group_url(group) %>
 	<% end %>
