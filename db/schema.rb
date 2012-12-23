@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220144956) do
+ActiveRecord::Schema.define(:version => 20121223023742) do
 
   create_table "alumni_verifications", :force => true do |t|
     t.string "name",           :null => false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20121220144956) do
     t.text     "description", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "platform",   :null => false
+    t.integer  "user_id"
+    t.integer  "posting_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "memberships", :force => true do |t|

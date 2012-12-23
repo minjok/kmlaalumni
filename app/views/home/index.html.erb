@@ -5,18 +5,20 @@
   <%= link_to '내 정보 설정', settings_url %> 
 </div>
 <div>
-	<%= link_to '그룹 만들기', new_group_url %>
+  <div><%= link_to '그룹', groups_url %></div>
+  <div>
+	<% for group in current_user.groups %>
+        <%= link_to group.name, group_url(group) %>
+	<% end %>
+  </div>
+  <%= link_to '그룹 만들기', new_group_url %>
 </div>
 <div>
   <%= link_to '동문회 담벼락', wall_url %>
 </div>
 <div>
   <%= link_to '동문 검색', network_url %>
-<div>
-	<% for group in current_user.groups %>
-        <%= link_to group.name, group_url(group) %>
-	<% end %>
-</div>
+
 <div>
 	<%= link_to '로그아웃', logout_url, method: :delete %>
 </div>

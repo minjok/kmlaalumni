@@ -6,6 +6,7 @@ class Posting < ActiveRecord::Base
 	belongs_to :group
     
     has_many :comments, dependent: :destroy
+    has_many :likes,    dependent: :destroy
     
 	# *** CONSTANTS *** #
     PLATFORM = {'WALL' => 1, 'GROUP' => 2 }

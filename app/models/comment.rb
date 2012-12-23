@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :posting
   
+  has_many :likes, dependent: :destroy
+  
   
   # *** VALIDATIONS *** #
   validates_presence_of :content,

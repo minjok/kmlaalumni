@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
     
 	has_many :postings, dependent: :destroy
     has_many :comments, dependent: :destroy
+    has_many :likes,    dependent: :destroy
 	
 	
 	# *** VALIDATIONS *** #
@@ -115,7 +116,15 @@ class User < ActiveRecord::Base
 
      result
     end
-      
+    
+    def wrote?(content)
+      content.user === self
+    end
+    
+    def likes?(platform_id, platform)
+      Like.exists?(self.id, platform_id, platform)
+    end
+    
 	protected
       def password_required?
         !persisted? || !password.nil? || !password_confirmation.nil?
