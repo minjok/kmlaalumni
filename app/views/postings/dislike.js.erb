@@ -1,6 +1,3 @@
-<% if @destroyed %>
-  <% posting_name = 'posting_' + @posting.id.to_s %>
-  $("#<%= posting_name + '_like_link' %>").html('좋아요');
-  $("#<%= posting_name + '_like_link' %>").attr('href', '<%= like_posting_url(@posting) %>');
-<% else %>
-<% end %>
+<% posting_name = 'posting_' + @posting.id.to_s %>
+$("#<%= posting_name + '_like_link' %>").html('좋아요');
+$("#<%= posting_name + '_like_link' %>").attr('href', '<%= like_posting_url(@posting) %>');

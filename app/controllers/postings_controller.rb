@@ -1,27 +1,39 @@
 # encoding: utf-8
 class PostingsController < ApplicationController
   
+  
+  # *** BEFORE_FILTER *** #
+  
+  
+  # Authenticates that the user is a group member
+  before_filter :authenticate_group_member, only: [:create]
+  
+  # Authenticates that user wrote the posting
+  before_filter :authenticate_posting_author, only: [:destroy]
+  
+  # Verifies that the user doesn't like the posting
+  before_filter :verify_user_dislikes_posting, only: [:like]
+  
+  # Verifies that the user likes the posting
+  before_filter :verify_user_likes_posting, only: [:dislike]
+  
+  
+  # *** METHODS *** #
+  
+  
   # Method: create
   # --------------------------------------------
   # Creates a posting.
   def create
     
-    # Creates a posting instance
+    # Creates a new posting instance
     @posting = Posting.new(params[:posting])
-    @posting.user_id = current_user.id
-    
-    # Association and validation if posting is posted on a group
+    @posting.user = current_user
     if @posting.platform == Posting::PLATFORM['GROUP']
-      @posting.group_id = params[:group_id]
-     
-      # Validates if the user is a group member
-      unless current_user.is_member_of(@posting.group)
-        @posting.errors.add(:membership, "이 그룹의 멤버만 포스팅을 올릴 수 있습니다")
-      end
+      @posting.group = @group
     end
 		
-    @posting.save if @posting.errors.blank?
-        
+    @posting.save
     respond_to do |format|
       format.js
     end
@@ -33,28 +45,39 @@ class PostingsController < ApplicationController
   # Destroys a posting.
   def destroy
   
-    # Retrieves the posting with given id
-    @posting = Posting.find(params[:id])
-    
-    # Necessary attribute for JS rendering after posting destruction
-    @posting_id = @posting.id.to_s
-    @destroyed = false
-    
-    # Validates that the user wrote the posting
-    unless current_user.wrote?(@posting)
-      @posting.errors.add(:ownership, '이 포스팅을 삭제할 권한이 없습니다')
-    end
-    
-    # Destroys posting if posting is successfully validated
-    if @posting.errors.blank?
-      @posting.destroy
-      @destroyed = true
-    end
+    @posting.destroy
     
     respond_to do |format|
       format.js
     end
     
+  end
+  
+  # Method: like
+  # --------------------------------------------
+  # Creates a Like instance for the user and posting.
+  def like
+    
+    # Creates a new like instance
+    @like = Like.new
+    @like.user = current_user
+    @like.posting = @posting
+    
+    @like.save
+    respond_to do |format|
+      format.js
+    end
+    
+  end
+  
+  # Method: dislike
+  # --------------------------------------------
+  # Destroys the Like instance between the user and posting.
+  def dislike
+    @like.destroy
+    respond_to do |format|
+      format.js
+    ends
   end
   
   # Method: num_pages
@@ -93,56 +116,15 @@ class PostingsController < ApplicationController
     
   end
   
-  def like
-    
-    @like = Like.new
-    @like.user = current_user
-    
-    @posting = Posting.find(params[:id])
-    if @posting.blank?
-      @like.errors.add(:posting, '해당 포스팅이 존재하지 않습니다')
-    else
-      @like.posting = @posting
-      if Like.exists_for_posting?(current_user, @posting)
-        @like.errors.add(:posting, '이미 포스팅을 좋아합니다')
-      end
-    end
-    
-    @like.save if @like.errors.blank?
-    
-    respond_to do |format|
-      format.js
-    end
-    
-  end
   
-  def dislike
-
-    @destroyed = false
-    @posting = Posting.find(params[:id])
-    if @posting.blank?
-      # TO-DO: FLASH MESSAGE FOR NO SUCH POSTING
-    else
-      @like = Like.where('user_id = ? AND posting_id = ?', current_user, @posting).first
-      if @like.blank?
-        # TO-DO: FLASH MESSAGE FOR NO SUCH LIKE
-      else
-        @like.destroy
-        @destroyed = true
-      end
-    end
-    
-    respond_to do |format|
-      format.js
-    end
-    
-  end
+  # *** PRIVATE METHODS *** #
+  
   
   protected
   
     # Method: getPostings
     # --------------------------------------------
-    # Helper method for @num_pages and @feed.
+    # HELPER METHOD for @num_pages and @feed.
     # Checks the value of params[:platform], which states the
     # type of platform on which the postings are to be rendered
     # (e.g. Newsfeed, Wall, Group) and calls the corresponding query
@@ -168,4 +150,100 @@ class PostingsController < ApplicationController
       
     end
 	
+    # Method: authenticat_group_member
+    # --------------------------------------------
+    # BEFORE_FILTER
+    # Authenticates that user is a group member
+    # ONLY IF the user is writing a posting for a group
+    def authenticate_group_member
+      
+      # Checks that posting for a group and loads group
+      if params.has_key?(:group_id)
+        
+        @group = Group.find_by_id(params[:group_id])
+        
+        # Checks that group is properly loaded
+        if @group.blank?
+          flash[:warning] = '그룹이 존재하지 않습니다'
+          redirect_to root_url
+          return
+        end
+        
+        # Checks that user is a group member
+        unless current_user.is_member_of?(@group)
+          flash[:warning] = '이 그룹의 멤버만 포스팅을 올릴 수 있습니다'
+          redirect_to root_url
+          return
+        end   
+           
+      end
+
+    end
+    
+    # Method: authenticate_posting_author
+    # --------------------------------------------
+    # BEFORE_FILTER
+    # Authenticates that the user wrote the posting.
+    def authenticate_posting_author
+      return unless load_posting
+      
+      unless current_user.wrote?(@posting)
+        flash[:warning] = '포스팅을 올린 사람만 삭제할 수 있습니다'
+        redirect_to root_url
+        return
+      end
+    
+    end
+    
+    # Method: verify_user_likes_posting
+    # --------------------------------------------
+    # BEFORE_FILTER
+    # Verifies that the user likes the posting 
+    def verify_user_likes_posting
+      return unless load_posting
+      
+      @like = Like.where('user_id = ? AND posting_id = ?', current_user, @posting).first
+      unless !@like.blank?
+        flash[:warning] = '이미 포스팅을 좋아하지 않습니다'
+        redirect_to root_url
+        return
+      end
+      
+    end
+    
+    # Method: verify_user_dislikes_posting
+    # --------------------------------------------
+    # BEFORE_FILTER
+    # Verifies that the user doesn't like the posting
+    def verify_user_dislikes_posting
+      return unless load_posting
+      
+      if current_user.likes?(@posting)
+        flash[:warning] = '이미 포스팅을 좋아합니다'
+        redirect_to root_url
+        return
+      end
+      
+    end
+   
+    # Method: load_post
+    # --------------------------------------------
+    # BEFORE_FILTER
+    # Loads posting with the given id
+    def load_posting
+     
+      if params.has_key?(:id)
+        @posting = Posting.find_by_id(params[:id])
+      end
+      
+      if @posting.blank?
+        flash[:warning] = '포스팅이 존재하지 않습니다'
+        redirect_to root_url
+        return false
+      end
+      
+      return true
+      
+    end
+    
 end

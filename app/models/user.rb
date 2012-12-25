@@ -85,11 +85,11 @@ class User < ActiveRecord::Base
       respond_to root_path
     end
     
-    def is_member_of(group)
+    def is_member_of?(group)
 	  Membership.exists?(self, group)
 	end
 	
-	def is_admin_of(group)
+	def is_admin_of?(group)
 	  Membership.exists_as_admin?(self, group)
 	end
 	

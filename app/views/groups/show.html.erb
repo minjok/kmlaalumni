@@ -5,17 +5,17 @@
 	소모임 소개: <%= @group.description %>
 </div>
 <div>
-	<% if @membership.blank? %>
-		<%= button_to "소모임 가입", add_member_url(@group), method: :post %>
-	<% else %>
-		<%= button_to "소모임 나가기", delete_member_url(@group), method: :post %>
-		<% if @membership.admin %>
+	<% if @user_is_a_member %>
+      <%= button_to "소모임 나가기", delete_member_url(@group), method: :post %>
+		<% if @user_is_an_admin %>
 			<div><%= link_to "소모임 설정", edit_group_url(@group) %></div>
 			<div><%= button_to "소모임 폐쇄", @group, method: :delete, confirm: "정말 #{@group.name}을 폐쇄하실 겁니까?" %></div>
 		<% end %>
+	<% else %>
+      <%= button_to "소모임 가입", add_member_url(@group), method: :post %>
 	<% end %>
 </div>
-<% unless @membership.blank? %>
+<% if @user_is_a_member %>
 	<div>
       <div id="posting_error_message"></div>
       <%= form_for [@group, Posting.new], remote: true do |f| %>

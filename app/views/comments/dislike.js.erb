@@ -1,6 +1,4 @@
-<% if @destroyed %>
-  <% comment_name = 'comment_' + @comment.id.to_s %>
-  $("#<%= comment_name + '_like_link' %>").html('좋아요');
-  $("#<%= comment_name + '_like_link' %>").attr('href', '<%= like_comment_url(@comment) %>');
-<% else %>
-<% end %>
+<% comment_name = 'comment_' + @comment.id.to_s %>
+$("#<%= comment_name + '_like_link' %>").html('좋아요');
+$("#<%= comment_name + '_like_link' %>").attr('href', '<%= like_comment_url(@comment) %>');
+

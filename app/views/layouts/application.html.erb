@@ -8,7 +8,9 @@
   <%= favicon_link_tag '/kmla.ico' %>
 </head>
 <body>
-
+<% if flash[:warning] %>
+   <div id='notice'><%= flash[:warning] %></div>
+<% end %>
 <%= yield %>
 
 </body>
