@@ -51,7 +51,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js
     end
-    
   end
   
   # Method: like
@@ -61,12 +60,11 @@ class CommentsController < ApplicationController
     @like = Like.new
     @like.user = current_user
     @like.comment = @comment
-    @like.save
     
+    @like.save
     respond_to do |format|
       format.js
     end
-    
   end
   
   # Method: dislike
@@ -77,7 +75,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js
     end
-    
   end
   
   # Method: feed
@@ -85,7 +82,7 @@ class CommentsController < ApplicationController
   # Renders all comments for a posting when user clicks on
   # '댓글 모두 보기' link
   def feed
-   
+
     # Retrieve all comments of the posting
     @comments = getComments(params[:posting_id])
     @posting_id = params[:posting_id]
@@ -116,13 +113,14 @@ class CommentsController < ApplicationController
     # BEFORE_FILTER
     # Authenticate that the user wrote the comment.
     def authenticate_comment_author
-      
       return unless load_comment
       
       unless current_user.wrote?(@comment)
         flash[:warning] = '댓글을 올린 사람만 삭제할 수 있습니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to root_url }
+        end
       end
     
     end
@@ -138,8 +136,10 @@ class CommentsController < ApplicationController
       
       unless !@like.blank?
         flash[:warning] = '이미 댓글을 좋아하지 않습니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to root_url }
+        end
       end
       
     end
@@ -149,56 +149,16 @@ class CommentsController < ApplicationController
     # BEFORE_FILTER
     # Verify that the user doesn't like the comment.
     def verify_user_dislikes_comment
-      
       return unless load_comment
       
       if current_user.likes?(@comment)
         flash[:warning] = '이미 댓글을 좋아합니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to root_url }
+        end
       end
       
     end
-    
-    # Method: load_posting
-    # --------------------------------------------
-    # BEFORE_FILTER 
-    # Load posting with given posting_id.
-    def load_posting
-     
-      if params.has_key?(:posting_id)
-        @posting = Posting.find_by_id(params[:posting_id])
-      end
-      
-      if @posting.blank?
-        flash[:warning] = '포스팅이 존재하지 않습니다'
-        redirect_to root_url
-        return false
-      end
-      
-      return true
-      
-    end
-    
-    # Method: load_comment
-    # --------------------------------------------
-    # BEFORE_FILTER
-    # Load comment with given id.
-    def load_comment
-     
-      if params.has_key?(:id)
-        @comment = Comment.find_by_id(params[:id])
-      end
-      
-      if @comment.blank?
-        flash[:warning] = '댓글이 존재하지 않습니다'
-        redirect_to root_url
-        return false
-        
-      end
-      
-      return true
-      
-    end
-        
+
 end

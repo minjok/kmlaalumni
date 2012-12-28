@@ -1,20 +1,40 @@
-<h2>로그인 하기</h2>
-
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  
-  <% if flash[:warning] %>
-    <div class="notice"><%= flash[:warning] %></div>
-  <% end %>
-  
-  <ul>
-    <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
-    <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
-    <% if devise_mapping.rememberable? -%>
-      <li><%= f.check_box :remember_me %> 로그인 상태 유지</li>
-    <% end -%>
-    <li><%= f.submit "로그인" %></li>
-  </ul>
-  
-<% end %>
+<div id='wrapper'>
+  <div id='signin_container' class='center'>
+    <div id='logo_container' class ='logo center float-left'>
+      <a href='<%= root_url %>'><img src='/assets/logo.png'/></a>
+    </div>
+    <div class='signin_form_container float-right'>
+      <div id='signin_warning' class='warning'>
+        <% if flash[:warning] %>
+          <%= flash[:warning] %>
+        <% end %>
+      </div>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div class='form_fields float-left'>
+          <ul>
+            <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
+            <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+            <li>
+              <% if devise_mapping.rememberable? -%>
+                <%= f.check_box :remember_me %> 로그인 상태 유지 /
+                <span>
+                  <a href='<%= signup_url %>'>동문회에 가입하기</a>
+                </span>
+              <% end -%>
+            </li>
+          </ul>
+        </div>
+        <div id='form_submit float-right'><%= image_submit_tag '/assets/signin_submit_button.png' %></div>
+      <% end %>
+    </div>
+  </div>
+  <div id='signin_footer' class='center'>
+    <div id='links' class='center'>
+      <a href='#' %>아이디/비밀번호를 잃어버리셨나요?</a>
+    </div>
+    <div id='footer_bar' class='center'>
+      <img src='/assets/footer_bar.png'/>
+    </div>
+  </div>
+</div>
 

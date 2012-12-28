@@ -10,7 +10,7 @@
       <%= link_to "좋아요", like_comment_url(comment), id: comment_name + '_like_link', remote: true %>
     <% end %>
     <% if current_user.wrote?(comment) %>
-      <%= link_to "코멘트 삭제", comment_url(comment), method: :delete, remote: true %>
+      <%= link_to "삭제", comment_url(comment), method: :delete, remote: true %>
     <% end %>
   </div>
   <div id="<%= comment_name + '_likes' %>">

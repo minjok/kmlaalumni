@@ -1,27 +1,52 @@
-<div>
-  <%= current_user.wave %>기 <%= current_user.name %> 동문님, 반갑습니다!
-</div>
-<div>
-  <%= link_to '내 정보 설정', settings_url %> 
-</div>
-<div>
-  <div><%= link_to '그룹', groups_url %></div>
-  <div>
-	<% for group in current_user.groups %>
-        <%= link_to group.name, group_url(group) %>
-	<% end %>
+<% if flash[:warning] %>
+  <div id='notice'><%= flash[:warning] %></div>
+<% end %>
+<div id='wrapper'>
+  <div id='sidebar_container'>
+    <div class='logo'>
+      <a href='/'><img src='/assets/logo.png'/></a>
+    </div>
+    <div id='sidebar'>
+      <div>
+        <%= link_to '동문회 담벼락', wall_url %>
+      </div>
+      <div>
+        <div><%= link_to '그룹', groups_url %></div>
+        <div>
+	       <% for group in current_user.groups %>
+             <div><%= link_to group.name, group_url(group) %></div>
+	       <% end %>
+        </div>
+        <div><%= link_to '그룹 만들기', new_group_url %></div>
+      </div>
+      <div>
+        <%= link_to '동문 검색', network_url %>
+      </div>
+    </div>
   </div>
-  <%= link_to '그룹 만들기', new_group_url %>
+  <div id='main_container'>
+    <div id='header'>
+      <div id='settings'>
+        <%= link_to '내 정보 설정', settings_url %> 
+      </div>
+      <div>
+	    <%= link_to '로그아웃', logout_url, method: :delete %>
+      </div>
+    </div>
+    <div>
+      <div id="posting_error_message"></div>
+      <%= form_for Posting.new, remote: true do |f| %>
+	    <%= f.text_area :content, placeholder: current_user.name + ' 동문님, 한마디 적어주세요~' %>
+        <%= f.hidden_field :platform, value: Posting::PLATFORM['WALL'] %>
+	    <div><%= submit_tag '올리기' %></div>
+      <% end %>
+    </div>
+    <div id='page_content_container'>
+      <div id="postings">
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-  <%= link_to '동문회 담벼락', wall_url %>
-</div>
-<div>
-  <%= link_to '동문 검색', network_url %>
 
-<div>
-	<%= link_to '로그아웃', logout_url, method: :delete %>
-</div>
-<div id="postings">
-</div>
+
 <%= render partial: 'postings/posting_script', locals: {serialized_paginate_params:  ("'platform=newsfeed'").html_safe} %>

@@ -1,5 +1,8 @@
 class NetworkController < ApplicationController
   
+  # Method: index
+  # --------------------------------------------
+  # Displays the alumni search page
   def index
   end
   

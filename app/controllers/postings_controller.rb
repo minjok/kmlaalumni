@@ -77,7 +77,7 @@ class PostingsController < ApplicationController
     @like.destroy
     respond_to do |format|
       format.js
-    ends
+    end
   end
   
   # Method: num_pages
@@ -135,7 +135,7 @@ class PostingsController < ApplicationController
       postings = case params[:platform]
         # NEWSFEED
         when 'newsfeed' then 
-          Posting.where('group_id = ? OR platform = ?', current_user.groups, Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
+          Posting.where('group_id IN (?) OR platform = ?', current_user.groups, Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
         # WALL
         when 'wall' then
           Posting.where('platform = ?', Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
@@ -158,22 +158,19 @@ class PostingsController < ApplicationController
     def authenticate_group_member
       
       # Checks that posting for a group and loads group
-      if params.has_key?(:group_id)
-        
-        @group = Group.find_by_id(params[:group_id])
-        
-        # Checks that group is properly loaded
-        if @group.blank?
-          flash[:warning] = '그룹이 존재하지 않습니다'
-          redirect_to root_url
-          return
-        end
+      if params.has_key?(:posting) && 
+         params[:posting].has_key?(:platform) && 
+         params[:posting][:platform] == Posting::PLATFORM['GROUP'].to_s
+
+        return unless load_group
         
         # Checks that user is a group member
         unless current_user.is_member_of?(@group)
-          flash[:warning] = '이 그룹의 멤버만 포스팅을 올릴 수 있습니다'
-          redirect_to root_url
-          return
+          flash[:warning] = '그룹의 멤버만 포스팅을 올릴 수 있습니다'
+          respond_to do |format|
+            format.js { render 'redirect' }
+            format.html { redirect_to group_url(@group) }
+          end
         end   
            
       end
@@ -189,8 +186,10 @@ class PostingsController < ApplicationController
       
       unless current_user.wrote?(@posting)
         flash[:warning] = '포스팅을 올린 사람만 삭제할 수 있습니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to root_url }
+        end
       end
     
     end
@@ -205,8 +204,10 @@ class PostingsController < ApplicationController
       @like = Like.where('user_id = ? AND posting_id = ?', current_user, @posting).first
       unless !@like.blank?
         flash[:warning] = '이미 포스팅을 좋아하지 않습니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to root_url }
+        end
       end
       
     end
@@ -220,29 +221,11 @@ class PostingsController < ApplicationController
       
       if current_user.likes?(@posting)
         flash[:warning] = '이미 포스팅을 좋아합니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to root_url }
+        end
       end
-      
-    end
-   
-    # Method: load_post
-    # --------------------------------------------
-    # BEFORE_FILTER
-    # Loads posting with the given id
-    def load_posting
-     
-      if params.has_key?(:id)
-        @posting = Posting.find_by_id(params[:id])
-      end
-      
-      if @posting.blank?
-        flash[:warning] = '포스팅이 존재하지 않습니다'
-        redirect_to root_url
-        return false
-      end
-      
-      return true
       
     end
     

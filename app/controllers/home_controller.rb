@@ -20,7 +20,6 @@ class HomeController < ApplicationController
     unless user_signed_in?
       redirect_to welcome_url
     end
-    
   end
   
   # Method: welcome

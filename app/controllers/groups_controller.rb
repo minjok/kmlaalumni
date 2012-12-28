@@ -69,8 +69,9 @@ class GroupsController < ApplicationController
   # --------------------------------------------
   # Displays the group page.
   def show
-    @user_is_a_member = current_user.is_member_of?(@group)
-    @user_is_an_admin = current_user.is_admin_of?(@group)
+    membership = Membership.where('user_id = ? AND group_id = ?', current_user, @group).first
+    @user_is_a_member = !membership.blank?
+    @user_is_an_admin = membership.admin
   end
 
   # Method: destroy
@@ -96,29 +97,11 @@ class GroupsController < ApplicationController
       
       unless current_user.is_admin_of?(@group)
         flash[:warning] = '그룹의 관리자만 접근할 수 있습니다'
-        redirect_to root_url
-        return
+        respond_to do |format|
+          format.js { render 'redirect' }
+          format.html { redirect_to group_url(@group) }
+        end
       end
-    end
-    
-    # Method: load_group
-    # --------------------------------------------
-    # BEFORE_FILTER
-    # Loads group with the given id in params.
-    def load_group
-      
-      if params.has_key?(:id)
-        @group = Group.find_by_id(params[:id])
-      end
-    
-      if @group.blank?
-        flash[:warning] = '그룹이 존재하지 않습니다'
-        redirect_to root_url
-        return false
-      end
-      
-      return true
-      
     end
     
 end

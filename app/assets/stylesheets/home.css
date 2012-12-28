@@ -19,3 +19,20 @@
 	height:285px;
 	float:right
 }
+
+#signup_title {
+  height:35px;
+}
+
+#signup_message {
+  width:350px;
+  height:17px;
+  font-size:11px;
+}
+
+input[type=password],[type=text] {
+  width: 265px;
+  height: 25px;
+  padding: 3px;
+  margin: 5px 0;
+}

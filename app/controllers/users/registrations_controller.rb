@@ -1,9 +1,12 @@
 # encoding: utf-8
 class Users::RegistrationsController < Devise::RegistrationsController
   
+  # Method: create
+  # --------------------------------------------
+  # 
   def create
     build_resource
-    
+
     if resource.has_correct_name_and_student_number?
       resource.compute_wave
     else
@@ -24,6 +27,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # Method: update
+  # --------------------------------------------
+  # 
   def update
     @user = User.find(current_user.id)
     @update_attr_name = params[:user].keys.first
@@ -42,6 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
+  # Method: verify_alumni
+  # --------------------------------------------
+  # 
   def verify_alumni
     @user = User.new
     @user.name = params[:name]

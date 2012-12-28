@@ -7,23 +7,22 @@
 	</div>
 	
 	<!-- FORM_CONTAINER -->
-	<div id="form_container">
+	<div id="welcome_form_container">
 		
 		<!-- SIGNIN_FORM -->
-		<div id="signin_form">
-			<%= form_for(resource, url: session_path(resource_name), html: {id:'signin_form'}) do |f| %>
-				
-				<ul>
+		<div class="signin_form_container">
+			
+            <%= form_for(resource, url: session_path(resource_name), html: {id:'signin_form'}) do |f| %>
+				<div class='form_fields float-left'>
+				  <ul>
 					<li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
 					<li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
-				</ul>
-				
-				<% if devise_mapping.rememberable? -%>
-					<div><%= f.check_box :remember_me %> 로그인 상태 유지</div>
-				<% end -%>
-				
-				<div><%= f.submit "로그인" %></div>
-				
+                    <% if devise_mapping.rememberable? -%>
+                      <li><%= f.check_box :remember_me %> 로그인 상태 유지</li>
+				    <% end -%>
+				  </ul>
+				</div>
+                <div class='form_submit float-right'><%= image_submit_tag '/assets/signin_submit_button.png' %></div>
 			<% end %>
 		</div>
 		
@@ -34,24 +33,32 @@
 				<img src="/assets/welcome_signup_message.png" alt="처음 뵙네요. 반갑습니다!"/>
 			</div>
 			
-            <div id="signup_message"></div>
+            <div id="signup_message" class='message'>동문 인증을 위해 이름과 학번을 입력해주세요</div>
+            
             <div id="verify_alumni_form_container">
-              <%= form_tag verify_alumni_url, id:'verify_alumni_form', method: 'get' do %>
-                <%= text_field_tag :name, nil, placeholder: "이름", autocomplete: :off %>
-                <%= text_field_tag :student_number, nil, placeholder: "학번", autocomplete: :off %>
-                <div><%= submit_tag "동문 인증" %></div>
+              <%= form_tag verify_alumni_url, id:'verify_alumni_form', method: 'get', remote:true do %>
+                <div class='form_fields float-left'>
+                  <ul>
+                    <li><%= text_field_tag :name, nil, placeholder: "이름", autocomplete: :off %></li>
+                    <li><%= text_field_tag :student_number, nil, placeholder: "학번", autocomplete: :off %></li>
+                  </ul>
+                </div>
+                <div class='form_submit float-right'><%= image_submit_tag '/assets/signup_submit_button.png' %></div>
               <% end %>
             </div>
+            
 			<%= form_for(resource, url: registration_path(resource_name), html: {id:'signup_form'} ) do |f| %>
-              <ul id="signup_form_verify_alumni_section", style="display:none;">
-                <li id="signup_form_verify_alumni_name"><%= f.text_field :name %></li>
-                <li id="signup_form_verify_alumni_student_number"><%= f.text_field :student_number %></li>
-              </ul>
-              <ul id="signup_form_new_user_info_section", style="display:none;">
-                <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
-                <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
-              </ul>
-            <div id="signup_form_submit", style="display:none;"><%= f.submit "Sign up" %></div>
+              <div class='form_fields float-left'>
+                <ul id="signup_form_verify_alumni_section", style="display:none;">
+                  <li id="signup_form_verify_alumni_name"><%= f.text_field :name %></li>
+                  <li id="signup_form_verify_alumni_student_number"><%= f.text_field :student_number %></li>
+                </ul>
+                <ul id="signup_form_new_user_info_section", style="display:none;">
+                  <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
+                  <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+                </ul>
+              </div>
+              <div class='form_submit float-right' id="signup_form_submit", style="display:none;"><%= image_submit_tag '/assets/signup_submit_button.png' %></div>
 			<% end %>
 		</div>
 	</div>

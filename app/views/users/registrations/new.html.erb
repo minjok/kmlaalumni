@@ -1,46 +1,52 @@
-<h2>회원 가입</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <% if !resource.errors[:wave].empty? %>
-    <div><%= resource.errors[:wave][0] %></div>
-  <% end %>
-  <table>
-    <tr>
-      <td><%= f.text_field :name, placeholder: "이름", autocomplete: :off %></td>
-      <td>
-        <% if !resource.errors[:name].empty? %>
-          <%= resource.errors[:name][0] %><br/>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.text_field :student_number, placeholder: "학번", autocomplete: :off %></td>
-      <td>
+<div id='wrapper'>
+  <div id='signup_container' class='center'>
+    <div id='signup_logo_container' class ='logo center float-left'>
+      <a href='<%= root_url %>'><img src='/assets/logo.png'/></a>
+    </div>
+    <div id='signup_form_container' class='float-right'>
+      <div id='signup_warning' class='error_message_container warning'>
         <% if !resource.errors[:student_number].empty? %>
-          <%= resource.errors[:student_number][0] %><br/>
+          <%= resource.errors[:student_number][0] %>
         <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></td>
-      <td>
-        <% if !resource.errors[:email].empty? %>
-          <%= resource.errors[:email][0] %><br/>
+      </div>
+      <div id='signup_form'>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <div class='form_fields float-left'> 
+            <ul>
+              <li class='error_message_container warning'>
+                <% if !resource.errors[:name].empty? %>
+                  <%= resource.errors[:name][0] %>
+                <% end %>
+              </li>
+              <li><%= f.text_field :name, placeholder: "이름", autocomplete: :off %></li>
+              <li class='error_message_container'>
+              </li>
+              <li><%= f.text_field :student_number, placeholder: "학번", autocomplete: :off %></li>
+              <li class='error_message_container warning'>
+                <% if !resource.errors[:email].empty? %>
+                  <%= resource.errors[:email][0] %>
+                <% end %>
+              </li>
+              <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
+              <li class='error_message_container warning'>
+                <% if !resource.errors[:password].empty? %>
+                  <%= resource.errors[:password][0] %>
+                <% end %>
+              </li>
+              <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+            </ul>
+          </div>
+          <div id='signup_form_submit_button' class='float-right'><%= image_submit_tag '/assets/signup_submit_button.png' %></div>
         <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></td>
-      <td>
-        <% if !resource.errors[:password].empty? %>
-          <%= resource.errors[:password][0] %><br/>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.submit "가입하기" %></td>
-      <td>
-      </td>
-    </tr>
-  
-<% end %>
+      </div>
+    </div>
+  </div>
+  <div id='signin_footer' class='center'>
+    <div id='links' class='center'>
+      이미 가입하셨나요? <a href='<%= login_url %>'>동문회에 로그인하기</a>
+    </div>
+    <div id='footer_bar' class='center'>
+      <img src='/assets/footer_bar.png'/>
+    </div>
+  </div>
+</div>
