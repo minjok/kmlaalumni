@@ -1,0 +1,11 @@
+<div class='new_posting_container'>
+  <div id="posting_error_message" class='warning'></div>
+  <%= form_for resource, remote: true do |f| %>
+    <div class='new_posting_form float-left'>
+      <%= f.text_area :content, placeholder: placeholder, class: 'new_posting_textarea' %>
+      <%= f.hidden_field :platform, value: value %>
+    </div>
+    <div class ='new_posting_submit_button float-right'><%= image_submit_tag '/assets/new_posting_submit_button.png' %></div>
+  <% end %> 
+</div>
+

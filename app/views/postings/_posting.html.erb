@@ -4,9 +4,10 @@
   <div id="<%= posting_name + '_sources'%>">
     <span class='posting_name'><%= posting.user.wave %>기 <%= posting.user.name %></span>
     <% if posting.platform == Posting::PLATFORM['GROUP'] %>
-      <span class='posting_group'>@<%= link_to posting.group.name, group_url(posting.group) %></span>
+      <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+    <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
+      <span class='posting_group'><%= link_to '@담벼락', wall_url, class: 'posting_wall_link' %></span>
     <% end %>
-    <span class='posting_date'><%= posting.created_at %></span>
   </div>
   <div class='posting_content_container'>
     <% if posting.content.length < 300 %>
@@ -34,6 +35,7 @@
     <% if current_user.wrote?(posting) %>
       · <%= link_to "삭제", posting_url(posting), method: :delete, remote: true %>
     <% end %>
+    <span class='posting_date'><%= posting.created_at %></span>
   </div>
   <div id="<%= posting_name + '_likes' %>" class='posting_likes'>
     <% if !posting.likes.blank? %>

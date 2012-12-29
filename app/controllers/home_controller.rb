@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   
+  layout 'welcome', only: [:welcome]
   
   # *** BEFORE_FILTER *** #
   
@@ -25,6 +26,7 @@ class HomeController < ApplicationController
   # Method: welcome
   # --------------------------------------------
   # Renders the landing page when not signed in.	
+  
   def welcome
     
     # Checks if user is not signed in and redirects to @index if not.

@@ -30,6 +30,12 @@
   font-size:11px;
 }
 
+.header_title {
+  color: #095e94;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 input[type=password],[type=text] {
   width: 265px;
   height: 25px;

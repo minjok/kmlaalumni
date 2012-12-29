@@ -39,8 +39,92 @@ a {
   clear: both;
 }
 
+#wrapper {
+  width: 900px;
+  margin: 0 auto;
+}
+
+#main_container {
+  width:680px;
+  float:right;
+}
+
+#header {
+  width: 680px;
+  height: 30px;
+  margin: 50px 0 10px 0 ;
+}
+
+.header_title {
+  color: #095e94;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sidebar_container {
+  width: 180px;
+  float:left;
+  margin-right:40px;
+}
+
+.sidebar {
+  margin-top: 20px;
+}
+
+.sidebar_link_container {
+  width: 130px;
+  margin: 2px 0;
+}
+
+.sidebar_title {
+  width:150px;
+  margin:0 0 5px 30px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666666;
+}
+
+.sidebar_link { 
+  font-size: 13px;
+}
+
+.sidebar_option_link {
+  color: #666666;
+  font-size: 11px;
+  font-weight: bold;
+}
+
 .posting_container {
   width:520px;
+}
+
+.new_posting_container {
+  width:500px;
+  height: 120px;
+  border-top: 2px dotted #cccccc;
+  border-bottom: 2px dotted #cccccc;
+  margin-bottom: 15px;
+}
+
+#posting_error_message {
+  height: 20px;
+  margin: 2px 0;
+}
+
+.new_posting_form {
+  margin-bottom: 20px;
+}
+
+.new_posting_textarea {
+  width: 400px;
+  height: 65px;
+  padding: 2px;
+}
+
+.new_posting_submit_button {
+  width: 65px;
+  height: 65px;
+  margin: 2px 15px 2px 0;
 }
 
 .posting_name {
@@ -51,9 +135,14 @@ a {
   color:#888888;
   font-size:9px;
 }
+
 .posting_group {
   font-size:11px;
   font-weight: bold;
+}
+
+.posting_wall_link {
+  color:#e01d4f;
 }
 
 .posting_content_container {
@@ -98,29 +187,6 @@ input:focus {
 }
 
 img { border-style: none; }
-
-#wrapper {
-  width: 900px;
-  margin: 0 auto;
-}
-
-#sidebar_container {
-  width: 180px;
-  float:left;
-  margin-right:20px;
-}
-
-#main_container {
-  width: 700px;
-  float:right;
-}
-
-#header {
-  width: 720px;
-  height: 50px;
-  margin-top: 100px;
-  border-bottom: 1px dotted gray;
-}
 
 .form_fields {
   width:285px;
