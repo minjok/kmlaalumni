@@ -8,6 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   end
   
   def create
+    super
   end
   
 end
