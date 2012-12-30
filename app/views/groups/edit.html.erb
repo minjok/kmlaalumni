@@ -1,24 +1,18 @@
-<div>소모임 설정</div>
+<div id='header'>
+  <div class='header_title'><%= @group.name %> 설정</div>
+</div>
 <div>
-	<%= form_for(@group) do |f| %>
-	
-		<ul>
-			<% if !@group.errors[:name].empty? %>
-				<% @group.errors[:name].each do |msg| %>
-					<%= msg %><br/>
-			<% end %>
-			<% end %>
-			<li><%= f.text_field :name %></li>
-			
-			<% if !resource.errors[:description].empty? %>
-				<% resource.errors[:description].each do |msg| %>
-					<%= msg %><br/>
-				<% end %>
-			<% end %>
-			<li><%= f.text_area :description %></li>
-		</ul>
-		
-		<div><%= f.submit '소모임 만들기' %></div>
-		
-	<% end %>
+  <%= form_for(@group) do |f| %>
+    <ul>
+      <% if !@group.errors[:name].empty? %>
+        <li class='warning'><%= @group.errors[:name][0] %></li>
+      <% end %>
+      <li><%= f.text_field :name, placeholder: '소모임 이름을 적어주세요', class: 'group_name_field' %></li>
+      <% if !@group.errors[:description].empty? %>
+        <li class='warning'><%= @group.errors[:description][0] %></li>
+      <% end %>
+      <li><%= f.text_area :description, placeholder: '소모임 소개를 적어주세요', class: 'group_description_field' %></li>
+    </ul>
+    <div><%= f.submit '소모임 설정하기' %></div>
+  <% end %>
 </div>

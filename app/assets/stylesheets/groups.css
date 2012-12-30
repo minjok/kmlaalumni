@@ -1,1 +1,14 @@
+form li {
+  margin: 5px;
+}
 
+#group_name.group_name_field {
+  width: 350px;
+  height: 20px;
+  padding:0;
+}
+
+#group_description.group_description_field { 
+  width:350px;
+  height: 40px;
+}

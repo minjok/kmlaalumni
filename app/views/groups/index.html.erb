@@ -1,6 +1,8 @@
-<div>GROUPS</div>
+<div id='header'>
+  <div class='header_title'>동문들의 소모임들</div>
+</div>
 <div>
-	<% @groups.each do |group| %>
-		<div><%= link_to group.name, group_url(group) %></div>
-	<% end %>
+  <% @groups.each do |group| %>
+    <div><%= link_to group.name, group_url(group) %></div>
+  <% end %>
 </div>

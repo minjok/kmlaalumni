@@ -2,12 +2,16 @@
 <div id='<%= posting_name %>' class='posting_container'>
   <div id="<%= posting_name + '_error_message'%>"></div>
   <div id="<%= posting_name + '_sources'%>">
-    <span class='posting_name'><%= posting.user.wave %>기 <%= posting.user.name %></span>
-    <% if posting.platform == Posting::PLATFORM['GROUP'] %>
-      <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
-    <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
-      <span class='posting_group'><%= link_to '@담벼락', wall_url, class: 'posting_wall_link' %></span>
+    <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
+    
+    <% if platform == 'newsfeed' %>
+      <% if posting.platform == Posting::PLATFORM['GROUP'] %>
+        <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+      <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
+        <span class='posting_group'><%= link_to '@담벼락', wall_url, class: 'posting_wall_link' %></span>
+      <% end %>
     <% end %>
+    
   </div>
   <div class='posting_content_container'>
     <% if posting.content.length < 300 %>
@@ -26,7 +30,7 @@
     <% end %>
   </div>
   <div class='posting_divider'><img src='/assets/posting_divider.png'/></div>
-  <div class='posting_activity_bar'>
+  <div class='content_activity_bar'>
     <% if current_user.likes?(posting) %>
       <%= link_to "좋아요 취소", dislike_posting_url(posting), id: posting_name + '_like_link', remote: true %>
     <% else %>
@@ -35,7 +39,7 @@
     <% if current_user.wrote?(posting) %>
       · <%= link_to "삭제", posting_url(posting), method: :delete, remote: true %>
     <% end %>
-    <span class='posting_date'><%= posting.created_at %></span>
+    <span class='content_date'><%= posting.created_at %></span>
   </div>
   <div id="<%= posting_name + '_likes' %>" class='posting_likes'>
     <% if !posting.likes.blank? %>
@@ -55,8 +59,8 @@
     
     <%= render posting.comments.order('created_at').limit(3) %>
   </div>
-  <div>
-      <div id="<%= posting_name + '_comment_error_message'%>"></div>
+  <div class='posting_new_comment_form'>
+      <div id="<%= posting_name + '_comment_error_message'%>" class='warning'></div>
       <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
         <%= f.text_area :content, class: 'posting_comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
         <div><%= f.submit '댓글 달기' %></div>

@@ -1,6 +1,12 @@
 # encoding: utf-8
 class Users::RegistrationsController < Devise::RegistrationsController
   
+  layout 'welcome', only: [:new]
+  
+  def new
+    super
+  end
+  
   # Method: create
   # --------------------------------------------
   # 

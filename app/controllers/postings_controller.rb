@@ -109,6 +109,7 @@ class PostingsController < ApplicationController
   
     # Retrieve postings that match the given conditions
     @postings = getPostings(params)
+    @platform = params[:platform]
     
     respond_to do |format|
       format.js

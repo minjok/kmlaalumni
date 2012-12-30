@@ -32,7 +32,7 @@ a {
 
 
 .message { color: #4889b3; }
-.warning  { color: #e81e57; font-weight: bold; }
+.warning  { color: #e81e57; font-size:12px; }
 
 .field_with_errors {
   display: block;
@@ -94,10 +94,6 @@ a {
   font-weight: bold;
 }
 
-.posting_container {
-  width:520px;
-}
-
 .new_posting_container {
   width:500px;
   height: 120px;
@@ -127,13 +123,36 @@ a {
   margin: 2px 15px 2px 0;
 }
 
-.posting_name {
+.posting_container {
+  width:520px;
+  border-bottom: 2px dotted #cccccc;
+  margin-bottom: 15px;
+}
+
+.comment_container {
+  width: 400px;
+  background-color: #f1f8fd;
+  font-size:12px;
+}
+
+.posting_author {
   color:#444444; 
   font-weight:bold; 
 }
-.posting_date {
+
+.comment_author {
+  color:#555555; 
+  font-weight:bold;
+}
+
+.content_date {
   color:#888888;
   font-size:9px;
+}
+
+.comment_main_section {
+  padding-top: 2px;
+  margin: 2px 0 3px 3px;
 }
 
 .posting_group {
@@ -149,13 +168,18 @@ a {
   margin: 10px 0;
 }
 
-.posting_activity_bar { 
+.content_activity_bar { 
   font-size: 11px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-left: 3px;
+}
+
+.posting_new_comment_form {
+  margin-top: 10px;
 }
 
 .posting_comment_textarea {
-  width: 400px;
+  width: 392px;
   height: 17px;
   padding: 3px;
 }
@@ -169,6 +193,8 @@ a {
 textarea {
   resize: none;
   overflow: auto;
+  font-family: 'NanumGothicWeb', gulim, sans-serif;
+  font-size: 14px;
 }
 
 input:not([type=submit]):not([type=file]):not([type=image]),textarea {

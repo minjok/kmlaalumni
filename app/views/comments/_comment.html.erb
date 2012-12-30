@@ -1,16 +1,32 @@
 <% comment_name = 'comment_' + comment.id.to_s %>
-<div id="<%= comment_name %>">
+<div id="<%= comment_name %>" class='comment_container'>
   <div id="<%= comment_name + '_error_message' %>"></div>
-  <div><%= comment.user.name %></div>
-  <div><%= comment.created_at %></div>
-  <div>
+  <div class='comment_main_section'>
+    <span class='comment_author'><%= comment.user.wave %>기 <%= comment.user.name %></span>
+    <% if comment.content.length < 300 %>
+      <span class='comment_content'> <%= comment.content %></span>
+    <% else %>
+      <span class="comment_preview">
+        <%= comment.content[0, 299] %></br>
+        ...
+      </span>
+      <span>
+        <%= link_to "더 읽기", comment_url(comment), class: "read_more_link" %>
+      </span>
+      <span class="comment" style="display:none">
+        <%= comment.content %>
+      </span>
+    <% end %>  
+  </div>
+  <div class='content_activity_bar'>
+    <span class='content_date'><%= comment.created_at %></span>
     <% if current_user.likes?(comment) %>
       <%= link_to "좋아요 취소", dislike_comment_url(comment), id: comment_name + '_like_link', remote: true %>
     <% else %>
       <%= link_to "좋아요", like_comment_url(comment), id: comment_name + '_like_link', remote: true %>
     <% end %>
     <% if current_user.wrote?(comment) %>
-      <%= link_to "삭제", comment_url(comment), method: :delete, remote: true %>
+      · <%= link_to "삭제", comment_url(comment), method: :delete, remote: true %>
     <% end %>
   </div>
   <div id="<%= comment_name + '_likes' %>">
@@ -20,18 +36,4 @@
       <% end %>님이 좋아합니다
     <% end %>
   </div>
-  <% if comment.content.length < 300 %>
-    <div><%= comment.content %></div>
-  <% else %>
-    <div class="comment_preview">
-      <%= comment.content[0, 299] %></br>
-      ...
-    </div>
-    <div>
-      <%= link_to "더 읽기", comment_url(comment), class: "read_more_link" %>
-    </div>
-    <div class="comment" style="display:none">
-      <%= comment.content %>
-    </div>
-  <% end %>
 </div>
