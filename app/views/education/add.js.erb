@@ -1,6 +1,0 @@
-<% if !@school.errors.blank? %>
-  $('#add_education_form').prepend("<div><%= @school.errors.first[1] %></div>");
-<% else %>
-  $('#add_education_form').empty();
-  $('#educations').prepend("<div>학교: <%= @school.name %></div>");
-<% end %>

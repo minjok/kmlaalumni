@@ -1,5 +1,0 @@
-<% if @like.platform == Like::PLATFORM['POSTING'] %>
-  $("#<%= 'posting_' + @like.posting_id.to_s + '_likes' %>").prepend("<span><%= @like.user.name %></span>")
-  $("#<%= 'posting_' + @like.posting_id.to_s + '_like_link' %>").html('좋아요 취소');
-  $("#<%= 'posting_' + @like.posting_id.to_s + '_like_link' %>").attr('href', "<%= dislike_url(@like.posting, platform: Like::PLATFORM['POSTING']) %>");
-<% end %>

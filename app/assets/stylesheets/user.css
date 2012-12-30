@@ -11,9 +11,14 @@
   margin: 20px 0 5px 0;
 }
 
-#links {
+#signin_link {
   width: 212px;
-  margin-top:50px;
+  margin-top:30px;
+}
+
+#signup_link {
+  width: 250px;
+  margin-top:30px;
 }
 
 #footer_bar {
@@ -32,7 +37,7 @@
 }
 
 #signup_logo_container { 
-  margin-top:50px;
+  margin-top:10px;
 }
 
 #signup_warning {
@@ -48,11 +53,6 @@
 #signup_form_submit_button {
   width:65px;
   height:65px;
-  margin-top:87px;
-}
-
-.error_message_container {
-  height: 17px;
-  font-size: 14px;
+  margin-top:65px;
 }
 

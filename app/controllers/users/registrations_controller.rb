@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Users::RegistrationsController < Devise::RegistrationsController
   
-  layout 'welcome', only: [:new]
+  layout 'welcome', only: [:new, :create]
   
   def new
     super
