@@ -14,12 +14,10 @@
     <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
     
     <!-- POSTING PLATFORM (SHOWN ONLY ON NEWSFEED) -->
-    <% if platform == 'newsfeed' %>
-      <% if posting.platform == Posting::PLATFORM['GROUP'] %>
-        <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
-      <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
-        <span class='posting_group'><%= link_to '@담벼락', wall_url, class: 'posting_wall_link' %></span>
-      <% end %>
+    <% if posting.platform == Posting::PLATFORM['GROUP'] %>
+      <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+    <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
+      <span class='posting_group'><%= link_to '@담벼락', wall_url, class: 'posting_wall_link' %></span>
     <% end %>
     
   </div>
