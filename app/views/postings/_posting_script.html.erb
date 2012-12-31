@@ -15,6 +15,13 @@
       dataType: 'script'
     });
   });
+  
+  $('body').on('keypress', '.posting_comment_textarea', function (e) {
+    if (e.which == 13) {
+      e.preventDefault();
+      $(this).closest('form').submit();
+    }
+  });
 
   $(document).ready( function() {
     var page = 1;
