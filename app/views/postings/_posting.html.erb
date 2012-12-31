@@ -1,4 +1,5 @@
 <% posting_name = 'posting_' + posting.id.to_s %>
+<% user_likes_posting = current_user.likes?(posting) %>
 
 <!-- POSTING -->
 <div id='<%= posting_name %>' class='posting_container'>
@@ -47,7 +48,7 @@
   
   <!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
   <div class='content_activity_bar'>
-    <% if current_user.likes?(posting) %>
+    <% if user_likes_posting %>
       <%= link_to "좋아요 취소", dislike_posting_url(posting), id: posting_name + '_like_link', remote: true %>
     <% else %>
       <%= link_to "좋아요", like_posting_url(posting), id: posting_name + '_like_link', remote: true %>
@@ -59,23 +60,15 @@
   </div>
   
   <!-- POSTING LIKES --->
-  <div id="<%= posting_name + '_likes' %>" class='posting_likes'>
-    <% if posting.likes.blank? %>
-    
-    <% else %>
-      <% for like in posting.likes %>
-        <span><%= like.user.name %></span>
-      <% end %>님이 좋아합니다      
-    <% end %>
+  <div id="<%= posting_name + '_likes_container' %>">
+    <%= render partial: 'postings/posting_likes', locals: {posting: posting} %>
   </div>
   
   <!-- POSTING COMMENTS -->
   <div id="<%= posting_name + '_comments'%>" class='posting_comments_container'>
-    <% if posting.comments.length > 3 %>
-      <div id="<%= posting_name + '_get_more_comments_link'%>" class='posting_get_more_comments_link_container'>
-         <%= link_to posting.comments.length.to_s + "개의 댓글 모두 보기", feed_comments_url(posting_id: posting.id), class: 'get_more_comments_link' %>
-      </div>
-    <% end %>
+    <div id="<%= posting_name + '_get_more_comments_link_container'%>" class='posting_get_more_comments_link_container'>
+      <%= render partial: 'postings/posting_get_more_comments_link', locals: {posting: posting} %>
+    </div>
     
     <%= render posting.comments.order('created_at').last(3) %>
   </div>

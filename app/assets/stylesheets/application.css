@@ -174,17 +174,16 @@ a {
   margin-left: 3px;
 }
 
-.posting_get_more_comments_link_container {
-  width:400px;
+.posting_likes, .posting_get_more_comments_link {
+  width:397px;
   height:18px;
-  background-color:  #f1f8fd;  
-}
-
-.get_more_comments_link {
-  margin-left:3px;
+  background-color:#f1f8fd;
+  margin-bottom: 3px;
+  padding-top:2px;
+  padding-left:3px;
   font-size: 11px;
+  color:#0d76b8;
 }
-
 
 .posting_new_comment_form {
   margin: 5px 0 15px 0;

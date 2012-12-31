@@ -1,5 +1,7 @@
-<% posting_name = 'posting_' + @comment.posting_id.to_s %>
+<% posting = @comment.posting %>
+<% posting_name = 'posting_' + posting.id.to_s %>
 <% if @comment.errors.blank? %>
+  $("<%= '#' + posting_name + '_get_more_comments_link_container' %>").html('<%= escape_javascript(render partial:'postings/posting_get_more_comments_link', locals:{posting:posting}) %>');
   $("<%= '#' + posting_name + '_comments' %>").append('<%= escape_javascript(render @comment) %>');
   $("<%= '#' + posting_name + '_comment_error_message' %>").empty();
   $("<%= '#' + posting_name + '_comment_content' %>").val('');
