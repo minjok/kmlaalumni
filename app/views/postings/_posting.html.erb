@@ -26,16 +26,15 @@
   <div class='posting_content_container'>
     
     <% if posting.content.length < 300 %>
-      <div class='posting_content'><%= posting.content %></div>
+      <div class='posting_content content'><%= posting.content %></div>
     <% else %>
-      <div class="posting_content posting_preview">
-        <%= posting.content[0, 299] %></br>
-        ...
+      <div class="posting_content posting_preview content">
+        <%= posting.content[0, 299] %>...
       </div>
       <div>
         <%= link_to "더 읽기", posting_url(posting), class: "read_more_link" %>
       </div>
-      <div class="posting_content" style="display:none">
+      <div class="posting_content content" style="display:none">
         <%= posting.content %>
       </div>
     <% end %>
@@ -58,7 +57,7 @@
   </div>
   
   <!-- POSTING LIKES --->
-  <div id="<%= posting_name + '_likes_container' %>">
+  <div id="<%= posting_name + '_likes_container' %>" class='posting_likes_container'>
     <%= render partial: 'postings/posting_likes', locals: {posting: posting} %>
   </div>
   

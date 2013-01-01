@@ -50,9 +50,10 @@ a {
 }
 
 #header {
-  width: 680px;
+  width: 520px;
   height: 30px;
   margin: 50px 0 10px 0 ;
+  border-bottom: 2px dotted #cccccc; 
 }
 
 .header_title {
@@ -95,9 +96,8 @@ a {
 }
 
 .new_posting_container {
-  width:500px;
+  width:520px;
   height: 120px;
-  border-top: 2px dotted #cccccc;
   border-bottom: 2px dotted #cccccc;
   margin-bottom: 15px;
 }
@@ -120,7 +120,12 @@ a {
 .new_posting_submit_button {
   width: 65px;
   height: 65px;
-  margin: 2px 15px 2px 0;
+  margin: 2px 35px 2px 0;
+}
+
+.content {
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 .posting_container {
@@ -169,9 +174,16 @@ a {
 }
 
 .content_activity_bar { 
+  width:400px;
   font-size: 11px;
   margin-bottom: 5px;
   margin-left: 3px;
+}
+
+.posting_comments_container,
+.posting_likes_container, 
+.posting_get_more_comments_link_container { 
+  width: 400px;
 }
 
 .posting_likes, .posting_get_more_comments_link {
@@ -186,6 +198,7 @@ a {
 }
 
 .posting_new_comment_form {
+  width:400px;
   margin: 5px 0 15px 0;
 }
 
