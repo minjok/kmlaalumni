@@ -13,7 +13,7 @@
     <!-- POSTING AUTHOR -->
     <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
     
-    <!-- POSTING PLATFORM (SHOWN ONLY ON NEWSFEED) -->
+    <!-- POSTING PLATFORM -->
     <% if posting.platform == Posting::PLATFORM['GROUP'] %>
       <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
     <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
@@ -29,10 +29,7 @@
       <div class='posting_content content'><%= posting.content %></div>
     <% else %>
       <div class="posting_content posting_preview content">
-        <%= posting.content[0, 299] %>...
-      </div>
-      <div>
-        <%= link_to "더 읽기", posting_url(posting), class: "read_more_link" %>
+        <%= posting.content[0, 299] %>...<%= link_to "더 읽기", posting_url(posting), class: "read_more_link" %>
       </div>
       <div class="posting_content content" style="display:none">
         <%= posting.content %>

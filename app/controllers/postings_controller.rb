@@ -31,6 +31,7 @@ class PostingsController < ApplicationController
     @posting.user = current_user
     if @posting.platform == Posting::PLATFORM['GROUP']
       @posting.group = @group
+      @posting.viewability = Posting::VIEWABILITY['GROUP']
     end
 		
     @posting.save
@@ -135,10 +136,13 @@ class PostingsController < ApplicationController
       postings = case params[:platform]
         # NEWSFEED
         when 'newsfeed' then 
-          Posting.where('group_id IN (?) OR platform = ?', current_user.groups, Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
+          Posting.where('group_id IN (?) OR viewability = ?', current_user.groups, Posting::VIEWABILITY['ASSOCIATION']).order('updated_at DESC').page(params[:page]).per(10)
         # WALL
         when 'wall' then
           Posting.where('platform = ?', Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
+        # ANNOUNCEMENT
+        when 'announcement' then
+          Posting.where('platform = ?', Posting::PLATFORM['ANNOUNCEMENT']).order('created_at DESC').page(params[:page]).per(10)
         # GROUP
         when 'group' then
           Posting.where('group_id = ?', params[:group_id]).order('updated_at DESC').page(params[:page]).per(10)

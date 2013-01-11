@@ -45,7 +45,8 @@ Kmlaalumni::Application.routes.draw do
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
   
-  match '/wall',                to: 'wall#index',                 as: 'wall'
+  match '/wall',                to: 'association#wall',                 as: 'wall'
+  match '/announcement',        to: 'association#announcement',         as: 'announcement'
     
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
   match '/delete_member/:id',   to: 'membership#delete',          as: 'delete_member'

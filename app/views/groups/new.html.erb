@@ -4,14 +4,16 @@
 <div>
   <%= form_for(@group) do |f| %>
     <ul>
+      <li>소모임 이름</li>
       <% if !@group.errors[:name].empty? %>
         <li class='warning'><%= @group.errors[:name][0] %></li>
       <% end %>
       <li><%= f.text_field :name, placeholder: '소모임 이름을 적어주세요', class: 'group_name_field' %></li>
+      <li>소모임 소개</li>
       <% if !@group.errors[:description].empty? %>
         <li class='warning'><%= @group.errors[:description][0] %></li>
       <% end %>
-      <li><%= f.text_area :description, placeholder: '소모임 소개를 적어주세요', class: 'group_description_field' %></li>
+      <li><%= f.text_area :description, placeholder: '소모임 소개를 간단히 적어주세요', class: 'group_description_field' %></li>
     </ul>
     <div><%= f.submit '소모임 만들기' %></div>
   <% end %>

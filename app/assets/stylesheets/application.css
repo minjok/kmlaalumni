@@ -40,12 +40,12 @@ a {
 }
 
 #wrapper {
-  width: 900px;
+  width: 740px;
   margin: 0 auto;
 }
 
 #main_container {
-  width:680px;
+  width:520px;
   float:right;
 }
 
@@ -221,7 +221,7 @@ textarea {
   font-size: 14px;
 }
 
-input:not([type=submit]):not([type=file]):not([type=image]),textarea {
+input:not([type=submit]):not([type=file]):not([type=image]),textarea, select {
   border: 1px solid white;
   -moz-box-shadow: 0 0 5px #4889b3;
   -webkit-box-shadow: 0 0 5px #4889b3;

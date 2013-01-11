@@ -1,9 +1,0 @@
-<div id='header'>
-  <div class='header_title'>동문회 담벼락</div>
-</div>
-<%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['WALL'], resource: Posting.new, placeholder: current_user.name + ' 동문님, 여기에 동문들과 소식을 나누세요'} %>
-<div id='page_content_container'>
-  <div id="postings">
-  </div>
-</div>
-<%= render partial: 'postings/posting_script', locals: { serialized_paginate_params: ("'platform=wall'").html_safe } %>

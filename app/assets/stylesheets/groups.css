@@ -12,3 +12,19 @@ form li {
   width:350px;
   height: 40px;
 }
+
+.group_link_container {
+  margin-bottom:15px;
+}
+
+.group_link {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.group_description {
+  color: #888888;
+  font-size:11px;
+  margin-top:1px;
+}
+

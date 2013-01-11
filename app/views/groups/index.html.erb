@@ -3,20 +3,21 @@
 </div>
 <div>
   <% for group in @groups %>
-    <div><%= link_to group.name, group_url(group), class: 'group_link' %></div>
-    <% if group.description.length < 300 %>
-      <div class='group_description'><%= group.description %></div>
-    <% else %>
-      <div class="group_description">
-        <%= posting.content[0, 299] %></br>
-        ...
-      </div>
-      <div>
-        <%= link_to "더 읽기", posting_url(posting), class: "read_more_link" %>
-      </div>
-      <div class="group_description" style="display:none">
-        <%= posting.content %>
-      </div>
-    <% end %>
+    <div class='group_link_container'> 
+      <div><%= link_to group.name, group_url(group), class: 'group_link' %></div>
+      <% if group.description.length < 300 %>
+        <div class='group_description'><%= group.description %></div>
+      <% else %>
+        <div class="group_description">
+          <%= posting.content[0, 299] %>...
+       </div>
+       <div>
+         <%= link_to "더 읽기", '#', class: "read_more_link" %>
+       </div>
+       <div class="group_description" style="display:none">
+         <%= group.description %>
+       </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

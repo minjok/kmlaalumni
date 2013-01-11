@@ -9,7 +9,8 @@ class Posting < ActiveRecord::Base
     has_many :likes,    dependent: :destroy
     
 	# *** CONSTANTS *** #
-    PLATFORM = {'WALL' => 1, 'GROUP' => 2 }
+    PLATFORM = {'GROUP' => 1, 'WALL' => 2, 'ANNOUNCEMENT' => 3 }
+    VIEWABILITY = {'ASSOCIATION' => 1, 'GROUP' => 2 }
     
 	# *** VALIDATIONS *** #
 	validates_presence_of :content, 
@@ -19,5 +20,9 @@ class Posting < ActiveRecord::Base
                             message: '글 올리는 도중 에러가 발생했습니다'
     
     validates_inclusion_of :platform, in: PLATFORM.values,
-                            message: '글 올리는 도중 에러가 발생했습니다 w'
+                            message: '글 올리는 도중 에러가 발생했습니다'
+                            
+    validates_inclusion_of :viewability, in: VIEWABILITY.values,
+                            message: '글 올리는 도중 에러가 발생했습니다'
+                            
 end

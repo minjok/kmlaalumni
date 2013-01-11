@@ -8,6 +8,8 @@
   <%= favicon_link_tag '/kmla.ico' %>
   <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb'
         rel='stylesheet' type='text/css' />
+  <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumPenWeb'
+        rel='stylesheet' type='text/css' />
 </head>
 <body>
   <% if flash[:warning] %>
@@ -25,6 +27,9 @@
         </div>
         <div class='sidebar_link_container float-right'>
           <%= link_to '담벼락', wall_url, class:'sidebar_link' %>
+        </div>
+        <div class='sidebar_link_container float-right'>
+          <%= link_to '공지사항', announcement_url, class:'sidebar_link' %>
         </div>
         <div><img src='/assets/sidebar_divider.png' /></div>
         <div class='sidebar_title'>내 소모임</div>
