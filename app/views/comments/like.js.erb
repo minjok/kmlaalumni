@@ -1,4 +1,9 @@
 <% comment_name = 'comment_' + @comment.id.to_s %>
-$("#<%= comment_name + '_likes' %>").prepend("<span><%= @like.user.name %></span>")
+<% if @comment.likes.length > 0 %>
+  <% num_likes = @comment.likes.length.to_s + '명이 좋아합니다' %>
+  $("#<%= comment_name + '_like_stats' %>").html("· <%= num_likes %>");
+<% else %>
+  $("#<%= comment_name + '_like_stats' %>").html('');
+<% end %>
 $("#<%= comment_name + '_like_link' %>").html('좋아요 취소');
 $("#<%= comment_name + '_like_link' %>").attr('href', '<%= dislike_comment_url(@comment) %>');

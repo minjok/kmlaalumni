@@ -1,8 +1,0 @@
-$('#alumni_search_result').empty();
-<% if @users.blank? %>
-  $('#alumni_search_result').html('해당 동문을 찾지 못했습니다.');
-<% else %>
-  <% for user in @users %>
-    $('#alumni_search_result').append("<div><%= user.wave.to_s + '기 ' + user.name %></div>");
-  <% end %>
-<% end %>

@@ -27,12 +27,12 @@
     <% if current_user.wrote?(comment) %>
       · <%= link_to "삭제", comment_url(comment), method: :delete, remote: true %>
     <% end %>
-  </div>
-  <div id="<%= comment_name + '_likes' %>">
+    <span id="<%= comment_name + '_like_stats' %>">
     <% if !comment.likes.blank? %>
-      <% for like in comment.likes %>
-        <span><%= like.user.name %></span>
-      <% end %>님이 좋아합니다
+      · <%= comment.likes.length.to_s + '명이 좋아합니다' %>
     <% end %>
+    </span>
   </div>
+  </div>
+  
 </div>

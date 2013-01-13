@@ -43,7 +43,15 @@
         <div><img src='/assets/sidebar_divider.png' /></div>
         <div class='sidebar_title'>네트워크</div>
         <div class='sidebar_link_container float-right'>
-          <%= link_to '동문 찾기', network_url, class:'sidebar_link' %>
+          <div class='sidebar_link_container float-right'>
+            <%= link_to '동문 검색', network_url, class:'sidebar_link' %>
+          </div>
+          <div class='sidebar_link_container float-right'>
+            <%= link_to '학교별 동문 검색', network_school_url, class:'sidebar_link' %>
+          </div>
+          <div class='sidebar_link_container float-right'>
+            <%= link_to '직장별 동문 검색', network_organization_url, class:'sidebar_link' %>
+          </div>
         </div>
         <div><img src='/assets/sidebar_divider.png' /></div>
         <div class='sidebar_title'><%= current_user.wave %>기 <%= current_user.name %></div>

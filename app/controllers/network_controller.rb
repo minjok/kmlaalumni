@@ -1,12 +1,26 @@
 class NetworkController < ApplicationController
   
-  def search
+  def school
+    @schools = School.order('name')
+  end
+  
+  def organization
+    @organizations = Organization.order('name')
+  end
+  
+  def get_everyone
+    @users = User.order('wave, name')
+    
+    respond_to do |format|
+      format.js { render 'search_alumni' }
+    end
+  end
+  
+  def search_alumni
   
     @users = nil
     name = params[:name].strip
     wave = params[:wave]
-    school = params[:school].strip
-    organization = params[:organization].strip
     
     if !name.empty? && !wave.empty?
       @users = User.where('name = ? AND wave = ?', name, wave).order('wave, name') 
@@ -15,26 +29,6 @@ class NetworkController < ApplicationController
     elsif !wave.empty?
       @users = User.where('wave = ?', wave).order('wave, name')
     end
-
-    if !school.empty?
-      school = School.where('name = ? ', school).first
-      school_users = school.users.order('wave, name').uniq
-      if @users.nil?
-        @users = school_users
-      else
-        @users = @users & school_users
-      end
-    end
-    
-    if !organization.empty?
-      organization = Organization.where('name = ? ', organization).first
-      organization_users = organization.users.order('wave, name').uniq
-      if @users.nil?
-        @users = organization_users
-      else
-        @users = @users & organization_users
-      end
-    end 
     
     if @users.nil?
       @users = User.order('wave, name')
@@ -44,6 +38,22 @@ class NetworkController < ApplicationController
       format.js
     end
       
+  end
+  
+  def search_school
+    @school = School.find(params[:id])
+    @users = @school.users
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def search_organization
+    @organization = Organization.find(params[:id])
+    @users = @organization.users
+    respond_to do |format|
+      format.js
+    end
   end
   
 end

@@ -1,0 +1,13 @@
+<div id='header'>
+  <div class='header_title float-left'>학교별 동문 검색</div>
+</div>
+
+<div id='schools_search_list'>
+  <% for school in @schools %>
+    <div id='schools_search_list_elem'>
+      <div class='school_search_link'><%= link_to school.name, search_school_url(school), remote: true %></div>
+      <div id="<%= 'school_' + school.id.to_s + '_alumnis' %>" class='school_alumni_result'>
+      </div>
+    </div>
+  <% end %>
+</div>

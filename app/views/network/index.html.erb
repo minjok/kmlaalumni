@@ -1,54 +1,27 @@
 <div id='header'>
-  <div class='header_title float-left'>동문 찾기</div>
+  <div class='header_title float-left'>동문 검색</div>
 </div>
 
-<%= form_tag search_alumni_url, remote: true do %>
-
-<div id='conditions_message'>
-
-  <div id='form_employment_section class='search_message_section'>
-    <span id='organization' style='display:none'>
-      <%= text_field_tag :organization, nil, id: 'organization_name_field', placeholder: '직장 이름', autocomplete: :off %>
-       에서 일<span id='organization_end'>한</span>
+<div id='search_form_container'>
+  <%= form_tag search_alumni_url, id:'search_form', method: :get, remote: true do %>
+  <div id='search_form_main'>
+    <span id='wave'>
+      <%= select_tag :wave, options_for_select((1..(Time.now.year - 1998)).map {|s| ["#{s}", s]}), id: 'wave_field', include_blank:true, default: nil, autocomplete: :off %> 기 
     </span>
-  </div>
-  <div id='form_education_section' class='search_message_section'>
-    <span id='school' style='display:none'>
-      <%= text_field_tag :school, nil, id: 'school_name_field', placeholder: '학교 이름', autocomplete: :off %>
-       에서 공부한
-    </span>
-  </div>
-  <div id='form_personal_section' class='search_message_section'>
-    <span id='wave' style="display:none">
-      <%= select_tag :wave, options_for_select((1..(Time.now.year - 1998)).map {|s| ["#{s}", s]}), id: 'wave_field', include_blank:true, default: nil, autocomplete: :off %> 기  
-    </span>
-    <span id='name' style="display:none">
+    <span id='name'>
       <%= text_field_tag :name, nil, id: 'name_field', placeholder: '이름', autocomplete: :off %>
     </span> 
-      
-    <span id='default'>모든</span> <span id='message_end'>동문을 찾습니다</div>
+    동문을 찾습니다
   </div>
-  
-  <div><%= submit_tag '동문 찾기' %></div>
-  <% end %>  
-</div>
-
-<div id="conditions_panel">
-  <span>
-    <%= check_box_tag :name, :name, false, id: 'name_checkbox', autocomplete: :off %>이름  
-  </span>
-  <span>
-    <%= check_box_tag :wave, :wave, false, id: 'wave_checkbox', autocomplete: :off %>기수  
-  </span>
-  <span>
-    <%= check_box_tag :school, :school, false, id: 'school_checkbox', autocomplete: :off %>학교  
-  </span>
-  <span>
-    <%= check_box_tag :organization, :organization, false, id: 'organization_checkbox', autocomplete: :off %>직장  
-  </span>
+  <div id='search_form_submit'><%= submit_tag '동문 찾기' %></div>
+  <% end %>
 </div>
 
 <div id="alumni_search_result">
 </div>
 
-<%= render 'network/search_script' %>
+<script type='text/javascript'>
+  $(document).ready( function() { 
+    $.get('/get_everyone');
+  });
+</script>

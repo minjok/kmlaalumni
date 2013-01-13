@@ -1,0 +1,13 @@
+<div id='header'>
+  <div class='header_title float-left'>직장별 동문 검색</div>
+</div>
+
+<div id='organizations_search_list'>
+  <% for organization in @organizations %>
+    <div id='organizations_search_list_elem'>
+      <div class='organization_search_link'><%= link_to organization.name, search_organization_url(organization), remote: true %></div>
+      <div id="<%= 'organization_' + organization.id.to_s + '_alumnis' %>" class='organization_alumni_result'>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+$('#alumni_search_result').empty();
+<% if @users.blank? %>
+  $('#alumni_search_result').html("<div class='no_result_message'>해당 동문을 찾지 못했습니다</div>");
+<% else %>
+  <% for user in @users %>
+    $('#alumni_search_result').append("<%= escape_javascript(render partial:'network/search_result_item', locals:{user: user}) %>");
+  <% end %>
+<% end %>

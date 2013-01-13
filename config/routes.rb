@@ -66,7 +66,13 @@ Kmlaalumni::Application.routes.draw do
   match '/destroy_employment/:id', to: 'employments#destroy', as: 'destroy_employment'
   
   match '/network',             to: 'network#index',              as: 'network'
-  match '/search_alumni',       to: 'network#search',             as: 'search_alumni'
+  match '/network_school',      to: 'network#school',              as: 'network_school'
+  match '/network_organization',to: 'network#organization',        as: 'network_organization'
+  
+  match '/search_alumni',       to: 'network#search_alumni',             as: 'search_alumni'
+  match '/search_school/:id',   to: 'network#search_school',             as: 'search_school'
+  match '/search_organization/:id',   to: 'network#search_organization',             as: 'search_organization'
+  match '/get_everyone',        to: 'network#get_everyone',       as: 'get_everyone'
   
   
   
