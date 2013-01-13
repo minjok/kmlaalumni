@@ -1,7 +1,8 @@
-<% if @education.valid? %>
+<% if @education.errors.blank? %>
   $("<%= '#update_education_form_' + @education.id.to_s + '_error_message'%>").empty();
-  $("<%= '#update_education_form_' + @education.id.to_s + '_container'%>").empty();
-  $("<%='#education_' + @education.id.to_s %>").html("<%= escape_javascript(render partial: 'educations/education', locals:{education: @education, update: false}) %>");
+  $("<%= '#update_education_form_' + @education.id.to_s + '_link_container'%>").empty();
+  $("<%= '#update_education_form_' + @education.id.to_s + '_link' %>").html('수정');
+  $("<%='#education_' + @education.id.to_s + '_container'%>").html("<%= escape_javascript(render partial: 'educations/education_with_update', locals:{education: @education}) %>");
 <% else %>
   $("<%= '#update_education_form_' + @education.id.to_s + '_error_message'%>").html('<%= @education.errors.first[1] %>');
 <% end %>

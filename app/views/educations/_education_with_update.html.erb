@@ -1,0 +1,15 @@
+<div id='<%= 'education_' + education.id.to_s + '_container' %>'>
+  <div class='education_main_container'>
+    <%= render partial: 'educations/education', locals:{education: education} %>
+    <div class='education_get_form_link_container float-right'>
+      <%= link_to "수정", '#', id: 'update_education_form_' + education.id.to_s + '_link', class: 'get_form_link' %> 
+      <%= link_to '삭제', destroy_education_url(education), method: :delete, remote: true %>
+    </div>
+  </div>
+  <div class='update_education_container'>
+    <div id="update_education_form_<%= education.id.to_s %>_error_message"></div>
+    <div id="update_education_form_<%= education.id.to_s %>_link_container" class="get_form_container", style='display:none'>
+      <%= render partial: 'settings/update_education_form', locals:{education: education} %>
+    </div>
+  </div>
+</div> 

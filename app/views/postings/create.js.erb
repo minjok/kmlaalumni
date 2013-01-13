@@ -1,5 +1,7 @@
 <% if @posting.errors.blank? %>
-  $('#postings').prepend("<%= escape_javascript(render @posting) %>");
+  $('#postings').html('');
+  resetParams();
+  feedPostings();
   $('#posting_error_message').empty();
   $('#posting_content').val('');
 <% else %>

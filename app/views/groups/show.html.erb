@@ -2,18 +2,19 @@
   <div class='header_title float-left'><%= @group.name %></div>
   <div class='group_settings float-right'>
     <% if @user_is_a_member %>
-      <span><%= button_to "소모임 나가기", delete_member_url(@group), method: :post %></span>
+      <span><%= link_to "나가기", delete_member_url(@group) %></span>
 	<% else %>
-      <span><%= button_to "소모임 가입", add_member_url(@group), method: :post %></span>
+      <span><%= link_to "가입하기", add_member_url(@group) %></span>
 	<% end %>
     <% if @user_is_an_admin %>
-      <span><%= link_to "소모임 설정", edit_group_url(@group) %></span>
-      <span><%= button_to "소모임 폐쇄", @group, method: :delete, confirm: "정말 #{@group.name}을 폐쇄하실 겁니까?" %></span>
+      · <span><%= link_to "설정", edit_group_url(@group) %></span>
+      · <span><%= link_to "폐쇄하기", destroy_group_url(@group), method: :delete %></span>
     <% end %>
   </div>
 </div>
+
 <% if @user_is_a_member %>
-	<%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['GROUP'], resource: [@group, Posting.new], placeholder: current_user.name + ' 동문님, ' + @group.name + ' 멤버들에게 한마디 적어주세요'} %>
+	<%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['GROUP'], resource: [@group, Posting.new], placeholder: current_user.name + ' 동문님, ' + @group.name + ' 에 글을 남겨주세요'} %>
 <% end %>
 <div id='page_content_container'>
   <div id="postings">

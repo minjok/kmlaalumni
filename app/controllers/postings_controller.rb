@@ -110,6 +110,7 @@ class PostingsController < ApplicationController
   
     # Retrieve postings that match the given conditions
     @postings = getPostings(params)
+    @is_newsfeed = params[:platform] == 'newsfeed'
     
     respond_to do |format|
       format.js

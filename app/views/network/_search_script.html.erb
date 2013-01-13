@@ -1,0 +1,75 @@
+<script text="javascript">
+  $(document).ready( function() {
+    var has_conditions = false;
+    var has_name_or_wave_cond = false;
+    var name_added = false;
+    var wave_added = false;
+    var school_added = false;
+    var organization_added = false;
+    var num_sections_added = 0;
+    
+    $('#name_checkbox').change( function() {
+      name_added = $(this).attr('checked') ? true : false;
+      has_conditions = name_added || wave_added || school_added || organization_added;
+      has_name_or_wave_cond = name_added || wave_added;
+      if (!name_added) $('#name_field').val('');
+      if (!has_name_or_wave_cond && has_conditions) {
+        $('#message_end').css('margin-left', '70px');
+      } else { 
+        $('#message_end').css('margin-left', '0');
+      }
+      $('#name').toggle(name_added);     
+      $('#default').toggle(!has_conditions);
+    });
+    
+    $('#wave_checkbox').change( function() {
+      wave_added = $(this).attr('checked') ? true : false;
+      has_conditions = name_added || wave_added || school_added || organization_added;
+      has_name_or_wave_cond = name_added || wave_added;
+      if (!wave_added) $('#wave_field').val('');
+      if (!has_name_or_wave_cond && has_conditions) {
+        $('#message_end').css('margin-left', '70px');
+      } else { 
+        $('#message_end').css('margin-left', '0');
+      }
+      $('#wave').toggle(wave_added);
+      $('#default').toggle(!has_conditions);
+    });
+    
+    $('#school_checkbox').change( function() {
+      school_added = $(this).attr('checked') ? true : false;
+      has_conditions = name_added || wave_added || school_added || organization_added;
+      has_name_or_wave_cond = name_added || wave_added;
+      if (!school_added) $('#school_name_field').val('');
+      if (!has_name_or_wave_cond && has_conditions) {
+        $('#message_end').css('margin-left', '70px');
+      } else { 
+        $('#message_end').css('margin-left', '0');
+      }
+      if (organization_added) {
+        if (school_added) $('#organization_end').html('했고, ');
+        else $('#organization_end').html('한');
+      }
+      $('#school').toggle(school_added);
+      $('#default').toggle(!has_conditions);
+    });
+    
+    $('#organization_checkbox').change( function() {
+      organization_added = $(this).attr('checked') ? true : false;
+      has_conditions = name_added || wave_added || school_added || organization_added;
+      has_name_or_wave_cond = name_added || wave_added;
+      if (!organization_added) $('#organization_name_field').val('');
+      if (!has_name_or_wave_cond && has_conditions) {
+        $('#message_end').css('margin-left', '70px');
+      } else { 
+        $('#message_end').css('margin-left', '0');
+      }
+      if (organization_added) {
+        if (school_added) $('#organization_end').html('했고, ');
+        else $('#organization_end').html('한');
+      }
+      $('#organization').toggle(organization_added);
+      $('#default').toggle(!has_conditions);
+    });
+  });
+</script>

@@ -13,12 +13,16 @@ form li {
   height: 40px;
 }
 
+#groups_container { 
+  margin-top: 30px;
+}
+
 .group_link_container {
   margin-bottom:15px;
 }
 
 .group_link {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -26,5 +30,9 @@ form li {
   color: #888888;
   font-size:11px;
   margin-top:1px;
+}
+
+.group_settings { 
+  margin-top:2px;
 }
 

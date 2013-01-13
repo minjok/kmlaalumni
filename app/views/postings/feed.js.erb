@@ -1,1 +1,1 @@
-$("#postings").append("<div class='page'><%= escape_javascript(render @postings) %></div>");
+$("#postings").append("<div class='page'><% for posting in @postings do%><%=  escape_javascript( render partial: 'postings/posting', locals: {posting: posting, is_newsfeed: @is_newsfeed}) %><% end %></div>");

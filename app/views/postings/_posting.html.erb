@@ -9,15 +9,16 @@
   
   <!-- POSTING SOURCES (AUTHOR, PLATFORM etc.)-->
   <div id="<%= posting_name + '_sources'%>">
-    
-    <!-- POSTING AUTHOR -->
-    <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
-    
-    <!-- POSTING PLATFORM -->
+  
     <% if posting.platform == Posting::PLATFORM['GROUP'] %>
-      <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+      <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
+      <% if is_newsfeed %>
+        <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+      <% end %>
     <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
-      <span class='posting_group'><%= link_to '@담벼락', wall_url, class: 'posting_wall_link' %></span>
+      <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
+    <% elsif posting.platform == Posting::PLATFORM['ANNOUNCEMENT'] %>
+      <span class='posting_group'><%= link_to '[동문회 공지]', announcement_url, class: 'posting_announcement_link' %></span>
     <% end %>
     
   </div>

@@ -22,6 +22,12 @@ class EmploymentsController < ApplicationController
   # --------------------------------------------
   # 
   def destroy
+    employment = Employment.find(params[:id])
+    @employment_id = params[:id]
+    employment.destroy
+    respond_to do |format|
+      format.js
+    end
   end
   
   # Method: update

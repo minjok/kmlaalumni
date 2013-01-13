@@ -1,0 +1,78 @@
+#settings_wrapper input[type=text], input[type=password] {
+  height: 15px;
+}
+
+.settings_container {
+  width:400px;
+  margin: 20px 0 40px 0;
+}
+
+.settings_category_title { 
+  color: #4889b3;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.basic_information_section {
+  margin: 10px 0;
+  width: 400px;
+  height: 20px;
+}
+
+.basic_information_content {
+  color: #888888;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.basic_information_category_title {
+  color: #4889b3;
+  font-size: 14px;
+  font-weight: bold;
+  width: 60px;
+}
+
+#update_email_container {
+  margin: 10px 0 0 60px;
+  width: 400px;
+}
+
+.update_education_container {
+  margin-bottom: 10px;
+  width: 400px;
+}
+
+.education_main_container {
+  width: 400px;
+  height: 50px;
+}
+
+.education_get_form_link_container {
+  margin-top: 5px;
+}
+
+.update_employment_container {
+  margin-bottom: 10px;
+  width: 400px;
+}
+
+.employment_main_container {
+  width: 400px;
+  height: 50px;
+}
+
+.employment_get_form_link_container {
+  margin-top: 5px;
+}
+
+
+#password_container {
+  width: 400px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+#update_password_container {
+  margin-bottom: 20px;
+}

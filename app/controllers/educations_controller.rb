@@ -26,6 +26,12 @@ class EducationsController < ApplicationController
   # --------------------------------------------
   #
   def destroy
+    education = Education.find(params[:id])
+    @education_id = params[:id]
+    education.destroy
+    respond_to do |format|
+      format.js
+    end
   end
   
   # Method: update

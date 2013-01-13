@@ -1,5 +1,9 @@
 <script type="text/javascript">
   
+  var page = 1;
+  var numPages = 0;
+  var loading = true;
+    
   $('body').on('click', 'a.read_more_link', function(event) {
     event.preventDefault();
     $(this).parent().next().show();
@@ -22,37 +26,39 @@
       $(this).closest('form').submit();
     }
   });
-
-  $(document).ready( function() {
-    var page = 1;
-    var numPages = 0;
-    var loading = true;
+  
+  function getNumPages() {
+    $.ajax({
+      url: '/postings/num_pages?' + <%= serialized_paginate_params %>,
+      type: 'get',
+      dataType: 'json',
+      success: function(data) {
+        numPages = data;
+      }
+    });
+  }
     
-    function getNumPages() {
-      $.ajax({
-        url: '/postings/num_pages?' + <%= serialized_paginate_params %>,
-        type: 'get',
-        dataType: 'json',
-        success: function(data) {
-          numPages = data;
-        }
-      });
-    }
-    
-    function appendNextPage() {
-      $.ajax({
-        url: '/postings/feed?' + <%= serialized_paginate_params %> + '&page=' + page,
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-          loading = false;
-        }
-      });
-    }
-    
-    function nearBottomOfPage() {
-      return $(window).scrollTop() > $(document).height() - $(window).height() - 50;
-    }
+  function appendNextPage() {
+    $.ajax({
+      url: '/postings/feed?' + <%= serialized_paginate_params %> + '&page=' + page,
+      type: 'get',
+      dataType: 'script',
+      success: function() {
+        loading = false;
+      }
+    });
+  }
+  
+  function nearBottomOfPage() {
+    return $(window).scrollTop() > $(document).height() - $(window).height() - 50;
+  }
+  
+  function resetParams() {
+    page = 1;
+    numPages = 0;
+  }
+  
+  function feedPostings() {
   
     getNumPages();
     appendNextPage();
@@ -68,5 +74,7 @@
         appendNextPage();
       }
     });
-  });
+  }
+  
+  $(document).ready(feedPostings());
 </script>

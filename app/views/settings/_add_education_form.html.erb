@@ -2,5 +2,3 @@
   <%= text_field_tag :school_name, params[:term], placeholder: '출신 학교가 어디인가요?', id: 'school_name_field' %>
   <%= submit_tag '추가하기' %>
 <% end %> 
-
-<%= render partial: 'settings/autocomplete_script', locals: {type: 'school', url: get_school_suggestions_url(:json)} %>

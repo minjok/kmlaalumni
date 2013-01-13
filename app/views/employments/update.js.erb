@@ -1,7 +1,8 @@
-<% if @employment.valid? %>
+<% if @employment.errors.blank? %>
   $("<%= '#update_employment_form_' + @employment.id.to_s + '_error_message'%>").empty();
-  $("<%= '#update_employment_form_' + @employment.id.to_s + '_container'%>").empty();
-  $("<%='#employment_' + @employment.id.to_s %>").html("<%= escape_javascript(render partial: 'employments/employment', locals:{employment: @employment, update: false}) %>");
+  $("<%= '#update_employment_form_' + @employment.id.to_s + '_link_container'%>").empty();
+  $("<%= '#update_employment_form_' + @employment.id.to_s + '_link' %>").html('수정');
+  $("<%='#employment_' + @employment.id.to_s + '_container' %>").html("<%= escape_javascript(render partial: 'employments/employment_with_update', locals:{employment: @employment}) %>");
 <% else %>
   $("<%= '#update_employment_form_' + @employment.id.to_s + '_error_message'%>").html('<%= @employment.errors.first[1] %>');
 <% end %>

@@ -1,66 +1,79 @@
-<h2>내 정보 설정</h2>
+<div id='header'>
+  <div class='header_title'>내 정보 설정</div>
+</div>
 
-<div>
-  <% resource.errors.each do |errors| %>
-    <%= errors %>
+<div id='settings_wrapper'>
+
+<div id='basic_information_container' class='settings_container'>
+  <div id='name_container' class='basic_information_section'>
+    <div class='basic_information_category_title float-left'>이름</div>
+    <div class='basic_information_content'><%= current_user.name %></div>
+  </div>
+  <div id='wave_container' class='basic_information_section'>
+    <div class='basic_information_category_title float-left'>기수</div>
+    <div class='basic_information_content'><%= current_user.wave %></div>
+  </div>
+  <div id='email_container' class='basic_information_section'>
+    <div class='basic_information_category_title float-left'>이메일</div>
+    <div id='email' class='basic_information_content float-left'><%= current_user.email %></div>
+    <div class='float-right'><%= link_to "수정", '#', id: 'update_email_form_link', class: 'get_form_link' %></div>
+  </div>
+  <div id='update_email_container'>
+    <div id='update_email_error_message'></div>
+    <div id="update_email_form_link_container" class="get_form_container" style='display:none'>
+      <%= render partial: 'settings/update_email_form' %>
+    </div>
+  </div>
+</div>
+
+<div id='educations_container' class='settings_container'>
+  <div class='settings_category_title'>학교</div>
+  <div id='educations'>
+  <% for education in current_user.educations %>
+    <%= render partial:'educations/education_with_update', locals:{education: education} %>
   <% end %>
-</div>
-<h3>기본 설정</h3>
-<div>
-  <h4>이름</h4>
-  <div id='name'><%= current_user.name %></div>
-</div>
-<div>
-  <h4>기수</h4>
-  <div id='wave'><%= current_user.wave %></div>
-</div>
-<div>
-  <h4>이메일</h4> 
-  <div id='email'><%= current_user.email %></div>
-  <%= link_to "수정", get_form_url(section: :update_email_form), id: 'update_email_form_link', class: 'get_form_link' %>
-  <div id='update_email_error_message'></div>
-  <div id="update_email_form_container" class="get_form_container"></div>
-</div>
-<div>
-  <h4>비밀번호</h4>
-  <%= link_to "수정", get_form_url(section: :update_password_form), id: 'update_password_form_link', class: 'get_form_link' %>
-  <div id='update_password_error_message'></div>
-  <div id="update_password_form_container" class="get_form_container"></div>
-</div>
-
-<h3>학력</h3>
-<div>
-  <div id="add_education_form_error_message"></div>
-  <%= render 'settings/add_education_form' %>
-  <div id="educations">
-    <% for education in current_user.educations %>
-      <%= render partial: 'educations/education', locals:{education: education, update: true} %>
-    <% end %>
+  </div>
+  <div>
+    <%= render partial:'settings/add_education_form' %>
   </div>
 </div>
 
-<h3>직장</h3>
-<div>
-  <div id="add_employment_form_error_message"></div>
-  <%= render 'settings/add_employment_form' %>
-  <div id="employments">
+<div id='employments_container' class='settings_container'>
+  <div class='settings_category_title'>직장</div>
+  <div id='employments'>
     <% for employment in current_user.employments %>
-      <%= render partial: 'employments/employment', locals:{employment: employment, update: true} %>
+      <%= render partial: 'employments/employment_with_update', locals:{employment: employment} %>
     <% end %>
+  </div>
+  <div>
+    <%= render partial:'settings/add_employment_form' %>
   </div>
 </div>
 
+<div id='password_container'>
+  <div class='settings_category_title float-left'>비밀번호</div>
+  <div class='float-right'><%= link_to "수정", get_form_url(section: :update_password_form), id: 'update_password_form_link', class: 'get_form_link' %></div>
+</div>
+<div id='update_password_container'>
+  <div id='update_password_error_message'></div>
+  <div id="update_password_form_link_container" class="get_form_container" style='display:none'>
+    <%= render partial: 'settings/update_password_form' %>
+  </div>
+</div>
+
+</div>
 <script text="javascript">
   $(document).ready( function() {
     
     $('body').on('click', '.get_form_link', function(event) {
       event.preventDefault();
-      $('.get_form_container').empty();
-      $.ajax({
-          url: this.href,
-          type: 'get',
-          dataType: 'script',
-      });
+      if ($(this).html() == '수정') {
+        $(this).html('닫기');
+      } else {
+        $(this).html('수정');
+      }
+      container_id = '#' + $(this).attr('id') + '_container';
+      $(container_id).toggle();
     });
   });
 </script>

@@ -15,7 +15,7 @@
 BODY {
   margin: 0;
   font-family: 'NanumGothicWeb', gulim, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   color: #555555;
 }
 
@@ -51,14 +51,13 @@ a {
 
 #header {
   width: 520px;
-  height: 30px;
-  margin: 50px 0 10px 0 ;
-  border-bottom: 2px dotted #cccccc; 
+  height: 20px;
+  margin-top: 50px ;
 }
 
 .header_title {
-  color: #095e94;
-  font-size: 20px;
+  color: #4889b3;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -98,7 +97,7 @@ a {
 .new_posting_container {
   width:520px;
   height: 120px;
-  border-bottom: 2px dotted #cccccc;
+  border-bottom: 1px solid #cccccc;
   margin-bottom: 15px;
 }
 
@@ -130,7 +129,7 @@ a {
 
 .posting_container {
   width:520px;
-  border-bottom: 2px dotted #cccccc;
+  border-bottom: 1px solid #cccccc;
   margin-bottom: 15px;
 }
 
@@ -165,7 +164,8 @@ a {
   font-weight: bold;
 }
 
-.posting_wall_link {
+.posting_announcement_link {
+  font-size: 13px;
   color:#e01d4f;
 }
 
@@ -217,8 +217,6 @@ a {
 textarea {
   resize: none;
   overflow: auto;
-  font-family: 'NanumGothicWeb', gulim, sans-serif;
-  font-size: 14px;
 }
 
 input:not([type=submit]):not([type=file]):not([type=image]),textarea, select {
@@ -230,6 +228,7 @@ input:not([type=submit]):not([type=file]):not([type=image]),textarea, select {
   border-top-right-radius: 3px 6px;
   border-bottom-left-radius: 3px 6px;
   border-bottom-right-radius: 3px 6px;
+  font-size:12px;
 }
 
 input:focus {
@@ -252,5 +251,37 @@ img { border-style: none; }
   width:350px;
   height:130px;
   margin-top:5px;
+}
+
+.education_container { 
+  width: 350px;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.education_school_name {
+  color: #444444;
+  font-weight: bold;
+}
+
+.education_additional_information {
+  color: #999999;
+  font-size: 11px;
+}
+
+.employment_container { 
+  width: 350px;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.employment_organization_name {
+  color: #444444;
+  font-weight: bold;
+}
+
+.employment_additional_information {
+  color: #999999;
+  font-size: 11px;
 }
 

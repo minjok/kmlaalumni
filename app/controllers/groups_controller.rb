@@ -79,7 +79,7 @@ class GroupsController < ApplicationController
   # Destroys the group.
   def destroy
     @group.destroy
-    redirect_to groups_url
+    redirect_to root_url
   end
   
   

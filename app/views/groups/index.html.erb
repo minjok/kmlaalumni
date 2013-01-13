@@ -1,7 +1,7 @@
 <div id='header'>
   <div class='header_title'>동문들의 소모임들</div>
 </div>
-<div>
+<div id='groups_container'>
   <% for group in @groups %>
     <div class='group_link_container'> 
       <div><%= link_to group.name, group_url(group), class: 'group_link' %></div>
