@@ -11,7 +11,7 @@
       <% end %>
     <% else %>
       <% if user_likes_posting %>
-        <% like = posting.likes.where('user != ?', current_user).first %>
+        <% like = posting.likes.where('user_id != ?', current_user).first %>
         <% if num_likes == 2 %>
            동문님과 <%= like.user.name %>이 좋아합니다
         <% else %>
