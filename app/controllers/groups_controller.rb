@@ -71,7 +71,7 @@ class GroupsController < ApplicationController
   def show
     membership = Membership.where('user_id = ? AND group_id = ?', current_user, @group).first
     @user_is_a_member = !membership.blank?
-    @user_is_an_admin = if @user_is_a_member? membership.admin : false
+    @user_is_an_admin = @user_is_a_member? membership.admin : false
   end
 
   # Method: destroy
