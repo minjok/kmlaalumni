@@ -17,6 +17,8 @@ class PostingsController < ApplicationController
   # Verifies that the user likes the posting
   before_filter :verify_user_likes_posting, only: [:dislike]
   
+  # Loads posting with given id
+  before_filter :load_posting, only: [:get_content]
   
   # *** METHODS *** #
   
@@ -116,6 +118,16 @@ class PostingsController < ApplicationController
       format.js
     end
     
+  end
+  
+  
+  # Method: get_content
+  # --------------------------------------------
+  # Returns the content of a posting
+  def get_content
+    respond_to do |format|
+      format.js
+    end
   end
   
   

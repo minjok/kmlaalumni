@@ -4,16 +4,10 @@
   <div class='comment_main_section'>
     <span class='comment_author'><%= comment.user.wave %>기 <%= comment.user.name %></span>
     <% if comment.content.length < 300 %>
-      <span class='content'><%= comment.content %></span> 
+      <span id="<%= comment_name + '_content' %>" class='content'><%= comment.content %></span> 
     <% else %>
-      <span class="comment_preview content">
-        <%= comment.content[0, 299] %>...
-      </span>
-      <span>
-        <%= link_to "더 읽기", comment_url(comment), class: "read_more_link" %>
-      </span>
-      <span class="comment_content content" style="display:none">
-        <%= comment.content %>
+      <span id="<%= comment_name + '_content' %>" class="comment_preview content">
+        <%= comment.content[0, 299] %>...<%= link_to "더 읽기", get_comment_content_url(comment), remote: true, class: "read_more_link" %>
       </span>
     <% end %>  
   </div>

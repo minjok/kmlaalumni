@@ -1,0 +1,2 @@
+<% comment_name = 'comment_' + @comment.id.to_s %>
+$("<%= '#' + comment_name + '_content' %>").html("<%= @comment.content %>");

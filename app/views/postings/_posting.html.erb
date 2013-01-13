@@ -27,13 +27,10 @@
   <div class='posting_content_container'>
     
     <% if posting.content.length < 300 %>
-      <div class='posting_content content'><%= posting.content %></div>
+      <div id="<%= posting_name + '_content' %>" class='posting_content content'><%= posting.content %></div>
     <% else %>
-      <div class="posting_content posting_preview content">
-        <%= posting.content[0, 299] %>...<%= link_to "더 읽기", posting_url(posting), class: "read_more_link" %>
-      </div>
-      <div class="posting_content content" style="display:none">
-        <%= posting.content %>
+      <div id="<%= posting_name + '_content' %>" class="posting_content posting_preview content">
+        <%= posting.content[0, 299] %>...<%= link_to "더 읽기", get_posting_content_url(posting), remote: true, class: "read_more_link" %>
       </div>
     <% end %>
   </div>

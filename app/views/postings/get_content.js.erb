@@ -1,0 +1,2 @@
+<% posting_name = 'posting_' + @posting.id.to_s %>
+$("<%= '#' + posting_name + '_content' %>").html("<%= @posting.content %>");

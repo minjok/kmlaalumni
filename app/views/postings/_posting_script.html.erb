@@ -3,13 +3,6 @@
   var page = 1;
   var numPages = 0;
   var loading = true;
-    
-  $('body').on('click', 'a.read_more_link', function(event) {
-    event.preventDefault();
-    $(this).parent().next().show();
-    $(this).parent().prev().remove();
-    $(this).parent().remove();
-  });
   
   $('body').on('click', 'a.get_more_comments_link', function(event) {
     event.preventDefault();

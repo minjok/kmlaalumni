@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
   # Verifies that the user likes the comment
   before_filter :verify_user_likes_comment, only: [:dislike]
   
+  # Loads comment with given id
+  before_filter :load_comment, only: [:get_content]
   
   # *** PUBLIC METHODS *** #
   
@@ -91,6 +93,15 @@ class CommentsController < ApplicationController
       format.js
     end
     
+  end
+  
+  # Method: get_content
+  # --------------------------------------------
+  # Returns the content of a comment
+  def get_content
+    respond_to do |format|
+      format.js
+    end
   end
   
   

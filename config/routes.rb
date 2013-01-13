@@ -53,6 +53,9 @@ Kmlaalumni::Application.routes.draw do
   
   match '/destroy_group/:id',   to: 'groups#destroy',              as: 'destroy_group'
   
+  match 'get_posting_content/:id', to: 'postings#get_content', as: 'get_posting_content'
+  match 'get_comment_content/:id', to: 'comments#get_content', as: 'get_comment_content'
+  
   match '/like_posting/:id',            to: 'postings#like',                  as: 'like_posting'
   match '/dislike_posting/:id',         to: 'postings#dislike',               as: 'dislike_posting'
   match '/like_comment/:id',            to: 'comments#like',                  as: 'like_comment'
