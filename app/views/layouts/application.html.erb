@@ -74,5 +74,11 @@
          <%= yield %>     
     </div>
   </div>
+  
+  <script type="text/javascript">
+    var timezone = jstz.determine();
+    document.cookie = 'time_zone='+timezone.name()+';';
+  </script>
+  
 </body>
 </html>
