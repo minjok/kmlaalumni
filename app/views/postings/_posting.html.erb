@@ -65,12 +65,15 @@
     <%= render posting.comments.order('created_at').last(3) %>
   </div>
   
-  <!-- POSTING NEW COMMENT FORM -->
-  <div class='posting_new_comment_form'>
-      <div id="<%= posting_name + '_comment_error_message'%>" class='warning'></div>
-      <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
-        <%= f.text_area :content, class: 'posting_comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
-      <% end %>
-  </div>
+  
+  <% if @writeability %>
+    <!-- POSTING NEW COMMENT FORM -->
+    <div class='posting_new_comment_form'>
+        <div id="<%= posting_name + '_comment_error_message'%>" class='warning'></div>
+        <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
+          <%= f.text_area :content, class: 'posting_comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
+        <% end %>
+    </div>
+  <% end %>
   
 </div>

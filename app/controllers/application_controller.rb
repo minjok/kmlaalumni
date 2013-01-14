@@ -84,4 +84,31 @@ class ApplicationController < ActionController::Base
 
   end
   
+  # Method: authenticat_group_member
+    # --------------------------------------------
+    # BEFORE_FILTER
+    # Authenticates that user is a group member
+    # ONLY IF the user is writing a posting for a group
+    def authenticate_group_member
+      
+      # Checks that posting for a group and loads group
+      if params.has_key?(:posting) && 
+         params[:posting].has_key?(:platform) && 
+         params[:posting][:platform] == Posting::PLATFORM['GROUP'].to_s
+
+        return unless load_group
+        
+        # Checks that user is a group member
+        unless current_user.is_member_of?(@group)
+          flash[:warning] = '그룹의 멤버만 포스팅을 올릴 수 있습니다'
+          respond_to do |format|
+            format.js { render 'redirect' }
+            format.html { redirect_to group_url(@group) }
+          end
+        end   
+           
+      end
+
+    end
+  
 end

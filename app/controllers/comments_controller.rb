@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
   # Loads the posting with given id
   before_filter :load_posting, only: [:create]
   
+  # Authenticates that user is a member of group
+  before_filter :authenticate_group_member, only: [:create]
+  
   # Authenticates that user wrote the comment
   before_filter :authenticate_comment_author, only: [:destroy]
   

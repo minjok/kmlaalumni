@@ -20,4 +20,4 @@
   <div id="postings">
   </div>
 </div>
-<%= render partial: 'postings/posting_script', locals: {serialized_paginate_params: ("'platform=group&group_id=" + @group.id.to_s() + "'").html_safe} %>
+<%= render partial: 'postings/posting_script', locals: {serialized_paginate_params: ("'platform=group&group_id=" + @group.id.to_s() + "&writeability=" + @user_is_a_member.to_s + "'").html_safe} %>
