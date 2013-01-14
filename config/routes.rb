@@ -45,7 +45,6 @@ Kmlaalumni::Application.routes.draw do
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
   
-  match '/wall',                to: 'association#wall',                 as: 'wall'
   match '/announcement',        to: 'association#announcement',         as: 'announcement'
     
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'
@@ -63,7 +62,6 @@ Kmlaalumni::Application.routes.draw do
   
   match '/get_school_suggestions', to: 'educations#get_school_suggestions',   as: 'get_school_suggestions'
   match '/get_organization_suggestions', to: 'employments#get_organization_suggestions', as: 'get_organization_suggestions'
-  match '/get_form',            to: 'settings#get_form',          as: 'get_form'
   
   match '/destroy_education/:id', to: 'educations#destroy', as: 'destroy_education'
   match '/destroy_employment/:id', to: 'employments#destroy', as: 'destroy_employment'

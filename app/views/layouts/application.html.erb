@@ -19,17 +19,24 @@
         <a href='/'><img src='/assets/logo.png'/></a>
       </div>
       <div class='sidebar'>
-        <div class='sidebar_title'>동문회</div>
+        
+        <div class='sidebar_title'><%= current_user.wave %>기 <%= current_user.name %></div>
         <div class='sidebar_link_container float-right'>
           <%= link_to '뉴스피드', root_url, class:'sidebar_link' %>
         </div>
         <div class='sidebar_link_container float-right'>
-          <%= link_to '담벼락', wall_url, class:'sidebar_link' %>
+          <%= link_to '내 정보 설정', settings_url, class: 'sidebar_link' %>
         </div>
+        
+        <div><img src='/assets/sidebar_divider.png' /></div>
+       
+        <div class='sidebar_title'>동문회</div>
         <div class='sidebar_link_container float-right'>
           <%= link_to '공지사항', announcement_url, class:'sidebar_link' %>
         </div>
+        
         <div><img src='/assets/sidebar_divider.png' /></div>
+        
         <div class='sidebar_title'>내 소모임</div>
         <% for group in current_user.groups %>
           <div class='sidebar_link_container float-right'><%= link_to group.name, group_url(group), class:'sidebar_link' %></div>
@@ -40,7 +47,9 @@
         <div class='sidebar_link_container float-right'>
           <%= link_to '+ 소모임 만들기', new_group_url, class: 'sidebar_option_link' %>
         </div>
+       
         <div><img src='/assets/sidebar_divider.png' /></div>
+        
         <div class='sidebar_title'>네트워크</div>
         <div class='sidebar_link_container float-right'>
           <div class='sidebar_link_container float-right'>
@@ -53,11 +62,9 @@
             <%= link_to '직장별 동문 검색', network_organization_url, class:'sidebar_link' %>
           </div>
         </div>
+        
         <div><img src='/assets/sidebar_divider.png' /></div>
-        <div class='sidebar_title'><%= current_user.wave %>기 <%= current_user.name %></div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '내 정보 설정', settings_url, class: 'sidebar_link' %>
-        </div>
+        
         <div class='sidebar_link_container float-right'>
           <%= link_to '로그아웃', logout_url, method: :delete, class: 'sidebar_option_link' %>
         </div>
