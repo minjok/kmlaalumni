@@ -1,5 +1,7 @@
 <% if @organization.valid? %>
+  $('#employments').append("<div id='<%= 'employment_' + employment.id.to_s + '_container' %>'>")
   $('#employments').append("<%= escape_javascript(render partial: 'employments/employment_with_update', locals:{employment: @employment, display: true}) %>");
+  $('#employments').append('</div>
   $('#add_employment_form_error_message').empty();
   $('#organization_name_field').val('');
 <% else %>
