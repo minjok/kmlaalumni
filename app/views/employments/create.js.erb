@@ -1,5 +1,5 @@
 <% if @organization.valid? %>
-  $('#employments').append("<%= escape_javascript(render partial: 'employments/employment_with_update', locals:{employment: @employment, update: true}) %>");
+  $('#employments').append("<%= escape_javascript(render partial: 'employments/employment_with_update', locals:{employment: @employment, display: true}) %>");
   $('#add_employment_form_error_message').empty();
   $('#organization_name_field').val('');
 <% else %>

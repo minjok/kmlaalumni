@@ -30,7 +30,9 @@
   <div class='settings_category_title'>학교</div>
   <div id='educations'>
   <% for education in current_user.educations %>
-    <%= render partial:'educations/education_with_update', locals:{education: education} %>
+    <div id='<%= 'education_' + education.id.to_s + '_container' %>'>
+      <%= render partial:'educations/education_with_update', locals:{education: education, display: false} %>
+    </div>
   <% end %>
   </div>
   <div>
@@ -41,9 +43,11 @@
 <div id='employments_container' class='settings_container'>
   <div class='settings_category_title'>직장</div>
   <div id='employments'>
-    <% for employment in current_user.employments %>
-      <%= render partial: 'employments/employment_with_update', locals:{employment: employment} %>
-    <% end %>
+  <% for employment in current_user.employments %>
+    <div id="<%= 'employment_' + employment.id.to_s + '_container' %>">
+      <%= render partial: 'employments/employment_with_update', locals:{employment: employment, display: false} %>
+    </div>
+  <% end %>
   </div>
   <div>
     <%= render partial:'settings/add_employment_form' %>

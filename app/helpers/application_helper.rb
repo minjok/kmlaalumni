@@ -16,7 +16,7 @@ module ApplicationHelper
     text = text.dup
     text = sanitize(text)
     text = text.to_str
-    text.gsub!(/\r\n/, "<br>")                    # \r\n and \r -> \n
+    text.gsub!(/\r\n/, "<br>")
     text.html_safe
   end
  

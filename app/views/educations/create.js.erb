@@ -1,5 +1,5 @@
 <% if @school.errors.blank? %>
-  $('#educations').append("<%= escape_javascript(render partial: 'educations/education_with_update', locals:{education: @education, update: true}) %>");
+  $('#educations').append("<%= escape_javascript(render partial: 'educations/education_with_update', locals:{education: @education, display: true}) %>");
   $('#add_education_form_error_message').empty();
   $('#school_name_field').val('');
 <% else %>

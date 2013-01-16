@@ -11,6 +11,7 @@
    ~
   <%= f.date_select :graduation_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
 
-  <div><%= f.submit "저장" %></div>
+  <div><%= f.submit "저장하기" %></div>
+  <div><%= link_to '삭제하기', destroy_education_url(education), method: :delete, remote: true %></div>
   
 <% end %>

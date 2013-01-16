@@ -1,15 +1,13 @@
-<div id='<%= 'employment_' + employment.id.to_s + '_container' %>'>
-  <div class='employment_main_container'>
-    <%= render partial: 'employments/employment', locals:{employment: employment} %>
-    <div class='employment_get_form_link_container float-right'>
-      <%= link_to "수정", '#', id: 'update_employment_form_' + employment.id.to_s + '_link', class: 'get_form_link' %> 
-      <%= link_to '삭제', destroy_employment_url(employment), method: :delete, remote: true %>
-    </div>
+<div class='employment_main_container'>
+  <%= render partial: 'employments/employment', locals:{employment: employment} %>
+  <div class='employment_get_form_link_container float-right'>
+    <% link = display ? '닫기' : '수정' %>
+    <%= link_to link, '#', id: 'update_employment_form_' + employment.id.to_s + '_link', class: 'get_form_link' %> 
   </div>
-  <div class='update_employment_container'>
-    <div id="update_employment_form_<%= employment.id.to_s %>_error_message"></div>
-    <div id="update_employment_form_<%= employment.id.to_s %>_link_container" class="get_form_container", style='display:none'>
-      <%= render partial: 'settings/update_employment_form', locals:{employment: employment} %>
-    </div>
+</div>
+<div class='update_employment_container'>
+  <div id="update_employment_form_<%= employment.id.to_s %>_error_message"></div>
+  <div id="update_employment_form_<%= employment.id.to_s %>_link_container" class="get_form_container" <% unless display %> style='display:none' <% end %>>
+    <%= render partial: 'settings/update_employment_form', locals:{employment: employment} %>
   </div>
-</div> 
+</div>

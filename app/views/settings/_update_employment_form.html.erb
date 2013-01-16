@@ -9,5 +9,6 @@
   <%= f.date_select :end_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
 
   <div><%= f.submit "저장" %></div>
+  <div><%= link_to '직장 정보 삭제하기', destroy_employment_url(employment), method: :delete, remote: true %></div>
   
 <% end %>
