@@ -1,7 +1,5 @@
 <% if @school.errors.blank? %>
-  $('#educations').append("<div id='<%= 'education_' + @education.id.to_s + '_container' %>'>")
-  $('#educations').append("<%= escape_javascript(render partial: 'educations/education_with_update', locals:{education: @education, display: true}) %>");
-  $('#educations').append("</div>")
+  $('#educations').append("<div id=<%= escape_javascript('education_' + @education.id.to_s + '_container') %>><div id='education_' + @education.id.to_s + '_container'><%= escape_javascript(render partial: 'educations/education_with_update', locals:{education: @education, display: true}) %></div>");
   $('#add_education_form_error_message').empty();
   $('#school_name_field').val('');
 <% else %>
