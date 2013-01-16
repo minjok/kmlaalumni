@@ -206,6 +206,13 @@ a {
   width: 392px;
   height: 16px;
   padding: 3px;
+  -moz-box-shadow: 0 0 2px #444444;
+  -webkit-box-shadow: 0 0 2px #444444;
+  box-shadow: 0 0 2px #444444;
+  border-top-left-radius: 2px 2px;
+  border-top-right-radius: 2px 2px;
+  border-bottom-left-radius: 2px 2px;
+  border-bottom-right-radius: 2px 2px;
 }
 
 .placeholder { color: #888888; }
