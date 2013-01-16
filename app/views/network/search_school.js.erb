@@ -1,6 +1,7 @@
 <% if @users.blank? %>
   $("<%= '#school_' + @school.id.to_s + '_alumnis' %>").html("<div class='no_result_message'>해당 학교에 다닌 동문이 없습니다</div>");
 <% else %>
+  $("<%= '#school_' + @school.id.to_s + '_alumnis' %>").html(''); 
   <% for user in @users %>
     $("<%= '#school_' + @school.id.to_s + '_alumnis' %>").append("<%= escape_javascript(render partial:'network/search_result_item', locals:{user: user}) %>");
   <% end %>
