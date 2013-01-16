@@ -7,7 +7,7 @@
 </div>
 <div class='update_education_container'>
   <div id="update_education_form_<%= education.id.to_s %>_error_message"></div>
-  <div id="update_education_form_<%= education.id.to_s %>_link_container" class="get_form_container" style='display:none'>
+  <div id="update_education_form_<%= education.id.to_s %>_link_container" class="get_form_container" <% unless display %> style='display:none' <% end %>>
     <%= render partial: 'settings/update_education_form', locals:{education: education} %>
   </div>
 </div>
