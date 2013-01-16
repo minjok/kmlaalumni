@@ -95,7 +95,6 @@ a {
 
 .new_posting_container {
   width:520px;
-  height: 120px;
   border-bottom: 1px solid #cccccc;
   margin-bottom: 15px;
 }
@@ -106,6 +105,7 @@ a {
 }
 
 .new_posting_form {
+  width: 520px;
   margin-bottom: 20px;
 }
 
@@ -115,9 +115,9 @@ a {
   padding: 2px;
 }
 
-.new_posting_submit_button {
-  width: 65px;
-  height: 65px;
+.new_posting_form_submit_button {
+  width: 400px;
+  height: 20px;
   margin: 2px 35px 2px 0;
 }
 

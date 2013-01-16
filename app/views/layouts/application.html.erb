@@ -76,8 +76,14 @@
   </div>
   
   <script type="text/javascript">
+      
     var timezone = jstz.determine();
     document.cookie = 'time_zone='+timezone.name()+';';
+    
+    $('body').on('focus', 'textarea', function(){
+      $(this).autosize();  
+    });
+    
   </script>
   
 </body>
