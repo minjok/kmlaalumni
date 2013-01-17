@@ -131,6 +131,16 @@ class PostingsController < ApplicationController
     end
   end
   
+  # Method: get_likes
+  # --------------------------------------------
+  # Returns the content of a posting
+  def get_likes
+    @likes = Like.where('posting_id = ?', params[:id])
+    respond_to do |format|
+      format.html { render partial: 'postings/get_likes' }
+    end
+  end
+  
   
   # *** PRIVATE METHODS *** #
   

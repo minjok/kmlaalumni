@@ -4,15 +4,6 @@
   var numPages = 0;
   var loading = true;
   
-  $('body').on('click', 'a.get_more_comments_link', function(event) {
-    event.preventDefault();
-    $.ajax({
-      url: this.href,
-      type: 'get',
-      dataType: 'script'
-    });
-  });
-  
   $('body').on('keypress', '.posting_comment_textarea', function (e) {
     if (e.which == 13) {
       e.preventDefault();

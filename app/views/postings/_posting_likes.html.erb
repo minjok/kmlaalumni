@@ -15,14 +15,14 @@
         <% if num_likes == 2 %>
            동문님과 <%= like.user.name %>님이 좋아합니다
         <% else %>
-           동문님, <%= like.user.name %> 외 <%= num_likes - 2 %>명이 좋아합니다 
+           동문님, <%= like.user.name %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_posting_likes_url(posting), class: 'get_posting_likes_link'  %>명이 좋아합니다 
         <% end %>
       <% else %>
         <% likes = posting.likes.first(2) %>
         <% if num_likes == 2 %>
           <%= likes[0].user.name %>과 <%= likes[1].user.name %>님이 좋아합니다
         <% else %>
-          <%= likes[0].user.name %>, <%= likes[1].user.name %> 외 <%= num_likes - 2 %>명이 좋아합니다 
+          <%= likes[0].user.name %>, <%= likes[1].user.name %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_posting_likes_url(posting), class: 'get_posting_likes_link' %>이 좋아합니다 
         <% end %>
       <% end %>
     <% end %>

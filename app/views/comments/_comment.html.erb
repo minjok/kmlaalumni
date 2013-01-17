@@ -23,7 +23,7 @@
     <% end %>
     <span id="<%= comment_name + '_like_stats' %>">
     <% if !comment.likes.blank? %>
-      · <%= comment.likes.length.to_s + '명이 좋아합니다' %>
+      · <%= link_to comment.likes.length.to_s + '명이 좋아합니다', get_comment_likes_url(comment), class: 'get_comment_likes_link' %>
     <% end %>
     </span>
   </div>

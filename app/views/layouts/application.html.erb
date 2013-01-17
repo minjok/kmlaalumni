@@ -73,6 +73,17 @@
     <div id='main_container'>
          <%= yield %>     
     </div>
+    <div id='dialog_box'>
+      <div id='dialog_header'>
+        <div id='dialog_title'></div>
+      </div>
+      <div id='dialog_content'>
+         Loading...
+      </div>
+      <div id='dialog_footer'>
+        <div id='dialog_close_link'><%= link_to '닫기', '#', id: 'dialog_close_link' %></div>
+      </div>
+    </div>
   </div>
   
   <script type="text/javascript">
@@ -82,6 +93,46 @@
     
     $('body').on('focus', 'textarea', function(){
       $(this).autosize();  
+    });
+    
+    $('#dialog_close_link').click( function(event){
+      event.preventDefault();
+      $('#dialog_title').html('');
+      $('#dialog_content').html('Loading...');
+      $('#dialog_box').hide();
+    });
+    
+    $('body').on('click', '.get_posting_likes_link', function(event) {
+      event.preventDefault();
+      $('#dialog_title').html('이 포스팅을 좋아하는 동문들');
+      $('#dialog_box').show();
+      $.ajax({ 
+        url: this.href,
+        type: 'get',
+        dataType: 'html',
+        success: function(data) { 
+          $('#dialog_content').html(data);
+        }
+      });
+    });
+    
+    $('body').on('click', '.get_comment_likes_link', function(event) {
+      event.preventDefault();
+      $('#dialog_title').html('이 댓글을 좋아하는 동문들');
+      $('#dialog_box').show();
+      $.ajax({ 
+        url: this.href,
+        type: 'get',
+        dataType: 'html',
+        success: function(data) { 
+          $('#dialog_content').html(data);
+        }
+      });
+    });
+  
+    
+    $(document).ready( function() {
+      $('#dialog_box').hide();
     });
 
   </script>

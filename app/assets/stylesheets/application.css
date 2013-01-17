@@ -93,6 +93,51 @@ a {
   font-weight: bold;
 }
 
+#dialog_box {
+  width: 350px;
+  height: 400px;
+  position: fixed;
+  margin-left:-175px;
+  margin-top:-200px;
+  left: 50%; 
+  top:50%; 
+  z-index: 100;
+  background-color: white;
+  -moz-box-shadow: 0 0 16px #4889b3;
+  -webkit-box-shadow: 0 0 16px #4889b3;
+  box-shadow: 0 0 16px #4889b3;
+}
+
+#dialog_header {
+  background-color: #f1f8fd;
+  border-bottom: 1px solid #dddddd;
+  height: 15px;
+  padding: 5px 5px 6px 5px;
+}
+
+#dialog_title {
+  color: #4889b3;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#dialog_content{
+  height: 350px;
+  overflow-y: auto;
+}
+
+#dialog_footer {
+  height: 13px;
+  border-top: 1px solid #dddddd;
+  background-color: #ffffff;
+  padding: 5px;
+}
+
+#dialog_close_link {
+  width:30px;
+  float: right;
+}
+
 .new_posting_container {
   width:520px;
   border-bottom: 1px solid #cccccc;
@@ -194,7 +239,6 @@ a {
   padding-top:2px;
   padding-left:3px;
   font-size: 11px;
-  color:#0d76b8;
 }
 
 .posting_new_comment_form {
