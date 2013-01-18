@@ -16,7 +16,7 @@
         <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
       <% end %>
     <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
-      <span class='posting_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user)</span>
+      <span class='posting_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
     <% elsif posting.platform == Posting::PLATFORM['ANNOUNCEMENT'] %>
       <span class='posting_group'><%= link_to '[동문회 공지]', announcement_url, class: 'posting_announcement_link' %></span>
     <% end %>
