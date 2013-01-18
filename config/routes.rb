@@ -14,6 +14,7 @@ Kmlaalumni::Application.routes.draw do
     
     get     '/verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
     get     '/settings',      to: 'devise/registrations#edit',         as: 'settings'
+    get     '/profile/:id',       to: 'users/registrations#show',          as: 'profile'
     
   end
   

@@ -1,5 +1,7 @@
 <div class='education_main_container'>
-  <%= render partial: 'educations/education', locals:{education: education} %>
+  <div id="<%= 'education_' + education.id.to_s %>" class='education_container float-left'>
+    <%= render partial: 'educations/education', locals:{education: education} %>
+  </div>
   <div class='education_get_form_link_container float-right'>
     <% link = display ? '닫기' : '수정' %>
     <%= link_to link, '#', id: 'update_education_form_' + education.id.to_s + '_link', class: 'get_form_link' %> 

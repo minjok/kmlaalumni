@@ -1,18 +1,16 @@
-<div id="<%= 'employment_' + employment.id.to_s %>" class='employment_container float-left'>
-  <div class='employment_organization_name'><%= employment.organization.name %></div>
-  <div class='employment_additional_information'>
-    <% if employment.position %>
-      <span><%= employment.position %></span>
-    <% end %>
-    <% if employment.start_year %>
-      <span>
-        <%= employment.start_year.year %> -
-        <% if employment.end_year %>
-          <%= employment.end_year.year %>
-        <% else %>
-           현재
-        <% end %>
-      </span>
-    <% end %>
-  </div>
+<div class='employment_organization_name'><%= employment.organization.name %></div>
+<div class='employment_additional_information'>
+  <% if employment.position %>
+    <span><%= employment.position %></span>
+  <% end %>
+  <% if employment.start_year %>
+    <span>
+      <%= employment.start_year.year %> -
+      <% if employment.end_year %>
+        <%= employment.end_year.year %>
+      <% else %>
+         현재
+      <% end %>
+    </span>
+  <% end %>
 </div>

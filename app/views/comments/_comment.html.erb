@@ -2,7 +2,9 @@
 <div id="<%= comment_name %>" class='comment_container'>
   <div id="<%= comment_name + '_error_message' %>"></div>
   <div class='comment_main_section'>
-    <span class='comment_author'><%= comment.user.wave %>기 <%= comment.user.name %></span>
+    <span class='comment_author'>
+      <%= link_to comment.user.wave.to_s + '기 ' + comment.user.name, profile_url(comment.user) %>
+    </span>
     <% if comment.content.length < 300 %>
       <span id="<%= comment_name + '_content' %>" class='content'><%= comment.content %></span> 
     <% else %>

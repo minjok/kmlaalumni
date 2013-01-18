@@ -11,7 +11,7 @@
   <div id="<%= posting_name + '_sources'%>">
   
     <% if posting.platform == Posting::PLATFORM['GROUP'] %>
-      <span class='posting_author'><%= posting.user.wave %>기 <%= posting.user.name %></span>
+      <span class='posting_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
       <% if is_newsfeed %>
         <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
       <% end %>

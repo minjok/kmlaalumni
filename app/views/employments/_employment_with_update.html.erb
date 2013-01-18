@@ -1,5 +1,7 @@
 <div class='employment_main_container'>
-  <%= render partial: 'employments/employment', locals:{employment: employment} %>
+  <div id="<%= 'employment_' + employment.id.to_s %>" class='employment_container float-left'>
+    <%= render partial: 'employments/employment', locals:{employment: employment} %>
+  </div>
   <div class='employment_get_form_link_container float-right'>
     <% link = display ? '닫기' : '수정' %>
     <%= link_to link, '#', id: 'update_employment_form_' + employment.id.to_s + '_link', class: 'get_form_link' %> 

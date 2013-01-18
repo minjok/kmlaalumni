@@ -22,7 +22,7 @@
         
         <div class='sidebar_title'><%= current_user.wave %>기 <%= current_user.name %></div>
         <div class='sidebar_link_container float-right'>
-          <%= link_to '뉴스피드', root_url, class:'sidebar_link' %>
+          <%= link_to '내 프로필', profile_url(current_user), class: 'sidebar_link' %>
         </div>
         <div class='sidebar_link_container float-right'>
           <%= link_to '내 정보 설정', settings_url, class: 'sidebar_link' %>
@@ -31,6 +31,9 @@
         <div><img src='/assets/sidebar_divider.png' /></div>
        
         <div class='sidebar_title'>동문회</div>
+        <div class='sidebar_link_container float-right'>
+          <%= link_to '뉴스피드', root_url, class:'sidebar_link' %>
+        </div>
         <div class='sidebar_link_container float-right'>
           <%= link_to '공지사항', announcement_url, class:'sidebar_link' %>
         </div>

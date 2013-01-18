@@ -1,0 +1,37 @@
+<div id='header'>
+  <div class='header_title'><%= @user.wave %>기 <%= @user.name %></div>
+</div>
+
+<div id='settings_wrapper'>
+
+<div id='basic_information_container' class='settings_container'>
+  <div id='email_container' class='basic_information_section'>
+    <div class='basic_information_category_title float-left'>이메일</div>
+    <div id='email' class='basic_information_content float-left'><%= @user.email %></div>
+  </div>
+</div>
+
+<div id='educations_container' class='settings_container'>
+  <div class='settings_category_title'>학교</div>
+  <div id='educations'>
+  <% for education in @user.educations %>
+    <div id="<%= 'education_' + education.id.to_s + '_container' %>" class='education_container'>
+      <%= render partial:'educations/education', locals:{education: education} %>
+    </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div id='employments_container' class='settings_container'>
+  <div class='settings_category_title'>직장</div>
+  <div id='employments'>
+  <% for employment in @user.employments %>
+    <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
+      <%= render partial: 'employments/employment', locals:{employment: employment} %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+</div>

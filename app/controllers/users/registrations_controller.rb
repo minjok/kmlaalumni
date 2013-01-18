@@ -54,6 +54,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
+  # Method: show
+  # --------------------------------------------
+  # 
+  def show
+    @user = User.find(params[:id])
+  end
+  
   # Method: verify_alumni
   # --------------------------------------------
   # 

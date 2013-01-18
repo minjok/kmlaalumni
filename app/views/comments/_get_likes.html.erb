@@ -3,6 +3,6 @@
 <% else %>
   <% for like in @likes %>
     <% like_user = like.user %>
-    <div><%= like_user.wave %>기 <%= like_user.name %></div>
+    <div><%= link_to like_user.wave.to_s + '기 ' + like_user.name, profile_url(like_user) %></div>
   <% end %>
 <% end %>

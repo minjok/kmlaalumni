@@ -1,18 +1,10 @@
 <div id='header'>
-  <div class='header_title'>내 정보 설정</div>
+  <div class='header_title'><%= current_user.wave%>기 <%= current_user.name %></div>
 </div>
 
 <div id='settings_wrapper'>
 
 <div id='basic_information_container' class='settings_container'>
-  <div id='name_container' class='basic_information_section'>
-    <div class='basic_information_category_title float-left'>이름</div>
-    <div class='basic_information_content'><%= current_user.name %></div>
-  </div>
-  <div id='wave_container' class='basic_information_section'>
-    <div class='basic_information_category_title float-left'>기수</div>
-    <div class='basic_information_content'><%= current_user.wave %></div>
-  </div>
   <div id='email_container' class='basic_information_section'>
     <div class='basic_information_category_title float-left'>이메일</div>
     <div id='email' class='basic_information_content float-left'><%= current_user.email %></div>
@@ -30,7 +22,7 @@
   <div class='settings_category_title'>학교</div>
   <div id='educations'>
   <% for education in current_user.educations %>
-    <div id='<%= 'education_' + education.id.to_s + '_container' %>'>
+    <div id="<%= 'education_' + education.id.to_s + '_container' %>">
       <%= render partial:'educations/education_with_update', locals:{education: education, display: false} %>
     </div>
   <% end %>
