@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
 	validates_presence_of		:wave,
 									message: "가입 도중 에러가 발생했습니다"
 	
-	validates_inclusion_of 		:wave, in: 1..(Time.now.year-1998),
+	validates_inclusion_of 		:wave, in: 1..(Time.now.year-1995),
 									message: "가입 도중 에러가 발생했습니다"
 	
 	validates_uniqueness_of		:student_number,
