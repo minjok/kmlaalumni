@@ -1,5 +1,5 @@
 <% for user in @users %> 
-  <div class='search_result'>
+  <div class='search_result_item'>
     <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user) %>
   </div>
 <% end %>

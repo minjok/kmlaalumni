@@ -39,27 +39,20 @@
   margin: 0 auto;
 }
 
-.search_result {
+.search_list_elem {
+  margin-bottom: 10px;
+}
+
+.search_result_item {
   margin-left: 30px;
 }
 
-#schools_search_list {
+.search_list {
   margin-top: 40px;
 }
 
-.school_search_link {
+.search_link {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-
-#organizations_search_list {
-  margin-top: 40px;
-}
-
-.organization_search_link {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
