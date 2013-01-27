@@ -1,5 +1,15 @@
-<% for user in @users %> 
-  <div class='search_result_item'>
+<% row_count = 0 %>
+<% for user in @users %>
+  <% if row_count == 0 %>
+    <div class='search_result_item_row'>
+  <% end %>
+  <span class='search_result_item'>
     <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user) %>
-  </div>
+  </span>
+  <% if row_count == 3 %>
+    </div>
+    <% row_count = 0 %>
+  <% else %>
+    <% row_count += 1 %>
+  <% end %>
 <% end %>
