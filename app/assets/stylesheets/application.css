@@ -72,6 +72,10 @@ a {
 
 .sidebar_link_container {
   width: 130px;
+  height: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 2px 0;
 }
 
@@ -84,7 +88,7 @@ a {
 }
 
 .sidebar_link { 
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .sidebar_option_link {
