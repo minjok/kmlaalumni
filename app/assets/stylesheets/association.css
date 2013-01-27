@@ -1,0 +1,22 @@
+.regulations_title {
+  font-size: 24px;
+  font-weight:bold;
+  text-align:center;
+  margin: 30px 0;
+}
+
+.regulations_chapter_title {
+  font-size: 16px;
+  font-weight:bold;
+  text-align:center;
+  margin: 20px 0; 
+}
+
+.regulations_article_title { 
+  margin-bottom: 2px;
+  font-weight: bold;
+} 
+
+.regulations_article { 
+  margin-bottom: 15px;
+} 
