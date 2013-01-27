@@ -1,4 +1,15 @@
-<%= form_tag employments_url, remote:true do %>
+<%= form_tag employments_url, remote:true, id:'add_employment_form' do %>
+  <% if !@organizations.blank? %>
+    <div class='add_form_message'>아래 등록된 직장들 중에 있으면 선택해주세요</div>
+    <div class='options_list'>
+      <% for organization in @organizations %>
+        <div>
+          <%= link_to organization.name, '#', class:'organization_name_option' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='add_form_message'>...또는 직접 입력해주세요</div>
+  <% end %>
   <%= text_field_tag :organization_name, params[:term], placeholder: '근무했던 직장이 어디인가요?', id: 'organization_name_field' %>
-  <%= submit_tag '추가하기' %>
+  <%= submit_tag '직장 추가하기' %>
 <% end %> 

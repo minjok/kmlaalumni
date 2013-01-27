@@ -27,8 +27,10 @@
     </div>
   <% end %>
   </div>
+  <div id='add_education_form_container'>
+  </div>
   <div>
-    <%= render partial:'settings/add_education_form' %>
+    <%= link_to '학교 추가하기', '#', id:'add_education_form_link' %>
   </div>
 </div>
 
@@ -41,8 +43,10 @@
     </div>
   <% end %>
   </div>
+  <div id='add_employment_form_container'>
+  </div>
   <div>
-    <%= render partial:'settings/add_employment_form' %>
+    <%= link_to '직장 추가하기', '#',  id:'add_employment_form_link'%>
   </div>
 </div>
 
@@ -71,5 +75,52 @@
       container_id = '#' + $(this).attr('id') + '_container';
       $(container_id).toggle();
     });
+    
+    $('body').on('click', '#add_education_form_link', function(event) {
+      event.preventDefault();
+      $(this).hide();
+      $.ajax({
+        url: '/get_add_education_form',
+        type: 'get',
+        dataType: 'html',
+        success: function(data) {
+           $('#add_education_form_container').html(data);
+        }
+      });
+    });
+    
+    $('body').on('click', '#add_employment_form_link', function(event) {
+      event.preventDefault();
+      $(this).hide();
+      $.ajax({
+        url: '/get_add_employment_form',
+        type: 'get',
+        dataType: 'html',
+        success: function(data) {
+           $('#add_employment_form_container').html(data);
+        }
+      });
+    });
+    
+    $('body').on('click', '.school_name_option', function(event) {
+      event.preventDefault();
+      $('#school_name_field').val($(this).html());
+    });
+    
+    $('body').on('click', '.organization_name_option', function(event) {
+      event.preventDefault();
+      $('#organization_name_field').val($(this).html());
+    });
+    
+    $('body').on('submit', '#add_education_form', function() {
+      $('#add_education_form_container').html('');
+      $('#add_education_form_link').show();
+    });
+    
+    $('body').on('submit', '#add_employment_form', function() {
+      $('#add_employment_form_container').html('');
+      $('#add_employment_form_link').show();
+    });
+    
   });
 </script>

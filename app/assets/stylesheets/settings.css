@@ -52,6 +52,17 @@
   margin-top: 5px;
 }
 
+.add_form_message {
+  margin: 10px 0;
+}
+
+.options_list {
+  width: 100%;
+  height: 150px;
+  margin: 5px 0;
+  overflow: auto;
+}
+
 .update_employment_container {
   margin-bottom: 10px;
   width: 400px;

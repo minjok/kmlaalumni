@@ -1,4 +1,15 @@
-<%= form_tag educations_url, remote:true do %>
+<%= form_tag educations_url, remote:true, id:'add_education_form' do %>
+  <% if !@schools.blank? %>
+    <div class='add_form_message'>아래 등록된 학교들 중에 있으면 선택해주세요</div>
+    <div class='options_list'>
+      <% for school in @schools %>
+        <div>
+          <%= link_to school.name, '#', class:'school_name_option' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='add_form_message'>...또는 직접 입력해주세요</div>
+  <% end %>
   <%= text_field_tag :school_name, params[:term], placeholder: '출신 학교가 어디인가요?', id: 'school_name_field' %>
-  <%= submit_tag '추가하기' %>
+  <%= submit_tag '학교 추가하기' %>
 <% end %> 
