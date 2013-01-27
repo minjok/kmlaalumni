@@ -6,7 +6,7 @@ class PostingsController < ApplicationController
   
   
   # Authenticates that the user is a group member
-  before_filter :authenticate_group_member, only: [:create]
+  before_filter :authenticate_posting_authority, only: [:create]
   
   # Authenticates that user wrote the posting
   before_filter :authenticate_posting_author, only: [:destroy]
