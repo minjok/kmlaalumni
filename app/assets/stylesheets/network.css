@@ -40,17 +40,7 @@
 }
 
 .search_result {
-  width: 250px;
-  margin: 0 auto;
-}
-
-.search_result_alumni {
-  color: #4889b3;
-  width: 100px;
-}
-
-.search_result_email {
-  color: #444444;
+  margin-left: 30px;
 }
 
 #schools_search_list {

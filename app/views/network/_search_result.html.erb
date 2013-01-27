@@ -1,5 +1,5 @@
-<div class='search_result'>
-  <div class='search_result_alumni'>
+<% for user in @users %> 
+  <div class='search_result'>
     <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user) %>
   </div>
-</div>
+<% end %>
