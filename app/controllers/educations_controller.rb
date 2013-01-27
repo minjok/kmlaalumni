@@ -28,7 +28,10 @@ class EducationsController < ApplicationController
   def destroy
     education = Education.find(params[:id])
     @education_id = params[:id]
+    school = education.school
+    
     education.destroy
+    school.destroy if school.has_no_members?
     respond_to do |format|
       format.js
     end

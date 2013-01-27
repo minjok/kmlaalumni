@@ -24,7 +24,10 @@ class EmploymentsController < ApplicationController
   def destroy
     employment = Employment.find(params[:id])
     @employment_id = params[:id]
+    organization = employment.organization
+    
     employment.destroy
+    organization.destroy if organization.has_no_members?
     respond_to do |format|
       format.js
     end

@@ -8,4 +8,9 @@ class School < ActiveRecord::Base
   # *** VALIDATIONS *** #
   validates_presence_of :name,
                           message: "학교 이름을 입력하세요"
+
+  def has_no_members?
+    Education.where("school_id = ?", self).first.blank?
+  end
+  
 end
