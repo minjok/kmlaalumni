@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= favicon_link_tag '/kmla.ico' %>
+  <%= favicon_link_tag '/assets/kmla.ico' %>
   <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb'
         rel='stylesheet' type='text/css' />
 </head>
@@ -74,7 +74,7 @@
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
         
         <div class='sidebar_link_container float-right'>
-          <%= link_to '로그아웃', logout_url, method: :delete, class: 'sidebar_option_link' %>
+          <%= link_to '로그아웃', logout_url, id:'logout_link', class: 'sidebar_option_link', method: :delete %>
         </div>
       </div>
     </div>
@@ -101,13 +101,6 @@
     
     $('body').on('focus', 'textarea', function(){
       $(this).autosize();  
-    });
-    
-    $('#dialog_close_link').click( function(event){
-      event.preventDefault();
-      $('#dialog_title').html('');
-      $('#dialog_content').html('Loading...');
-      $('#dialog_box').hide();
     });
     
     $('body').on('click', '.get_posting_likes_link', function(event) {
@@ -140,7 +133,14 @@
   
     
     $(document).ready( function() {
-      $('#dialog_box').hide();
+      
+      $('#dialog_close_link').click( function(event){
+        event.preventDefault();
+        $('#dialog_title').html('');
+        $('#dialog_content').html('Loading...');
+        $('#dialog_box').hide();
+      });
+
     });
 
   </script>
