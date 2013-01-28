@@ -3,7 +3,7 @@
 	
 	<!-- BANNER -->
 	<div id="welcome_banner">
-		<img src="/assets/welcome_banner.png" alt="민족사관고등학교 동문회에 오신 것을 환영합니다"/>
+		<%= image_tag(asset_path 'welcome_banner.png') %>
 	</div>
 	
 	<!-- FORM_CONTAINER -->
@@ -22,7 +22,7 @@
 				    <% end -%>
 				  </ul>
 				</div>
-                <div class='form_submit float-right'><%= image_submit_tag '/assets/signin_submit_button.png' %></div>
+                <div class='form_submit float-right'><%= image_submit_tag(asset_path 'signin_submit_button.png') %></div>
 			<% end %>
 		</div>
 		
@@ -30,7 +30,7 @@
 		<div id="signup_form_container">
 		
 			<div id="signup_title">
-				<img src="/assets/welcome_signup_message.png" alt="처음 뵙네요. 반갑습니다!"/>
+				<%= image_tag(asset_path 'welcome_signup_message.png') %>
 			</div>
 			
             <div id="signup_message" class='message'>동문 인증을 위해 이름과 학번을 입력해주세요</div>
@@ -43,7 +43,7 @@
                     <li><%= text_field_tag :student_number, nil, placeholder: "학번", autocomplete: :off %></li>
                   </ul>
                 </div>
-                <div class='form_submit float-right'><%= image_submit_tag '/assets/signup_submit_button.png' %></div>
+                <div class='form_submit float-right'><%= image_submit_tag(asset_path 'signup_submit_button.png') %></div>
               <% end %>
             </div>
             
@@ -58,7 +58,7 @@
                   <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
                 </ul>
               </div>
-              <div class='form_submit float-right' id="signup_form_submit", style="display:none;"><%= image_submit_tag '/assets/signup_submit_button.png' %></div>
+              <div class='form_submit float-right' id="signup_form_submit", style="display:none;"><%= image_submit_tag(asset_path 'signup_submit_button.png') %></div>
 			<% end %>
 		</div>
 	</div>
