@@ -108,7 +108,7 @@ class ApplicationController < ActionController::Base
           end
         end
         
-      elsif params[:posting][:platform] == POSTING::PLATFORM['ANNOUNCEMENT'].to_s 
+      elsif params[:posting][:platform] == Posting::PLATFORM['ANNOUNCEMENT'].to_s 
         unless current_user.is_admin?
           flash[:warning] = '운영자만 공지사항을 올릴 수 있습니다'
           respond_to do |format|
