@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(:version => 20130127001647) do
 
   create_table "alumni_verifications", :force => true do |t|
-    t.string "name",           :null => false
-    t.string "student_number", :null => false
+    t.string  "name",           :null => false
+    t.string  "student_number", :null => false
+    t.integer "wave",           :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -109,10 +110,5 @@ ActiveRecord::Schema.define(:version => 20130127001647) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "words", :force => true do |t|
-    t.string "term",    :null => false
-    t.text   "meaning", :null => false
-  end
 
 end

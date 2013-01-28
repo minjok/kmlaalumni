@@ -12,11 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 
   def create
     build_resource
-
-    if resource.has_correct_name_and_student_number?
-      resource.compute_wave
-    else
+    av = AlumniVerification.where('name = ? AND student_number = ?', resource.name, resource.student_number).first
+    if av.blank?
       resource.errors.add(:student_number, "동문 인증에 실패했습니다. 이름과 학번을 다시 확인해주세요")
+    else
+      resource.wave = av.wave
     end
     
     if resource.errors.empty? && resource.save
@@ -68,8 +68,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.name = params[:name]
     @user.student_number = params[:student_number]
-    @verified = resource.has_correct_name_and_student_number?
-    resource.compute_wave if @verified
+    av = AlumniVerification.where("name = ? AND student_number = ?", @user.name, @user.student_number).first
+    @verified = !av.blank?
+    if @verified
+      @user.wave = av.wave
+    end
     
     respond_to do |format|
       format.js

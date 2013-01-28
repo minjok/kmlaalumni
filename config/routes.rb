@@ -47,6 +47,7 @@ Kmlaalumni::Application.routes.draw do
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
   
   match '/announcement',        to: 'association#announcement',         as: 'announcement'
+  match '/newsletter',          to: 'association#newsletter',           as: 'newsletter'
   match '/regulations',         to: 'association#regulations',          as: 'regulations'
     
   match '/add_member/:id',      to: 'membership#add',             as: 'add_member'

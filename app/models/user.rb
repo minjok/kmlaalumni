@@ -92,14 +92,6 @@ class User < ActiveRecord::Base
 	def is_admin_of?(group)
 	  Membership.exists_as_admin?(self, group)
 	end
-	
-	def has_correct_name_and_student_number?
-	  not AlumniVerification.where("name = ? AND student_number = ?", self.name, self.student_number).first.blank?
-	end
-	
-	def compute_wave
-	  self.wave = (self.student_number[0..1].to_i + 5) % 100
-	end
     
     def update_with_password(params, *options)
      current_password = params.delete(:current_password)
