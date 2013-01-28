@@ -7,7 +7,6 @@ gem 'pg'
 gem 'devise'
 gem 'thin'
 gem 'kaminari'
-gem 'asset_sync'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

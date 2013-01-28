@@ -2,36 +2,14 @@
 <html>
 <head>
   <title>민족사관고등학교 동문회</title>
-  
-  <!-- STYLESHEETS -->
-  <link rel="stylesheet" type="text/css" href="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/stylesheets/association.css">
-  <link rel="stylesheet" type="text/css" href="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/stylesheets/groups.css">
-  <link rel="stylesheet" type="text/css" href="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/stylesheets/home.css">
-  <link rel="stylesheet" type="text/css" href="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/stylesheets/network.css">
-  <link rel="stylesheet" type="text/css" href="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/stylesheets/settings.css">
-  <link rel="stylesheet" type="text/css" href="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/stylesheets/user.css">
-  
-  
-  <!-- JAVASCRIPTS -->
-  <script type='text/javascript' src="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/javascripts/jquery-ui.min.js"></script>
-  <script type='text/javascript' src="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/javascripts/jquery.autosize.js"></script>
-  <script type='text/javascript' src="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/javascripts/jquery.min.js"></script>
-  <script type='text/javascript' src="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/javascripts/jquery-ui.min.js"></script>
-  <script type='text/javascript' src="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/javascripts/jstz-1.0.4.min.js"></script>
-  <script type='text/javascript' src="https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets/javascripts/placeholder.js"></script>
-  
-  <!-- CSRF -->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
-  <!-- FAVICON -->
   <%= favicon_link_tag '/kmla.ico' %>
-  
-  <!-- WEBFONTS -->
   <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb'
         rel='stylesheet' type='text/css' />
   <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumPenWeb'
         rel='stylesheet' type='text/css' />
-        
 </head>
 <body>
   <%= yield %>

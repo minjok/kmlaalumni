@@ -18,4 +18,3 @@ pickle-email-*.html
 .project
 /config/database.yml
 /db/seeds.rb
-/assets/*
