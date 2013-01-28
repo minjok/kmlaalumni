@@ -74,8 +74,11 @@ Kmlaalumni::Application.configure do
     port:  "587",
     domain: "kmlaalumni.herokuapp.com",
     authentication: :plain,
-    user_name: "kmlaalumnidev@gmail.com",
-    password: "kmlaalumnid3v",
+    user_name: "kmlateam@gmail.com",
+    password: "kmlat3eam",
     enable_starttls_auto: true
   }
+  
+  config.action_dispatch.x_sendfile_header = nil
+  
 end
