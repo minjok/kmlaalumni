@@ -96,6 +96,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh (2.6.3)
     netrc (0.7.7)
+    newrelic_rpm (3.5.6.46)
     nokogiri (1.5.6)
     nokogiri (1.5.6-x86-mingw32)
     orm_adapter (0.4.0)
@@ -168,6 +169,7 @@ DEPENDENCIES
   heroku
   jquery-rails
   kaminari
+  newrelic_rpm
   pg
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
