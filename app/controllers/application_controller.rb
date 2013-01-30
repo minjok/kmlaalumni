@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
 
   end
   
-  # Method: authenticat_group_member
+  # Method: authenticate_posting_authority
   # --------------------------------------------
   # BEFORE_FILTER
   # Authenticates that user is a group member

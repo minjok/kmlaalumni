@@ -14,8 +14,6 @@ Kmlaalumni::Application.routes.draw do
     
     get     '/verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
     get     '/settings',      to: 'devise/registrations#edit',         as: 'settings'
-    get     '/profile/:id',       to: 'users/registrations#show',          as: 'profile'
-    
   end
   
   
@@ -72,9 +70,11 @@ Kmlaalumni::Application.routes.draw do
   match '/destroy_education/:id', to: 'educations#destroy', as: 'destroy_education'
   match '/destroy_employment/:id', to: 'employments#destroy', as: 'destroy_employment'
   
+  match '/profile/:id',       to: 'network#profile',          as: 'profile'
   match '/network',             to: 'network#index',              as: 'network'
   match '/network_school',      to: 'network#school',              as: 'network_school'
   match '/network_organization',to: 'network#organization',        as: 'network_organization'
+  
   
   match '/search_alumni',       to: 'network#search_alumni',             as: 'search_alumni'
   match '/search_school/:id',   to: 'network#search_school',             as: 'search_school'

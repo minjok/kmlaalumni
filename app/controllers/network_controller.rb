@@ -1,21 +1,29 @@
 class NetworkController < ApplicationController
   
+  # Method: profile
+  # --------------------------------------------
+  # 
+  def profile
+    @user = User.find(params[:id])
+  end
+  
+  # Method: school
+  # --------------------------------------------
+  # 
   def school
     @schools = School.order('name')
   end
   
+  # Method: organization
+  # --------------------------------------------
+  # 
   def organization
     @organizations = Organization.order('name')
   end
   
-  def get_everyone
-    @users = User.order('wave, name')
-    
-    respond_to do |format|
-      format.js { render 'search_alumni' }
-    end
-  end
-  
+  # Method: search_alumni
+  # --------------------------------------------
+  # 
   def search_alumni
   
     @users = nil
@@ -40,6 +48,9 @@ class NetworkController < ApplicationController
       
   end
   
+  # Method: search_school
+  # --------------------------------------------
+  # 
   def search_school
     @school = School.find(params[:id])
     @users = @school.users.order('wave, name')
@@ -48,6 +59,9 @@ class NetworkController < ApplicationController
     end
   end
   
+  # Method: search_organization
+  # --------------------------------------------
+  # 
   def search_organization
     @organization = Organization.find(params[:id])
     @users = @organization.users.order('wave, name')
