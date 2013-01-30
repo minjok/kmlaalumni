@@ -35,6 +35,8 @@ Kmlaalumni::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
+  config.serve_static_assets = false
+  
   # Mailer settings
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.perform_deliveries = true
