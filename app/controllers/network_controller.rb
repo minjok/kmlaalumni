@@ -5,6 +5,7 @@ class NetworkController < ApplicationController
   # 
   def profile
     @user = User.find(params[:id])
+    @is_current_user = @user == current_user ? true : false
   end
   
   # Method: school

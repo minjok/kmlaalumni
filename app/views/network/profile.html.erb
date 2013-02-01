@@ -1,6 +1,12 @@
 <div id='header'>
-  <div class='header_title'><%= @user.wave %>기 <%= @user.name %></div>
+  <% if @is_current_user %>
+    <div class='header_title float-left'><%= @user.wave %>기 <%= @user.name %></div>
+    <div class='profile_settings float-right'><%= link_to '프로필 설정', settings_url %></div>
+  <% else %>
+    <div class='header_title'><%= @user.wave %>기 <%= @user.name %></div>
+  <% end %>
 </div>
+
 
 <div id='settings_wrapper'>
 
@@ -17,7 +23,6 @@
   <% for education in @user.educations %>
     <div id="<%= 'education_' + education.id.to_s + '_container' %>" class='education_container'>
       <%= render partial:'educations/education', locals:{education: education} %>
-    </div>
     </div>
   <% end %>
   </div>

@@ -32,27 +32,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
-
-  # Method: update
-  # --------------------------------------------
-  # 
-  def update
-    @user = User.find(current_user.id)
-    @update_attr_name = params[:user].keys.first
-    @update_attr_value = params[:user][@update_attr_name]
-    
-    @successfully_updated = if @update_attr_name == 'password'
-      @user.update_with_password(params[:user])
-    else
-      @user.update_without_password(params[:user])
-    end
-    
-    sign_in @user, bypass: true if @successfully_updated
-    
-    respond_to do |format|
-      format.js
-    end
-  end
   
   # Method: verify_alumni
   # --------------------------------------------

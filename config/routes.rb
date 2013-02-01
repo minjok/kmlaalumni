@@ -13,7 +13,6 @@ Kmlaalumni::Application.routes.draw do
 	delete	'/logout',	to: 'devise/sessions#destroy',		as: 'logout'
     
     get     '/verify_alumni', to: 'users/registrations#verify_alumni', as: 'verify_alumni'
-    get     '/settings',      to: 'devise/registrations#edit',         as: 'settings'
   end
   
   
@@ -40,6 +39,8 @@ Kmlaalumni::Application.routes.draw do
   resources :educations
   
   resources :employments
+  
+  resources :settings
   
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'

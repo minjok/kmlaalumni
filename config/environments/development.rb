@@ -35,6 +35,7 @@ Kmlaalumni::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
+  config.assets.prefix = '/assets_dev'
   config.serve_static_assets = false
   
   # Mailer settings

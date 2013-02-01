@@ -49,9 +49,12 @@ a {
 }
 
 #header {
-  width: 520px;
+  width: 480px;
   height: 20px;
   margin-top: 50px ;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header_title {
