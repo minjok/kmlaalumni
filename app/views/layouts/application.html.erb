@@ -10,8 +10,8 @@
         rel='stylesheet' type='text/css' />
 </head>
 <body>
-  <% if flash[:warning] %>
-    <div id='notice'><%= flash[:warning] %></div>
+  <% if @notice %>
+    <div id='notice'><%= @notice %></div>
   <% end %>
   <div id='wrapper'>
     <div class='sidebar_container'>

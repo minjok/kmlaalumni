@@ -1,7 +1,7 @@
 <div id='wrapper'>
   <div id='signin_container' class='center'>
     <div id='logo_container' class ='logo center float-left'>
-      <a href='<%= root_url %>'><img src='/assets/logo.png'/></a>
+      <a href='<%= root_url %>'><%= image_tag asset_path('logo.png') %></a>
     </div>
     <div class='signin_form_container float-right'>
       <div id='signin_warning' class='warning'>
@@ -24,7 +24,7 @@
             </li>
           </ul>
         </div>
-        <div class='form_submit float-right'><%= image_submit_tag '/assets/signin_submit_button.png' %></div>
+        <div class='form_submit float-right'><%= image_submit_tag asset_path('signin_submit_button.png') %></div>
       <% end %>
     </div>
   </div>
@@ -33,7 +33,7 @@
       <a href='#' %>아이디/비밀번호를 잃어버리셨나요?</a>
     </div>
     <div id='footer_bar' class='center'>
-      <img src='/assets/footer_bar.png'/>
+      <%= image_tag asset_path('footer_bar.png') %>
     </div>
   </div>
 </div>

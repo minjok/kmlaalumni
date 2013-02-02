@@ -1,6 +1,13 @@
 # encoding: utf-8
 class SettingsController < ApplicationController
   
+  # Method: introduce
+  # --------------------------------------------
+  # 
+  def introduce
+    
+  end
+  
   # Method: update
   # --------------------------------------------
   # 
@@ -22,6 +29,9 @@ class SettingsController < ApplicationController
     end
   end
   
+  # Method: get_add_education_form
+  # --------------------------------------------
+  # 
   def get_add_education_form
     @schools = School.order('name')
     respond_to do |format|
@@ -29,6 +39,9 @@ class SettingsController < ApplicationController
     end
   end
   
+  # Method: get_add_employment_form
+  # --------------------------------------------
+  # 
   def get_add_employment_form
     @organizations = Organization.order('name')
     respond_to do |format|
