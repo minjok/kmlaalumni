@@ -1,13 +1,6 @@
 # encoding: utf-8
 class SettingsController < ApplicationController
-  
-  # Method: introduce
-  # --------------------------------------------
-  # 
-  def introduce
-    
-  end
-  
+ 
   # Method: update
   # --------------------------------------------
   # 

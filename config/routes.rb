@@ -64,9 +64,9 @@ Kmlaalumni::Application.routes.draw do
   match '/like_comment/:id',            to: 'comments#like',                  as: 'like_comment'
   match '/dislike_comment/:id',         to: 'comments#dislike',               as: 'dislike_comment'
   
-  match 'introduce', to: 'settings#introduce', as: 'introduce'
   match '/get_add_education_form', to: 'settings#get_add_education_form',   as: 'get_add_education_form'
   match '/get_add_employment_form', to: 'settings#get_add_employment_form', as: 'get_add_employment_form'
+  match '/update_settings', to: 'settings#update', as: 'update_settings'
   
   match '/destroy_education/:id', to: 'educations#destroy', as: 'destroy_education'
   match '/destroy_employment/:id', to: 'employments#destroy', as: 'destroy_employment'
