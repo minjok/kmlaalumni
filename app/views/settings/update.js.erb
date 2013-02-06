@@ -1,6 +1,6 @@
 <% if @successfully_updated %>
   $('<%= '#update_' + @update_attr_name + '_error_message' %>').empty();
-  $('<%= '#update_' + @update_attr_name + '_form_link_container' %>').empty();
+  $('<%= '#update_' + @update_attr_name + '_form_link_container' %>').hide();
   $('<%= '#update_' + @update_attr_name + '_form_link' %>').html('수정');
   <% if @update_attr_name != 'password' %>
     $('#<%= @update_attr_name %>').html('<%= escape_javascript(@update_attr_value) %>');
