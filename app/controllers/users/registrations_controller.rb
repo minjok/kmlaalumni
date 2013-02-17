@@ -52,5 +52,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   private
+    def after_sign_up_path_for(resource)
+      settings_url
+    end
   
 end
