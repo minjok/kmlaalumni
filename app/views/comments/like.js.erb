@@ -1,7 +1,7 @@
 <% comment_name = 'comment_' + @comment.id.to_s %>
 <% if @comment.likes.length > 0 %>
   <% num_likes = @comment.likes.length.to_s + '명이 좋아합니다' %>
-  $("#<%= comment_name + '_like_stats' %>").html("<%= link_to num_likes, get_comment_likes_url(@comment), class: 'get_comment_likes_link' %>");
+  $("#<%= comment_name + '_like_stats' %>").html("<%= escape_javascript(link_to num_likes, get_comment_likes_url(@comment), class: 'get_comment_likes_link') %>");
 <% else %>
   $("#<%= comment_name + '_like_stats' %>").html('');
 <% end %>
