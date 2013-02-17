@@ -38,17 +38,4 @@ Kmlaalumni::Application.configure do
   config.assets.prefix = '/assets_dev'
   config.serve_static_assets = false
   
-  # Mailer settings
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port:  "587",
-    domain: "localhost:3000",
-    authentication: :plain,
-    user_name: "kmlaalumnidev@gmail.com",
-    password: "kmlaalumnid3v",
-    enable_starttls_auto: true
-  }
 end

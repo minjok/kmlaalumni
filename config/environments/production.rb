@@ -43,7 +43,7 @@ Kmlaalumni::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  config.action_controller.asset_host = "https://s3-ap-northeast-1.amazonaws.com/kmlaalumni-assets"
+  config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( kmla.ico )
@@ -64,19 +64,5 @@ Kmlaalumni::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  
-  # Mailer settings
-  config.action_mailer.default_url_options = { host: 'kmlaalumni.herokuapp.com' }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port:  "587",
-    domain: "kmlaalumni.herokuapp.com",
-    authentication: :plain,
-    user_name: "kmlateam@gmail.com",
-    password: "kmlat3eam",
-    enable_starttls_auto: true
-  }
   
 end

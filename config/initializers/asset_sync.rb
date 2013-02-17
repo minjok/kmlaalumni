@@ -5,7 +5,7 @@ AssetSync.configure do |config|
   config.fog_directory = ENV['FOG_DIRECTORY']
   
   # Increase upload performance by configuring your region
-  # config.fog_region = 'eu-west-1'
+  config.fog_region = 'ap-northeast-1'
   #
   # Don't delete files from the store
   # config.existing_remote_files = "keep"
