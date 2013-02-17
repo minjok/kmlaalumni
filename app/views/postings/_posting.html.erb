@@ -39,17 +39,19 @@
   <div class='posting_divider'><%= image_tag(asset_path 'posting_divider.png') %></div>
   
   <!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
-  <div class='content_activity_bar'>
-    <% if user_likes_posting %>
-      <%= link_to "좋아요 취소", dislike_posting_url(posting), id: posting_name + '_like_link', remote: true %>
-    <% else %>
-      <%= link_to "좋아요", like_posting_url(posting), id: posting_name + '_like_link', remote: true %>
-    <% end %>
-    <% if current_user.wrote?(posting) %>
-      · <%= link_to "삭제", posting_url(posting), method: :delete, remote: true %>
-    <% end %>
-    <span class='content_date'><%= posting.created_at %></span>
-  </div>
+  <% if @writeability %>
+    <div class='content_activity_bar'>
+      <% if user_likes_posting %>
+        <%= link_to "좋아요 취소", dislike_posting_url(posting), id: posting_name + '_like_link', remote: true %>
+      <% else %>
+        <%= link_to "좋아요", like_posting_url(posting), id: posting_name + '_like_link', remote: true %>
+      <% end %>
+      <% if current_user.wrote?(posting) %>
+        · <%= link_to "삭제", posting_url(posting), method: :delete, remote: true %>
+      <% end %>
+      <span class='content_date'><%= posting.created_at %></span>
+    </div>
+  <% end %>
   
   <!-- POSTING LIKES --->
   <div id="<%= posting_name + '_likes_container' %>" class='posting_likes_container'>
