@@ -367,6 +367,7 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
 .ui-button {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  background-color: #4889b3;
   border: 1px solid #4889b3;
   border-radius: 4px 4px 4px 4px;
   box-shadow: 0 0 2px rgba(255, 255, 255, 0.8) inset;
