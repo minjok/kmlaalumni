@@ -51,7 +51,8 @@ a {
 #header {
   width: 520px;
   height: 20px;
-  margin-top: 50px ;
+  margin-top: 50px;
+  margin-bottom: 30px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -178,7 +179,7 @@ a {
   overflow: hidden;
 }
 
-.page_content_container {
+#page_content_container {
   width: 520px;
   margin-bottom: 30px;
 }
