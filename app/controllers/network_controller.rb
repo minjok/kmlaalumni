@@ -54,7 +54,7 @@ class NetworkController < ApplicationController
   # 
   def search_school
     @school = School.find(params[:id])
-    @users = @school.users.order('wave, name')
+    @users = @school.users.order('wave, name').uniq
     respond_to do |format|
       format.js
     end
@@ -65,7 +65,7 @@ class NetworkController < ApplicationController
   # 
   def search_organization
     @organization = Organization.find(params[:id])
-    @users = @organization.users.order('wave, name')
+    @users = @organization.users.order('wave, name').uniq
     respond_to do |format|
       format.js
     end
