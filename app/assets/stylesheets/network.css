@@ -1,4 +1,5 @@
 #alumni_search_result {
+ width: 520px;
   margin-top: 50px;
 }
 
@@ -44,11 +45,12 @@
 }
 
 .search_result_item_row {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .search_result_item {
-  margin-left: 30px;
+  width: 120px;
+  text-align: center;
 }
 
 .search_list {
