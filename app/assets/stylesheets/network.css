@@ -45,12 +45,14 @@
 }
 
 .search_result_item_row {
+  width: 520px;
+  height: 15px;
   margin-bottom: 15px;
 }
 
 .search_result_item {
   width: 120px;
-  text-align: center;
+  padding-left: 40px;
 }
 
 .search_list {
