@@ -3,9 +3,6 @@
   <% if row_count == 0 %>
     <div class='search_result_item_row'>
   <% end %>
-  <div class='search_result_item float-left'>
-    <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user) %>
-  </div>
   <% if row_count == 3 %>
     </div>
     <% row_count = 0 %>
