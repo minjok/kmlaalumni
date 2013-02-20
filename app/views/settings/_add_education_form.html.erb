@@ -1,4 +1,4 @@
-<%= form_tag educations_url, remote:true, id:'add_education_form' do %>
+<%= form_tag educations_url, id:'add_education_form' do %>
   <% if !@schools.blank? %>
     <div class='add_form_message'>아래 등록된 학교들 중에 있으면 선택해주세요</div>
     <div class='options_list'>

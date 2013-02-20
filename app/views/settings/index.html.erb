@@ -113,11 +113,26 @@
     });
     
     $('body').on('submit', '#add_education_form', function() {
+      var valuesToSubmit = $('#add_education_form').serialize();
+      $.ajax({
+        url: $('#add_education_form').attr('action'), //submits it to the given url of the form
+        data: valuesToSubmit,
+        type: 'post',
+        dataType: 'script' // you want a difference between normal and ajax-calls, and json is standard
+      })
       $('#add_education_form_container').html('');
       $('#add_education_form_link').show();
+      return false;
     });
     
     $('body').on('submit', '#add_employment_form', function() {
+      var valuesToSubmit = $('#add_employment_form').serialize();
+      $.ajax({
+        url: $('#add_employment_form').attr('action'), //submits it to the given url of the form
+        data: valuesToSubmit,
+        type: 'post',
+        dataType: 'script' // you want a difference between normal and ajax-calls, and json is standard
+      })
       $('#add_employment_form_container').html('');
       $('#add_employment_form_link').show();
     });
