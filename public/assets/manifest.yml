@@ -19,7 +19,7 @@ welcome_banner.png: welcome_banner-71ea5f0dad5620e57d667ba520ed5fd8.png
 welcome_banner/index.png: welcome_banner-71ea5f0dad5620e57d667ba520ed5fd8.png
 welcome_signup_message.png: welcome_signup_message-116aff16788605e31ab1bf52841984c8.png
 welcome_signup_message/index.png: welcome_signup_message-116aff16788605e31ab1bf52841984c8.png
-application.js: application-29a6582d750bd9091ac604831b16ad78.js
-application/index.js: application-29a6582d750bd9091ac604831b16ad78.js
+application.js: application-7bf52c791f7234e969799740b9051ccc.js
+application/index.js: application-7bf52c791f7234e969799740b9051ccc.js
 application.css: application-8eabd6ea37a96bb2de6152b867928280.css
 application/index.css: application-8eabd6ea37a96bb2de6152b867928280.css
