@@ -7,7 +7,7 @@ gem 'devise'
 gem 'thin'
 gem 'kaminari'
 gem 'asset_sync'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '3.5.7.59'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
