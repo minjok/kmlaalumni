@@ -14,17 +14,19 @@ class SettingsController < ApplicationController
       @user.update_without_password(params[:user])
     end
     
-    unless @user.fb.blank?
-      @user.fb = url_with_protocol(@user.fb)
-    end
-    unless @user.tw.blank?
-      @user.tw = url_with_protocol(@user.tw)
-    end
-    unless @user.ln.blank?
-      @user.ln = url_with_protocol(@user.ln)
-    end
-    unless @user.blog.blank?
-      @user.blog = url_with_protocol(@user.blog)
+    if @target == 'contact_information'
+      unless @user.fb.blank?
+        @user.fb = url_with_protocol(@user.fb)
+      end
+      unless @user.tw.blank?
+        @user.tw = url_with_protocol(@user.tw)
+      end
+      unless @user.ln.blank?
+        @user.ln = url_with_protocol(@user.ln)
+      end
+      unless @user.blog.blank?
+        @user.blog = url_with_protocol(@user.blog)
+      end
     end
     
     @successfully_updated = @user.save
