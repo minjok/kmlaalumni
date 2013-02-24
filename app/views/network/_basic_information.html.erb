@@ -1,7 +1,9 @@
 <div id='birthday_container' class='settings_short_elem'>
   <div class='settings_subcategory_title float-left'>생일</div>
   <div id='birthday' class='settings_short_elem_content float-left'>
-    <%= user.birthday.strftime("%Y년 %m월 %d일") %>
+    <% if !user.birthday.blank? %>
+      <%= user.birthday.strftime("%Y년 %m월 %d일") %>
+    <% end %>
   </div>
 </div>
 <div id='sex_container' class='settings_short_elem'>
