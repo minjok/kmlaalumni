@@ -1,0 +1,21 @@
+<div id='update_basic_information_error_message'></div>
+<div id="update_basic_information_form_container" class="get_form_container">
+  <%= form_for(current_user, url: update_settings_url(attr:'basic_information'), html: { method: :put, class: 'short_update_form' }, remote: true) do |f| %>
+    <div id='birthday_container'>
+      <div class='settings_subcategory_title'>생일</div>
+      <div id='birthday' class='update_form_input'>
+        <%= f.date_select :birthday, start_year: (Time.now.year - 15), end_year: 1970, include_blank: true, default: nil %>
+      </div>
+    </div>
+    <div id='sex_container'>
+      <div class='settings_subcategory_title'>성별</div>
+      <div id='sex'>
+        <%= f.radio_button :sex, 'm' %>남자
+        <%= f.radio_button :sex, 'f' %>여자
+      </div>
+    </div>
+    <div>
+      <%= f.submit "저장하기", class: 'ui-button' %>
+    </div>
+  <% end %>
+</div>

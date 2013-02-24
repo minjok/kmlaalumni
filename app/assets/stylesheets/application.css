@@ -316,38 +316,6 @@ img { border-style: none; }
   margin-top:5px;
 }
 
-.education_container { 
-  width: 350px;
-  height: 30px;
-  margin: 10px 0;
-}
-
-.education_school_name {
-  color: #444444;
-  font-weight: bold;
-}
-
-.education_additional_information {
-  color: #999999;
-  font-size: 11px;
-}
-
-.employment_container { 
-  width: 350px;
-  height: 30px;
-  margin: 10px 0;
-}
-
-.employment_organization_name {
-  color: #444444;
-  font-weight: bold;
-}
-
-.employment_additional_information {
-  color: #999999;
-  font-size: 11px;
-}
-
 :root .ui-button {
   filter: none;
   /* IE10 */ 
@@ -374,10 +342,12 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
   box-shadow: 0 0 2px rgba(255, 255, 255, 0.8) inset;
   cursor: pointer;
   display: inline-block;
-  min-width: 67px;
+  min-width: 97px;
+  height: 28px;
   outline: 0 none;
   text-decoration: none !important;
   color: #ffffff;
   font-size: 15px;
-  padding: 4px 15px;
+  line-height: 26px;
+  text-align: center;
 }

@@ -6,17 +6,47 @@ class SettingsController < ApplicationController
   # 
   def update
     @user = User.find(current_user.id)
-    @update_attr_name = params[:user].keys.first
-    @update_attr_value = params[:user][@update_attr_name]
+    @target = params[:attr]
     
-    @successfully_updated = if @update_attr_name == 'password'
+    @successfully_updated = if @target == 'password'
       @user.update_with_password(params[:user])
     else
       @user.update_without_password(params[:user])
     end
     
+    unless @user.fb.blank?
+      @user.fb = url_with_protocol(@user.fb)
+    end
+    unless @user.tw.blank?
+      @user.tw = url_with_protocol(@user.tw)
+    end
+    unless @user.ln.blank?
+      @user.ln = url_with_protocol(@user.ln)
+    end
+    unless @user.blog.blank?
+      @user.blog = url_with_protocol(@user.blog)
+    end
+    
+    @successfully_updated = @user.save
+    
     sign_in @user, bypass: true if @successfully_updated
     
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  # Method: get_form
+  # --------------------------------------------
+  # 
+  def get_form
+    @target = params[:type]
+    @open = params[:open] == 'true'
+    if params.has_key?(:id)
+      @target = params[:type] + '_' + params[:id] 
+      @education = Education.find(params[:id]) if params[:type] == 'education'
+      @employment = Employment.find(params[:id]) if params[:type] == 'employment'
+    end
     respond_to do |format|
       format.js
     end
@@ -42,4 +72,8 @@ class SettingsController < ApplicationController
     end
   end
   
+  private
+    def url_with_protocol(url)
+      /^https?:\/\//.match(url) ? url : "http://#{url}"
+    end
 end

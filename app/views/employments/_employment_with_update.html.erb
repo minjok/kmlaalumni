@@ -1,15 +1,17 @@
-<div class='employment_main_container'>
-  <div id="<%= 'employment_' + employment.id.to_s %>" class='employment_container float-left'>
-    <%= render partial: 'employments/employment', locals:{employment: employment} %>
+<div id="<%= 'employment_' + employment.id.to_s + '_header' %>" class='update_employment_header'>
+  <div class='employment_organization_name float-left'>
+    <%= employment.organization.name %>
   </div>
-  <div class='employment_get_form_link_container float-right'>
+  <div class='float-right'>
     <% link = display ? '닫기' : '수정' %>
-    <%= link_to link, '#', id: 'update_employment_form_' + employment.id.to_s + '_link', class: 'get_form_link' %> 
+    <%= link_to link, get_form_url(type:'employment', id:employment.id), id: 'update_employment_form_' + employment.id.to_s + '_link', class: 'get_form_link' %> 
   </div>
 </div>
-<div class='update_employment_container'>
-  <div id="update_employment_form_<%= employment.id.to_s %>_error_message"></div>
-  <div id="update_employment_form_<%= employment.id.to_s %>_link_container" class="get_form_container" <% unless display %> style='display:none' <% end %>>
+<div id="<%= 'employment_' + employment.id.to_s + '_body' %>" class='update_employment_body'>
+  <% if display %> 
     <%= render partial: 'settings/update_employment_form', locals:{employment: employment} %>
-  </div>
+  <% else %>
+    <%= render partial: 'employments/additional_information', locals:{employment: employment} %>
+  <% end %>
 </div>
+

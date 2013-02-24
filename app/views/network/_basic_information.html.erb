@@ -1,0 +1,14 @@
+<div id='birthday_container' class='settings_short_elem'>
+  <div class='settings_subcategory_title float-left'>생일</div>
+  <div id='birthday' class='settings_short_elem_content float-left'><%= user.birthday.strftime("%Y년 %m월 %d일") %></div>
+</div>
+<div id='sex_container' class='settings_short_elem'>
+  <div class='settings_subcategory_title float-left'>성별</div>
+  <div id='sex' class='settings_short_elem_content float-left'>
+    <% if user.sex == 'm' %>
+      남자
+    <% else %>
+      여자
+    <% end %>
+  </div>
+</div>

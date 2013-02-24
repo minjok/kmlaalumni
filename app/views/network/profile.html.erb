@@ -1,42 +1,65 @@
-<div id='header'>
+<div id='profile_header'>
+  <div id='profile_pic' class='float-left'>
+    <%= image_tag asset_path('default_profile_pic.png') %>
+  </div>
+  <div id='profile_user' class='float-left'>
+    <div id='profile_name' class='header_title'>
+      <%= @user.wave %>기 <%= @user.name %>
+    </div>
+    <div id='status'></div>
+  </div>
   <% if @is_current_user %>
-    <div class='header_title float-left'><%= @user.wave %>기 <%= @user.name %></div>
-    <div class='profile_settings float-right'><%= link_to '프로필 설정', settings_url %></div>
-  <% else %>
-    <div class='header_title'><%= @user.wave %>기 <%= @user.name %></div>
+    <div id='profile_settings' class= 'float-right'><%= link_to '프로필 수정', settings_url %></div>
   <% end %>
 </div>
 
 
 <div id='settings_wrapper'>
 
-<div id='basic_information_container' class='settings_container'>
-  <div id='email_container' class='basic_information_section'>
-    <div class='basic_information_category_title float-left'>이메일</div>
-    <div id='email' class='basic_information_content float-left'><%= @user.email %></div>
-  </div>
-</div>
-
-<div id='educations_container' class='settings_container'>
-  <div class='settings_category_title'>학교</div>
-  <div id='educations'>
-  <% for education in @user.educations %>
-    <div id="<%= 'education_' + education.id.to_s + '_container' %>" class='education_container'>
-      <%= render partial:'educations/education', locals:{education: education} %>
+  <div id='settings_long_section' class='float-left'>
+    <div id='employments_container' class='settings_category_container'>
+      <div class='settings_category_title'>직장</div>
+      <div id='employments'>
+        <% for employment in @user.employments %>
+          <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
+            <%= render partial: 'employments/employment', locals:{employment: employment} %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-  </div>
-</div>
 
-<div id='employments_container' class='settings_container'>
-  <div class='settings_category_title'>직장</div>
-  <div id='employments'>
-  <% for employment in @user.employments %>
-    <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
-      <%= render partial: 'employments/employment', locals:{employment: employment} %>
+    <div id='educations_container' class='settings_category_container'>
+      <div class='settings_category_title'>학력</div>
+      <div id='educations'>
+        <% for education in @user.educations %>
+          <div id="<%= 'education_' + education.id.to_s + '_container' %>" class='education_container'>
+            <%= render partial:'educations/education', locals:{education: education} %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
   </div>
-</div>
+  
+  <div id='settings_short_section' class='float-right'>
+  
+    <div id='basic_information_container' class='settings_category_container'>
+      <div id='basic_information_header' class='settings_category_header'>
+        <div class='settings_category_title'>기본 정보</div>
+      </div>
+      <div id='basic_information_body' class='settings_category_body'>
+        <%= render partial: 'network/basic_information', locals:{user: @user} %>
+      </div>
+    </div>
+
+    <div id='contact_information_container' class='settings_category_container'>
+      <div id='contact_information_header' class='settings_category_header'>
+        <div class='settings_category_title'>연락처</div>
+      </div>
+      <div id='contact_information_body' class='settings_category_body'>
+        <%= render partial: 'network/contact_information', locals:{user: @user} %>
+      </div>
+    </div>
+    
+  </div>
 
 </div>

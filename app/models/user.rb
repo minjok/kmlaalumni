@@ -6,7 +6,13 @@ class User < ActiveRecord::Base
 					:wave,
 					:student_number,
 					:email, 
-					:password, 
+					:password,
+                    :birthday,
+                    :sex,
+                    :fb,
+                    :tw,
+                    :ln,
+                    :blog,
 					:password_confirmation,
                     :current_password,
 					:remember_me
@@ -45,6 +51,10 @@ class User < ActiveRecord::Base
 	
 	
 	# *** VALIDATIONS *** #
+    @url_format = /^((https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?)?$/
+    @email_format =  /\A[^@]+@[^@]+\z/
+    @sex_format = /m|f/
+    
 	validates_presence_of		:name,
 									message: "이름을 입력해주세요"
 	
@@ -63,7 +73,7 @@ class User < ActiveRecord::Base
     validates_uniqueness_of		:email,
 									message: "이미 사용 중인 이메일입니다"
 									
-	validates_format_of 		:email, with: /\A[^@]+@[^@]+\z/,
+	validates_format_of 		:email, with: @email_format,
 									message: "올바른 이메일 형식이 아닙니다"
 									
 	validates_presence_of   	:password, if: :password_required?,
@@ -74,6 +84,21 @@ class User < ActiveRecord::Base
 									
 	validates_length_of 		:password, within: 6..20, if: :password_required?,
 									message: "비밀번호는 6-20자내외로 입력해주세요"
+                                    
+    validates_format_of         :fb, with: @url_format, allow_blank:true,
+                                    message: "올바른 URL이 아닙니다"
+   
+    validates_format_of         :tw, with: @url_format, allow_blank:true,
+                                    message: "올바른 URL이 아닙니다"
+    
+    validates_format_of         :ln, with: @url_format, allow_blank:true,
+                                    message: "올바른 URL이 아닙니다"
+                                    
+    validates_format_of         :blog, with: @url_format, allow_blank:true,
+                                    message: "올바른 URL이 아닙니다"
+                                    
+    validates_format_of         :sex, with: @sex_format, allow_blank:true,
+                                    message: "올바른 성별이 아닙니다"
 		  
 		  
 	# *** METHODS *** #

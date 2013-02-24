@@ -1,0 +1,35 @@
+<div id='update_contact_information_error_message'></div>
+<div id="update_contact_information_form_container" class="get_form_container">
+  <%= form_for(current_user, url: update_settings_url(attr:'contact_information'), html: { method: :put, class: 'short_update_form' }, remote: true) do |f| %>
+    <div id='email_container'>
+      <div class='settings_subcategory_title'>이메일</div>
+      <div id='email' class='update_form_input'>
+        <%= f.text_field :email, class: 'short_update_form_text_field', autocomplete: :off, placeholder: '이메일을 적어주세요' %>
+      </div>
+    </div>
+    <div id='social_media_container'>
+      <div class='settings_subcategory_title'>소셜미디어</div>
+      <div id='social_media'>
+        <div class='update_form_title'>Facebook</div>
+        <div class='update_form_input'>
+          <%= f.text_field :fb, class: 'short_update_form_text_field', autocomplete: :off, placeholder: '예) https://www.facebook.com/kmla' %>
+        </div>
+        <div class='update_form_title'>Twitter</div>
+        <div class='update_form_input'>
+          <%= f.text_field :tw, class: 'short_update_form_text_field', autocomplete: :off, placeholder: '예) http://www.twitter.com/kmla' %>
+        </div>
+        <div class='update_form_title'>LinkedIn</div>
+        <div class='update_form_input'>
+          <%= f.text_field :ln, class: 'short_update_form_text_field', autocomplete: :off, placeholder: '예) http://www.linkedin.com/in/kmla' %>
+        </div>
+        <div class='update_form_title'>블로그/홈페이지</div>
+        <div class='update_form_input'>
+          <%= f.text_field :blog, class: 'short_update_form_text_field', autocomplete: :off, placeholder: '예) http://kmla.tumblr.com' %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= f.submit "저장하기", class: 'ui-button' %>
+    </div>
+  <% end %>
+</div>

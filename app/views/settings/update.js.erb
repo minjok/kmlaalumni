@@ -1,10 +1,7 @@
 <% if @successfully_updated %>
-  $('<%= '#update_' + @update_attr_name + '_error_message' %>').empty();
-  $('<%= '#update_' + @update_attr_name + '_form_link_container' %>').hide();
-  $('<%= '#update_' + @update_attr_name + '_form_link' %>').html('수정');
-  <% if @update_attr_name != 'password' %>
-    $('#<%= @update_attr_name %>').html('<%= escape_javascript(@update_attr_value) %>');
-  <% end %>
+  $('<%= '#update_' + @target + '_error_message' %>').empty();
+  $('<%= '#update_' + @target + '_form_link' %>').html('수정');
+  $('<%= '#' + @target + '_body' %>').html("<%= escape_javascript(render partial:'network/'+ @target, locals:{user: @user}) %>");
 <% else %>
-  $('<%= '#update_' + @update_attr_name + '_error_message' %>').html('<%= @user.errors.first[1] %>');
+  $('<%= '#update_' + @target + '_error_message' %>').html('<%= @user.errors.first[1] %>');
 <% end %>

@@ -1,14 +1,25 @@
-<%= form_for(employment, html: { method: :put}, remote: true)  do |f| %>
+<div id="update_employment_form_<%= employment.id.to_s %>_error_message"></div>
+<div id="update_employment_<%= employment.id.to_s %>_form_container" class="get_form_container">
+  <div class='update_form'>
+    <%= form_for(employment, html: { method: :put}, remote: true)  do |f| %>
 
-  <div>직위<br />
-  <%= f.text_field :position %></div>
+      <div class='update_form_title'>직위</div>
+      <div class='update_form_input'>
+        <%= f.text_field :position, placeholder: '동문님께서 직장 내 맡고 계신 보직을 적어주세요' %>
+      </div>
   
-  <div>기간<br />
-  <%= f.date_select :start_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
-  ~
-  <%= f.date_select :end_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
+      <div class='update_form_title'>기간</div>
+      <div class='update_form_input'>
+        <%= f.date_select :start_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
+        -
+        <%= f.date_select :end_year, start_year: (Time.now.year), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
+      </div>
 
-  <div><%= f.submit "저장" %></div>
-  <div><%= link_to '삭제하기', destroy_employment_url(employment), method: :delete, remote: true %></div>
+      <div>
+        <span><%= f.submit "저장하기", class:'ui-button' %></span>
+        <span class='update_delete'><%= link_to '삭제하기', destroy_employment_url(employment), method: :delete, remote: true %></span>
+      </div>
   
-<% end %>
+    <% end %>
+  </div>
+</div>

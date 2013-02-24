@@ -2,9 +2,47 @@
   height: 15px;
 }
 
-.settings_container {
-  width:400px;
+#profile_header {
+  margin: 30px 0 20px 0;
+  width: 700px;
+  height: 100px;
+}
+
+#profile_user {
+  margin-left: 20px;
+}
+
+#profile_name {
+  margin-top: 50px;
+}
+
+#status {
+  margin-top: 5px;
+  color: #888888;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#profile_settings {
+  font-size: 13px;
+  margin: 50px 100px 0 0;
+}
+
+#settings_long_section {
+  width:420px;
+}
+
+#settings_short_section {
+  width:280px;
+}
+
+.settings_category_container {
   margin: 20px 0 40px 0;
+}
+
+.settings_category_header {
+  height: 30px;
 }
 
 .settings_category_title { 
@@ -14,42 +52,95 @@
   margin-bottom: 10px;
 }
 
-.basic_information_section {
-  margin: 10px 0;
-  width: 400px;
-  height: 20px;
-}
-
-.basic_information_content {
-  color: #888888;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.basic_information_category_title {
-  color: #4889b3;
-  font-size: 14px;
+.settings_subcategory_title {
+  color: #6d91c3;
+  font-size: 11px;
   font-weight: bold;
   width: 60px;
 }
 
-#update_email_container {
-  margin: 10px 0 0 60px;
-  width: 400px;
+.settings_short_elem {
+  margin: 5px 0 5px 20px;
+  height: 30px;
 }
 
-.update_education_container {
+.settings_short_elem_content {
+  color: #333333;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.get_form_link {
+  margin-right: 60px;
+}
+
+.education_container { 
+  width: 420px;
+  min-height: 20px;
+  margin: 10px 0;
+}
+
+.update_education_header {
+  min-height: 16px;
+}
+
+.education_school_name {
+  color: #444444;
+  font-weight: bold;
+}
+
+.education_additional_information {
+  color: #999999;
+  font-size: 11px;
+}
+
+.employment_container { 
+  width: 420px;
+  min-height: 20px;
+  margin: 10px 0;
+}
+
+.update_employment_header {
+  min-height: 16px;
+}
+
+.employment_organization_name {
+  color: #444444;
+  font-weight: bold;
+}
+
+.employment_additional_information {
+  color: #999999;
+  font-size: 11px;
+}
+
+.update_form {
+  width: 300px;
+  margin-left: 20px;
+}
+
+.update_form_title { 
+  color: #555555;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.update_form_input {
+  margin-bottom: 15px;
+}
+
+.update_delete {
+  margin-left: 30px;
+}
+
+#password_container {
+  height: 20px;
   margin-bottom: 10px;
-  width: 400px;
 }
 
-.education_main_container {
-  width: 400px;
-  height: 50px;
-}
-
-.education_get_form_link_container {
-  margin-top: 5px;
+#update_password_container {
+  margin-bottom: 20px;
 }
 
 .add_form_message {
@@ -63,27 +154,17 @@
   overflow: auto;
 }
 
-.update_employment_container {
-  margin-bottom: 10px;
-  width: 400px;
+.short_get_form_container {
+  width:280px;
+  background-color: #f1f8fd;
 }
 
-.employment_main_container {
-  width: 400px;
-  height: 50px;
+.short_update_form {
+  width: 260px;
+  margin-left: 20px;
 }
 
-.employment_get_form_link_container {
-  margin-top: 5px;
+.short_update_form_text_field {
+  width: 235px;
 }
 
-
-#password_container {
-  width: 400px;
-  height: 20px;
-  margin-bottom: 10px;
-}
-
-#update_password_container {
-  margin-bottom: 20px;
-}

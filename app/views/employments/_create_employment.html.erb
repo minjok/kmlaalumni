@@ -1,0 +1,3 @@
+<div id="<%= 'employment_' + @employment.id.to_s + '_container' %>"  class="employment_container">
+  <%= render partial: 'employments/employment_with_update', locals:{employment: @employment, display: true} %>
+</div>

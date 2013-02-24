@@ -1,79 +1,109 @@
-<div id='header'>
-  <div class='header_title'><%= current_user.wave%>기 <%= current_user.name %></div>
+<div id='profile_header'>
+  <div id='profile_pic' class='float-left'>
+    <%= image_tag asset_path('default_profile_pic.png') %>
+  </div>
+  <div id='profile_user' class='float-left'>
+    <div id='profile_name' class='header_title'>
+      <%= current_user.wave%>기 <%= current_user.name %>
+    </div>
+    <div id='status'></div>
+  </div>
 </div>
 
 <div id='settings_wrapper'>
 
-<div id='basic_information_container' class='settings_container'>
-  <div id='email_container' class='basic_information_section'>
-    <div class='basic_information_category_title float-left'>이메일</div>
-    <div id='email' class='basic_information_content float-left'><%= current_user.email %></div>
-    <div class='float-right'><%= link_to "수정", '#', id: 'update_email_form_link', class: 'get_form_link' %></div>
-  </div>
-  <div id='update_email_container'>
-    <div id='update_email_error_message'></div>
-    <div id="update_email_form_link_container" class="get_form_container" style='display:none'>
-      <%= render partial: 'settings/update_email_form' %>
+  <div id='settings_long_section' class='float-left'>
+    <div id='employments_container' class='settings_category_container'>
+      <div class='settings_category_title'>직장</div>
+      <div id='employments'>
+        <% for employment in current_user.employments %>
+          <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
+            <%= render partial: 'employments/employment_with_update', locals:{employment: employment, display: false} %>
+          </div>
+        <% end %>
+      </div>
+      <div id='add_employment_form_container'>
+      </div>
+      <div>
+        <%= link_to '직장 추가하기', '#',  id:'add_employment_form_link'%>
+      </div>
     </div>
-  </div>
-</div>
 
-<div id='educations_container' class='settings_container'>
-  <div class='settings_category_title'>학교</div>
-  <div id='educations'>
-  <% for education in current_user.educations %>
-    <div id="<%= 'education_' + education.id.to_s + '_container' %>">
-      <%= render partial:'educations/education_with_update', locals:{education: education, display: false} %>
+    <div id='educations_container' class='settings_category_container'>
+      <div class='settings_category_title'>학력</div>
+      <div id='educations'>
+        <% for education in current_user.educations %>
+          <div id="<%= 'education_' + education.id.to_s + '_container' %>" class='education_container'>
+            <%= render partial:'educations/education_with_update', locals:{education: education, display: false} %>
+          </div>
+        <% end %>
+      </div>
+      <div id='add_education_form_container'>
+      </div>
+      <div>
+        <%= link_to '학교 추가하기', '#', id:'add_education_form_link' %>
+      </div>
     </div>
-  <% end %>
-  </div>
-  <div id='add_education_form_container'>
-  </div>
-  <div>
-    <%= link_to '학교 추가하기', '#', id:'add_education_form_link' %>
-  </div>
-</div>
-
-<div id='employments_container' class='settings_container'>
-  <div class='settings_category_title'>직장</div>
-  <div id='employments'>
-  <% for employment in current_user.employments %>
-    <div id="<%= 'employment_' + employment.id.to_s + '_container' %>">
-      <%= render partial: 'employments/employment_with_update', locals:{employment: employment, display: false} %>
+    
+    <div id='password_container' class='settings_category_container'>
+      <div class='settings_category_header'>
+        <div class='settings_category_title float-left'>비밀번호</div>
+        <div class='float-right'><%= link_to "수정", get_form_url(type:'password'), id: 'update_password_form_link', class: 'get_form_link' %></div>
+      </div>
+      <div id='password_body' class='settings_category_body'>
+      </div>
     </div>
-  <% end %>
+    
   </div>
-  <div id='add_employment_form_container'>
+  
+  <div id='settings_short_section' class='float-right'>
+  
+    <div id='basic_information_container' class='settings_category_container'>
+      <div id='basic_information_header' class='settings_category_header'>  
+        <div class='settings_category_title float-left'>기본 정보</div>
+        <div class='float-right'>
+          <%= link_to "수정", get_form_url(type:'basic_information'), id: 'update_basic_information_form_link', class: 'get_form_link' %>
+        </div>
+      </div>
+      <div id='basic_information_body' class='settings_category_body'>
+        <%= render partial: 'network/basic_information', locals:{user: current_user} %>
+      </div>
+    </div>
+
+    <div id='contact_information_container' class='settings_category_container'>
+      <div id='contact_information_header' class='settings_category_header'>  
+        <div class='settings_category_title float-left'>연락처</div>
+        <div class='float-right'>
+          <%= link_to "수정", get_form_url(type:'contact_information'), id: 'update_contact_information_form_link', class: 'get_form_link' %>
+        </div>
+      </div>
+      <div id='contact_information_body' 'class='settings_category_body'>
+        <%= render partial: 'network/contact_information', locals:{user: current_user} %>
+      </div>
+    </div>
+    
   </div>
-  <div>
-    <%= link_to '직장 추가하기', '#',  id:'add_employment_form_link'%>
-  </div>
+
 </div>
 
-<div id='password_container'>
-  <div class='settings_category_title float-left'>비밀번호</div>
-  <div class='float-right'><%= link_to "수정", '#', id: 'update_password_form_link', class: 'get_form_link' %></div>
-</div>
-<div id='update_password_container'>
-  <div id='update_password_error_message'></div>
-  <div id="update_password_form_link_container" class="get_form_container" style='display:none'>
-    <%= render partial: 'settings/update_password_form' %>
-  </div>
-</div>
-
-</div>
 <script text="javascript">
   $(document).ready( function() {
     
     $('body').on('click', '.get_form_link', function(event) {
       event.preventDefault();
+      openParam = '&open='
       if ($(this).html() == '수정') {
+        openParam += 'true'
         $(this).html('닫기');
       } else {
+        openParam += 'false'
         $(this).html('수정');
       }
-      container_id = '#' + $(this).attr('id') + '_container';
-      $(container_id).toggle();
+      $.ajax({
+        url: $(this).attr('href') + openParam,
+        type: 'get',
+        dataType: 'script'
+      });
     });
     
     $('body').on('click', '#add_education_form_link', function(event) {

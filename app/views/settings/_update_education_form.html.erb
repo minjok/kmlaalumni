@@ -1,17 +1,30 @@
-<%= form_for(education, html: { method: :put}, remote: true)  do |f| %>
+<div id="update_education_form_<%= education.id.to_s %>_error_message"></div>
+<div id="update_education_<%= education.id.to_s %>_form_container" class="get_form_container">
+  <div class='update_form'>
+    <%= form_for(education, html: { method: :put}, remote: true)  do |f| %>
 
-  <div>전공<br />
-  <%= f.text_field :major %></div>
+      <div class='update_form_title'>전공</div>
+      <div class='update_form_input'>
+        <%= f.text_field :major, placeholder: '동문님의 전공을 적어주세요' %>
+      </div>
   
-  <div>학위과정<br />
-  <%= f.text_field :degree %></div>
+      <div class='update_form_title'>학위과정</div>
+      <div class='update_form_input'>
+        <%= f.text_field :degree, placeholder: '동문님의 학위과정을 적어주세요' %>
+      </div>
   
-  <div>기간<br />
-  <%= f.date_select :entrance_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
-   ~
-  <%= f.date_select :graduation_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %></div>
+      <div class='update_form_title'>기간</div>
+      <div class='update_form_input'>
+        <%= f.date_select :entrance_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
+         -
+        <%= f.date_select :graduation_year, start_year: (Time.now.year + 5), end_year: 1996, discard_month: true, discard_day: true, include_blank: true, default: nil %>
+      </div>
 
-  <div><%= f.submit "저장하기" %></div>
-  <div><%= link_to '삭제하기', destroy_education_url(education), method: :delete, remote: true %></div>
+      <div>
+        <span><%= f.submit "저장하기", class:'ui-button' %></span>
+        <span class='update_delete'><%= link_to '삭제하기', destroy_education_url(education), method: :delete, remote: true %></span>
+      </div>
   
-<% end %>
+    <% end %>
+  </div>
+</div>

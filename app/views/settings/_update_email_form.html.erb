@@ -1,4 +1,0 @@
-<%= form_for(current_user, url: update_settings_url, html: { method: :put }, remote: true) do |f| %>
-  <%= f.text_field :email, autocomplete: :off %>
-  <%= f.submit "수정" %>
-<% end %>

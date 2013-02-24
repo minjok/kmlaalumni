@@ -1,0 +1,3 @@
+<div id="<%= 'education_' + @education.id.to_s + '_container' %>" class="education_container">
+  <%= render partial: 'educations/education_with_update', locals:{education: @education, display: true} %>
+</div>

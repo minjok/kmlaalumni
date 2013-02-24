@@ -1,0 +1,21 @@
+<% if @open %>
+  <% if @education %> 
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'settings/update_education_form', locals: {education: @education }) %>")
+  <% elsif @employment %>
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'settings/update_employment_form', locals: {employment: @employment}) %>")
+  <% else %>
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'settings/update_' + @target + '_form') %>")
+  <% end %>
+<% else %>
+  <% if @education %>
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'educations/additional_information', locals:{education: @education}) %>");
+  <% elsif @employment %>
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'employments/additional_information', locals:{employment: @employment}) %>");
+  <% elsif @target == 'basic_information' %>
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'network/basic_information', locals:{user: current_user}) %>");
+  <% elsif @target == 'contact_information' %>
+    $("<%= '#' + @target + '_body' %>").html("<%= escape_javascript(render partial: 'network/contact_information', locals:{user: current_user}) %>");
+  <% else %>
+    $("<%= '#' + @target + '_body' %>").empty();
+  <% end %>
+<% end %>

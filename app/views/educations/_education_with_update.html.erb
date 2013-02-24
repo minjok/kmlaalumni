@@ -1,15 +1,16 @@
-<div class='education_main_container'>
-  <div id="<%= 'education_' + education.id.to_s %>" class='education_container float-left'>
-    <%= render partial: 'educations/education', locals:{education: education} %>
+<div id="<%= 'education_' + education.id.to_s + '_header' %>" class='update_education_header'>
+  <div class='education_school_name float-left'>
+    <%= education.school.name %>
   </div>
-  <div class='education_get_form_link_container float-right'>
+  <div class='float-right'>
     <% link = display ? '닫기' : '수정' %>
-    <%= link_to link, '#', id: 'update_education_form_' + education.id.to_s + '_link', class: 'get_form_link' %> 
+    <%= link_to link, get_form_url(type:'education', id:education.id), id: 'update_education_form_' + education.id.to_s + '_link', class: 'get_form_link' %> 
   </div>
 </div>
-<div class='update_education_container'>
-  <div id="update_education_form_<%= education.id.to_s %>_error_message"></div>
-  <div id="update_education_form_<%= education.id.to_s %>_link_container" class="get_form_container" <% unless display %> style='display:none' <% end %>>
+<div id="<%= 'education_' + education.id.to_s + '_body' %>" class='update_education_body'>
+  <% if display %> 
     <%= render partial: 'settings/update_education_form', locals:{education: education} %>
-  </div>
+  <% else %>
+    <%= render partial: 'educations/additional_information', locals:{education: education} %>
+  <% end %>
 </div>

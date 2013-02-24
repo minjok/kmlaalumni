@@ -1,0 +1,18 @@
+<div class='education_additional_information'>
+  <% if education.degree %>
+    <span><%= education.degree %></span>
+  <% end %>
+  <% if education.major %>
+    <span><%= education.major %></span>
+  <% end %>
+  <% if education.entrance_year %>
+    <span>
+      <%= education.entrance_year.year %> -
+      <% if education.graduation_year %>
+        <%= education.graduation_year.year %>
+      <% else %>
+         현재
+      <% end %>
+    </span>
+  <% end %>
+</div>

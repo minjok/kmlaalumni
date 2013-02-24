@@ -1,0 +1,29 @@
+<div id='email_container' class='settings_short_elem'>
+  <div class='settings_subcategory_title float-left'>이메일</div>
+  <div id='email' class='settings_short_elem_content float-left'><%= user.email %></div>
+</div>
+<div id='social_media_container' class='settings_short_elem'>
+  <div class='settings_subcategory_title float-left'>소셜미디어</div>
+  <div id='social_media' class='settings_short_elem_content float-left'>
+    <% if user.fb.blank? %>
+      <span><%= image_tag asset_path('fb_none.png') %></span>
+    <% else %>
+      <span><%= link_to (image_tag asset_path('fb.png')), user.fb, target:'_blank' %></span>
+    <% end %>
+    <% if user.tw.blank? %>
+      <span><%= image_tag asset_path('tw_none.png') %></span>
+    <% else %>
+      <span><%= link_to (image_tag asset_path('tw.png')), user.tw, target:'_blank' %></span>
+    <% end %>
+    <% if user.ln.blank? %>
+      <span><%= image_tag asset_path('ln_none.png') %></span>
+    <% else %>
+      <span><%= link_to (image_tag asset_path('ln.png')), user.ln, target:'_blank' %></span>
+    <% end %>
+    <% if user.blog.blank? %>
+      <span><%= image_tag asset_path('blog_none.png') %></span>
+    <% else %>
+      <span><%= link_to (image_tag asset_path('blog.png')), user.blog, target:'_blank' %></span>
+    <% end %>
+  </div>
+</div>
