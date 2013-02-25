@@ -39,6 +39,7 @@
 
 .settings_category_container {
   margin: 20px 0 40px 0;
+  min-height: 105px;
 }
 
 .settings_category_header {
