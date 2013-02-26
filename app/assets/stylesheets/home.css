@@ -36,3 +36,10 @@
   padding: 3px;
   margin: 3px 0;
 }
+
+input[type=password],[type=text] {
+  width: 265px;
+  height: 25px;
+  padding: 3px;
+  margin: 3px 0;
+}
