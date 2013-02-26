@@ -15,8 +15,8 @@
             <%= form_for(resource, url: session_path(resource_name), html: {id:'signin_form'}) do |f| %>
 				<div class='form_fields float-left'>
 				  <ul>
-					<li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
-					<li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+					<li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off, class:'signin_textfield' %></li>
+					<li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off, class:'signin_textfield' %></li>
                     <% if devise_mapping.rememberable? -%>
                       <li><%= f.check_box :remember_me %> 로그인 상태 유지</li>
 				    <% end -%>
@@ -33,14 +33,13 @@
 				<%= image_tag(asset_path 'welcome_signup_message.png') %>
 			</div>
 			
-            <div id="signup_message" class='message'>동문 인증을 위해 이름과 학번을 입력해주세요</div>
-            
+            <div id="signup_message" class='message'>동문 인증을 위해 이름과 학번을 입력해주세요</div>        
             <div id="verify_alumni_form_container">
               <%= form_tag verify_alumni_url, id:'verify_alumni_form', method: 'get', remote:true do %>
                 <div class='form_fields float-left'>
                   <ul>
-                    <li><%= text_field_tag :name, nil, placeholder: "이름", autocomplete: :off %></li>
-                    <li><%= text_field_tag :student_number, nil, placeholder: "학번", autocomplete: :off %></li>
+                    <li><%= text_field_tag :name, nil, placeholder: "이름", autocomplete: :off, class:'signin_textfield' %></li>
+                    <li><%= text_field_tag :student_number, nil, placeholder: "학번", autocomplete: :off, class:'signin_textfield' %></li>
                   </ul>
                 </div>
                 <div class='form_submit float-right'><%= image_submit_tag(asset_path 'signup_submit_button.png') %></div>
@@ -50,12 +49,12 @@
 			<%= form_for(resource, url: registration_path(resource_name), html: {id:'signup_form'} ) do |f| %>
               <div class='form_fields float-left'>
                 <ul id="signup_form_verify_alumni_section", style="display:none;">
-                  <li id="signup_form_verify_alumni_name"><%= f.text_field :name %></li>
-                  <li id="signup_form_verify_alumni_student_number"><%= f.text_field :student_number %></li>
+                  <li id="signup_form_verify_alumni_name"><%= f.text_field :name, class:'signin_textfield' %></li>
+                  <li id="signup_form_verify_alumni_student_number"><%= f.text_field :student_number, class:'signin_textfield' %></li>
                 </ul>
                 <ul id="signup_form_new_user_info_section", style="display:none;">
-                  <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
-                  <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+                  <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off, class:'signin_textfield' %></li>
+                  <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off, class:'signin_textfield' %></li>
                 </ul>
               </div>
               <div class='form_submit float-right' id="signup_form_submit", style="display:none;"><%= image_submit_tag(asset_path 'signup_submit_button.png') %></div>
@@ -70,7 +69,7 @@
       $.ajax({
         url: $(this).attr('action') + "?" + $(this).serialize(),
         type: 'get',
-        dataType: 'script',
+        dataType: 'script'
       });
       return false;
     });

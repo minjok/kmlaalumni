@@ -12,12 +12,12 @@
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <div class='form_fields float-left'>
           <ul>
-            <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off %></li>
-            <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off %></li>
+            <li><%= f.text_field :email, placeholder: "이메일", autocomplete: :off, class:'signin_textfield' %></li>
+            <li><%= f.password_field :password, placeholder: "비밀번호", autocomplete: :off, class:'signin_textfield' %></li>
             <li>
               <% if devise_mapping.rememberable? -%>
                 <%= f.check_box :remember_me %> 로그인 상태 유지 /
-                <span>
+                <span>	
                   <a href='<%= signup_url %>'>동문회에 가입하기</a>
                 </span>
               <% end -%>

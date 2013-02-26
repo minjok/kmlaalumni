@@ -30,7 +30,7 @@
   font-size:11px;
 }
 
-input[type=password],[type=text] {
+.signin_textfield{
   width: 265px;
   height: 25px;
   padding: 3px;
