@@ -15,11 +15,14 @@ class User < ActiveRecord::Base
                     :blog,
 					:password_confirmation,
                     :current_password,
-					:remember_me
+					:remember_me,
+					:tag_list
                     
     attr_accessor   :current_password
     
-
+	# *** ACT_AS_TAGGABLE ***#
+	acts_as_taggable
+	
 	# *** DEVISE *** #
 	devise	:database_authenticatable,
 			:registerable,

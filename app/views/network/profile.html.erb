@@ -59,7 +59,11 @@
         <%= render partial: 'network/contact_information', locals:{user: @user} %>
       </div>
     </div>
-    
+	
+    <div id='tag_information_container' class='settings_category_container'>
+		<div class='settings_category_title float-left'>태그</div>
+		<%= render partial: 'network/tag_information', locals:{user: @user} %>
+	</div>
   </div>
 
 </div>

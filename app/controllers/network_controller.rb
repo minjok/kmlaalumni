@@ -70,5 +70,12 @@ class NetworkController < ApplicationController
       format.js
     end
   end
-  
+  # Method: get_add_tag_form
+  # --------------------------------------------
+  # 
+  def get_add_tag_form
+    respond_to do |format|
+      format.html { render partial: 'network/add_tag_form' }
+    end
+  end
 end
