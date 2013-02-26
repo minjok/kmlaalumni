@@ -21,3 +21,4 @@ pickle-email-*.html
 /config/database.yml
 /db/seeds.rb
 /config/env.yml
+/public/assets
