@@ -113,14 +113,16 @@ class PostingsController < ApplicationController
     # Retrieve postings that match the given conditions
     @postings = getPostings(params)
     @is_newsfeed = params[:platform] == 'newsfeed'
-    @writeability = params.has_key?(:writeability) && params[:writeability] == 'false'?  false : true
+    @writeability = true
+    if params.has_key?(:group_id) && !current_user.is_member_of?(params[:group_id])
+      @writeability = false
+    end
     
     respond_to do |format|
       format.js
     end
     
   end
-  
   
   # Method: get_content
   # --------------------------------------------

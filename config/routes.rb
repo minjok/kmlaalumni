@@ -41,6 +41,8 @@ Kmlaalumni::Application.routes.draw do
   
   resources :settings
   
+  resources :careers
+  
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
   

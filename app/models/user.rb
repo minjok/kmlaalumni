@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
 	
     has_many :organizations, through: :employments
 	has_many :employments, dependent: :destroy
+    has_many :careernotes, through: :employments, dependent: :destroy
     
 	has_many :postings, dependent: :destroy
     has_many :comments, dependent: :destroy

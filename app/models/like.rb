@@ -4,6 +4,7 @@ class Like < ActiveRecord::Base
   belongs_to :user
   belongs_to :posting
   belongs_to :comment
+  belongs_to :careernote
     
   # *** METHODS *** #
   def self.exists_for_posting?(user, posting)

@@ -1,7 +1,7 @@
 <% if @posting.errors.blank? %>
   $('#postings').html('');
   resetParams();
-  feedPostings();
+  feed();
   $('#posting_error_message').empty();
   $('#posting_content').val('');
 <% else %>

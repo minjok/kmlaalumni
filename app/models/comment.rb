@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   #	*** ASSOCIATIONS *** #
   belongs_to :user
   belongs_to :posting
+  belongs_to :careernote
   
   has_many :likes, dependent: :destroy
   

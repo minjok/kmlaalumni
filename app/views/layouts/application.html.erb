@@ -100,6 +100,13 @@
       $(this).autosize();  
     });
     
+    $('body').on('keydown', '.posting_comment_textarea', function (e) {
+      if (e.which == 13) {
+        e.preventDefault();
+        $(this).closest('form').submit();
+      }
+    });
+    
     $('body').on('click', '.get_posting_likes_link', function(event) {
       event.preventDefault();
       $('#dialog_title').html('이 포스팅을 좋아하는 동문들');
@@ -127,17 +134,16 @@
         }
       });
     });
-  
     
+    $('body').on('click', '#dialog_close_link', function(event){
+      event.preventDefault();
+      $('#dialog_title').html('');
+      $('#dialog_content').html('Loading...');
+      $('#dialog_box').hide();
+    });
+      
     $(document).ready( function() {
       
-      $('#dialog_close_link').click( function(event){
-        event.preventDefault();
-        $('#dialog_title').html('');
-        $('#dialog_content').html('Loading...');
-        $('#dialog_box').hide();
-      });
-
       $('input, textarea').placeholder();
       
     });

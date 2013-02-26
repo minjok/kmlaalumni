@@ -8,5 +8,12 @@
   <div id="postings">
   </div>
 </div>
+<script type='text/javascript'>
+  var page = 1;
+  var numPages = 0;
+  var loading = true;
+  var content = 'postings'
+  var params = <%= ("'platform=announcement'").html_safe %>
 
-<%= render partial: 'postings/posting_script', locals: { serialized_paginate_params: ("'platform=announcement'").html_safe } %>
+  $(document).ready( feed() );
+</script>
