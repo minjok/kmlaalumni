@@ -3,6 +3,7 @@ class Organization < ActiveRecord::Base
   
   # *** ASSOCIATIONS *** #
   has_many :users, through: :employments
+  has_many :careernotes, through: :employments
   has_many :employments, dependent: :destroy
 
   # *** VALIDATIONS *** #

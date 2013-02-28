@@ -7,12 +7,8 @@ class Like < ActiveRecord::Base
   belongs_to :careernote
     
   # *** METHODS *** #
-  def self.exists_for_posting?(user, posting)
-    not where("user_id = ? AND posting_id = ?", user, posting).first.blank?
-  end
-  
-  def self.exists_for_comment?(user, comment)
-    not where("user_id = ? AND comment_id = ?", user, comment).first.blank?
+  def self.exists_for_content?(user, content, type)
+    not where("user_id = ? AND #{type}_id = ?", user, content).first.blank?
   end
   
 end

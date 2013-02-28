@@ -1,6 +1,6 @@
 function getNumPages() {
   $.ajax({
-    url: '/' + content + '/num_pages?' + params,
+    url: '/' + content + '_num_pages?' + params,
     type: 'get',
     dataType: 'json',
     success: function(data) {
@@ -11,7 +11,7 @@ function getNumPages() {
     
 function appendNextPage() {
   $.ajax({
-    url: '/' + content + '/feed?' + params + '&page=' + page,
+    url: '/' + content + '_feed?' + params + '&page=' + page,
     type: 'get',
     dataType: 'script',
     success: function() {

@@ -22,11 +22,6 @@ Kmlaalumni::Application.routes.draw do
     
   resources :postings do
     resources :comments
-    
-    collection do
-      get :feed
-      get :num_pages
-    end
   end
   
   resources :comments do
@@ -40,7 +35,7 @@ Kmlaalumni::Application.routes.draw do
   resources :employments
   
   resources :settings
-  resources :careers
+    
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
   
@@ -53,11 +48,14 @@ Kmlaalumni::Application.routes.draw do
   
   match '/destroy_group/:id',   to: 'groups#destroy',              as: 'destroy_group'
   
-  match 'get_posting_content/:id', to: 'postings#get_content', as: 'get_posting_content'
-  match 'get_posting_likes/:id', to: 'postings#get_likes', as: 'get_posting_likes'
+  match '/posting_num_pages', to: 'postings#num_pages', as: 'posting_num_pages'
+  match '/posting_feed', to: 'postings#feed', as: 'posting_feed'
   
-  match 'get_comment_content/:id', to: 'comments#get_content', as: 'get_comment_content'
-  match 'get_comment_likes/:id', to: 'comments#get_likes', as: 'get_comment_likes'
+  match '/get_posting_content/:id', to: 'postings#get_content', as: 'get_posting_content'
+  match '/get_posting_likes/:id', to: 'postings#get_likes', as: 'get_posting_likes'
+  
+  match '/get_comment_content/:id', to: 'comments#get_content', as: 'get_comment_content'
+  match '/get_comment_likes/:id', to: 'comments#get_likes', as: 'get_comment_likes'
   
   match '/like_posting/:id',            to: 'postings#like',                  as: 'like_posting'
   match '/dislike_posting/:id',         to: 'postings#dislike',               as: 'dislike_posting'
@@ -81,7 +79,17 @@ Kmlaalumni::Application.routes.draw do
   match '/search_alumni',       to: 'network#search_alumni',             as: 'search_alumni'
   match '/search_school/:id',   to: 'network#search_school',             as: 'search_school'
   match '/search_organization/:id',   to: 'network#search_organization',             as: 'search_organization'
-  match '/get_everyone',        to: 'network#get_everyone',       as: 'get_everyone'
+  
+  match '/careers', to: 'careers#index', as: 'careers'
+  match '/careernotes', to: 'careers#notes', as: 'careernotes'
+  match '/alumni_careernotes/:id', to: 'careers#show_notes', as: 'alumni_careernotes'
+  match '/write_careernotes', to: 'careers#write_notes', as: 'write_careernotes'
+  match '/create_careernote/:id', to: 'careers#create_note', as: 'create_careernote'
+  match '/update_careernote/:id', to: 'careers#update_note', as: 'update_careernote'
+  match '/destroy_careernote/:id', to: 'careers#destroy_note', as: 'destroy_careernote'
+  match '/get_careernote_form/:id', to: 'careers#get_note_form', as: 'get_careernote_form'
+  match '/careernote_num_pages', to: 'careers#notes_num_pages', as: 'careernote_num_pages'
+  match '/careernote_feed', to: 'careers#notes_feed', as: 'careernote_feed'
   
   
   

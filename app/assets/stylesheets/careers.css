@@ -1,3 +1,31 @@
-#careernotes_container {
-  width: 500px;
+.careernotes_container {
+  width: 650px;
+}
+
+.careernote_container {
+  width: 600px;
+  min-height: 100px;
+  margin-bottom: 20px;
+}
+
+.careernote_employment_info {
+  margin-bottom: 10px;
+}
+
+.careernote_organization_name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #555555;
+}
+
+.careernote_form_text_area { 
+  width: 600px;
+  height: 80px;
+  margin-top: 5px;
+}
+
+.careernote_form_submit {
+  width: 600px;
+  height: 30px;
+  margin-top: 10px;
 }

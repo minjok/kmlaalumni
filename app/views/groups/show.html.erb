@@ -24,7 +24,7 @@
   var page = 1;
   var numPages = 0;
   var loading = true;
-  var content = 'postings'
+  var content = 'posting'
   var params = <%= ("'platform=group&group_id=" + @group.id.to_s() + "'").html_safe %>
 
   $(document).ready( feed() );

@@ -142,7 +142,7 @@ class CommentsController < ApplicationController
       unless current_user.wrote?(@comment)
         flash[:warning] = '댓글을 올린 사람만 삭제할 수 있습니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
       end
@@ -161,7 +161,7 @@ class CommentsController < ApplicationController
       unless !@like.blank?
         flash[:warning] = '이미 댓글을 좋아하지 않습니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
       end
@@ -178,7 +178,7 @@ class CommentsController < ApplicationController
       if current_user.likes?(@comment)
         flash[:warning] = '이미 댓글을 좋아합니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
       end

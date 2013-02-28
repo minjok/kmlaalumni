@@ -98,7 +98,7 @@ class GroupsController < ApplicationController
       unless current_user.is_admin_of?(@group)
         flash[:warning] = '그룹의 관리자만 접근할 수 있습니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to group_url(@group) }
         end
       end

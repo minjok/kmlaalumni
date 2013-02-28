@@ -40,14 +40,14 @@ class User < ActiveRecord::Base
 		  
 	# *** ASSOCIATIONS *** # 
 	has_many :groups, through: :memberships
-	has_many :memberships, dependent: :destroy
+	has_many :memberships, dependent: :destroy, :order => 'created_at DESC'
 	
-	has_many :schools, through: :educations
-	has_many :educations, dependent: :destroy
+	has_many :schools, through: :educations, :order => 'created_at DESC'
+	has_many :educations, dependent: :destroy, :order => 'created_at DESC'
 	
-    has_many :organizations, through: :employments
-	has_many :employments, dependent: :destroy
-    has_many :careernotes, through: :employments, dependent: :destroy
+    has_many :organizations, through: :employments, :order => 'created_at DESC'
+	has_many :employments, dependent: :destroy, :order => 'created_at DESC'
+    has_many :careernotes, through: :employments, dependent: :destroy, :order => 'created_at DESC'
     
 	has_many :postings, dependent: :destroy
     has_many :comments, dependent: :destroy
@@ -143,13 +143,21 @@ class User < ActiveRecord::Base
     end
     
     def likes?(content)
+      type=''
       if content.kind_of? Posting
-        Like.exists_for_posting?(self, content)
+        type = 'posting' 
       elsif content.kind_of? Comment
-        Like.exists_for_comment?(self, content)
+        type = 'comment'
+      elsif content.kind_of? Careernote
+        type = 'careernote'
       else
         nil
-      end
+      end 
+      Like.exists_for_content?(self, content, type)
+    end
+    
+    def has_careernotes?
+      not self.careernotes.first.blank?
     end
     
 	protected

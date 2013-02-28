@@ -1,0 +1,4 @@
+<% employment_id = 'employment_' + @employment.id.to_s() %>
+$("<%= '#' + employment_id + '_careernote_form_container' %>").html("<%= escape_javascript(render partial: 'careers/careernote_form', locals: {careernote: @careernote, employment: @employment, type: 'update'}) %>");
+$("<%= '#' + employment_id + '_careernote_body' %>").empty();
+$("<%= '#' + employment_id + '_careernote_update_link' %>").empty();

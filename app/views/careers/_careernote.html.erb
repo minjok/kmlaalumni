@@ -1,0 +1,10 @@
+<% careernote_id = 'employment_' + careernote.employment.id.to_s + '_careernote' %>
+
+<div id="<%= careernote_id + '_container' %>" class='careernote_container'>
+  <div id="<%= careernote_id + '_header' %>" class='careernote_header'>
+    <%= render partial: 'careers/careernote_header', locals: {employment: careernote.employment} %>
+  </div>
+  <div id="<%= careernote_id + '_body' %>" class='careernote_body'>
+    <%= careernote.content %>
+  </div>
+</div>

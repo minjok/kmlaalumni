@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     
     if @group.blank?
       respond_to do |format|
-        format.js { render 'redirect' }
+        format.js { render 'layouts/redirect' }
         format.html { render file: 'public/404', format: :html, status: 404 }
       end
       return false
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
       
     if @posting.blank?
       respond_to do |format|
-        format.js { render 'redirect' }
+        format.js { render 'layouts/redirect' }
         format.html { render file: 'public/404', format: :html, status: 404 }
       end
       return false
@@ -77,7 +77,32 @@ class ApplicationController < ActionController::Base
       
     if @comment.blank?
       respond_to do |format|
-        format.js { render 'redirect' }
+        format.js { render 'layouts/redirect' }
+        format.html { render file: 'public/404', format: :html, status: 404 }
+      end
+      return false
+    end
+      
+    return true
+
+  end
+  
+  # Method: load_employment
+  # --------------------------------------------
+  # Load employment with given id.
+  def load_employment
+    
+    @employment = nil
+    
+    if params.has_key?(:id)
+      @employment = Employment.find_by_id(params[:id])
+    elsif params.has_key?(:employment_id)
+      @employment = Employment.find_by_id(params[:employment_id])
+    end
+      
+    if @employment.blank?
+      respond_to do |format|
+        format.js { render 'layouts/redirect' }
         format.html { render file: 'public/404', format: :html, status: 404 }
       end
       return false
@@ -103,7 +128,7 @@ class ApplicationController < ActionController::Base
         unless current_user.is_member_of?(@group)
           flash[:warning] = '그룹의 멤버만 포스팅을 올릴 수 있습니다'
           respond_to do |format|
-            format.js { render 'redirect' }
+            format.js { render 'layouts/redirect' }
             format.html { redirect_to group_url(@group) }
           end
         end

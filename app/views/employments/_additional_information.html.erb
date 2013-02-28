@@ -1,14 +1,14 @@
 <div class='employment_additional_information'>
-  <% if employment.position %>
+  <% unless employment.position.blank? %>
     <span><%= employment.position %></span>
   <% end %>
-  <% if employment.start_year %>
+  <% unless employment.start_year.blank? %>
     <span>
       <%= employment.start_year.year %> -
-      <% if employment.end_year %>
-        <%= employment.end_year.year %>
-      <% else %>
+      <% if employment.end_year.blank? %>
          현재
+      <% else %>
+        <%= employment.end_year.year %>
       <% end %>
     </span>
   <% end %>

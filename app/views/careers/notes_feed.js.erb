@@ -1,0 +1,3 @@
+<% if !@careernotes.blank? %>
+  $('#careernotes').append("<% for careernote in @careernotes %><%= escape_javascript( render partial:'careers/careernote', locals: {careernote: careernote} ) %><% end %>");
+<% end %>

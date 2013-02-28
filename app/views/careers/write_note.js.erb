@@ -1,0 +1,9 @@
+<% careernote_id = 'employment_' + @employment.id.to_s + '_careernote' %>
+<% if @careernote.errors.blank? %>
+  $("<%= '#' + careernote_id + '_error_message' %>").empty();
+  $("<%= '#' + careernote_id + '_form_container' %>").empty();
+  $("<%= '#' + careernote_id + '_body' %>").html("<%= @careernote.content %>");
+  $("<%= '#' + careernote_id + '_update_link' %>").html("<%= escape_javascript(link_to '수정하기', get_careernote_form_url(@employment), remote: true) %>");
+<% else %>
+  $("<%= '#' + careernote_id + '_error_message' %>").html("<%= @careernote.errors.first[1] %>");
+<% end %>

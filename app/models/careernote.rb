@@ -1,11 +1,17 @@
+# encoding: utf-8
 class Careernote < ActiveRecord::Base
   
   # *** ASSOCIATIONS *** #
   belongs_to :employment
   
   has_one :user, through: :employment
+  has_one :organization, through: :employment
   
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
+   
+  # *** VALIDATIONS *** #
+  validates_presence_of :content,
+                          message: '빈 소개글을 올릴 수 없습니다'
+                          
 end

@@ -26,6 +26,11 @@
           </div>
         <% end %>
       </div>
+      <% if @has_careernotes %>
+        <div id='careernotes_link'>
+          <%= link_to '직장소개 보기', alumni_careernotes_url(@user) %>
+        </div>
+      <% end %>
     </div>
 
     <div id='educations_container' class='settings_category_container'>

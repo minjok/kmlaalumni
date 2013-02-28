@@ -1,0 +1,32 @@
+<div class='careernotes_container'>
+  <% for employment in @employments %>
+    <% careernote_id = 'employment_' + employment.id.to_s + '_careernote' %> 
+    <% careernote = employment.careernote %>
+    
+    <div id="<%= careernote_id + '_container' %>" class='careernote_container'>
+    
+      <div id="<%= careernote_id + '_header' %>" class='careernote_header'>
+        <%= render partial: 'careers/careernote_header', locals: {employment: employment} %>
+      </div>
+      
+      <div id="<%= careernote_id + '_form_container' %>" class='careernote_form_container'>
+        <% if careernote.blank? %>
+          <%= render partial: 'careers/careernote_form', locals: {careernote: Careernote.new, employment: employment, type: 'create'} %>
+        <% end %>
+      </div>
+      
+      <div id="<%= careernote_id + '_body' %>" class='careernote_body'>
+        <% if !careernote.blank? %>
+          <%= careernote.content %>
+        <% end %>
+      </div>
+      <div id="<%= careernote_id + '_update_link' %>" class='careernote_update_link'>
+        <% if !careernote.blank? %>
+          <%= link_to '수정', get_careernote_form_url(employment), remote: :true %> ·
+          <%= link_to '삭제', destroy_careernote_url(employment), method: :delete, remote: :true %>
+        <% end %>
+      </div>
+      
+    </div>
+  <% end %>
+</div>

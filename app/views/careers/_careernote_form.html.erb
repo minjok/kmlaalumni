@@ -1,0 +1,17 @@
+<% employment_id = 'employment_' + employment.id.to_s() %>
+<% if type == 'create' %>
+  <% url = create_careernote_url(employment) %>
+  <% submit_text = '직업 소개하기' %>
+<% else %>
+  <% url = update_careernote_url(employment) %>
+  <% submit_text = '수정하기' %>
+<% end %>
+<div id="<%= employment_id + '_careernote_error_message' %>" class='warning'></div>
+<%= form_for careernote, url: url, remote: true do |f| %>
+  <div>
+    <%= f.text_area :content, class: 'careernote_form_text_area', placeholder: employment.organization.name + '에서 어떤 일을 하셨나요?', autocomplete: :off %>
+  </div>
+  <div class='careernote_form_submit'>
+    <%= f.submit submit_text, class: 'ui-button float-right' %>
+  </div>
+<% end %>

@@ -93,10 +93,10 @@ class PostingsController < ApplicationController
   def num_pages
     
     # Retrieve postings that match the given conditions
-    @postings = getPostings(params)
+    postings = getPostings(params)
     
     # Escapes the case when @postings is nil
-    num_pages = @postings.blank? ? 0 : @postings.num_pages
+    num_pages = postings.blank? ? 0 : postings.num_pages
     
     respond_to do |format|
       format.json { render json: num_pages }
@@ -190,7 +190,7 @@ class PostingsController < ApplicationController
       unless current_user.wrote?(@posting)
         flash[:warning] = '포스팅을 올린 사람만 삭제할 수 있습니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
       end
@@ -208,7 +208,7 @@ class PostingsController < ApplicationController
       unless !@like.blank?
         flash[:warning] = '이미 포스팅을 좋아하지 않습니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
       end
@@ -225,7 +225,7 @@ class PostingsController < ApplicationController
       if current_user.likes?(@posting)
         flash[:warning] = '이미 포스팅을 좋아합니다'
         respond_to do |format|
-          format.js { render 'redirect' }
+          format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
       end

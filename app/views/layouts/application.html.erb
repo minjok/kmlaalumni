@@ -25,11 +25,18 @@
           <%= link_to '뉴스피드', root_url, class:'sidebar_link' %>
         </div>
         <div class='sidebar_link_container float-right'>
-          <%= link_to '내 프로필', profile_url(current_user), class: 'sidebar_link' %>
+          <%= link_to '프로필', profile_url(current_user), class: 'sidebar_link' %>
         </div>
         
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
-       
+        
+        <div class='sidebar_title'>KMLA Connect</div>
+        <div class='sidebar_link_container float-right'>
+          <%= link_to 'Careers', careers_url, class:'sidebar_link' %>
+        </div>
+        
+        <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
+        
         <div class='sidebar_title'>동문회</div>
         <div class='sidebar_link_container float-right'>
           <%= link_to '공지사항', announcement_url, class:'sidebar_link' %>
@@ -40,7 +47,6 @@
         <div class='sidebar_link_container float-right'>
           <%= link_to '정관', regulations_url, class:'sidebar_link' %>
         </div>
-        
         
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
         

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226103841) do
+ActiveRecord::Schema.define(:version => 20130227111935) do
 
   create_table "alumni_verifications", :force => true do |t|
     t.string  "name",           :null => false
@@ -20,16 +20,19 @@ ActiveRecord::Schema.define(:version => 20130226103841) do
   end
 
   create_table "careernotes", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "content",       :null => false
+    t.integer  "employment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "comments", :force => true do |t|
-    t.text     "content",    :null => false
+    t.text     "content",       :null => false
     t.integer  "user_id"
     t.integer  "posting_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "careernote_id"
   end
 
   create_table "educations", :force => true do |t|
@@ -64,8 +67,9 @@ ActiveRecord::Schema.define(:version => 20130226103841) do
     t.integer  "user_id"
     t.integer  "posting_id"
     t.integer  "comment_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "careernote_id"
   end
 
   create_table "memberships", :force => true do |t|

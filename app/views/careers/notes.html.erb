@@ -1,0 +1,14 @@
+<div>
+  <%= link_to '내 직업소개 쓰기/수정', write_careernotes_url %>
+</div>
+<div id='careernotes'>
+</div>
+<script type='text/javascript'>
+  var page = 1;
+  var numPages = 0;
+  var loading = true;
+  var content = 'careernote'
+  var params = ''
+
+  $(document).ready( feed() );
+</script>
