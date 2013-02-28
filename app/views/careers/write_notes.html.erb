@@ -11,7 +11,7 @@
       
       <div id="<%= careernote_id + '_form_container' %>" class='careernote_form_container'>
         <% if careernote.blank? %>
-          <%= render partial: 'careers/careernote_form', locals: {careernote: Careernote.new, employment: employment, type: 'create'} %>
+          <%= render partial: 'careers/careernote_form', locals: { employment: employment, type: 'create'} %>
         <% end %>
       </div>
       
