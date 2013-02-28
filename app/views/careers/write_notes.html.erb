@@ -22,8 +22,7 @@
       </div>
       <div id="<%= careernote_id + '_update_link' %>" class='careernote_update_link'>
         <% if !careernote.blank? %>
-          <%= link_to '수정', get_careernote_form_url(employment), remote: :true %> ·
-          <%= link_to '삭제', destroy_careernote_url(employment), method: :delete, remote: :true %>
+          <%= render partial: 'careers/careernote_update_link', locals: {employment: employment} %>
         <% end %>
       </div>
       
