@@ -1,0 +1,1 @@
+$("<%= '#' + @commentable.class.name.downcase + '_' + @commentable.id.to_s + '_comments' %>").html("<%= escape_javascript(render(@comments)) %>");

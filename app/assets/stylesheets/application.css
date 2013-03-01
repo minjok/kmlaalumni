@@ -238,12 +238,12 @@ a {
 }
 
 .posting_comments_container,
-.posting_likes_container, 
-.posting_get_more_comments_link_container { 
+.likes_container, 
+.get_more_comments_link_container { 
   width: 400px;
 }
 
-.posting_likes, .posting_get_more_comments_link {
+.likes, .get_more_comments_link {
   width:397px;
   height:18px;
   background-color:#f1f8fd;
@@ -253,12 +253,12 @@ a {
   font-size: 11px;
 }
 
-.posting_new_comment_form {
+.new_comment_form {
   width:400px;
   margin: 5px 0 15px 0;
 }
 
-.posting_comment_textarea {
+.comment_textarea {
   width: 392px;
   height: 16px;
   padding: 3px;

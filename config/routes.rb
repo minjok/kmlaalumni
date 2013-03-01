@@ -27,12 +27,10 @@ Kmlaalumni::Application.routes.draw do
   
   resources :comments do
     resources :likes
-    collection do
-      get :feed
-    end
   end
   
   resources :careernotes do
+    resources :comments
     resources :likes
   end
   
@@ -58,11 +56,12 @@ Kmlaalumni::Application.routes.draw do
   match '/posting_feed', to: 'postings#feed', as: 'posting_feed'
   
   match '/get_posting_content/:id', to: 'postings#get_content', as: 'get_posting_content'
-  
   match '/get_comment_content/:id', to: 'comments#get_content', as: 'get_comment_content'
   
-  match '/like', to: 'likes#like', as: 'like'
-  match '/dislike', to: 'likes#dislike', as: 'dislike'
+  match '/get_comments', to: 'comments#get_comments', as: 'get_comments'
+  
+  match '/like', to: 'likes#create', as: 'like'
+  match '/dislike', to: 'likes#destroy', as: 'dislike'
   match '/get_likes', to: 'likes#get_likes', as: 'get_likes'
   
   match '/get_form', to: 'settings#get_form', as: 'get_form'

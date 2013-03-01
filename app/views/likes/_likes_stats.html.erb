@@ -1,0 +1,44 @@
+<% num_likes = likeable.likes.length %>
+<% class_name = likeable.class.name.downcase %>
+<% params = "?" + class_name + "_id=" + likeable.id.to_s %>
+<% if class_name == 'comment' %>  
+  <% if num_likes > 0 %>
+    · <%= link_to num_likes.to_s + '명이 좋아합니다', get_likes_url + params, class: 'get_likes_link' %>
+  <% else %>
+  
+  <% end %>
+<% else %>
+  <% user_likes_likeable = current_user.likes?(likeable) %>
+  <% if num_likes > 0 %>
+    <div class='likes'>
+      <% if num_likes == 1 %>
+        <% if user_likes_likeable %>
+           <%= link_to '동문', profile_url(current_user) %>님이 좋아합니다
+        <% else %>
+          <% like = likeable.likes.last %>
+          <% like_user = like.user %>
+          <%= link_to like_user.name, profile_url(like_user) %>님이 좋아합니다 
+        <% end %>
+      <% else %>
+        <% if user_likes_likeable %>
+          <% like = likeable.likes.where('user_id != ?', current_user).last %>
+          <% like_user = like.user %>
+          <% if num_likes == 2 %>
+            <%= link_to '동문', profile_url(current_user) %>님과 <%= link_to like_user.name, profile_url(like_user) %>님이 좋아합니다
+          <% else %>
+            <%= link_to '동문', profile_url(current_user) %>님, <%= link_to like_user.name, profile_url(like_user) %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_likes_url + params, class: 'get_likes_link' %>명이 좋아합니다 
+          <% end %>
+        <% else %>
+          <% likes = likeable.likes.last(2) %>
+          <% like_user_first = likes[0].user %>
+          <% like_user_second = likes[1].user %>
+          <% if num_likes == 2 %>
+            <%= link_to like_user_first.name, profile_url(like_user_first) %>과 <%= link_to like_user_second.name, profile_url(like_user_second) %>님이 좋아합니다
+          <% else %>
+            <%= link_to like_user_first.name, profile_url(like_user_first) %>, <%= link_to like_user_second.name, profile_url(like_user_second) %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_likes_url + params, class: 'get_likes_link' %>이 좋아합니다 
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

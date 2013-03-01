@@ -1,2 +1,2 @@
-$('#dialog_title').html("<%= '이 '+ @type + '을 좋아하는 동문들'%>");
-$('#dialog_content').html("<%= escape_javascript( render partial:'likes/get_likes', locals: {type: @type}) %>");
+$('#dialog_title').html("<%= '이 '+ @class_name + '을 좋아하는 동문들'%>");
+$('#dialog_content').html("<%= escape_javascript( render partial:'likes/get_likes', locals: {class_name: @class_name}) %>");

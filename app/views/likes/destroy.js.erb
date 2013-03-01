@@ -1,0 +1,6 @@
+<% class_name = @likeable.class.name.downcase %>
+<% params = "?" + class_name + "_id=" + @likeable.id.to_s %>
+<% likeable_name = class_name + '_' + @likeable.id.to_s %>
+$("#<%= likeable_name + '_likes_container' %>").html("<%= escape_javascript(render partial:'likes/likes_stats', locals:{likeable: @likeable}) %>"); 
+$("#<%= likeable_name + '_like_link' %>").html('좋아요');
+$("#<%= likeable_name + '_like_link' %>").attr('href', '<%= like_url + params %>');

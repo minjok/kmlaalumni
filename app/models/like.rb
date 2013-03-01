@@ -2,7 +2,7 @@ class Like < ActiveRecord::Base
   
   # *** ASSOCIATIONS *** #
   belongs_to :user
-  belongs_to :likeable, :polymorphic => true
+  belongs_to :likeable, polymorphic: true
     
   # *** METHODS *** #
   def self.exists?(user, content)

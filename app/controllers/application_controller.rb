@@ -115,8 +115,7 @@ class ApplicationController < ActionController::Base
   # Method: authenticate_posting_authority
   # --------------------------------------------
   # BEFORE_FILTER
-  # Authenticates that user is a group member
-  # ONLY IF the user is writing a posting for a group
+  # Authenticates that user is authorized to post on the given platform
   def authenticate_posting_authority
     
     # Checks that posting for a group and loads group
@@ -134,6 +133,7 @@ class ApplicationController < ActionController::Base
         end
         
       elsif params[:posting][:platform] == Posting::PLATFORM['ANNOUNCEMENT'].to_s 
+        # Checks that user is an admin
         unless current_user.is_admin?
           flash[:warning] = '운영자만 공지사항을 올릴 수 있습니다'
           respond_to do |format|

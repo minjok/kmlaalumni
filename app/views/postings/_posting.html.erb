@@ -57,14 +57,14 @@
   <% end %>
   
   <!-- POSTING LIKES --->
-  <div id="<%= posting_name + '_likes_container' %>" class='posting_likes_container'>
-    <%= render partial: 'postings/posting_likes', locals: {posting: posting} %>
+  <div id="<%= posting_name + '_likes_container' %>" class='likes_container'>
+    <%= render partial: 'likes/likes_stats', locals: {likeable: posting} %>
   </div>
   
   <!-- POSTING COMMENTS -->
   <div id="<%= posting_name + '_comments'%>" class='posting_comments_container'>
-    <div id="<%= posting_name + '_get_more_comments_link_container'%>" class='posting_get_more_comments_link_container'>
-      <%= render partial: 'postings/posting_get_more_comments_link', locals: {posting: posting} %>
+    <div id="<%= posting_name + '_get_more_comments_link_container'%>" class='get_more_comments_link_container'>
+      <%= render partial: 'comments/get_more_comments_link', locals: {commentable: posting} %>
     </div>
     
     <%= render posting.comments.order('created_at').last(3) %>
@@ -72,11 +72,11 @@
   
   
   <% if @writeability %>
-    <!-- POSTING NEW COMMENT FORM -->
-    <div class='posting_new_comment_form'>
+    <!-- NEW COMMENT FORM -->
+    <div class='new_comment_form'>
         <div id="<%= posting_name + '_comment_error_message'%>" class='warning'></div>
         <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
-          <%= f.text_area :content, class: 'posting_comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
+          <%= f.text_area :content, class: 'comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
         <% end %>
     </div>
   <% end %>

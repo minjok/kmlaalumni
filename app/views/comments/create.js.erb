@@ -1,10 +1,9 @@
-<% posting = @comment.posting %>
-<% posting_name = 'posting_' + posting.id.to_s %>
+<% commentable_name = @commentable.class.name.downcase + '_' + @commentable.id.to_s %> 
 <% if @comment.errors.blank? %>
-  $("<%= '#' + posting_name + '_get_more_comments_link_container' %>").html('<%= escape_javascript(render partial:'postings/posting_get_more_comments_link', locals:{posting:posting}) %>');
-  $("<%= '#' + posting_name + '_comments' %>").append('<%= escape_javascript(render @comment) %>');
-  $("<%= '#' + posting_name + '_comment_error_message' %>").empty();
-  $("<%= '#' + posting_name + '_comment_content' %>").val('');
+  $("<%= '#' + commentable_name + '_get_more_comments_link_container' %>").html('<%= escape_javascript(render partial:'comments/get_more_comments_link', locals:{commentable: @commentable}) %>');
+  $("<%= '#' + commentable_name + '_comments' %>").append('<%= escape_javascript(render @comment) %>');
+  $("<%= '#' + commentable_name + '_comment_error_message' %>").empty();
+  $("<%= '#' + commentable_name + '_comment_content' %>").val('');
 <% else %>
-   $("<%= '#' + posting_name + '_comment_error_message' %>").html('<%= @comment.errors.first[1] %>');
+   $("<%= '#' + commentable_name + '_comment_error_message' %>").html('<%= @comment.errors.first[1] %>');
 <% end %>

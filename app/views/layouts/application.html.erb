@@ -106,7 +106,7 @@
       $(this).autosize();  
     });
     
-    $('body').on('keydown', '.posting_comment_textarea', function (e) {
+    $('body').on('keydown', '.comment_textarea', function (e) {
       if (e.which == 13) {
         e.preventDefault();
         $(this).closest('form').submit();

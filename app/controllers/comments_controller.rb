@@ -4,36 +4,33 @@ class CommentsController < ApplicationController
    
   # *** BEFORE_FILTER *** #
   
-  
-  # Loads the posting with given id
-  before_filter :load_posting, only: [:create]
-  
-  # Authenticates that user is a member of group
-  before_filter :authenticate_posting_authority, only: [:create]
-  
+  before_filter :find_commentable, only: [:create, :get_comments]
+    
   # Authenticates that user wrote the comment
   before_filter :authenticate_comment_author, only: [:destroy]
     
   # Loads comment with given id
   before_filter :load_comment, only: [:get_content]
   
+  
+  
   # *** PUBLIC METHODS *** #
   
   
   # Method: create
   # --------------------------------------------
-  # Adds a comment to a posting.
+  # Creates a comment
   def create
   
     # Creates a new comment instance
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
-    @comment.posting = @posting
+    @comment.commentable = @commentable
     
-    # Sets the posting's updated time if comment is successfully saved without errors
+    # Sets the commentable's updated time if comment is successfully saved without errors
     if @comment.save
-      @posting.updated_at = Time.now
-      @posting.save!
+      @commentable.updated_at = Time.now
+      @commentable.save!
     end
     
     respond_to do |format|
@@ -44,24 +41,22 @@ class CommentsController < ApplicationController
   
   # Method: destroy
   # --------------------------------------------
-  # Deletes a comment of a posting.
+  # Destroys a comment
   def destroy
+    @commentable = @comment.commentable
     @comment.destroy
     respond_to do |format|
       format.js
     end
   end
     
-  # Method: feed
+  # Method: get_comments
   # --------------------------------------------
-  # Renders all comments for a posting when user clicks on
+  # Fetches all comments when user clicks on
   # '댓글 모두 보기' link
-  def feed
-
-    # Retrieve all comments of the posting
-    @comments = getComments(params[:posting_id])
-    @posting_id = params[:posting_id]
-    
+  def get_comments
+    # Retrieve all comments of a commentable
+    @comments = @commentable.comments
     respond_to do |format|
       format.js
     end
@@ -82,13 +77,25 @@ class CommentsController < ApplicationController
   
   private
     
-    # Method: getComments
+    # Method: find_commentable
     # --------------------------------------------
-    # HELPER METHOD for @feed. 
-    # Retrieves all comments of a posting with the given id 
-    # in the order of created time.
-    def getComments(posting_id)
-      Comment.where('posting_id = ?', posting_id).order('created_at')
+    # BEFORE_FILTER
+    # Classifies and returns commentable instance
+    def find_commentable
+      @commentable = nil
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          @class_name = $1.classify
+          @commentable = @class_name.constantize.find(value)
+        end
+      end
+      
+      if @commentable.blank?
+        respond_to do |format|
+          format.js { render 'layouts/redirect' }
+          format.html { render file: 'public/404', format: :html, status: 404 }
+        end
+      end
     end
     
     # Method: authenticate_comment_author

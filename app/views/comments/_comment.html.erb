@@ -23,10 +23,8 @@
     <% if current_user.wrote?(comment) %>
       · <%= link_to "삭제", comment_url(comment), method: :delete, remote: true %>
     <% end %>
-    <span id="<%= comment_name + '_like_stats' %>">
-    <% if !comment.likes.blank? %>
-      · <%= link_to comment.likes.length.to_s + '명이 좋아합니다', get_likes_url(comment_id: comment), class: 'get_likes_link' %>
-    <% end %>
+    <span id="<%= comment_name + '_likes_container' %>">
+      <%= render partial: 'likes/likes_stats', locals: {likeable: comment} %>
     </span>
   </div>
   

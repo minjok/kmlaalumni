@@ -3,8 +3,7 @@ class Comment < ActiveRecord::Base
 
   #	*** ASSOCIATIONS *** #
   belongs_to :user
-  belongs_to :posting
-  belongs_to :careernote
+  belongs_to :commentable, polymorphic: true
   
   has_many :likes, as: :likeable, dependent: :destroy
   

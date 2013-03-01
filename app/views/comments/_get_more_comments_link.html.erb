@@ -1,0 +1,8 @@
+<% num_comments = commentable.comments.length %>
+<% class_name = commentable.class.name.downcase %>
+<% params = "?" + class_name + "_id=" + commentable.id.to_s %>
+<% if num_comments > 3 %>
+  <div class='get_more_comments_link'>
+    <%= link_to num_comments.to_s + '개의 댓글 모두 보기', get_comments_url + params, remote:true %>
+  </div>
+<% end %>
