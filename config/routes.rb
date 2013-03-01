@@ -22,17 +22,9 @@ Kmlaalumni::Application.routes.draw do
     
   resources :postings do
     resources :comments
-    resources :likes
   end
   
-  resources :comments do
-    resources :likes
-  end
-  
-  resources :careernotes do
-    resources :comments
-    resources :likes
-  end
+  resources :comments
   
   resources :educations
   
