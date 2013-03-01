@@ -1,8 +1,0 @@
-<% if @likes.blank? %>
-  <div>해당 <%= type %>을 좋아하는 동문이 없습니다</div>
-<% else %>
-  <% for like in @likes %>
-    <% like_user = like.user %>
-    <div><%= link_to like_user.wave.to_s + '기 ' + like_user.name, profile_url(like_user) %></div>
-  <% end %>
-<% end %>

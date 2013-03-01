@@ -57,10 +57,10 @@ class LikesController < ApplicationController
       end
     end
     
-    # Method: verify_user_dislikes_posting
+    # Method: verify_user_dislikes_likeable
     # --------------------------------------------
     # BEFORE_FILTER
-    # Verifies that the user doesn't like the posting
+    # Verifies that the user doesn't like the likeable
     def verify_user_dislikes_likeable
       if current_user.likes?(@likeable)
         flash[:warning] = '이미 콘텐츠를 좋아합니다'
@@ -71,10 +71,10 @@ class LikesController < ApplicationController
       end
     end
     
-    # Method: verify_user_likes_posting
+    # Method: verify_user_likes_likeable
     # --------------------------------------------
     # BEFORE_FILTER
-    # Verifies that the user doesn't like the posting
+    # Verifies that the user doesn't like the likeable
     def verify_user_likes_likeable
       @like = Like.where('user_id = ? AND likeable_id = ?', current_user, @likeable).first
       if @like.blank?
