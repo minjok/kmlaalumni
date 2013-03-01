@@ -16,16 +16,16 @@
   <div class='content_activity_bar'>
     <span class='content_date'><%= comment.created_at %></span>
     <% if current_user.likes?(comment) %>
-      <%= link_to "좋아요 취소", dislike_comment_url(comment), id: comment_name + '_like_link', remote: true %>
+      <%= link_to "좋아요 취소", dislike_url(comment_id: comment), id: comment_name + '_like_link', remote: true %>
     <% else %>
-      <%= link_to "좋아요", like_comment_url(comment), id: comment_name + '_like_link', remote: true %>
+      <%= link_to "좋아요", like_url(comment_id: comment), id: comment_name + '_like_link', remote: true %>
     <% end %>
     <% if current_user.wrote?(comment) %>
       · <%= link_to "삭제", comment_url(comment), method: :delete, remote: true %>
     <% end %>
     <span id="<%= comment_name + '_like_stats' %>">
     <% if !comment.likes.blank? %>
-      · <%= link_to comment.likes.length.to_s + '명이 좋아합니다', get_comment_likes_url(comment), class: 'get_comment_likes_link' %>
+      · <%= link_to comment.likes.length.to_s + '명이 좋아합니다', get_likes_url(comment_id: comment), class: 'get_likes_link' %>
     <% end %>
     </span>
   </div>

@@ -143,17 +143,7 @@ class User < ActiveRecord::Base
     end
     
     def likes?(content)
-      type=''
-      if content.kind_of? Posting
-        type = 'posting' 
-      elsif content.kind_of? Comment
-        type = 'comment'
-      elsif content.kind_of? Careernote
-        type = 'careernote'
-      else
-        nil
-      end 
-      Like.exists_for_content?(self, content, type)
+      Like.exists?(self, content)
     end
     
     def has_careernotes?

@@ -113,31 +113,13 @@
       }
     });
     
-    $('body').on('click', '.get_posting_likes_link', function(event) {
+    $('body').on('click', '.get_likes_link', function(event) {
       event.preventDefault();
-      $('#dialog_title').html('이 포스팅을 좋아하는 동문들');
       $('#dialog_box').show();
       $.ajax({ 
         url: this.href,
         type: 'get',
-        dataType: 'html',
-        success: function(data) { 
-          $('#dialog_content').html(data);
-        }
-      });
-    });
-    
-    $('body').on('click', '.get_comment_likes_link', function(event) {
-      event.preventDefault();
-      $('#dialog_title').html('이 댓글을 좋아하는 동문들');
-      $('#dialog_box').show();
-      $.ajax({ 
-        url: this.href,
-        type: 'get',
-        dataType: 'html',
-        success: function(data) { 
-          $('#dialog_content').html(data);
-        }
+        dataType: 'script'
       });
     });
     

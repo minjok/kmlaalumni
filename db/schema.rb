@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227111935) do
+ActiveRecord::Schema.define(:version => 20130301151707) do
 
   create_table "alumni_verifications", :force => true do |t|
     t.string  "name",           :null => false
@@ -65,12 +65,15 @@ ActiveRecord::Schema.define(:version => 20130227111935) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "posting_id"
-    t.integer  "comment_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "careernote_id"
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
   end
+
+  add_index "likes", ["likeable_id"], :name => "index_likes_on_likeable_id"
+  add_index "likes", ["likeable_type"], :name => "index_likes_on_likeable_type"
 
   create_table "memberships", :force => true do |t|
     t.boolean "admin",    :default => false, :null => false

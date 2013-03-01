@@ -2,13 +2,11 @@ class Like < ActiveRecord::Base
   
   # *** ASSOCIATIONS *** #
   belongs_to :user
-  belongs_to :posting
-  belongs_to :comment
-  belongs_to :careernote
+  belongs_to :likeable, :polymorphic => true
     
   # *** METHODS *** #
-  def self.exists_for_content?(user, content, type)
-    not where("user_id = ? AND #{type}_id = ?", user, content).first.blank?
+  def self.exists?(user, content)
+    not where("user_id = ? AND likeable_id = ?", user, content).first.blank?
   end
   
 end

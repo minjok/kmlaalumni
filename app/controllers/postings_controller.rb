@@ -11,12 +11,6 @@ class PostingsController < ApplicationController
   # Authenticates that user wrote the posting
   before_filter :authenticate_posting_author, only: [:destroy]
   
-  # Verifies that the user doesn't like the posting
-  before_filter :verify_user_dislikes_posting, only: [:like]
-  
-  # Verifies that the user likes the posting
-  before_filter :verify_user_likes_posting, only: [:dislike]
-  
   # Loads posting with given id
   before_filter :load_posting, only: [:get_content]
   
@@ -55,34 +49,7 @@ class PostingsController < ApplicationController
     end
     
   end
-  
-  # Method: like
-  # --------------------------------------------
-  # Creates a Like instance for the user and posting.
-  def like
     
-    # Creates a new like instance
-    @like = Like.new
-    @like.user = current_user
-    @like.posting = @posting
-    
-    @like.save
-    respond_to do |format|
-      format.js
-    end
-    
-  end
-  
-  # Method: dislike
-  # --------------------------------------------
-  # Destroys the Like instance between the user and posting.
-  def dislike
-    @like.destroy
-    respond_to do |format|
-      format.js
-    end
-  end
-  
   # Method: num_pages
   # --------------------------------------------
   # Returns the number of pages when paginating the
@@ -132,17 +99,7 @@ class PostingsController < ApplicationController
       format.js
     end
   end
-  
-  # Method: get_likes
-  # --------------------------------------------
-  # Returns the content of a posting
-  def get_likes
-    @likes = Like.where('posting_id = ?', params[:id])
-    respond_to do |format|
-      format.html { render partial: 'postings/get_likes' }
-    end
-  end
-  
+   
   
   # *** PRIVATE METHODS *** #
   
@@ -195,41 +152,6 @@ class PostingsController < ApplicationController
         end
       end
     
-    end
-    
-    # Method: verify_user_likes_posting
-    # --------------------------------------------
-    # BEFORE_FILTER
-    # Verifies that the user likes the posting 
-    def verify_user_likes_posting
-      return unless load_posting
-      
-      @like = Like.where('user_id = ? AND posting_id = ?', current_user, @posting).first
-      unless !@like.blank?
-        flash[:warning] = '이미 포스팅을 좋아하지 않습니다'
-        respond_to do |format|
-          format.js { render 'layouts/redirect' }
-          format.html { redirect_to root_url }
-        end
-      end
-      
-    end
-    
-    # Method: verify_user_dislikes_posting
-    # --------------------------------------------
-    # BEFORE_FILTER
-    # Verifies that the user doesn't like the posting
-    def verify_user_dislikes_posting
-      return unless load_posting
-      
-      if current_user.likes?(@posting)
-        flash[:warning] = '이미 포스팅을 좋아합니다'
-        respond_to do |format|
-          format.js { render 'layouts/redirect' }
-          format.html { redirect_to root_url }
-        end
-      end
-      
     end
     
 end

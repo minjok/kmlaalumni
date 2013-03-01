@@ -17,7 +17,7 @@
         <% if num_likes == 2 %>
           <%= link_to '동문', profile_url(current_user) %>님과 <%= link_to like_user.name, profile_url(like_user) %>님이 좋아합니다
         <% else %>
-          <%= link_to '동문', profile_url(current_user) %>님, <%= link_to like_user.name, profile_url(like_user) %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_posting_likes_url(posting), class: 'get_posting_likes_link'  %>명이 좋아합니다 
+          <%= link_to '동문', profile_url(current_user) %>님, <%= link_to like_user.name, profile_url(like_user) %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_likes_url(posting_id: posting), class: 'get_likes_link'  %>명이 좋아합니다 
         <% end %>
       <% else %>
         <% likes = posting.likes.first(2) %>
@@ -26,7 +26,7 @@
         <% if num_likes == 2 %>
           <%= link_to like_user_first.name, profile_url(like_user_first) %>과 <%= link_to like_user_second.name, profile_url(like_user_second) %>님이 좋아합니다
         <% else %>
-          <%= link_to like_user_first.name, profile_url(like_user_first) %>, <%= link_to like_user_second.name, profile_url(like_user_second) %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_posting_likes_url(posting), class: 'get_posting_likes_link' %>이 좋아합니다 
+          <%= link_to like_user_first.name, profile_url(like_user_first) %>, <%= link_to like_user_second.name, profile_url(like_user_second) %> 외 <%= link_to (num_likes - 2).to_s + '명',  get_likes_url(posting_id: posting), class: 'get_likes_link' %>이 좋아합니다 
         <% end %>
       <% end %>
     <% end %>

@@ -44,9 +44,9 @@
   
     <div class='content_activity_bar'>
       <% if user_likes_posting %>
-        <%= link_to "좋아요 취소", dislike_posting_url(posting), id: posting_name + '_like_link', remote: true %>
+        <%= link_to "좋아요 취소", dislike_url(posting_id: posting.id), id: posting_name + '_like_link', remote: true %>
       <% else %>
-        <%= link_to "좋아요", like_posting_url(posting), id: posting_name + '_like_link', remote: true %>
+        <%= link_to "좋아요", like_url(posting_id: posting.id), id: posting_name + '_like_link', remote: true %>
       <% end %>
       <% if current_user.wrote?(posting) %>
         · <%= link_to "삭제", posting_url(posting), method: :delete, remote: true %>

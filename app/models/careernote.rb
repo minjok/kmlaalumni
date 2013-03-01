@@ -8,7 +8,7 @@ class Careernote < ActiveRecord::Base
   has_one :organization, through: :employment
   
   has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
    
   # *** VALIDATIONS *** #
   validates_presence_of :content,

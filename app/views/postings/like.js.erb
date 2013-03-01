@@ -1,4 +1,4 @@
-<% posting_name = 'posting_' + @posting.id.to_s %>
-$("#<%= posting_name + '_likes_container' %>").html("<%= escape_javascript(render partial:'postings/posting_likes', locals:{posting: @posting}) %>"); 
+<% posting_name = 'posting_' + @likeable.id.to_s %>
+$("#<%= posting_name + '_likes_container' %>").html("<%= escape_javascript(render partial:'postings/posting_likes', locals:{posting: @likeable}) %>"); 
 $("#<%= posting_name + '_like_link' %>").html('좋아요 취소');
-$("#<%= posting_name + '_like_link' %>").attr('href', '<%= dislike_posting_url(@posting) %>');
+$("#<%= posting_name + '_like_link' %>").attr('href', '<%= dislike_url(posting_id: @likeable.id) %>');

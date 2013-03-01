@@ -22,12 +22,18 @@ Kmlaalumni::Application.routes.draw do
     
   resources :postings do
     resources :comments
+    resources :likes
   end
   
   resources :comments do
+    resources :likes
     collection do
       get :feed
     end
+  end
+  
+  resources :careernotes do
+    resources :likes
   end
   
   resources :educations
@@ -52,15 +58,12 @@ Kmlaalumni::Application.routes.draw do
   match '/posting_feed', to: 'postings#feed', as: 'posting_feed'
   
   match '/get_posting_content/:id', to: 'postings#get_content', as: 'get_posting_content'
-  match '/get_posting_likes/:id', to: 'postings#get_likes', as: 'get_posting_likes'
   
   match '/get_comment_content/:id', to: 'comments#get_content', as: 'get_comment_content'
-  match '/get_comment_likes/:id', to: 'comments#get_likes', as: 'get_comment_likes'
   
-  match '/like_posting/:id',            to: 'postings#like',                  as: 'like_posting'
-  match '/dislike_posting/:id',         to: 'postings#dislike',               as: 'dislike_posting'
-  match '/like_comment/:id',            to: 'comments#like',                  as: 'like_comment'
-  match '/dislike_comment/:id',         to: 'comments#dislike',               as: 'dislike_comment'
+  match '/like', to: 'likes#like', as: 'like'
+  match '/dislike', to: 'likes#dislike', as: 'dislike'
+  match '/get_likes', to: 'likes#get_likes', as: 'get_likes'
   
   match '/get_form', to: 'settings#get_form', as: 'get_form'
   match '/get_add_education_form', to: 'settings#get_add_education_form',   as: 'get_add_education_form'

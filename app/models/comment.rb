@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :posting
   belongs_to :careernote
   
-  has_many :likes, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
   
   
   # *** VALIDATIONS *** #
