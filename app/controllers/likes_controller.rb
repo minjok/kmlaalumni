@@ -5,6 +5,9 @@ class LikesController < ApplicationController
   before_filter :verify_user_dislikes_likeable, only: [:like]
   before_filter :verify_user_likes_likeable, only: [:dislike]
   
+  # Method: like
+  # --------------------------------------------
+  # Creates a like
   def like
     @like = Like.new
     @like.user = current_user
@@ -16,6 +19,9 @@ class LikesController < ApplicationController
     end
   end
   
+  # Method: dislike
+  # --------------------------------------------
+  # Destroy a like
   def dislike
     @like.destroy
     respond_to do |format|
@@ -25,7 +31,7 @@ class LikesController < ApplicationController
   
   # Method: get_likes
   # --------------------------------------------
-  # Returns the content of a posting
+  # Returns the content of a likeable
   def get_likes
     @likes = Like.where('likeable_id = ?', @likeable)
     @type = translate_type(@likeable.class.name)
