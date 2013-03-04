@@ -1,7 +1,7 @@
 #encoding: utf-8
 class CareersController < ApplicationController
 
-  before_filter :authenticate_careernote_authority, only: [:create_note, :get_note_form, :update_note, :destroy_note]
+  before_filter :authenticate_careernote_authority, only: [:create_note, :get_note_form, :update_note, :destroy_note, :write_note]
   before_filter :validate_employment_has_no_careernote, only: [:create_note]
   before_filter :validate_employment_has_careernote, only: [:get_note_form, :update_note]
 
@@ -10,17 +10,51 @@ class CareersController < ApplicationController
     @careernotes = @user.careernotes
   end
   
-  def write_notes
+ def show_note
+    @employment = Employment.find(params[:id])
+    @user = User.find(@employment.user_id)
+    @careernote=@employment.careernote
+ end
+  
+  def write_note
+    employment = Employment.find(params[:id])
+    if employment.careernote==nil
+    	    @type= 'create' 
+    end
+    @employment = nil 
     @employments = current_user.employments
+    for e in @employments
+    	    if e.id == employment.id
+    	    	    @employment = e
+    	    	    break
+    	    end
+    end
+    @placeholder = employment.organization.name + '에서 어떤 일을 하셨나요?'
   end
+  
+  def submit_note
+  	@user = User.find(params[:id])
+  	@employments = @user.employments
+	@employments_without_careernote =[]
+	@organization_name =[]
+	
+	for employment in @employments
+		if employment.careernote.blank?
+			@employments_without_careernote << employment
+		end
+	end
+  end
+  
+  
   
   def create_note
     @careernote = Careernote.new(params[:careernote])
     @careernote.employment = @employment
     @careernote.save
     respond_to do |format|
-      format.js { render 'careers/write_note.js' }
+    	    format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
     end
+    
   end
   
   def update_note
@@ -28,15 +62,16 @@ class CareersController < ApplicationController
     @careernote.update_attributes(params[:careernote])
     @careernote.save
     respond_to do |format|
-      format.js { render 'careers/write_note.js' }
+    	    format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
     end
   end
   
   def destroy_note
     @employment.careernote.destroy
-    respond_to do |format|
-      format.js
-    end
+       respond_to do |format|
+    	    format.html{ redirect_to "/profile/#{current_user.id}"} 
+    	end
+
   end
   
   def get_note_form

@@ -1,2 +1,11 @@
-<div class='employment_organization_name'><%= employment.organization.name %></div>
+﻿<div class='employment_organization_name'><%= employment.organization.name %></div>
 <%= render partial: 'employments/additional_information', locals: {employment: employment} %>
+<div class='employment_careernote'>
+	<% unless employment.careernote.blank? || @is_current_user %>
+		<%=link_to "#{user.name}님의 #{employment.organization.name}에서의 경험 글 보기", show_careernote_url(employment.id) %>
+	<% end %>
+	<% if employment.careernote.blank? && @is_current_user %>
+		<%=link_to "#{user.name}님, #{employment.organization.name}에서의 경험을 공유해주세요!", write_careernote_url(employment.id) %>
+	<% end %>
+	
+</div>
