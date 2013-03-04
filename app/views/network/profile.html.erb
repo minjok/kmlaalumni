@@ -1,4 +1,4 @@
-<div id='profile_header'>
+﻿<div id='profile_header'>
   <div id='profile_pic' class='float-left'>
     <%= image_tag asset_path('default_profile_pic.png') %>
   </div>
@@ -22,15 +22,10 @@
       <div id='employments'>
         <% for employment in @user.employments %>
           <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
-            <%= render partial: 'employments/employment', locals:{employment: employment} %>
+            <%= render partial: 'employments/employment', locals:{employment: employment, user:@user} %>
           </div>
         <% end %>
       </div>
-      <% if @has_careernotes %>
-        <div id='careernotes_link'>
-          <%= link_to '직장소개 보기', alumni_careernotes_url(@user) %>
-        </div>
-      <% end %>
     </div>
 
     <div id='educations_container' class='settings_category_container'>

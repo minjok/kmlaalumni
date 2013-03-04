@@ -3,7 +3,7 @@
 <span class="user_name"><%="#{@user.name}님, 다른 곳에서의 경험도 공유해주세요!"%></span>
 <ul id = "suggestion_table">
 	<% for employment in @employments_without_careernote %>
-		<li><%= link_to "#{Organization.find(employment.organization_id).name}", "/write_careernote/#{employment.id}" %></li>
+		<li><%= link_to "#{employment.organization.name}", "/write_careernote/#{employment.id}" %></li>
 	<% end %>
 </ul>
 
