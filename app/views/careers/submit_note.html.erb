@@ -1,3 +1,11 @@
-<div class="submit_message">THX!</div>
-<div class="additional_suggestion"></div>
+﻿<div class="submit_message">감사합니다. 여러분의 소중한 글이 저장되었습니다</div>
+<div class="additional_suggestion">
+<span class="user_name"><%="#{@user.name}님, 다른 곳에서의 경험도 공유해주세요!"%></span>
+<ul id = "suggestion_table">
+	<% for employment in @employments_without_careernote %>
+		<li><%= link_to "#{Organization.find(employment.organization_id).name}", "/write_careernote/#{employment.id}" %></li>
+	<% end %>
+</ul>
+
+</div>
 

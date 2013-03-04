@@ -35,6 +35,14 @@ class CareersController < ApplicationController
   def submit_note
   	@user = User.find(params[:id])
   	@employments = @user.employments
+	@employments_without_careernote =[]
+	@organization_name =[]
+	
+	for employment in @employments
+		if employment.careernote.blank?
+			@employments_without_careernote << employment
+		end
+	end
   end
   
   
