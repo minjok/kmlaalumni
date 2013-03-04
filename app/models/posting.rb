@@ -5,6 +5,7 @@ class Posting < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :group
     
+    has_many :activities, as: :feedable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :likes, as: :likeable, dependent: :destroy
     

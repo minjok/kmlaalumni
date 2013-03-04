@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301165307) do
+ActiveRecord::Schema.define(:version => 20130303120955) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "feedable_id",                     :null => false
+    t.string   "feedable_type",                   :null => false
+    t.boolean  "is_public",     :default => true, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "activities", ["feedable_id"], :name => "index_activities_on_feedable_id"
+  add_index "activities", ["feedable_type"], :name => "index_activities_on_feedable_type"
 
   create_table "alumni_verifications", :force => true do |t|
     t.string  "name",           :null => false
@@ -31,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20130301165307) do
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "careernote_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
   end

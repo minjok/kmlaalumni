@@ -7,6 +7,7 @@ class Careernote < ActiveRecord::Base
   has_one :user, through: :employment
   has_one :organization, through: :employment
   
+  has_many :activities, as: :feedable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
    

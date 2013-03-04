@@ -47,9 +47,12 @@ class User < ActiveRecord::Base
 	
     has_many :organizations, through: :employments, :order => 'created_at DESC'
 	has_many :employments, dependent: :destroy, :order => 'created_at DESC'
-    has_many :careernotes, through: :employments, dependent: :destroy, :order => 'created_at DESC'
+    
+    has_many :activities, dependent: :destroy
     
 	has_many :postings, dependent: :destroy
+    has_many :careernotes, through: :employments, dependent: :destroy, :order => 'created_at DESC'
+    
     has_many :comments, dependent: :destroy
     has_many :likes,    dependent: :destroy
 	

@@ -25,7 +25,8 @@ class PostingsController < ApplicationController
     # Creates a new posting instance
     @posting = Posting.new(params[:posting])
     @posting.user = current_user
-    if @posting.platform == Posting::PLATFORM['GROUP']
+    is_public = @posting.platform != Posting::PLATFORM['GROUP']
+    if !is_public
       @posting.group = @group
       @posting.viewability = Posting::VIEWABILITY['GROUP']
     end
@@ -41,13 +42,10 @@ class PostingsController < ApplicationController
   # --------------------------------------------
   # Destroys a posting.
   def destroy
-  
     @posting.destroy
-    
     respond_to do |format|
       format.js
     end
-    
   end
     
   # Method: num_pages
@@ -111,18 +109,14 @@ class PostingsController < ApplicationController
     # HELPER METHOD for @num_pages and @feed.
     # Checks the value of params[:platform], which states the
     # type of platform on which the postings are to be rendered
-    # (e.g. Newsfeed, Wall, Group) and calls the corresponding query
+    # (e.g. Newsfeed, Group) and calls the corresponding query
     # to fetch a page of paginated postings that match the conditions
     # stated in the params.
     def getPostings(params)
  
       postings = case params[:platform]
-        # NEWSFEED
-        when 'newsfeed' then 
+         when 'newsfeed' then
           Posting.where('group_id IN (?) OR viewability = ?', current_user.groups, Posting::VIEWABILITY['ASSOCIATION']).order('updated_at DESC').page(params[:page]).per(10)
-        # WALL
-        when 'wall' then
-          Posting.where('platform = ?', Posting::PLATFORM['WALL']).order('updated_at DESC').page(params[:page]).per(10)
         # ANNOUNCEMENT
         when 'announcement' then
           Posting.where('platform = ?', Posting::PLATFORM['ANNOUNCEMENT']).order('created_at DESC').page(params[:page]).per(10)
