@@ -78,6 +78,8 @@ Kmlaalumni::Application.routes.draw do
   match '/careernotes', to: 'careers#notes', as: 'careernotes'
   match '/alumni_careernotes/:id', to: 'careers#show_notes', as: 'alumni_careernotes'
   match '/write_careernotes', to: 'careers#write_notes', as: 'write_careernotes'
+  match '/write_careernote/:id', to: 'careers#write_note', as: 'write_careernote'
+  match '/submit_careernote', to: 'careers#submit_note', as: 'submit_careernote'
   match '/create_careernote/:id', to: 'careers#create_note', as: 'create_careernote'
   match '/update_careernote/:id', to: 'careers#update_note', as: 'update_careernote'
   match '/destroy_careernote/:id', to: 'careers#destroy_note', as: 'destroy_careernote'

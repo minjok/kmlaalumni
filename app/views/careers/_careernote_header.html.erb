@@ -1,3 +1,10 @@
+<div id ='careernote_introduction'>
+CareerNote는 동문들에게 내 직장 경험을 공유하는 글입니다. </br>
+여러분의 글이 선후배, 동기의 커리어에게 큰 도움이 될 수 있습니다
+</div>
+<span>
+<%= "#{current_user.name}님의 " %> 
+</span>
 <span class='careernote_organization_name'>
   <%= employment.organization.name %>
 </span>
@@ -16,3 +23,7 @@
     <% end %>
   </span>
 <% end %>
+<span>
+| 에서의 경험을 공유해주세요!
+</span>
+

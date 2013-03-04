@@ -1,0 +1,12 @@
+<div class='careernotes_container'>
+	<div class='careernote_header'>
+        	<%= render partial: 'careers/careernote_header', locals: {employment: @employment} %>
+        </div>
+        <div class='careernote_guide_container'>
+        	<%= link_to 'CareerNote 작성 가이드 보기' %>
+        </div>
+        <div class='careernote_form_container'>
+            <%= render partial: 'careers/careernote_form', locals: { employment: @employment, type: 'create', placeholder: @placeholder} %>
+        </div>
+        
+</div>

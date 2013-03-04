@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20130301165307) do
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "careernote_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
   end

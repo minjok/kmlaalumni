@@ -14,13 +14,35 @@ class CareersController < ApplicationController
     @employments = current_user.employments
   end
   
+  def write_note
+    @employment = nil
+    organization = Organization.find(params[:id])
+    @employments = current_user.employments
+    for employment in @employments
+    	    if employment.organization == organization
+    	    	    @employment = employment
+    	    	    break
+    	    end
+    end
+    @placeholder = employment.organization.name + '에서 어떤 일을 하셨나요?'
+    # "잘못된 접근" if @employment ==nil
+   
+    #@careernote_id = 'employment_' + employment.id.to_s + '_careernote'
+    #@careernote = @employment.careernote
+  end
+  
+  def submit_note
+  
+  end
+  
   def create_note
     @careernote = Careernote.new(params[:careernote])
     @careernote.employment = @employment
     @careernote.save
     respond_to do |format|
-      format.js { render 'careers/write_note.js' }
+    	    format.html{ redirect_to '/submit_careernote' } 
     end
+    
   end
   
   def update_note
