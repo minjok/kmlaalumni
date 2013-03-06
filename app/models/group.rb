@@ -5,6 +5,7 @@ class Group < ActiveRecord::Base
 	has_many :users,		through: :memberships
 	has_many :memberships,	dependent: :destroy
 	has_many :postings, 	dependent: :destroy
+    has_many :activities, as: :venue, dependent: :destroy
 	
 	
 	#	*** VALIDATIONS ***	#

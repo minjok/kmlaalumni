@@ -77,7 +77,6 @@ class PostingsController < ApplicationController
   
     # Retrieve postings that match the given conditions
     @postings = getPostings(params)
-    @is_newsfeed = params[:platform] == 'newsfeed'
     @writeability = true
     if params.has_key?(:group_id) && !current_user.is_member_of?(params[:group_id])
       @writeability = false
@@ -115,8 +114,6 @@ class PostingsController < ApplicationController
     def getPostings(params)
  
       postings = case params[:platform]
-         when 'newsfeed' then
-          Posting.where('group_id IN (?) OR viewability = ?', current_user.groups, Posting::VIEWABILITY['ASSOCIATION']).order('updated_at DESC').page(params[:page]).per(10)
         # ANNOUNCEMENT
         when 'announcement' then
           Posting.where('platform = ?', Posting::PLATFORM['ANNOUNCEMENT']).order('created_at DESC').page(params[:page]).per(10)

@@ -35,6 +35,9 @@ Kmlaalumni::Application.routes.draw do
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
   
+  match '/activity_num_pages', to: 'activities#num_pages', as: 'activity_num_pages'
+  match '/activity_feed', to: 'activities#feed', as: 'activity_feed'
+  
   match '/announcement',        to: 'association#announcement',         as: 'announcement'
   match '/newsletter',          to: 'association#newsletter',           as: 'newsletter'
   match '/regulations',         to: 'association#regulations',          as: 'regulations'

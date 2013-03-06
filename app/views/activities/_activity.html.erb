@@ -1,0 +1,5 @@
+<% if activity.feedable_type == 'Posting' %>
+  <%= render partial: 'postings/posting', locals: {posting: activity.feedable, writeability: true, is_newsfeed: true} %>
+<% elsif activity.feedable_type == 'Careernote' %>
+  <%= render partial: 'careers/careernote', locals: {careernote: activity.feedable} %>
+<% end %>

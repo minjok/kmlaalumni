@@ -14,8 +14,10 @@
 ActiveRecord::Schema.define(:version => 20130303120955) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "feedable_id",                     :null => false
-    t.string   "feedable_type",                   :null => false
+    t.integer  "feedable_id"
+    t.string   "feedable_type"
+    t.integer  "venue_id"
+    t.string   "venue_type"
     t.boolean  "is_public",     :default => true, :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
@@ -24,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20130303120955) do
 
   add_index "activities", ["feedable_id"], :name => "index_activities_on_feedable_id"
   add_index "activities", ["feedable_type"], :name => "index_activities_on_feedable_type"
+  add_index "activities", ["venue_id"], :name => "index_activities_on_venue_id"
+  add_index "activities", ["venue_type"], :name => "index_activities_on_venue_type"
 
   create_table "alumni_verifications", :force => true do |t|
     t.string  "name",           :null => false

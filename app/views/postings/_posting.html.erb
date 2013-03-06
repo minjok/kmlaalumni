@@ -35,7 +35,7 @@
     <% end %>
   </div>
   
-  <% if @writeability %>
+  <% if writeability %>
   
   <!-- POSTING DIVIDER -->
   <div class='posting_divider'><%= image_tag(asset_path 'posting_divider.png') %></div>
@@ -71,7 +71,7 @@
   </div>
   
   
-  <% if @writeability %>
+  <% if writeability %>
     <!-- NEW COMMENT FORM -->
     <div class='new_comment_form'>
         <div id="<%= posting_name + '_comment_error_message'%>" class='warning'></div>

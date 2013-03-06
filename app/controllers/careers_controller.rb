@@ -44,15 +44,13 @@ class CareersController < ApplicationController
 		end
 	end
   end
-  
-  
-  
+    
   def create_note
     @careernote = Careernote.new(params[:careernote])
     @careernote.employment = @employment
     @careernote.save
     respond_to do |format|
-    	    format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
+      format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
     end
     
   end
@@ -62,16 +60,15 @@ class CareersController < ApplicationController
     @careernote.update_attributes(params[:careernote])
     @careernote.save
     respond_to do |format|
-    	    format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
+      format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
     end
   end
   
   def destroy_note
     @employment.careernote.destroy
-       respond_to do |format|
-    	    format.html{ redirect_to "/profile/#{current_user.id}"} 
-    	end
-
+    respond_to do |format|
+      format.html{ redirect_to "/profile/#{current_user.id}"} 
+    end
   end
   
   def get_note_form
@@ -83,9 +80,7 @@ class CareersController < ApplicationController
   
   def notes_num_pages
     careernotes = Careernote.order('created_at DESC').page(params[:page]).per(10)
-    
     num_pages = careernotes.blank? ? 0 : careernotes.num_pages
-    
     respond_to do |format|
       format.json { render json: num_pages }
     end

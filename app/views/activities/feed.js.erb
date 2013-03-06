@@ -1,0 +1,1 @@
+$("#feeds").append("<div class='page'><% for activity in @activities do%><%=  escape_javascript( render partial: 'activities/activity', locals:{activity: activity} ) %><% end %></div>");
