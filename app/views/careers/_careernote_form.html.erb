@@ -10,7 +10,8 @@
 <div id="careernote_error_message" class='warning'></div>
 <%= form_for careernote, url: url do |f| %>
   <div>
-    <%= f.text_area :content, class: 'careernote_form_text_area', placeholder: placeholder, autocomplete: :off %>
+    <%= f.text_area :content, placeholder: placeholder, autocomplete: :off, id: 'careernote_form_text_area' %>
+
   </div>
   <div class='careernote_form_submit'>
     <%= f.submit submit_text, class: 'ui-button float-right' %>

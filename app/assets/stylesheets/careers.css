@@ -18,7 +18,7 @@
   color: #555555;
 }
 
-.careernote_form_text_area { 
+#careernote_form_text_area { 
   width: 600px;
   height: 80px;
   margin-top: 5px;
@@ -35,4 +35,27 @@
   background:#CDEDEE;
   font-size: 11px;
   
+}
+#careernote_introduction{
+  padding:1px;
+  margin: 30px 0 20px 0;
+}
+.careernote_keyword{
+  font-size:25px;
+  font-weight:bold;
+  line-height: 40px; 
+  letter-spacing: -1px;
+  color: #38ACEC;
+}
+.careernote_sub{
+  color: #79BAEC;
+}
+.careernote_short_section{
+  float:right;
+}
+.careernote_long_section{
+  float:left;
+}
+.careernote_tag_container{
+  margin-top:100px;
 }
