@@ -88,6 +88,7 @@
 .education_school_name {
   color: #444444;
   font-weight: bold;
+  font-size: 13px;
 }
 
 .education_additional_information {
@@ -108,6 +109,7 @@
 .employment_organization_name {
   color: #444444;
   font-weight: bold;
+  font-size: 13px;
 }
 
 .employment_additional_information {

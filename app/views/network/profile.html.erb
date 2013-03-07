@@ -22,7 +22,8 @@
       <div id='employments'>
         <% for employment in @user.employments %>
           <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
-            <%= render partial: 'employments/employment', locals:{employment: employment, user:@user} %>
+            <%= render partial: 'employments/employment', locals:{employment: employment} %>
+            <%= render partial: 'careers/careernote_button', locals:{employment: employment, user:@user} %>
           </div>
         <% end %>
       </div>
