@@ -12,7 +12,7 @@
     <% end %>
   </div>
 </div>
-
+	
 <% if @user_is_a_member %>
 	<%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['GROUP'], resource: [@group, Posting.new], placeholder: current_user.name + ' 동문님, ' + @group.name + ' 에 글을 남겨주세요'} %>
 <% end %>

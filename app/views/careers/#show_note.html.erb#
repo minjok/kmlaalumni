@@ -7,7 +7,7 @@
       <div class='careernote_update'>
         <%= render partial: 'careers/careernote_update_link', locals: {employment: @employment} %>
       </div>
-   <% end %>
+   <% end %>	
   </div>
 </div>
 <div class='careernote_short_section'>
