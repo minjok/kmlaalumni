@@ -1,8 +1,0 @@
-<div class='careernotes_container'>
-  <div>
-    <%= link_to '내 직업소개 쓰기/수정', write_careernotes_url %>
-  </div>
-  <% for careernote in @careernotes %>
-    <%= render partial: 'careers/careernote', locals: {careernote: careernote } %>
-  <% end %>
-</div>
