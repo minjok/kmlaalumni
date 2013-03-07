@@ -1,4 +1,6 @@
-﻿<div id='profile_header'>
+﻿<%= javascript_include_tag :profile %>
+
+<div id='profile_header'>
   <div id='profile_pic' class='float-left'>
     <%= image_tag asset_path('default_profile_pic.png') %>
   </div>
@@ -23,7 +25,7 @@
         <% for employment in @user.employments %>
           <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
             <%= render partial: 'employments/employment', locals:{employment: employment} %>
-            <%= render partial: 'careers/careernote_button', locals:{employment: employment, user:@user} %>
+            <%= render partial: 'careers/careernote_button', locals:{employment: employment, user:@user}, style:'display:none' %>
           </div>
         <% end %>
       </div>
@@ -68,3 +70,5 @@
   </div>
 
 </div>
+
+

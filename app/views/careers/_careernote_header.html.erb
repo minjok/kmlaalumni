@@ -2,8 +2,7 @@
 <div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
 
 <div class='header_title'>
-<% user = User.find(employment.user_id) %>
-  <%="#{user.wave}기 #{user.name}님의 커리어 노트" %>
+  <%="#{employment.user.wave}기 #{employment.user.name} 동문님의 커리어 노트" %>
 </div>
 <div class='careernote_profile'>
   <div class='employment_organization_name'><%= employment.organization.name %></div>
