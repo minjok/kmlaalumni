@@ -1,4 +1,5 @@
 <div class='careernote_container'>
   <%= raw careernote.content %>
+  <%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
 </div>
 
