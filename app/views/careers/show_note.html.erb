@@ -1,5 +1,8 @@
 <div class='careernote_long_section'>
   <div class='careernotes_container'>
+      <div class='careernote_header'>
+        <%= render partial: 'careers/careernote_header', locals: {employment: @careernote.employment} %>
+      </div>
       <%= render partial: 'careers/careernote', locals: {careernote: @careernote } %>
   </div>
   <div class='careernote_footer'>

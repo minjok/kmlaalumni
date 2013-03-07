@@ -1,9 +1,4 @@
 <div class='careernote_container'>
-  <div class='careernote_header'>
-    <%= render partial: 'careers/careernote_header', locals: {employment: careernote.employment} %>
-  </div>
-  <div class='careernote_body'>
-    <%= careernote.content %>
-  </div>
+    <%= raw careernote.content %>
 </div>
 
