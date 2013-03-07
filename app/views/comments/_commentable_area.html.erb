@@ -1,0 +1,42 @@
+<% class_name = commentable.class.name.downcase %>
+<% commentable_name = class_name + '_' + commentable.id.to_s %>
+<% params = "?" + class_name + "_id=" + commentable.id.to_s %>
+<% user_likes_commentable = current_user.likes?(commentable) %>
+
+<!-- DIVIDER -->
+<div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
+  
+<!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
+  
+  <div class='content_activity_bar'>
+    <% if user_likes_commentable %>
+      <%= link_to "좋아요 취소", dislike_url + params, id: commentable_name + '_like_link', remote: true %>
+    <% else %>
+      <%= link_to "좋아요", like_url + params, id: commentable_name + '_like_link', remote: true %>
+    <% end %>
+    <% if current_user.wrote?(commentable) %>
+      · <%= link_to_delete_commentable(commentable) %>
+    <% end %>
+    <span class='content_date'><%= commentable.created_at %></span>
+  </div>
+      
+<!-- LIKES --->
+<div id="<%= commentable_name + '_likes_container' %>" class='likes_container'>
+  <%= render partial: 'likes/likes_stats', locals: {likeable: commentable} %>
+</div>
+  
+<!-- COMMENTS -->
+<div id="<%= commentable_name + '_comments'%>" class='comments_container'>
+  <div id="<%= commentable_name + '_get_more_comments_link_container'%>" class='get_more_comments_link_container'>
+    <%= render partial: 'comments/get_more_comments_link', locals: {commentable: commentable} %>
+  </div>
+  <%= render commentable.comments.order('created_at').last(3) %>
+</div>
+  
+<!-- NEW COMMENT FORM -->
+<div class='new_comment_form'>
+  <div id="<%= commentable_name + '_comment_error_message'%>" class='warning'></div>
+  <%= form_for [commentable, Comment.new], namespace: [class_name, commentable.id], remote: true do |f| %>
+    <%= f.text_area :content, class: 'comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
+  <% end %>
+</div>

@@ -24,6 +24,10 @@ Kmlaalumni::Application.routes.draw do
     resources :comments
   end
   
+  resources :careernotes do
+    resources :comments
+  end
+  
   resources :comments
   
   resources :educations

@@ -10,24 +10,24 @@ class CareersController < ApplicationController
     @careernotes = @user.careernotes
   end
   
- def show_note
+  def show_note
     @employment = Employment.find(params[:id])
     @user = User.find(@employment.user_id)
     @careernote=@employment.careernote
- end
+  end
   
   def write_note
     employment = Employment.find(params[:id])
     if employment.careernote==nil
-    	    @type= 'create' 
+      @type= 'create' 
     end
     @employment = nil 
     @employments = current_user.employments
     for e in @employments
-    	    if e.id == employment.id
-    	    	    @employment = e
-    	    	    break
-    	    end
+      if e.id == employment.id
+    	@employment = e
+        break
+      end
     end
     @placeholder = employment.organization.name + '에서 어떤 일을 하셨나요?'
   end
@@ -39,9 +39,9 @@ class CareersController < ApplicationController
 	@organization_name =[]
 	
 	for employment in @employments
-		if employment.careernote.blank?
-			@employments_without_careernote << employment
-		end
+      if employment.careernote.blank?
+        @employments_without_careernote << employment
+      end
 	end
   end
     
@@ -96,17 +96,14 @@ class CareersController < ApplicationController
   private
   
     def authenticate_careernote_authority
-    
       return unless load_employment
-      
       unless @employment.user == current_user
         flash[:warning] = '남의 직장 경력을 수정할 수 없습니다'
         respond_to do |format|
           format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
         end
-      end
-      
+      end      
     end
     
     def validate_employment_has_no_careernote

@@ -1,5 +1,4 @@
 <% posting_name = 'posting_' + posting.id.to_s %>
-<% user_likes_posting = current_user.likes?(posting) %>
 
 <!-- POSTING -->
 <div id='<%= posting_name %>' class='posting_container'>
@@ -30,55 +29,13 @@
       <div id="<%= posting_name + '_content' %>" class='posting_content content'><%= simple_format(posting.content) %></div>
     <% else %>
       <div id="<%= posting_name + '_content' %>" class="posting_content posting_preview content">
-        <%= posting.content[0, 299] %>...<%= link_to "더 읽기", get_posting_content_url(posting), remote: true, class: "read_more_link" %>
+        <%= simple_format(posting.content[0, 299]) %>...<%= link_to "더 읽기", get_posting_content_url(posting), remote: true, class: "read_more_link" %>
       </div>
     <% end %>
   </div>
   
   <% if writeability %>
-  
-  <!-- POSTING DIVIDER -->
-  <div class='posting_divider'><%= image_tag(asset_path 'posting_divider.png') %></div>
-  
-  <!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
-  
-    <div class='content_activity_bar'>
-      <% if user_likes_posting %>
-        <%= link_to "좋아요 취소", dislike_url(posting_id: posting.id), id: posting_name + '_like_link', remote: true %>
-      <% else %>
-        <%= link_to "좋아요", like_url(posting_id: posting.id), id: posting_name + '_like_link', remote: true %>
-      <% end %>
-      <% if current_user.wrote?(posting) %>
-        · <%= link_to "삭제", posting_url(posting), method: :delete, remote: true %>
-      <% end %>
-      <span class='content_date'><%= posting.created_at %></span>
-    </div>
-    
-  <% end %>
-  
-  <!-- POSTING LIKES --->
-  <div id="<%= posting_name + '_likes_container' %>" class='likes_container'>
-    <%= render partial: 'likes/likes_stats', locals: {likeable: posting} %>
-  </div>
-  
-  <!-- POSTING COMMENTS -->
-  <div id="<%= posting_name + '_comments'%>" class='comments_container'>
-    <div id="<%= posting_name + '_get_more_comments_link_container'%>" class='get_more_comments_link_container'>
-      <%= render partial: 'comments/get_more_comments_link', locals: {commentable: posting} %>
-    </div>
-    
-    <%= render posting.comments.order('created_at').last(3) %>
-  </div>
-  
-  
-  <% if writeability %>
-    <!-- NEW COMMENT FORM -->
-    <div class='new_comment_form'>
-        <div id="<%= posting_name + '_comment_error_message'%>" class='warning'></div>
-        <%= form_for [posting, Comment.new], namespace: [:posting, posting.id], remote: true do |f| %>
-          <%= f.text_area :content, class: 'comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
-        <% end %>
-    </div>
+    <%= render partial: 'comments/commentable_area', locals: {commentable: posting} %>
   <% end %>
   
 </div>
