@@ -1,6 +1,4 @@
-﻿
-
-<div id='profile_header'>
+﻿<div id='profile_header'>
   <div id='profile_pic' class='float-left'>
     <%= image_tag asset_path('default_profile_pic.png') %>
   </div>
@@ -15,7 +13,6 @@
   <% end %>
 </div>
 
-
 <div id='settings_wrapper'>
 
   <div id='settings_long_section' class='float-left'>
@@ -25,7 +22,7 @@
         <% for employment in @user.employments %>
           <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
             <%= render partial: 'employments/employment', locals:{employment: employment} %>
-            <%= render partial: 'careers/careernote_button', locals:{employment: employment, user:@user}, style:'display:none' %>
+            <%= render partial: 'careers/careernote_link', locals:{employment: employment, user:@user}, style:'display:none' %>
           </div>
         <% end %>
       </div>
@@ -62,31 +59,21 @@
         <%= render partial: 'network/contact_information', locals:{user: @user} %>
       </div>
     </div>
-	
-    <div id='tag_information_container' class='settings_category_container'>
-		<div class='settings_category_title float-left'>태그</div>
-		<%= render partial: 'network/tag_information', locals:{user: @user} %>
-	</div>
+
   </div>
 
 </div>
 
 <script>
-$(document).ready(function(){
-    $('.careernote_button').hide();		  
-  });
-
-jQuery(function($) {
-  $("#employments_container").mouseenter(function() {
-    // make a POST call and replace the content
-     $('.careernote_button').show("slow");
-  });
-  $("#employments_container").mouseleave(function() {
-    // make a POST call and replace the content
-     $('.careernote_button').hide("slow");
-  });
+  $(document).ready(function() {
+    $('#employments_container').mouseenter(function() {
+       $('.careernote_link').show('slow');
+    });
   
-});
+    $('#employments_container').mouseleave(function() {
+       $('.careernote_link').hide('slow');
+    });
+  });
 </script>
 
 

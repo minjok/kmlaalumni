@@ -41,15 +41,12 @@ class ApplicationController < ActionController::Base
   # --------------------------------------------
   # Loads posting with the given id
   def load_posting
-    
     @posting = nil
-    
     if params.has_key?(:id)
       @posting = Posting.find_by_id(params[:id])
     elsif params.has_key?(:posting_id)
       @posting = Posting.find_by_id(params[:posting_id])
     end
-      
     if @posting.blank?
       respond_to do |format|
         format.js { render 'layouts/redirect' }
@@ -57,24 +54,19 @@ class ApplicationController < ActionController::Base
       end
       return false
     end
-      
-    return true
-      
+    return true      
   end
   
   # Method: load_comment
   # --------------------------------------------
   # Load comment with given id.
   def load_comment
-    
     @comment = nil
-    
     if params.has_key?(:id)
       @comment = Comment.find_by_id(params[:id])
     elsif params.has_key?(:comment_id)
       @comment = Comment.find_by_id(params[:comment_id])
     end
-      
     if @comment.blank?
       respond_to do |format|
         format.js { render 'layouts/redirect' }
@@ -82,7 +74,6 @@ class ApplicationController < ActionController::Base
       end
       return false
     end
-      
     return true
 
   end
@@ -91,15 +82,12 @@ class ApplicationController < ActionController::Base
   # --------------------------------------------
   # Load employment with given id.
   def load_employment
-    
     @employment = nil
-    
     if params.has_key?(:id)
       @employment = Employment.find_by_id(params[:id])
     elsif params.has_key?(:employment_id)
       @employment = Employment.find_by_id(params[:employment_id])
     end
-      
     if @employment.blank?
       respond_to do |format|
         format.js { render 'layouts/redirect' }
@@ -107,9 +95,7 @@ class ApplicationController < ActionController::Base
       end
       return false
     end
-      
     return true
-
   end
   
   # Method: authenticate_posting_authority
@@ -122,7 +108,6 @@ class ApplicationController < ActionController::Base
     if params.has_key?(:posting) && params[:posting].has_key?(:platform)
       if params[:posting][:platform] == Posting::PLATFORM['GROUP'].to_s
         return unless load_group
-        
         # Checks that user is a group member
         unless current_user.is_member_of?(@group)
           flash[:warning] = '그룹의 멤버만 포스팅을 올릴 수 있습니다'
@@ -131,7 +116,6 @@ class ApplicationController < ActionController::Base
             format.html { redirect_to group_url(@group) }
           end
         end
-        
       elsif params[:posting][:platform] == Posting::PLATFORM['ANNOUNCEMENT'].to_s 
         # Checks that user is an admin
         unless current_user.is_admin?
@@ -143,7 +127,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-
   end
   
   private
