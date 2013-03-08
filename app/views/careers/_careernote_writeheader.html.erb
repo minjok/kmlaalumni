@@ -1,6 +1,6 @@
 <%= render :partial => 'careers/careernote_intro' %>
 <span>
-<%= "#{User.find(employment.user_id).name}님, " %> 
+<%= "#{current_user.name}님, " %> 
 </span>
 <span class='careernote_organization_name'>
   <%= employment.organization.name %>

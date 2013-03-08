@@ -1,16 +1,14 @@
 <script src="tiny.editor.packed.js"></script>
 
-<% careernote = employment.careernote %>
-<% careernote ||= Careernote.new %>
 <% if type == 'create' %>
-  <% url = create_careernote_url(employment) %>
+  <% url = create_careernote_url(@careernote) %>
   <% submit_text = '직업 소개하기' %>
 <% else %>
-  <% url = update_careernote_url(employment) %>
+  <% url = update_careernote_url(@careernote) %>
   <% submit_text = '수정하기' %>
 <% end %>
 <div id="careernote_error_message" class='warning'></div>
-<%= form_for careernote, url: url do |f| %>
+<%= form_for @careernote, url: url do |f| %>
   <div>
     <%= f.text_area :content, placeholder: placeholder, autocomplete: :off, class: 'careernote_form_text_area', id: 'tinyeditor' %>
 
@@ -25,7 +23,7 @@
     var editor = new TINY.editor.edit('editor', {
     id: 'tinyeditor',
     width: 584,
-    height: 175,
+    height: 450,
     cssclass: 'tinyeditor',
     controlclass: 'tinyeditor-control',
     rowclass: 'tinyeditor-header',

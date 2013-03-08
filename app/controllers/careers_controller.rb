@@ -4,11 +4,6 @@ class CareersController < ApplicationController
   before_filter :authenticate_careernote_authority, only: [:create_note, :get_note_form, :update_note, :destroy_note, :write_note]
   before_filter :validate_employment_has_no_careernote, only: [:create_note]
   before_filter :validate_employment_has_careernote, only: [:get_note_form, :update_note]
-
-  def show_notes
-    @user = User.find(params[:id])
-    @careernotes = @user.careernotes
-  end
   
   def show_note
     @employment = Employment.find(params[:id])
@@ -16,20 +11,16 @@ class CareersController < ApplicationController
     @careernote=@employment.careernote
   end
   
-  def write_note
-    employment = Employment.find(params[:id])
-    if employment.careernote==nil
-      @type= 'create' 
+  def new
+    @careernote = Careernote.new
+    @employment = Employment.find(params[:id])
+    @type= 'create'
+    #@placeholder = employment.organization.name + '에서 어떤 일을 하셨나요?'
+    @careernote.employment = @employment
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @careernote }
     end
-    @employment = nil 
-    @employments = current_user.employments
-    for e in @employments
-      if e.id == employment.id
-    	@employment = e
-        break
-      end
-    end
-    @placeholder = employment.organization.name + '에서 어떤 일을 하셨나요?'
   end
   
   def submit_note
@@ -45,14 +36,16 @@ class CareersController < ApplicationController
 	end
   end
     
-  def create_note
-    @careernote = Careernote.new(params[:careernote])
+  def create
+    @careernote = Careernote.new(params[:careernote]) 	  
     @careernote.employment = @employment
-    @careernote.save
     respond_to do |format|
-      format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
-    end
-    
+       if @careernote.save
+    	  format.html{ redirect_to "/submit_careernote/#{current_user.id}" }
+       else
+          format.html{ redirect_to root_url }
+       end
+    end    
   end
   
   def update_note
