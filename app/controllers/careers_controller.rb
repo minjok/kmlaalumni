@@ -91,7 +91,7 @@ class CareersController < ApplicationController
     def authenticate_careernote_authority
       return unless load_employment
       unless @employment.user == current_user
-        flash[:warning] = '남의 직장 경력을 수정할 수 없습니다'
+        flash[:warning] = '다른 동문의 직장 경력을 수정할 수 없습니다'
         respond_to do |format|
           format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
@@ -101,7 +101,7 @@ class CareersController < ApplicationController
     
     def validate_employment_has_no_careernote
       unless @employment.careernote.blank?
-        flash[:warning] = '이미 직업 소개글을 쓰셨습니다'
+        flash[:warning] = '이미 커리어 노트를 쓰셨습니다'
         respond_to do |format|
           format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
@@ -111,7 +111,7 @@ class CareersController < ApplicationController
     
     def validate_employment_has_careernote
       if @employment.careernote.blank?
-        flash[:warning] = '이미 직업 소개글을 쓰셨습니다'
+        flash[:warning] = '커리어 노트가 없습니다'
         respond_to do |format|
           format.js { render 'layouts/redirect' }
           format.html { redirect_to root_url }
