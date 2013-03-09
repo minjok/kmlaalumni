@@ -7,7 +7,6 @@ gem 'devise'
 gem 'thin'
 gem 'kaminari'
 gem 'newrelic_rpm', '3.5.7.59'
-gem 'acts-as-taggable-on'
 
 group :assets do
   gem 'asset_sync'

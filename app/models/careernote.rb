@@ -10,6 +10,9 @@ class Careernote < ActiveRecord::Base
   has_many :activities, as: :feedable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
+  
+  has_many :taggings, dependent: :destroy
+  has_many :tags, as: :taggable, through: :taggings
    
   # *** VALIDATIONS *** #
   validates_presence_of :content,

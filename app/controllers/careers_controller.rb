@@ -38,6 +38,7 @@ class CareersController < ApplicationController
     
   def create
     @careernote = Careernote.new(params[:careernote]) 	  
+    @careernote.user = current_user
     @careernote.employment = @employment
     respond_to do |format|
        if @careernote.save

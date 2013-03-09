@@ -20,9 +20,6 @@ class User < ActiveRecord::Base
                     
     attr_accessor   :current_password
     
-	# *** ACT_AS_TAGGABLE ***#
-	acts_as_taggable
-	
 	# *** DEVISE *** #
 	devise	:database_authenticatable,
 			:registerable,
@@ -55,6 +52,9 @@ class User < ActiveRecord::Base
     
     has_many :comments, dependent: :destroy
     has_many :likes,    dependent: :destroy
+    
+    has_many :tags, as: :tagger, through: :taggings
+    has_many :taggings, dependent: :destroy
 	
 	
 	# *** VALIDATIONS *** #
@@ -108,53 +108,81 @@ class User < ActiveRecord::Base
                                     message: "올바른 성별이 아닙니다"
 		  
 		  
-	# *** METHODS *** #
-	def after_active_sign_in_path_for(resource)
-      respond_to root_path
-    end
-    
-    def after_inactive_sign_up_path_for(resource)
-      respond_to root_path
-    end
-    
-    def is_member_of?(group)
-	  Membership.exists?(self, group)
-	end
+  # *** METHODS *** #
 	
-	def is_admin_of?(group)
-	  Membership.exists_as_admin?(self, group)
-	end
     
-    def update_with_password(params, *options)
+  # Method: after_active_sign_in_path_for
+  # --------------------------------------------
+  #
+  def after_active_sign_in_path_for(resource)
+    respond_to root_path
+  end
+    
+  # Method: after_inactive_sign_up_path_for
+  # --------------------------------------------
+  #
+  def after_inactive_sign_up_path_for(resource)
+    respond_to root_path
+  end
+    
+  # Method: is_member_of?
+  # --------------------------------------------
+  #
+  def is_member_of?(group)
+	Membership.exists?(self, group)
+  end
+	
+  # Method: is_admin_of?
+  # --------------------------------------------
+  #
+  def is_admin_of?(group)
+	Membership.exists_as_admin?(self, group)
+  end
+    
+  # Method: update_with_password
+  # --------------------------------------------
+  #
+  def update_with_password(params, *options)
      current_password = params.delete(:current_password)
-
      result = if valid_password?(current_password)
-       update_attributes(params, *options)
-     else
-       params.delete(:password)
-       self.assign_attributes(params, *options)
-       self.valid?
-       self.errors.add(:current_password, current_password.blank? ? '현재 비밀번호를 입력해주세요' : '현재 비밀번호를 올바르게 입력해주세요')
-       false
-     end
-
-     result
-    end
+     update_attributes(params, *options)
+   else
+     params.delete(:password)
+     self.assign_attributes(params, *options)
+     self.valid?
+     self.errors.add(:current_password, current_password.blank? ? '현재 비밀번호를 입력해주세요' : '현재 비밀번호를 올바르게 입력해주세요')
+     false
+   end
+   result
+  end
     
-    def wrote?(content)
-      content.user === self
-    end
+  # Method: wrote?
+  # --------------------------------------------
+  #
+  def wrote?(commentable)
+    commentable.user === self
+  end
     
-    def likes?(content)
-      Like.exists?(self, content)
-    end
+  # Method: likes?
+  # --------------------------------------------
+  #
+  def likes?(likeable)
+    Like.exists?(self, likeable)
+  end
     
-    def has_careernotes?
-      not self.careernotes.first.blank?
-    end
+  # Method: has_careernotes?
+  # --------------------------------------------
+  #
+  def has_careernotes?
+    not self.careernotes.first.blank?
+  end
     
-	protected
-      def password_required?
-        !persisted? || !password.nil? || !password_confirmation.nil?
-      end
+  protected
+    
+    # Method: password_required?
+    # --------------------------------------------
+    #  
+    def password_required?
+      !persisted? || !password.nil? || !password_confirmation.nil?
+    end
 end
