@@ -19,15 +19,13 @@ class CareersController < ApplicationController
   end
   
   def submit_note
-  	@user = current_user
-  	@employments = @user.employments
+  	employments = current_user.employments
 	@employments_without_careernote =[]
-	@organization_name =[]
 	
 	for employment in @employments
-      if employment.careernote.blank?
-        @employments_without_careernote << employment
-      end
+          if employment.careernote.blank?
+             @employments_without_careernote << employment
+          end
 	end
   end
     
