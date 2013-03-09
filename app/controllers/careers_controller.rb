@@ -5,60 +5,59 @@ class CareersController < ApplicationController
   before_filter :validate_employment_has_no_careernote, only: [:create_note]
   before_filter :validate_employment_has_careernote, only: [:get_note_form, :update_note]
   
-  def show_note
-    @employment = Employment.find(params[:id])
+  def show
+    @careernote=Careernote.find(params[:id])           # :id = employment.id
+    @employment = @careernote.employment
     @user = User.find(@employment.user_id)
-    @careernote=@employment.careernote
   end
   
   def new
     @careernote = Careernote.new
-    @employment = Employment.find(params[:id])
+    @employment = Employment.find(params[:id])          # :id = employment.id
     @type= 'create'
     #@placeholder = employment.organization.name + '에서 어떤 일을 하셨나요?'
-    @careernote.employment = @employment
-    respond_to do |format|
-      format.html
-      format.json  { render :json => @careernote }
-    end
   end
   
   def submit_note
-  	@user = User.find(params[:id])
-  	@employments = @user.employments
+  	employments = current_user.employments
 	@employments_without_careernote =[]
-	@organization_name =[]
 	
 	for employment in @employments
-      if employment.careernote.blank?
-        @employments_without_careernote << employment
-      end
+          if employment.careernote.blank?
+             @employments_without_careernote << employment
+          end
 	end
   end
     
   def create
-    @careernote = Careernote.new(params[:careernote]) 	  
-    @careernote.user = current_user
-    @careernote.employment = @employment
+    @careernote = Careernote.new(params[:careernote])      # :id = careernote.id
     respond_to do |format|
        if @careernote.save
-    	  format.html{ redirect_to "/submit_careernote/#{current_user.id}" }
+    	  format.html{ redirect_to submit_careernote_url }
        else
           format.html{ redirect_to root_url }
        end
     end    
   end
   
-  def update_note
-    @careernote = @employment.careernote
+  def edit
+    @careernote = Careernote.find(params[:id])             # :id = careernote.id
+    @employment = @careernote.employment
+  end
+  
+  def update
+    @type= 'update' 	  
+    @careernote = Careernote.find(params[:id])
+    @employment = @careernote.employment
     @careernote.update_attributes(params[:careernote])
     @careernote.save
     respond_to do |format|
-      format.html{ redirect_to "/submit_careernote/#{current_user.id}" } 
+      format.html{ redirect_to show_careernote_url(@careernote) } 
     end
   end
   
-  def destroy_note
+  def destroy
+    @employment = Employment.find(params[:id])	    	  
     @employment.careernote.destroy
     respond_to do |format|
       format.html{ redirect_to "/profile/#{current_user.id}"} 
