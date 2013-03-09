@@ -21,8 +21,8 @@ class CareersController < ApplicationController
   def submit_note
   	employments = current_user.employments
 	@employments_without_careernote =[]
-	
-	for employment in @employments
+
+	for employment in employments
           if employment.careernote.blank?
              @employments_without_careernote << employment
           end
@@ -31,6 +31,7 @@ class CareersController < ApplicationController
     
   def create
     @careernote = Careernote.new(params[:careernote])      # :id = careernote.id
+    @careernote.user = current_user
     respond_to do |format|
        if @careernote.save
     	  format.html{ redirect_to submit_careernote_url }
@@ -81,6 +82,13 @@ class CareersController < ApplicationController
   
   def notes_feed
     @careernotes = Careernote.order('created_at DESC').page(params[:page]).per(10)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def get_content
+    @careernote = Careernote.find(params[:id])
     respond_to do |format|
       format.js
     end
