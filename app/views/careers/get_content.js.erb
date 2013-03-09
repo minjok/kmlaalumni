@@ -1,0 +1,2 @@
+<% careernote_name = 'careernote_' + @careernote.id.to_s %>
+$("<%= '#' + careernote_name + '_content' %>").html("<%= @careernote.content %>");

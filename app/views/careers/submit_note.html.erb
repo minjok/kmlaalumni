@@ -2,9 +2,11 @@
 <div class="additional_suggestion", id="submit_message">
 <span class="careernote_sub"><%="#{current_user.name} 동문님, 다른 직장에서의 경험도 공유해주세요!"%></span>
 <ul id = "suggestion_table">
-	<% for employment in @employments_without_careernote %>
-		<li class = "suggestion"><%= link_to "#{employment.organization.name}", new_careernote_url(employment) %></li>
-	<% end %>
+  <%unless @employments_without_careernote.blank? %>
+    <% for employment in @employments_without_careernote %>
+      <li class = "suggestion"><%= link_to "#{employment.organization.name}", new_careernote_url(employment) %></li>
+    <% end %>
+  <% end %>  
 </ul>
 
 </div>

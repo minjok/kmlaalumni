@@ -3,7 +3,7 @@
       <div class='careernote_header'>
         <%= render partial: 'careers/careernote_header', locals: {employment: @careernote.employment} %>
       </div>
-      <%= render partial: 'careers/careernote', locals: {careernote: @careernote } %>
+      <%= render partial: 'careers/careernote', locals: {careernote: @careernote, view_type:'posting' } %>
   </div>
   <div class='careernote_footer'>
     <% if current_user==@user %>

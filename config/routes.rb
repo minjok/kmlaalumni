@@ -92,6 +92,7 @@ Kmlaalumni::Application.routes.draw do
   match '/get_careernote_form/:id', to: 'careers#get_note_form', as: 'get_careernote_form'
   match '/careernote_num_pages', to: 'careers#notes_num_pages', as: 'careernote_num_pages'
   match '/careernote_feed', to: 'careers#notes_feed', as: 'careernote_feed'
+  match '/get_careernote_content/:id', to: 'careers#get_content', as: 'get_careernote_content'  
   
   
   
