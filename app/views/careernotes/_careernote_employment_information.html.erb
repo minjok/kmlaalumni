@@ -1,0 +1,18 @@
+<div class='careernote_employment_information'>
+  <span class='careernote_organization_name'><%= employment.organization.name %></span>
+  <span class='careernote_employment_additional_information'>
+    <% unless employment.position.blank? %>
+  <span><%= employment.position %></span>
+    <% end %>
+    <% unless employment.start_year.blank? %>
+      <span>
+        <%= employment.start_year.year %> -
+        <% if employment.end_year.blank? %>
+            현재
+        <% else %>
+          <%= employment.end_year.year %>
+        <% end %>
+      </span>
+    <% end %>
+  </span>
+</div>

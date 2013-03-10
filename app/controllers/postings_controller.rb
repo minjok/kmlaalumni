@@ -1,9 +1,7 @@
 # encoding: utf-8
 class PostingsController < ApplicationController
   
-  
   # *** BEFORE_FILTER *** #
-  
   
   # Authenticates that the user is a group member
   before_filter :authenticate_posting_authority, only: [:create]
@@ -15,7 +13,6 @@ class PostingsController < ApplicationController
   before_filter :load_posting, only: [:get_content]
   
   # *** METHODS *** #
-  
   
   # Method: create
   # --------------------------------------------

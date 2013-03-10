@@ -1,0 +1,5 @@
+<% if @careernote.blank? || @careernote.errors.blank? %>
+  window.location = "/careernote_dashboard"
+<% else %>
+  $('#careernote_error_message').html("<%= @careernote.errors.first[1] %>");
+<% end %>

@@ -1,0 +1,17 @@
+<div>
+  <div id='employments_container'>
+    <% for employment in @employments %>
+      <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
+      <%= render partial: 'careernotes/careernote_employment_information', locals:{employment: employment} %>
+      <% if employment.careernote.blank? %>
+          <span><%= link_to "커리어노트 쓰기", new_careernote_url(employment_id: employment.id) %></span>
+        <% else %>
+          <%= render partial: 'careernotes/careernote_content', locals:{careernote: employment.careernote} %>
+          <span><%= link_to '수정',  edit_careernote_url(employment.careernote)%></span>
+          ·
+          <span><%= link_to '삭제', careernote_url(employment.careernote), method: :delete, remote: true %></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<div>

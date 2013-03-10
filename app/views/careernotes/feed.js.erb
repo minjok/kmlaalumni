@@ -1,0 +1,1 @@
+$("#careernotes").append("<% for careernote in @careernotes do%><%=  escape_javascript( render partial: 'careernotes/careernote', locals: {careernote: careernote}) %><% end %>");

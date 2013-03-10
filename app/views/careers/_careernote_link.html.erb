@@ -1,6 +1,0 @@
-<% unless employment.careernote.blank? || @is_current_user %>
-  <span class='careernote_link' style='display:none'><%=link_to "커리어 노트 보기", show_careernote_url(employment.careernote) %></span>
-<% end %>
-<% if employment.careernote.blank? && @is_current_user %>
-  <span class='careernote_link' style='display:none'><%=link_to "#{user.name}동문님, #{employment.organization.name}에서의 경험을 공유해주세요!", new_careernote_url(employment.id) %></span>
-<% end %>

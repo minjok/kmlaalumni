@@ -1,21 +1,5 @@
 .careernotes_container {
-  width: 650px;
-}
-
-.careernote_container {
   width: 600px;
-  min-height: 100px;
-  margin-bottom: 20px;
-}
-
-.careernote_employment_info {
-  margin-bottom: 10px;
-}
-
-.careernote_organization_name {
-  font-size: 15px;
-  font-weight: bold;
-  color: #555555;
 }
 
 #careernote_form_text_area { 
@@ -30,55 +14,78 @@
   margin-top: 10px;
 }
 
-.careernote_link{
-  padding:0.5px;
-  background:#CDEDEE;
-  font-size: 11px;
-  
+.careernote_banner {
+  font-size:20px;
+  font-weight:bold;
+  color: #777777;
 }
-#careernote_introduction{
-  padding:1px;
-  margin: 30px 0 20px 0;
-}
+
 .careernote_keyword{
   font-size:25px;
   font-weight:bold;
-  line-height: 40px; 
-  letter-spacing: -1px;
   color: #38ACEC;
 }
-.careernote_sub{
-  color: #79BAEC;
-}
-.careernote_short_section{
-  float:right;
-}
-.careernote_long_section{
-  float:left;
-}
-.careernote_tag_container{
-  margin-top:100px;
-}
-.careernote_profile{
-  margin-top:20px;
-}
-.careernote_body{
-  margin-top:20px;	
+.careernote_promotion_text{
+  font-size:11px;
+  color: #555555;
 }
 
 .careernote_guide_container{
   margin: 7px 0px;	
 }
-#submit_message{
-  margin: 10px 0px 0px;	
-}
-.suggestion{
-  padding:4px;	
-}
+
 .careernote_feed_name{
   color: #38ACEC;
 }
-.careernote_cotent_container{
-  margin: 10px 0;	
+
+.careernote_container {
+  width: 600px;
+  margin-bottom: 20px;
+  overflow: auto;
 }
 
+.careernote_main_area { 
+  width: 600px;
+  min-height: 120px;
+}
+
+.careernote_author_name {
+  width: 100px;
+  font-weight: bold; 
+  text-align: center;
+}
+
+.careernote_content_container {
+  width: 480px;
+  margin-top: 5px;
+}
+
+.careernote_employment_information {
+  margin-bottom: 10px;
+}
+
+.careernote_organization_name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #777777;
+}
+
+.careernote_employment_additional_information {
+  margin-left: 3px;
+  color: #999999;
+  font-size: 11px;
+}
+
+.careernote_qm {
+  font-size: 20px;
+  color: #777777;
+  margin: 0 3px;
+}
+
+.careernote_content {
+  min-height: 70px;
+}
+
+.careernote_commentable_area {
+  margin-top: 20px;
+}

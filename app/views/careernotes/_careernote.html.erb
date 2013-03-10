@@ -1,0 +1,19 @@
+<% careernote_name = 'careernote_' + careernote.id.to_s %>
+<div id="<%= careernote_name %>" class='careernote_container'>
+  <div id="<%= careernote_name + '_author' %>" class='float-left'>
+    <div id="<%= careernote_name + '_profile_pic' %>">
+      <%= image_tag asset_path('default_profile_pic.png') %>
+    </div>
+    <div id="<%= careernote_name + '_author_name' %>" class="careernote_author_name">
+      <%= link_to careernote.user.wave.to_s + '기 ' + careernote.user.name, profile_url(careernote.user) %>
+    </div>
+  </div>
+  <div class='careernote_content_container float-right'>
+    <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
+    <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote} %>
+    <div class='careernote_commentable_area'>
+      <%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
+    </div>
+  </div>
+  
+</div>

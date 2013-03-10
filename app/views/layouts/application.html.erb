@@ -14,7 +14,7 @@
     <div id='notice'><%= @notice %></div>
   <% end %>
   <div id='wrapper'>
-    <div class='sidebar_container'>
+    <div id='sidebar_container'>
       <div class='logo'>
         <a href='/'><%= image_tag(asset_path 'logo.png') %></a>
       </div>
@@ -32,7 +32,7 @@
         
         <div class='sidebar_title'>KMLA Connect</div>
         <div class='sidebar_link_container float-right'>
-          <%= link_to 'Careers', careers_url, class:'sidebar_link' %>
+          <%= link_to '커리어노트', careernotes_url, class:'sidebar_link' %>
         </div>
         
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>

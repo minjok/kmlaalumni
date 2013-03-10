@@ -1,0 +1,23 @@
+<% careernote_name = 'careernote_' + careernote.id.to_s %>
+<div>
+  <div id='<%= careernote_name %>' class='feedable_container' >
+  <div id="<%= careernote_name + '_sources'%>">
+    <span class='feedable_author'><%= link_to careernote.user.wave.to_s + '기 ' + careernote.user.name, profile_url(careernote.user) %></span>
+    <span class='careernote_feed_name'><%= "커리어 노트 " %><%="@#{careernote.employment.organization.name}" %></span>	
+  </div>
+  <div class='careernote_content_container'>
+    <% if careernote.content.length < 300 %>
+      <div id="<%= careernote_name + '_content' %>" class='posting_content content'><%= simple_format(careernote.content) %></div>
+    <% else %>
+      <div id="<%= careernote_name + '_content' %>" class="posting_content posting_preview content">
+        <%= simple_format(careernote.content[0, 299]) %>...<%= link_to "더 읽기", get_careernote_content_url(careernote), remote: true, class: "read_more_link" %>
+      </div>
+    <% end %>
+  </div>
+  
+  <%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
+  
+  <!-- DIVIDER -->
+  <div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
+</div>
+

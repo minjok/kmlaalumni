@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
     
     @group = nil
     
-    if params.has_key?(:id)
-      @group = Group.find_by_id(params[:id])
-    elsif params.has_key?(:group_id)
+    if params.has_key?(:group_id)
       @group = Group.find_by_id(params[:group_id])
+    elsif params.has_key?(:id)
+      @group = Group.find_by_id(params[:id])
     end
     
     if @group.blank?
@@ -42,10 +42,10 @@ class ApplicationController < ActionController::Base
   # Loads posting with the given id
   def load_posting
     @posting = nil
-    if params.has_key?(:id)
-      @posting = Posting.find_by_id(params[:id])
-    elsif params.has_key?(:posting_id)
+    if params.has_key?(:posting_id)
       @posting = Posting.find_by_id(params[:posting_id])
+    elsif params.has_key?(:id)
+      @posting = Posting.find_by_id(params[:id])
     end
     if @posting.blank?
       respond_to do |format|
@@ -62,10 +62,10 @@ class ApplicationController < ActionController::Base
   # Load comment with given id.
   def load_comment
     @comment = nil
-    if params.has_key?(:id)
-      @comment = Comment.find_by_id(params[:id])
-    elsif params.has_key?(:comment_id)
+    if params.has_key?(:comment_id)
       @comment = Comment.find_by_id(params[:comment_id])
+    elsif params.has_key?(:id)
+      @comment = Comment.find_by_id(params[:id])
     end
     if @comment.blank?
       respond_to do |format|
@@ -83,12 +83,32 @@ class ApplicationController < ActionController::Base
   # Load employment with given id.
   def load_employment
     @employment = nil
-    if params.has_key?(:id)
-      @employment = Employment.find_by_id(params[:id])
-    elsif params.has_key?(:employment_id)
+    if params.has_key?(:employment_id)
       @employment = Employment.find_by_id(params[:employment_id])
+    elsif params.has_key?(:id)
+      @employment = Employment.find_by_id(params[:id])
     end
     if @employment.blank?
+      respond_to do |format|
+        format.js { render 'layouts/redirect' }
+        format.html { render file: 'public/404', format: :html, status: 404 }
+      end
+      return false
+    end
+    return true
+  end
+  
+  # Method: load_careernote
+  # --------------------------------------------
+  # Load careernote with given id.
+  def load_careernote
+    @careernote = nil
+    if params.has_key?(:careernote_id)
+      @careernote = Careernote.find_by_id(params[:careernote_id])
+    elsif params.has_key?(:id)
+      @careernote = Careernote.find_by_id(params[:id])
+    end
+    if @careernote.blank?
       respond_to do |format|
         format.js { render 'layouts/redirect' }
         format.html { render file: 'public/404', format: :html, status: 404 }

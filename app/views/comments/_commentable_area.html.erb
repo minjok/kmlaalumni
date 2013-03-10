@@ -2,9 +2,6 @@
 <% commentable_name = class_name + '_' + commentable.id.to_s %>
 <% params = "?" + class_name + "_id=" + commentable.id.to_s %>
 <% user_likes_commentable = current_user.likes?(commentable) %>
-
-<!-- DIVIDER -->
-<div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
   
 <!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
   
@@ -15,9 +12,9 @@
       <%= link_to "좋아요", like_url + params, id: commentable_name + '_like_link', remote: true %>
     <% end %>
     <% if current_user.wrote?(commentable) %>
-      · <%= link_to_delete_commentable(commentable) %>
+      · <%= link_to_commentable_modification(commentable) %>
     <% end %>
-    <span class='content_date'><%= commentable.created_at %></span>
+    <span class='commentable_date'><%= commentable.created_at %></span>
   </div>
       
 <!-- LIKES --->

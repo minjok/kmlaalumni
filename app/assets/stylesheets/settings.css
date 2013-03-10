@@ -82,7 +82,7 @@
 }
 
 .update_education_header {
-  min-height: 16px;
+  min-height: 20px;
 }
 
 .education_school_name {
@@ -103,7 +103,7 @@
 }
 
 .update_employment_header {
-  min-height: 16px;
+  min-height: 20px;
 }
 
 .employment_organization_name {
