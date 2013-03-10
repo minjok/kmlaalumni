@@ -5,7 +5,7 @@ class Tag < ActiveRecord::Base
   
   # *** ASSOCIATIONS *** #
   has_many :taggings, dependent: :destroy
-  has_many :taggables, through: :taggings, polymorphic: true
-  has_many :taggers, through: :taggings, polymorphic: true
+  has_many :taggables, through: :taggings
+  has_many :taggers,  through: :taggings
   
 end
