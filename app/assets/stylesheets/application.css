@@ -12,7 +12,8 @@
  *= require_tree .
  
  */
-
+ 
+ 
 BODY {
   margin: 0;
   font-family: 'NanumGothicWeb', gulim, sans-serif;
@@ -41,15 +42,66 @@ a {
 
 #wrapper {
   width: 980px;
-  margin: 0 auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 #main_container {
-  width:930px;
+  margin-top:40px;	
+  width:900px;
 }
 
+#horizontalbar_container{
+  height:30px; 	
+  position: fixed;
+  top:0px;
+  left:0px;
+  z-index:10000;
+  width:100%; 
+  background:#FBFDFE;
+  opacity:1.0;	  
+  /* Drop Shadow */
+  -moz-box-shadow: 1px 1px 2px #BEDCE9;
+  -webkit-box-shadow: 1px 1px 2px #BEDCE9;
+  box-shadow: 1px 1px 2px #BEDCE9;
+}
+#horizontalbar{
+  width:1250px;
+  margin-bottom:4px;
+  margin-left:auto;
+  margin-right:auto;
+  list-style:none;
+  
+}
+
+#horizontalbar li{
+  display:inline;
+  float:left;  
+  list-style:none;  
+}
+
+#horizontalbar a{
+    display:inline-block;
+}
+
+.horizontalbar_submenu ul { 
+  position:absolute; 
+  margin:0; 
+  padding:0; 
+}
+
+.horizontalbar_submenu li{
+  display:block;
+  float:left;
+}
+
+.horizontalbar_submenu a{
+    display:inline-block;
+}
+
+
 #header {
-  width: 500px;
+  width: 520px;
   height: 20px;
   margin-top: 50px;
   margin-bottom: 30px;
@@ -63,10 +115,7 @@ a {
   font-size: 16px;
   font-weight: bold;
 }
-#horizontalbar_container{
-  margin-left:auto;	
-  margin-right:auto;
-}
+
 #sidebar_container {
   width: 180px;
   float:left;
@@ -150,7 +199,7 @@ a {
 }
 
 .new_posting_container {
-  width:700px;
+  width:520px;
   border-bottom: 1px solid #cccccc;
   margin-bottom: 15px;
 }
@@ -183,7 +232,7 @@ a {
 }
 
 #page_content_container {
-  width: 700px;
+  width: 520px;
   margin-bottom: 30px;
 }
 
@@ -342,4 +391,5 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
   line-height: 26px;
   text-align: center;
 }
+
 

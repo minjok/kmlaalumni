@@ -13,16 +13,29 @@
   <% if @notice %>
     <div id='notice'><%= @notice %></div>
   <% end %>
-   <div id='horizontalbar_container'>
-       <div class='logo'>
-        <a href='/'><%= image_tag(asset_path('logo.png'), size:"100x100") %></a>
-      </div>
-    </div>
+  <div id='horizontalbar_container'>
+      <ul id ="horizontalbar">
+        <li id='bar_logo'>
+           <a href='/'><%= image_tag(asset_path('logo.png'), size:"100x20") %></a>
+        </li>
+        <li class='sidebar_title'><%= link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user), class: 'sidebar_link' %></li>
+        <li class='sidebar_title'>
+          Kmla Connect
+          <ul class = 'horizontalbar_submenu'>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+          </ul>
+        </li>
+        <li class='sidebar_title'>동문회</li>
+        <li class='sidebar_title'>내 소모임</li>
+        <li class='sidebar_title'>네트워크</li>
+        <li class='sidebar_title'><%= link_to '로그아웃', logout_url, id:'logout_link', class: 'sidebar_option_link', method: :delete %></li>
+      </ul>
+      
+  </div>
   <div id='wrapper'>
     <div id='sidebar_container' style='display:none'>
-      <div class='logo'>
-        <a href='/'><%= image_tag(asset_path 'logo.png') %></a>
-      </div>
       <div class='sidebar'>
         
         <div class='sidebar_title'><%= current_user.wave %>기 <%= current_user.name %></div>
@@ -128,6 +141,18 @@
       });
     });
     
+     $("#horizontalbar_container").mouseover(function () {
+       $(this).css("opacity","1.0");
+     });
+     
+      $(window).scroll(function () {
+       $("#horizontalbar_container").css("opacity","0.5");
+     });
+     
+     $("#horizontalbar_container").mouseleave(function () {
+       $(this).css("opacity","0.5");
+     });
+    
     $('body').on('click', '#dialog_close_link', function(event){
       event.preventDefault();
       $('#dialog_title').html('');
@@ -138,7 +163,8 @@
     $(document).ready( function() {
       
       $('input, textarea').placeholder();
-      
+
+
     });
 
   </script>
