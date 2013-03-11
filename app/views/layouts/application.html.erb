@@ -13,11 +13,13 @@
   <% if @notice %>
     <div id='notice'><%= @notice %></div>
   <% end %>
-  <div id='wrapper'>
-    <div id='horizontalbar_container'>
-
+   <div id='horizontalbar_container'>
+       <div class='logo'>
+        <a href='/'><%= image_tag(asset_path('logo.png'), size:"100x100") %></a>
+      </div>
     </div>
-    <div id='sidebar_container'>
+  <div id='wrapper'>
+    <div id='sidebar_container' style='display:none'>
       <div class='logo'>
         <a href='/'><%= image_tag(asset_path 'logo.png') %></a>
       </div>

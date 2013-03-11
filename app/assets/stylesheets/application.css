@@ -45,12 +45,11 @@ a {
 }
 
 #main_container {
-  width:750px;
-  float:right;
+  width:930px;
 }
 
 #header {
-  width: 520px;
+  width: 500px;
   height: 20px;
   margin-top: 50px;
   margin-bottom: 30px;
@@ -64,7 +63,10 @@ a {
   font-size: 16px;
   font-weight: bold;
 }
-
+#horizontalbar_container{
+  margin-left:auto;	
+  margin-right:auto;
+}
 #sidebar_container {
   width: 180px;
   float:left;
@@ -148,7 +150,7 @@ a {
 }
 
 .new_posting_container {
-  width:520px;
+  width:700px;
   border-bottom: 1px solid #cccccc;
   margin-bottom: 15px;
 }
@@ -181,7 +183,7 @@ a {
 }
 
 #page_content_container {
-  width: 520px;
+  width: 700px;
   margin-bottom: 30px;
 }
 
@@ -340,3 +342,4 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
   line-height: 26px;
   text-align: center;
 }
+
