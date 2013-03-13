@@ -19,25 +19,40 @@
            <a href='/'><%= image_tag(asset_path('logo.png'), size:"100x20") %></a>
         </li>
         <li><%= link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user), class: 'sidebar_link' %></li>
-        <li class='bar_title', value=1>
+        <li class='bar_title'><%= link_to '뉴스피드', root_url, class:'sidebar_link' %></li>
+        <li class='bar_title'>
           Kmla Connect
           <ul>
-            <li>menu1</li>
-            <li>menu2</li>
-            <li>menu3</li>
+            <li> <%= link_to '커리어노트', careernotes_url, class:'sidebar_link' %></li>
           </ul>                  
         </li>
         <li>동문회
          <ul>
-            <li>menu1</li>
-            <li>menu2</li>
-            <li>menu3</li>
+            <li><%= link_to '공지사항', announcement_url, class:'sidebar_link' %></li>
+            <li><%= link_to '뉴스레터', newsletter_url, class:'sidebar_link' %></li>
+            <li><%= link_to '정관', regulations_url, class:'sidebar_link' %></li>
           </ul>   
         </li>
           
-        <li>내 소모임</li>
-        <li>네트워크</li>
-        <li><%= link_to '로그아웃', logout_url, id:'logout_link', class: 'sidebar_option_link', method: :delete %></li>
+        <li>내 소모임
+          <ul>
+           <% for group in current_user.groups %>
+            <li><%= link_to group.name, group_url(group), class:'sidebar_link' %></li>
+           <% end %>
+           <li><%= link_to '소모임 찾기', groups_url, class: 'sidebar_option_link' %></li>
+           <li><%= link_to '+ 소모임 만들기', new_group_url, class: 'sidebar_option_link' %></li>
+          </ul>
+        </li>
+        <li>네트워크
+          <ul>
+            <li><%= link_to '동문 검색', network_url, class:'sidebar_link' %></li>
+            <li> <%= link_to '학교별 동문 검색', network_school_url, class:'sidebar_link' %></li>
+            <li><%= link_to '직장별 동문 검색', network_organization_url, class:'sidebar_link' %></li>
+          </ul>
+        </li>
+        <li><%= link_to '로그아웃', logout_url, id:'logout_link', class: 'horizontal_option_link', method: :delete %></li>
+        
+        
       </ul>
       
   </div>
@@ -148,9 +163,7 @@
       });
     });
     
-     $("#horizontalbar_container").mouseover(function () {
-       $(this).css("opacity","1.0");
-     });
+   
      
       $(window).scroll(function () {
        if ($(this).scrollTop()==0) 
@@ -159,10 +172,15 @@
          $("#horizontalbar_container").css("opacity","0.5");
      });
      
-     $("#horizontalbar_container").mouseleave(function () {
-      if ($(this).scrollTop()!=0) 
-         $(this).css("opacity","0.5");
-     });
+    $("#horizontalbar_container").hover(
+    function () {
+       $(this).css("opacity","1.0");
+     },  
+     function () {
+        if ($(window).scrollTop()!=0) 
+           $(this).css("opacity","0.5");
+     }
+     );
     
     $('body').on('click', '#dialog_close_link', function(event){
       event.preventDefault();
@@ -175,7 +193,17 @@
       $('input, textarea').placeholder();
       $('li ul','#horizontalbar').hide();
     });
-    $('li','#horizontalbar').mouseover(function () {
+    
+    $('li','#horizontalbar').hover(
+    function () {
+       $('ul', this).show();
+     },  
+     function () {
+       $('ul', this).fadeOut();
+     }
+     );
+    
+    /*$('li','#horizontalbar').mouseover(function () {
     // var menu_id="submenu_"+$(this).data("id");
       $('ul',this).fadeIn();
     });
@@ -183,7 +211,7 @@
     $('li','#horizontalbar').mouseleave(function () {
     // var menu_id="submenu_"+$(this).data("id");
       $('ul',this).fadeOut();
-    });
+    });*/
   </script>
 <!-- begin olark code -->
 <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){

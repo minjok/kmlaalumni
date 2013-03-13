@@ -59,11 +59,17 @@ a {
   z-index:10000;
   width:100%; 
   opacity:1.0;	  
-  /* Drop Shadow */
+  background:white;
+  
+  /* Drop Shadow compatable to all browsers */
   -moz-box-shadow: 1px 1px 2px #BEDCE9;
   -webkit-box-shadow: 1px 1px 2px #BEDCE9;
   box-shadow: 1px 1px 2px #BEDCE9;
-  background:white;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#BEDCE9')";
+  /* For IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#BEDCE9');
+
+ 
 }
 #horizontalbar{
   width:1250px;
@@ -94,9 +100,17 @@ a {
 #horizontalbar li ul li{ 
   width:140px;
   display:block; 
-  padding:2px;
+  padding: 8px 0 8px;
   background: white;  
   border-bottom: 1px dotted #0d76b8;  
+}
+
+.horizontal_option_link{
+  color: #666666;
+  font-size: 11px;
+  font-weight: bold;
+  float:right;
+  margin-top:3px;
 }
 
 #header {
