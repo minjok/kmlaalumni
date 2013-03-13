@@ -18,19 +18,26 @@
         <li id='bar_logo'>
            <a href='/'><%= image_tag(asset_path('logo.png'), size:"100x20") %></a>
         </li>
-        <li class='sidebar_title'><%= link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user), class: 'sidebar_link' %></li>
-        <li class='sidebar_title'>
+        <li><%= link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user), class: 'sidebar_link' %></li>
+        <li class='bar_title', value=1>
           Kmla Connect
-          <ul class = 'horizontalbar_submenu'>
+          <ul>
             <li>menu1</li>
             <li>menu2</li>
             <li>menu3</li>
-          </ul>
+          </ul>                  
         </li>
-        <li class='sidebar_title'>동문회</li>
-        <li class='sidebar_title'>내 소모임</li>
-        <li class='sidebar_title'>네트워크</li>
-        <li class='sidebar_title'><%= link_to '로그아웃', logout_url, id:'logout_link', class: 'sidebar_option_link', method: :delete %></li>
+        <li>동문회
+         <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+          </ul>   
+        </li>
+          
+        <li>내 소모임</li>
+        <li>네트워크</li>
+        <li><%= link_to '로그아웃', logout_url, id:'logout_link', class: 'sidebar_option_link', method: :delete %></li>
       </ul>
       
   </div>
@@ -146,11 +153,15 @@
      });
      
       $(window).scroll(function () {
-       $("#horizontalbar_container").css("opacity","0.5");
+       if ($(this).scrollTop()==0) 
+         $("#horizontalbar_container").css("opacity","1.0");
+       else
+         $("#horizontalbar_container").css("opacity","0.5");
      });
      
      $("#horizontalbar_container").mouseleave(function () {
-       $(this).css("opacity","0.5");
+      if ($(this).scrollTop()!=0) 
+         $(this).css("opacity","0.5");
      });
     
     $('body').on('click', '#dialog_close_link', function(event){
@@ -161,12 +172,18 @@
     });
       
     $(document).ready( function() {
-      
       $('input, textarea').placeholder();
-
-
+      $('li ul','#horizontalbar').hide();
     });
-
+    $('li','#horizontalbar').mouseover(function () {
+    // var menu_id="submenu_"+$(this).data("id");
+      $('ul',this).fadeIn();
+    });
+    
+    $('li','#horizontalbar').mouseleave(function () {
+    // var menu_id="submenu_"+$(this).data("id");
+      $('ul',this).fadeOut();
+    });
   </script>
 <!-- begin olark code -->
 <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
