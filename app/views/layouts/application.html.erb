@@ -6,8 +6,6 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag asset_path('kmla.ico') %>
-  <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb'
-        rel='stylesheet' type='text/css' />
 </head>
 <body>
   <% if @notice %>
@@ -70,9 +68,9 @@
         
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
         
-        <div class='sidebar_title'>KMLA Connect</div>
+        <div class='sidebar_title'>KMLA Careers</div>
         <div class='sidebar_link_container float-right'>
-          <%= link_to '커리어노트', careernotes_url, class:'sidebar_link' %>
+          <%= link_to 'CareerNote', careernotes_url, class:'sidebar_link' %>
         </div>
         
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
@@ -110,10 +108,7 @@
         <div class='sidebar_link_container float-right'>
           <%= link_to '학교별 동문 검색', network_school_url, class:'sidebar_link' %>
         </div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '직장별 동문 검색', network_organization_url, class:'sidebar_link' %>
-        </div>
-        
+            
         <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
         
         <div class='sidebar_link_container float-right'>

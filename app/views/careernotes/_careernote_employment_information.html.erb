@@ -1,8 +1,8 @@
 <div class='careernote_employment_information'>
-  <span class='careernote_organization_name'><%= employment.organization.name %></span>
-  <span class='careernote_employment_additional_information'>
+  <div class='careernote_organization_name'><%= employment.organization.name %></div>
+  <div class='careernote_employment_additional_information'>
     <% unless employment.position.blank? %>
-  <span><%= employment.position %></span>
+      <span><%= employment.position %></span>
     <% end %>
     <% unless employment.start_year.blank? %>
       <span>
@@ -14,5 +14,5 @@
         <% end %>
       </span>
     <% end %>
-  </span>
+  </div>
 </div>

@@ -14,14 +14,7 @@
   def school
     @schools = School.order('name')
   end
-  
-  # Method: organization
-  # --------------------------------------------
-  # 
-  def organization
-    @organizations = Organization.order('name')
-  end
-  
+    
   # Method: search_alumni
   # --------------------------------------------
   # 
@@ -55,17 +48,6 @@
   def search_school
     @school = School.find(params[:id])
     @users = @school.users.order('wave, name').uniq
-    respond_to do |format|
-      format.js
-    end
-  end
-  
-  # Method: search_organization
-  # --------------------------------------------
-  # 
-  def search_organization
-    @organization = Organization.find(params[:id])
-    @users = @organization.users.order('wave, name').uniq
     respond_to do |format|
       format.js
     end
