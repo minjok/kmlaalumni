@@ -101,3 +101,30 @@
 .careernote_commentable_area {
   margin-top: 20px;
 }
+
+.careernote_box{
+  padding:10px;
+  margin: 10px 10px 10px 0;
+  width:250px;
+  height:200px;
+  overflow:hidden;
+  border: 1px dotted;
+}
+.careernote_box_author_name{	
+  float:left;
+  position:relative;
+  z-index:2;
+  margin-top:5px;
+}
+.careernote_box_profile_pic{
+  float:left;
+  margin-right:2px;
+}
+.careernote_box_employmentinfo{
+  text-align:center;
+  position:relative;
+  margin-top:40px;
+}
+.careernote_box_content{
+  margin-top:40px;
+}
