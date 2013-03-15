@@ -61,14 +61,11 @@ a {
   opacity:1.0;	  
   background:white;
   
-  /* Drop Shadow compatable to all browsers */
+ /* Drop Shadow working on browsers other than IE */
   -moz-box-shadow: 1px 1px 2px #BEDCE9;
   -webkit-box-shadow: 1px 1px 2px #BEDCE9;
   box-shadow: 1px 1px 2px #BEDCE9;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#BEDCE9')";
-  /* For IE 5.5 - 7 */
-  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#BEDCE9');
-
+  
  
 }
 #horizontalbar{
@@ -92,9 +89,9 @@ a {
 }
 
 #horizontalbar li ul{
+  display:none;
   margin-top:12px;
-  border-top: 2px solid #0d76b8;  .
-  display:none;  
+  border-top: 2px solid #0d76b8;
 }
 
 #horizontalbar li ul li{ 
@@ -129,34 +126,11 @@ a {
   font-weight: bold;
 }
 
-#sidebar_container {
-  width: 180px;
-  float:left;
-  margin-right:50px;
-}
 
-.sidebar {
-  margin-top: 20px;
-}
-
-.sidebar_link_container {
-  width: 130px;
-  height: 17px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 2px 0;
-}
-
-.sidebar_link { 
+.horizontalbar_link { 
   font-size: 12px;
 }
 
-.sidebar_option_link {
-  color: #666666;
-  font-size: 11px;
-  font-weight: bold;
-}
 
 #dialog_box {
   width: 350px;
