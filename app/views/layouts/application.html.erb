@@ -59,8 +59,10 @@
       $(window).scroll(function () {
        if ($(this).scrollTop()==0) 
          $("#horizontalbar_container").css("opacity","1.0");
-       else
-         $("#horizontalbar_container").css("opacity","0.5");
+       else{
+         if (!$('#horizontalbar_container').is(':hover'))
+           $("#horizontalbar_container").css("opacity","0.5");
+       }
      });
 
      /* If User puts mouse on Nav Bar, make Nav Bar not opaque */ 
