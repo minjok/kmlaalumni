@@ -1,7 +1,7 @@
   <div id='horizontalbar_container'>
+    <div id='logo_bar_container'>    
+      <a href='/'><%= image_tag(asset_path('logo.png'), size:"120x120", id: "bar_logo") %></a>
       <ul id ="horizontalbar">
-        <li id='bar_logo'><a href='/'><%= image_tag(asset_path('logo.png'), size:"100x100") %></a></li>
-        <li class='bar_title'><%= link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user), class: 'horizontalbar_link' %></li>
         <li class='bar_title'>동문회
          <ul>
             <%= image_tag(asset_path 'sidebar_divider.png') %>
@@ -39,7 +39,13 @@
           </ul>
         </li>           
       </ul>
-      <ul>
-        <li class='option_link'><%= link_to '로그아웃', logout_url, id:'logout_link', method: :delete %></li>
-      </ul>      
+      <div id ="personal_bar_container">
+        <ul id = "personal_bar">
+          <li class='bar_title'><%= link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user), class: 'horizontalbar_link' %></li>
+          <li class='option_link'><%= link_to '로그아웃', logout_url, id:'logout_link', method: :delete %></li>
+        </ul>     
+      </div>
+      </div>
+      
+      
   </div>

@@ -58,7 +58,7 @@ a {
 }
 
 #horizontalbar_container{
-  height:100px;
+  height:120px;
   position: fixed;
   top:0px;
   left:0px;
@@ -66,16 +66,41 @@ a {
   width:100%; 
   opacity:1.0;	  
   background:white;
-  
  /* Drop Shadow working on browsers other than IE */
   -moz-box-shadow: 1px 1px 2px #BEDCE9;
   -webkit-box-shadow: 1px 1px 2px #BEDCE9;
   box-shadow: 1px 1px 2px #BEDCE9;
   
 }
+
+#bar_logo{	
+  float:left;	
+  margin-left:-120px;
+}
+
+#logo_bar_container{
+  width:1020px;	
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:4px;
+}
+
+#personal_bar_container{
+  float:right;
+  position: relative;
+}
+
+#personal_bar{
+
+}
+#personal_bar li{
+  display:inline-block;
+  padding-top:90px;
+  padding-bottom:10px;
+}
+
 #horizontalbar{
   width:900px;
-  margin-bottom:4px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -88,7 +113,7 @@ a {
 }
 
 #horizontalbar li.bar_title{
-  padding-top:75px;
+  padding-top:95px;
   width:150px;	
   text-align:center;
   padding-bottom:10px;
@@ -118,7 +143,6 @@ a {
   color: #666666;
   font-size: 11px;
   font-weight: bold;
-  float:right;
   margin-top:3px;
 }
 
