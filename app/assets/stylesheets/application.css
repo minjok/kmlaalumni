@@ -87,6 +87,7 @@ a {
 
 #personal_bar_container{
   float:right;
+  width:200px;
   position: relative;
 }
 
