@@ -75,13 +75,13 @@ Kmlaalumni::Application.routes.draw do
   
   match '/network',             to: 'network#index',              as: 'network'
   match '/network_school',      to: 'network#school',              as: 'network_school'
-  match '/network_organization',to: 'network#organization',        as: 'network_organization'
   match '/profile/:id',       to: 'network#profile',          as: 'profile'
   match '/get_add_tag_form', to: 'network#get_add_tag_form', as: 'get_add_tag_form'
 
   match '/search_alumni',       to: 'network#search_alumni',             as: 'search_alumni'
   match '/search_school/:id',   to: 'network#search_school',             as: 'search_school'
-  match '/search_organization/:id',   to: 'network#search_organization',             as: 'search_organization'
+  
+  match '/organizations', to: 'careers#show_organization', as: 'organizations'
   
   match '/careernote_dashboard', to: 'careernotes#dashboard', as: 'careernote_dashboard'
   match '/new_careernote', to: 'careernotes#new', as: 'new_careernote'
