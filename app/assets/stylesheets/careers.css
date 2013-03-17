@@ -23,7 +23,8 @@
 }
 
 #careernotes {
-  width: 550px;
+  width: 600px;
+  
 }
 
 #careernotes_menubar {
@@ -49,7 +50,7 @@
   color: #38ACEC;
 }
 .careernote_promotion_text{
-  font-size:11px;
+  font-size:13px;
   color: #555555;
 }
 
@@ -109,6 +110,7 @@
   height:200px;
   overflow:hidden;
   border: 1px dotted;
+  float:left;  
 }
 .careernote_box_author_name{	
   float:left;
@@ -128,3 +130,7 @@
 .careernote_box_content{
   margin-top:40px;
 }
+#careernote_read_more_link{
+  float:right;	
+}
+

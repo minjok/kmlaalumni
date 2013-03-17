@@ -7,7 +7,6 @@
   <% else %>
     <div id="<%= careernote_name + '_content' %>" class="posting_content posting_preview content">
       <%= strip_html(careernote.content)[0,70] %>...
-      <%= link_to "더 읽기", get_careernote_content_url(careernote), remote: true, class: "read_more_link" %>
     </div>
   <% end %>
 </div>

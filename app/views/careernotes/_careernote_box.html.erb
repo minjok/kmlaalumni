@@ -16,5 +16,6 @@
    <div class="careernote_box_likes_comments">
      <%= "좋아요 #{careernote.likes.length}" %>
      <%= "댓글 #{careernote.comments.length}" %>
+     <%= link_to "더 읽기", careernote_url(careernote), class: "read_more_link", id: "careernote_read_more_link" %>
    </div> 
 </div>
