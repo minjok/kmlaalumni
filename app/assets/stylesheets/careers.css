@@ -23,7 +23,7 @@
 }
 
 #careernotes {
-  width: 600px;
+  width: 700px;
   
 }
 
@@ -106,7 +106,7 @@
 .careernote_box{
   padding:10px;
   margin: 10px 10px 10px 0;
-  width:250px;
+  width:200px;
   height:200px;
   overflow:hidden;
   border: 1px dotted;
@@ -132,5 +132,14 @@
 }
 #careernote_read_more_link{
   float:right;	
+}
+
+.careernote_dashboard_employments_container{
+  margin-top:30px;
+  margin-left:10px;
+  padding:5px;
+  float:left;
+  max-width:200px;
+  min-height:80px;
 }
 

@@ -1,17 +1,30 @@
-<div>
-  <div id='employments_container'>
+<div class='careernote_banner'><span class='careernote_keyword'>내 커리어 노트</span></div>
+
+<div id='careernote_dashboard'>
     <% for employment in @employments %>
-      <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='employment_container'>
+      <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='careernote_dashboard_employments_container'>
       <%= render partial: 'careernotes/careernote_employment_information', locals:{employment: employment} %>
       <% if employment.careernote.blank? %>
           <span><%= link_to "커리어노트 쓰기", new_careernote_url(employment_id: employment.id) %></span>
         <% else %>
-          <%= render partial: 'careernotes/careernote_content', locals:{careernote: employment.careernote} %>
-          <span><%= link_to '수정',  edit_careernote_url(employment.careernote)%></span>
-          ·
-          <span><%= link_to '삭제', careernote_url(employment.careernote), method: :delete, remote: true %></span>
+          <span><%= "좋아요 #{employment.careernote.likes.length}" %></span>·
+          <span><%= "댓글 #{employment.careernote.comments.length}" %></span>
+          <p>
+          <span><%= link_to '작성된 노트 보기',  careernote_url(employment.careernote)%></span>·
+          <span><%= link_to '수정',  edit_careernote_url(employment.careernote)%></span>         ·
+          <span><%= link_to '삭제', careernote_url(employment.careernote), method: :delete, remote: true, :confirm => "정말 삭제하시겠습니까?" %></span>
+          </p>
         <% end %>
       </div>
     <% end %>
-  </div>
-<div>
+</div>
+  
+<script type="text/javascript">
+    
+$(document).ready( function() {
+      $('input, textarea').placeholder();
+      $('li ul','#horizontalbar').hide();
+    });
+   
+</script>
+

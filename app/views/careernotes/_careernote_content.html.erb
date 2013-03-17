@@ -1,12 +1,12 @@
 <% careernote_name = 'careernote_' + careernote.id.to_s %>
 <div class='careernote_content'>
-  <% if careernote.content.length < 80 %>
+  <% if careernote.content.length < 60 %>
     <div id="<%= careernote_name + '_content' %>" class='posting_content content'>
       <%= strip_html(careernote.content) %>
     </div>
   <% else %>
     <div id="<%= careernote_name + '_content' %>" class="posting_content posting_preview content">
-      <%= strip_html(careernote.content)[0,70] %>...
+      <%= strip_html(careernote.content)[0,60] %>...
     </div>
   <% end %>
 </div>
