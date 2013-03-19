@@ -19,7 +19,6 @@ BODY {
   font-family: gulim, sans-serif;
   font-size: 12px;
   color: #555555;
-  /*background:#DDECF4;*/
 }
 
 ul {
@@ -57,89 +56,6 @@ a {
   width:900px;
 }
 
-#horizontalbar_container{
-  height:120px;
-  position: fixed;
-  top:0px;
-  left:0px;
-  z-index:10000;
-  width:100%; 
-  opacity:1.0;	  
-  background:white;
- /* Drop Shadow working on browsers other than IE */
-  -moz-box-shadow: 1px 1px 2px #BEDCE9;
-  -webkit-box-shadow: 1px 1px 2px #BEDCE9;
-  box-shadow: 1px 1px 2px #BEDCE9;
-  
-}
-
-#bar_logo{	
-  float:left;	
-  margin-left:-120px;
-}
-
-#logo_bar_container{
-  width:1020px;	
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom:4px;
-  
-}
-
-#personal_bar_container{
-  float:right;
-  width:200px;
-  position: relative;
-}
-
-#personal_bar{
-
-}
-#personal_bar li{
-  display:inline-block;
-  padding-top:90px;
-  padding-bottom:10px;
-}
-
-#horizontalbar{
-  width:900px;
-  margin-left:auto;
-  margin-right:auto;
-  
-}
-
-#horizontalbar li{
-  float:left;
-  display:inline-block;	
-  font-size: 12px;
-  font-weight: bold;  
-}
-
-#horizontalbar li.bar_title{
-  padding-top:95px;
-  width:150px;	
-  text-align:center;
-  padding-bottom:10px;
-}
-
-#horizontalbar a{
-}
-
-#horizontalbar li ul{
-  margin-top:5px;
-  display:none;
- /* border-top: 2px solid #0d76b8;*/
-  background:white;	
-  
-}
-
-#horizontalbar li ul li{ 
-  background:white;	
-  width:140px;
-  display:block; 
-  padding: 8px 0 8px;
- /* border-bottom: 1px dotted #0d76b8;*/  
-}
 
 .option_link{
   width:100px;	
@@ -164,12 +80,6 @@ a {
   font-size: 16px;
   font-weight: bold;
 }
-
-
-.horizontalbar_link { 
-  font-size: 12px;
-}
-
 
 #dialog_box {
   width: 350px;
@@ -250,8 +160,9 @@ a {
 }
 
 #page_content_container {
-  width: 520px;
+  width: 600px;
   margin-bottom: 30px;
+  
 }
 
 .feedable_container {
@@ -410,4 +321,46 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
   text-align: center;
 }
 
+#progress_bar_container{
+  width:300px;
+  margin-top:40px;	
+}
 
+.progress_bar{
+  background:#EEEEEE;
+  height:15px;
+  width:250px;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  padding:8px;
+}
+
+.progress_bar span{
+  display: block;
+  height:100%;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+  background-color: #81B6D5;
+  position: relative;
+  overflow: hidden;
+  
+  text-align:center;
+  font-weight:bold;
+  font-size:11px;
+}
+
+.prgress_message_container{
+  color:#4889b3;	
+  
+}
