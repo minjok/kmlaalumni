@@ -1,9 +1,9 @@
 .careernotes_container {
-  width: 600px;
+  width: 800px;
 }
 
 #careernote_form_text_area { 
-  width: 600px;
+  width: 800px;
   height: 80px;
   margin-top: 5px;
 }
@@ -109,9 +109,15 @@
   width:200px;
   height:200px;
   overflow:hidden;
-  border: 1px dotted;
   float:left;  
+  border: 1px solid #EAE9E8;
+  background:white;
 }
+
+.careernote_box:hover{
+    box-shadow: 2px 2px 2px 2px #ccc;	
+}
+
 .careernote_box_author_name{	
   float:left;
   position:relative;
@@ -123,10 +129,31 @@
   margin-right:2px;
 }
 .careernote_box_employmentinfo{
+  margin-top:40px;	
   text-align:center;
-  position:relative;
-  margin-top:40px;
+  position:relative;	
+  height:30px;
+  background:#E8F0F7;
+  border-radius:5px;
+  padding:2px;
+
 }
+.careernote_dashboard_emyploymentinfo{
+  margin-bottom:5px;
+  text-align:center;
+  position:relative;	
+  height:30px;
+  background:#E8F0F7;
+  border-radius:5px;
+  padding:2px;	
+}
+.careernote_box_likes_comments{
+  width:200px;
+  padding-top:3px;
+  border-top: 1px solid #EAE9E8;
+  
+}
+
 .careernote_box_content{
   margin-top:40px;
 }
@@ -139,7 +166,18 @@
   margin-left:10px;
   padding:5px;
   float:left;
+  min-width:160px;
+  min-height:100px;
+}
+
+.careernote_feed_employmentinfo{
+  margin-left:10px;
+  margin-top:10px;
+  text-align:center;
   max-width:200px;
-  min-height:80px;
+  background:#E8F0F7;
+  border-radius:5px;
+  height:30px;
+  padding:2px;
 }
 
