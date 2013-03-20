@@ -1,5 +1,4 @@
-<div id='header'>
-  <div class='header_title float-left'><%= @group.name %></div>
+<h1 class='float-left'><%= @group.name %></h1>
   <div class='group_settings float-right'>
     <% if @user_is_a_member %>
       <span><%= link_to "나가기", delete_member_url(@group) %></span>
