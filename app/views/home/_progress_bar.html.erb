@@ -1,5 +1,6 @@
 <% progress = get_progress_percentage %>
 
+<div id='progress_bar_container'>
 <%if progress < 100 %>
 <div class='progress_bar'> 
   <% if progress == 25 %>
@@ -30,3 +31,4 @@
   <% end %>
 </div>
 <% end %>
+</div>

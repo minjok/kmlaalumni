@@ -1,9 +1,7 @@
-<div id='progress_bar_container', class='float-right'>
+<div id='short_feed_container', class='float-right'>
   <%= render partial: 'home/progress_bar' %>
 </div>
-<div id='header'>
-  <div class='header_title'>뉴스피드</div>
-</div>
+<h1>뉴스피드</h1>
 <%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['WALL'], resource: Posting.new, placeholder: current_user.name + ' 동문님, 여기에 동문들과 소식을 나누세요'} %>
 <div id='page_content_container'>
   <div id='feeds'>

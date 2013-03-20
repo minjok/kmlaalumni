@@ -15,10 +15,6 @@
 }
 
 .careernote_banner {
-  font-size:20px;
-  font-weight:bold;
-  color: #777777;
-  width: 750px;
   margin-bottom: 20px;
 }
 
@@ -44,11 +40,6 @@
   color: #777777;
 }
 
-.careernote_keyword{
-  font-size:25px;
-  font-weight:bold;
-  color: #38ACEC;
-}
 .careernote_promotion_text{
   font-size:13px;
   color: #555555;
@@ -110,12 +101,12 @@
   height:200px;
   overflow:hidden;
   float:left;  
-  border: 1px solid #EAE9E8;
+  border: 1px solid #EEEEEE;
   background:white;
 }
 
 .careernote_box:hover{
-    box-shadow: 2px 2px 2px 2px #ccc;	
+  border: 1px solid skyblue;
 }
 
 .careernote_box_author_name{	
@@ -147,11 +138,14 @@
   border-radius:5px;
   padding:2px;	
 }
+
 .careernote_box_likes_comments{
   width:200px;
   padding-top:3px;
   border-top: 1px solid #EAE9E8;
-  
+}
+.careernote_box_likes_comments .read_more_link{
+  display:none;	
 }
 
 .careernote_box_content{
@@ -162,13 +156,18 @@
 }
 
 .careernote_dashboard_employments_container{
-  margin-top:30px;
+  margin-top:10px;
   margin-left:10px;
   padding:5px;
   float:left;
   min-width:160px;
   min-height:100px;
 }
+
+.dashboard_submenu{
+  display:none;	
+}
+
 
 .careernote_feed_employmentinfo{
   text-align:center;
@@ -190,3 +189,5 @@
   border-left: 2px solid #D9D9D9;
   padding-left:2px;
 }
+
+

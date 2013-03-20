@@ -32,6 +32,12 @@ a {
   color: #0d76b8;
 }
 
+h1{
+  color: #38ACEC;
+  font-size:20px;
+  font-weight:bold;
+}
+
 .message { color: #4889b3; }
 .warning  { color: #e81e57; font-size:12px; }
 
