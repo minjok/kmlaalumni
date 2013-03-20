@@ -4,38 +4,30 @@
       <ul id ="horizontalbar">
         <li class='bar_title'>동문회
          <ul>
-            <%= image_tag(asset_path 'sidebar_divider.png') %>
             <li><%= link_to '공지사항', announcement_url, class:'horizontalbar_link' %></li>
             <li><%= link_to '뉴스레터', newsletter_url, class:'horizontalbar_link' %></li>
             <li><%= link_to '정관', regulations_url, class:'horizontalbar_link' %></li>
-            <%= image_tag(asset_path 'sidebar_divider.png') %>
           </ul>   
         </li>
         <li class='bar_title'>
           Kmla Connect
           <ul>
-            <%= image_tag(asset_path 'sidebar_divider.png') %>
             <li> <%= link_to '커리어노트', careernotes_url, class:'horizontalbar_link' %></li>
-            <%= image_tag(asset_path 'sidebar_divider.png') %>
           </ul>                  
         </li>
         <li class='bar_title'>내 소모임
           <ul>
-          <%= image_tag(asset_path 'sidebar_divider.png') %>
            <% for group in current_user.groups %>
             <li><%= link_to group.name, group_url(group), class:'horizontalbar_link' %></li>
            <% end %>
            <li><%= link_to '소모임 찾기', groups_url, class: 'horizontalbar_option_link' %></li>
            <li><%= link_to '+ 소모임 만들기', new_group_url, class: 'sidebar_option_link' %></li>
-           <%= image_tag(asset_path 'sidebar_divider.png') %>
           </ul>
         </li>
         <li class='bar_title'>동문 검색
           <ul>
-            <%= image_tag(asset_path 'sidebar_divider.png') %>
             <li><%= link_to '기수별', network_url, class:'horizontalbar_link' %></li>
             <li> <%= link_to '학교별', network_school_url, class:'horizontalbar_link' %></li>
-            <%= image_tag(asset_path 'sidebar_divider.png') %>
           </ul>
         </li>           
       </ul>

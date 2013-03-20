@@ -8,9 +8,9 @@
       <span>
         <%= employment.start_year.year %> 
         <% if employment.end_year.blank? %>
-            -현재
+            - 현재
         <% elsif employment.start_year.year != employment.end_year.year%>
-          -<%= employment.end_year.year %>
+          - <%= employment.end_year.year %>
         <% end %>
       </span>
     <% end %>

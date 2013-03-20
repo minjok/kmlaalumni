@@ -13,7 +13,7 @@
   <% end %>
   <%= render partial:'layouts/horizontalbar' %>
   <div id='wrapper'>
-    <div id='main_container'>
+    <div id='main_container', class='shadow'>
          <%= yield %>     
     </div>
     <div id='dialog_box' style='display:none'>
@@ -94,6 +94,7 @@
     $(document).ready( function() {
       $('input, textarea').placeholder();
       $('li ul','#horizontalbar').hide();
+      $('body').css("background", "#E8EFF7");
     });
    
   </script>

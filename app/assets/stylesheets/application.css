@@ -47,13 +47,17 @@ a {
 }
 
 #main_container {
-  background:white;	
-  padding-top:120px;	
+  background:white;		
   padding-left:15px;
   padding-right:15px;
   margin-left:auto;
   margin-right:auto;
   width:900px;
+  
+  margin-top:120px;
+  padding-top:1px;
+  overflow:auto;
+  
 }
 
 
@@ -361,6 +365,14 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
 }
 
 .prgress_message_container{
-  color:#4889b3;	
-  
+  color:#4889b3;	 
+}
+
+.shadow {
+  border: 1px solid #CECECE;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);	
+/*
+  -moz-box-shadow:    1px 1px 1px 1px #ccc;
+  -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+  box-shadow:         1px 1px 1px 1px #ccc;*/
 }

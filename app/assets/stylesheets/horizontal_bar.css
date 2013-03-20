@@ -39,8 +39,9 @@
 }
 #personal_bar li{
   display:inline-block;
-  padding-top:90px;
+  margin-top:90px;
   padding-bottom:10px;
+  
 }
 
 #horizontalbar{
@@ -58,29 +59,29 @@
 }
 
 #horizontalbar li.bar_title{
-  padding-top:95px;
-  width:150px;	
+  margin-top:90px;
+  width:120px;	
   text-align:center;
   padding-bottom:10px;
+
 }
 
 #horizontalbar a{
 }
 
 #horizontalbar li ul{
-  margin-top:5px;
+  margin-top:14px;
   display:none;
- /* border-top: 2px solid #0d76b8;*/
-  background:white;	
-  
+  background:white;	  
+  border-top: 3px solid #AAD1E9;
 }
 
 #horizontalbar li ul li{ 
   background:white;	
-  width:140px;
+  width:120px;
   display:block; 
   padding: 8px 0 8px;
- /* border-bottom: 1px dotted #0d76b8;*/  
+  border-bottom: 1px dotted #AAD1E9;
 }
 
 .horizontalbar_link { 
