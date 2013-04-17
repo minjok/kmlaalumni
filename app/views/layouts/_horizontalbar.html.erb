@@ -1,7 +1,7 @@
   <div id='horizontalbar_container'>
-    <div id='logo_bar_container'>    
-      <a href='/'><%= image_tag(asset_path('logo.png'), size:"120x120", id: "bar_logo") %></a>
+    <div id='logo_bar_container', class='shadow'>    
       <ul id ="horizontalbar">
+        <li><a href='/'><%= image_tag(asset_path('logo.png'), size:"120x120", id: "bar_logo") %></a></li>
         <li class='bar_title'>동문회
          <ul>
             <li><%= link_to '공지사항', announcement_url, class:'horizontalbar_link' %></li>
@@ -37,7 +37,7 @@
           <li class='option_link'><%= link_to '로그아웃', logout_url, id:'logout_link', method: :delete %></li>
         </ul>     
       </div>
-      </div>
+    </div>
       
       
   </div>

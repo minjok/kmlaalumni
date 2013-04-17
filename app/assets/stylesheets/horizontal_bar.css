@@ -1,32 +1,29 @@
 
 #horizontalbar_container{
-  height:120px;
-  position: fixed;
-  top:0px;
-  left:0px;
-  z-index:10000;
-  width:100%; 
+  width:100%;
+  position:fixed;
   opacity:1.0;	  
-  background:white;
- /* Drop Shadow working on browsers other than IE */
-  -moz-box-shadow: 1px 1px 2px #BEDCE9;
-  -webkit-box-shadow: 1px 1px 2px #BEDCE9;
-  box-shadow: 1px 1px 2px #BEDCE9;
-  
+  top:0;
+  left:0;
+
+}
+
+#logo_bar_container{	
+  width:900px;  
+  height:120px;
+  padding-left:40px;
+  padding-right:40px;
+  background-color:white;  
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#horizontalbar{
 }
 
 #bar_logo{	
-  float:left;	
-  margin-left:-120px;
 }
 
-#logo_bar_container{
-  width:1020px;	
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom:4px;
-  
-}
 
 #personal_bar_container{
   float:right;
@@ -44,12 +41,7 @@
   
 }
 
-#horizontalbar{
-  width:900px;
-  margin-left:auto;
-  margin-right:auto;
-  
-}
+
 
 #horizontalbar li{
   float:left;

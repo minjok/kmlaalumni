@@ -14,11 +14,13 @@
  */
  
  
+ 
 BODY {
   margin: 0;
   font-family: gulim, sans-serif;
   font-size: 12px;
   color: #555555;
+  /* Body background done is javascript (in Application.html.erb)*/
 }
 
 ul {
@@ -53,13 +55,12 @@ h1{
 }
 
 #main_container {
-  background:white;		
-  padding-left:15px;
-  padding-right:15px;
+  background-color:white;		
+  padding-left:40px;
+  padding-right:40px;
   margin-left:auto;
   margin-right:auto;
   width:900px;
-  
   margin-top:120px;
   padding-top:1px;
   overflow:auto;
