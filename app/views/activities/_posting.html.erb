@@ -23,7 +23,7 @@
   </div>
   
   <!-- POSTING CONTENT -->
-  <div class='posting_content_container'>
+  <div class='posting_content_container feed_content_container'>
     
     <% if posting.content.length < 300 %>
       <div id="<%= posting_name + '_content' %>" class='posting_content content'><%= simple_format(posting.content) %></div>

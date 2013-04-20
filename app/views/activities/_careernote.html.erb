@@ -1,11 +1,10 @@
 <% careernote_name = 'careernote_' + careernote.id.to_s %>
-<div>
-  <div id='<%= careernote_name %>' class='feedable_container' >
+<div id='<%= careernote_name %>' class='feedable_container' >
   <div id="<%= careernote_name + '_sources'%>">
     <span class='feedable_author'><%= link_to careernote.user.wave.to_s + '기 ' + careernote.user.name, profile_url(careernote.user) %></span>
     <%= " 동문님이 커리어 노트를 공유했습니다." %>
   </div>
-  <div class='careernote_feed_content_container'>
+  <div class='careernote_feed_content_container feed_content_container'>
        <%= link_to careernote_path(careernote) do %>
       <div class='careernote_feed_employmentinfo'>
         <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
@@ -13,7 +12,7 @@
       <% end %>
       <div class='careernote_feed_content'>
       <% if careernote.content.length < 100 %>
-        <div id="<%= careernote_name + '_content' %>" class='posting_content content'><%= simple_format(careernote.content) %> 
+        <div id="<%= careernote_name + '_content' %>" class='posting_content content'><%= simple_format(careernote.content) %> </div>
       <% else %>
         <div id="<%= careernote_name + '_content' %>" class="posting_content posting_preview content">
           <%= simple_format(careernote.content[0, 100]) %>...<%= link_to "더 읽기", careernote_url(careernote), class: "read_more_link" %>
