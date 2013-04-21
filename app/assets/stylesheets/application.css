@@ -32,6 +32,7 @@ ul {
 a {
   text-decoration: none;
   color: #0d76b8;
+  outline:0;
 }
 
 h1{
@@ -296,7 +297,7 @@ background-image: linear-gradient(center top, #2F94D3 0%, #4889b3 100%);
 
 .shadow {
   border: 1px solid #CECECE;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);	
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);	
 /*
   -moz-box-shadow:    1px 1px 1px 1px #ccc;
   -webkit-box-shadow: 1px 1px 1px 1px #ccc;

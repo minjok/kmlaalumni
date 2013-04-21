@@ -1,6 +1,6 @@
 <% careernote_name = 'careernote_' + careernote.id.to_s %>
 
-<div class="careernote_box shadow">
+<div class="careernote_box">
   <div class = "careernote_box_header">
     <%= image_tag(asset_path('default_profile_pic.png'), size:"30x30", class:"careernote_box_profile_pic") %>
     <div id="#{careernote_name}_author_name", class="careernote_box_author_name">
@@ -8,30 +8,24 @@
     </div>
  </div>
  <%= link_to careernote_path(careernote) do %>
- <div class = "careernote_box_employmentinfo">
-     <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
-  </div>
-  <% end %>
+ <div>
+   <div class = "careernote_box_employmentinfo">
+       <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
+    </div>
    <div class="careernote_box_content">
      <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote, view:false} %>
    </div>
    <div class="careernote_box_likes_comments">
-     <%= "좋아요 #{careernote.likes.length}" %>
-     <%= "댓글 #{careernote.comments.length}" %>
-     <%= link_to "더 읽기", careernote_url(careernote), class: "read_more_link", id: "careernote_read_more_link" %>
+     <span class ="likes_comment">
+       <%= "좋아요 #{careernote.likes.length}" %>
+       <%= "댓글 #{careernote.comments.length}" %>
+     </span>
    </div> 
+ </div>
+ <% end %>
+
 </div>
 
-<script type="text/javascript">
-    $('.careernote_box ').hover(
-    function () {
-       $('.careernote_box_employmentinfo  .careernote_employment_information',this).css("text-decoration","underline");
-       $('.careernote_box_likes_comments #careernote_read_more_link',this).fadeIn(); 
-     },  
-     function () {
-       $('.careernote_box_employmentinfo  .careernote_employment_information',this).css("text-decoration","none");
-       $('.careernote_box_likes_comments #careernote_read_more_link',this).fadeOut(); 
-     }
-   );  
-</script>
+
+
 

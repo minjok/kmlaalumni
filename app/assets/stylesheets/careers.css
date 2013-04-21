@@ -20,7 +20,6 @@
 
 #careernotes {
   width: 700px;
-  
 }
 
 #careernotes_menubar {
@@ -91,18 +90,21 @@
 }
 
 .careernote_box{
-  padding:10px;
+  padding:9px;
   margin: 10px 10px 10px 0;
   width:200px;
   height:200px;
   overflow:hidden;
   float:left;  
-  border: 1px solid #EEEEEE;
   background:white;
+  border: 1px solid #CECECE;
+  box-shadow: 0 0 6px skyblue;	
 }
 
 .careernote_box:hover{
-  border: 1px solid skyblue;
+  border: 1px solid DeepSkyBlue;
+  width:200px;
+  width:200px;
 }
 
 .careernote_box_author_name{	
@@ -138,17 +140,23 @@
 .careernote_box_likes_comments{
   width:200px;
   padding-top:3px;
-  border-top: 1px solid #EAE9E8;
+  border-top: 1px solid #EAE9E8;  	
 }
+.likes_comment{
+  color: #777777;
+  font-size: 12px;
+}
+
 .careernote_box_likes_comments .read_more_link{
   display:none;	
 }
 
 .careernote_box_content{
   margin-top:40px;
+  color: #555555;  
 }
 #careernote_read_more_link{
-  float:right;	
+  float:right;
 }
 
 .careernote_dashboard_employments_container{
