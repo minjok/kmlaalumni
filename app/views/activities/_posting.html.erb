@@ -37,7 +37,9 @@
   </div>
   
   <% if writeability %>
+  <div class = 'commentable_area feed-left-margin'>  
     <%= render partial: 'comments/commentable_area', locals: {commentable: posting} %>
+  </div>
   <% end %>
   
   <!-- DIVIDER -->

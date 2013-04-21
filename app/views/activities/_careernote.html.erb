@@ -20,9 +20,11 @@
       <% end %>
     </div>
   </div>
-  
-  <%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
-  
+   
+  <div class = 'commentable_area feed-left-margin'>  
+    <%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
+  </div>
+
   <!-- DIVIDER -->
   <div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
 </div>

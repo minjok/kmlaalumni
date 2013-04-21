@@ -49,9 +49,17 @@
 }
 
 .careernote_container {
-  width: 550px;
   margin-bottom: 20px;
   overflow: auto;
+}
+
+.careernote_long_container{
+  width: 700px;
+  padding-top: 20px;
+}
+
+.careernote_content_container{
+  width:550px; 
 }
 
 .careernote_main_area { 
@@ -59,14 +67,27 @@
   min-height: 120px;
 }
 
+.careernote_author{
+  width:150px;
+  height:150px;
+  margin-top:15px;
+  text-align:center;
+}
+
 .careernote_author_name {
-  width: 100px;
   font-weight: bold; 
   text-align: center;
 }
 
 .careernote_employment_information {
   margin-bottom: 10px;
+}
+
+.careernote_title{
+  text-align:center;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #CCCCCC;
 }
 
 .careernote_organization_name {
