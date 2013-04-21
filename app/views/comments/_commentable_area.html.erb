@@ -4,7 +4,7 @@
 <% user_likes_commentable = current_user.likes?(commentable) %>
   
 <!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
-<div class = 'commentable_area'>  
+<div class = 'commentable_area feed-left-margin'>  
   <div class='content_activity_bar'>
     <% if user_likes_commentable %>
       <%= link_to "좋아요 취소", dislike_url + params, id: commentable_name + '_like_link', remote: true %>

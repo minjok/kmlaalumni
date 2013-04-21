@@ -7,18 +7,17 @@
 	<% end %>
     <% if @user_is_an_admin %>
       · <span><%= link_to "설정", edit_group_url(@group) %></span>
-      · <span><%= link_to "폐쇄하기", destroy_group_url(@group), method: :delete %></span>
+      · <span><%= link_to "폐쇄하기", destroy_group_url(@group), method: :delete, confirm:"정말 소모임을 폐쇄하시겠습니까?\n(모든 글이 삭제됩니다)" %></span>
     <% end %>
   </div>
-</div>
 	
-<% if @user_is_a_member %>
-	<%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['GROUP'], resource: [@group, Posting.new], placeholder: current_user.name + ' 동문님, ' + @group.name + ' 에 글을 남겨주세요'} %>
-<% end %>
-<div id='page_content_container'>
-  <div id="feeds">
+  <% if @user_is_a_member %>
+    <%= render partial: 'postings/new_posting_form', locals: {value: Posting::PLATFORM['GROUP'], resource: [@group, Posting.new], placeholder: current_user.name + ' 동문님, ' + @group.name + ' 에 글을 남겨주세요'} %>
+  <% end %>
+  <div id='page_content_container'>
+    <div id="feeds">
+    </div>
   </div>
-</div>
 <script type='text/javascript'>
   var page = 1;
   var numPages = 0;

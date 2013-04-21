@@ -12,7 +12,9 @@
     <% if posting.platform == Posting::PLATFORM['GROUP'] %>
      <span class='feedable_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
       <% if is_newsfeed %>
-        <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+         동문님이 
+        <span class='posting_group'><%= link_to '' + posting.group.name, group_url(posting.group) %></span>
+        에 글을 남기셨습니다.
       <% end %>
     <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
       <span class='feedable_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
@@ -39,6 +41,6 @@
   <% end %>
   
   <!-- DIVIDER -->
-  <div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
+  <div class='commentable_divider feed-left-margin'><%= image_tag(asset_path 'commentable_divider.png') %></div>
 
 </div>

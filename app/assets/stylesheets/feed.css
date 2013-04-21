@@ -23,7 +23,7 @@
 .feed_content_container{
   margin-top:15px;
   margin-bottom:15px;
-  margin-left: 30px;	
+  margin-left: 30px;
 }
 
 .content_activity_bar { 
@@ -54,5 +54,7 @@
   padding-left:2px;
 }
 
-
+.feed-left-margin{
+  margin-left: 30px;	
+}
 
