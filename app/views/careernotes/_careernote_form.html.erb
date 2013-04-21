@@ -1,45 +1,14 @@
+<% name = @employment.organization.name %>
+<% guidetext= "다음 질문들은 예시 질문입니다.\n\n0. #{name}에 대해 간단히 소개해주세요." %>
+
+
 <div id="careernote_error_message" class='warning'></div>
 <%= form_for [@employment, @careernote], id: 'careernote_form', remote: true do |f| %>
   <div>
-    <%= f.text_area :content, autocomplete: :off, class: 'careernote_form_text_area', id: 'tinyeditor' %>
+    <%= f.text_area :content, autocomplete: :off, id: 'careernote_form_text_area', value: guidetext%>
   </div>
   <div class='careernote_form_submit'>
     <%= f.submit '커리어 노트 올리기', class: 'ui-button float-right', onclick: 'editor.post()' %>
   </div>
 <% end %>
 
-<script text="javascript">
-  $(document).ready( function() {
-    var editor = new TINY.editor.edit('editor', {
-      id: 'tinyeditor',
-      width: 584,
-      height: 450,
-      cssclass: 'tinyeditor',
-      controlclass: 'tinyeditor-control',
-      rowclass: 'tinyeditor-header',
-      dividerclass: 'tinyeditor-divider',
-      controls: ['bold', 'italic', 'underline', 'strikethrough', '|',
-        'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-        'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-        'font', 'size', 'style', '|', 'hr', 'link', 'unlink', '|'],
-      fonts: ['굴림','바탕','돋움','Verdana','Arial','Georgia','Trebuchet MS'],
-      xhtml: true,
-      bodyid: 'editor',
-      footerclass: 'tinyeditor-footer',
-      toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
-      resize: {cssclass: 'resize'}
-    });
-    
-    $('#careernote_form').submit( function() {
-      var valuesToSubmit = $('#careernote_form').serialize();
-      $.ajax({
-        url: $('#add_education_form').attr('action'), //submits it to the given url of the form
-        data: valuesToSubmit,
-        type: 'post',
-        dataType: 'script' // you want a difference between normal and ajax-calls, and json is standard
-      })
-      return false;
-    });
-  });
-  
-</script>

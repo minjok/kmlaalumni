@@ -180,6 +180,7 @@ h1{
 .center { margin: 0 auto; }
 .float-left { float:left; }
 .float-right { float:right; }
+.text_center{ text-align:center}
 
 textarea {
   resize: none;

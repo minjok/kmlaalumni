@@ -3,9 +3,14 @@
 }
 
 #careernote_form_text_area { 
-  width: 800px;
-  height: 80px;
+  width: 600px;
+  height: 200px;
   margin-top: 5px;
+  resize: vertical;
+}
+
+.careernote_form_container{
+  margin-left:50px; 
 }
 
 .careernote_form_submit {
@@ -56,6 +61,11 @@
 .careernote_long_container{
   width: 700px;
   padding-top: 20px;
+  float:left;
+}
+
+.careernote_short_container{
+  float:right;
 }
 
 .careernote_content_container{
