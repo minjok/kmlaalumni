@@ -187,8 +187,11 @@
 }
 
 .careernote_box_content{
-  margin-top:40px;
-  color: #555555;  
+  margin-top:40px; 
+  overflow:hidden;
+  height:75px;
+  color:#999999;
+  font-size:11px;
 }
 #careernote_read_more_link{
   float:right;
