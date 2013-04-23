@@ -5,6 +5,7 @@
   opacity:1.0;	  
   top:0;
   left:0;
+  z-index:100;
 
 }
 
@@ -17,31 +18,6 @@
   margin-left:auto;
   margin-right:auto;
 }
-
-#horizontalbar{
-}
-
-#bar_logo{	
-}
-
-
-#personal_bar_container{
-  float:right;
-  width:200px;
-  position: relative;
-}
-
-#personal_bar{
-
-}
-#personal_bar li{
-  display:inline-block;
-  margin-top:90px;
-  padding-bottom:10px;
-  
-}
-
-
 
 #horizontalbar li{
   float:left;
@@ -79,4 +55,18 @@
 .horizontalbar_link { 
   font-size: 12px;
 }
+
+#personal_bar_container{
+  float:right;
+  width:200px;
+  position: relative;
+}
+
+#personal_bar li{
+  display:inline-block;
+  margin-top:90px;
+  padding-bottom:10px;
+  
+}
+
 
