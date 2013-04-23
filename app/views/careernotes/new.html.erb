@@ -5,7 +5,7 @@
     <%= render partial: 'careernotes/careernote_employment_additional_information', locals: {employment: @employment} %>
   </div>
   <div class='careernote_form_container'>
-    <%= render partial: 'careernotes/careernote_form' %>
+    <%= render partial: 'careernotes/careernote_form', locals: {edit: false} %>
   </div>
 </div>
 <div id='write_careernote_short_container' class='careernote_short_container float-right'>

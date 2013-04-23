@@ -1,26 +1,35 @@
-<h1>내 커리어 노트</h1>
 
 <div id='careernote_dashboard'>
+  <h1>내 커리어 노트</h1>
+  <div id='careernote_dashboard_employments_container', class='float-left'>
     <% for employment in @employments %>
-      <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='careernote_dashboard_employments_container'>
-        <div class = "careernote_dashboard_emyploymentinfo">
-          <%= render partial: 'careernotes/careernote_employment_information', locals:{employment: employment} %>
-        </div>
-          <% if employment.careernote.blank? %>
-            <span><%= link_to "커리어노트 쓰기", new_careernote_url(employment_id: employment.id) %></span>
-          <% else %>
-            <span><%= "좋아요 #{employment.careernote.likes.length}" %></span>·
-            <span><%= "댓글 #{employment.careernote.comments.length}" %></span>
-           <div class ="dashboard_submenu"> 
-              <p>
-                <span><%= link_to '작성된 노트 보기',  careernote_url(employment.careernote)%></span>·
-                <span><%= link_to '수정',  edit_careernote_url(employment.careernote)%></span>         ·
-                <span><%= link_to '삭제', careernote_url(employment.careernote), method: :delete, remote: true, :confirm => "정말 삭제하시겠습니까?" %></span>
-              </p>
-           </div>   
-          <% end %>
+      <div id="<%= 'employment_' + employment.id.to_s + '_container' %>" class='careernote_dashboard_employments'>
+	<% unless employment.careernote.nil? %>
+	  <div class = "careernote_dashboard_emyploymentinfo careernote_box_color_true">          
+	<% else %>
+	  <div class = "careernote_dashboard_emyploymentinfo careernote_box_color_false">           
+	<% end %>
+	    <%= render partial: 'careernotes/careernote_employment_information', locals:{employment: employment} %>
+	  </div>
+	  <% if employment.careernote.blank? %>
+	    <span><%= link_to "커리어노트 쓰기", new_careernote_url(employment_id: employment.id) %></span>
+	  <% else %>
+	    <span><%= "좋아요 #{employment.careernote.likes.length}" %></span>·
+	    <span><%= "댓글 #{employment.careernote.comments.length}" %></span>
+	    <div class ="dashboard_submenu"> 
+	      <p>
+		<span><%= link_to '작성된 노트 보기',  careernote_url(employment.careernote)%></span>·
+		<span><%= link_to '수정',  edit_careernote_url(employment.careernote)%></span>         ·
+		<span><%= link_to '삭제', careernote_url(employment.careernote), method: :delete, remote: true, :confirm => "정말 삭제하시겠습니까?" %></span>
+	      </p>
+	    </div>   
+	  <% end %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
+    <div id ="careernote_dashboard_etc_container", class='float-left'>
+      <%= link_to '추가 안된 직장이 있으신가요?',settings_url %>
+    </div>
 </div>
   
 <script type="text/javascript">

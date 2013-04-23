@@ -1,11 +1,28 @@
 <% name = @employment.organization.name %>
-<% guidetext= "다음 질문들은 예시 질문입니다.\n\n0. #{name}에 대해 간단히 소개해주세요." %>
+<% guidetext= "0. #{name}에 대해 간단히 소개해주세요.
 
+1. #{name}에서 주로 어떤 일을 담당하셨나요?
+
+2. #{name}에 어떻게 입사하게 되셨나요?
+
+3. #{name}의 근무환경은 어떤가요?
+
+4. #{name}의 기업 문화(추구하는 가치, 인재관 ,분위기 등)은 어떠한가요?
+
+5. #{name}에서 배운 점(장점)은 무엇인가요?
+
+6. #{name}에서 아쉬웠던 점은 무엇인가요?
+
+7. #{name}에서 퇴사하셨다면, 그 이유는 무엇인가요?\n\n (다음 질문들은 가이드일뿐입니다. 이 형식을 안 따르고 작성하셔도 무방합니다~)" %>
 
 <div id="careernote_error_message" class='warning'></div>
 <%= form_for [@employment, @careernote], id: 'careernote_form', remote: true do |f| %>
   <div>
-    <%= f.text_area :content, autocomplete: :off, id: 'careernote_form_text_area', value: guidetext%>
+    <% unless edit %>
+      <%= f.text_area :content, autocomplete: :off, id: 'careernote_form_text_area', value: guidetext%>
+    <% else %>
+      <%= f.text_area :content, autocomplete: :off, id: 'careernote_form_text_area'%>
+    <% end %>
   </div>
   <div class='careernote_form_submit'>
     <%= f.submit '커리어 노트 올리기', class: 'ui-button float-right', onclick: 'editor.post()' %>

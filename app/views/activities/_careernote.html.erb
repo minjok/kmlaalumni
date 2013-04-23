@@ -6,7 +6,7 @@
   </div>
   <div class='careernote_feed_content_container feed_content_container'>
        <%= link_to careernote_path(careernote) do %>
-      <div class='careernote_feed_employmentinfo'>
+      <div class='careernote_feed_employmentinfo careernote_box_color_true'>
         <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
       </div>
       <% end %>
