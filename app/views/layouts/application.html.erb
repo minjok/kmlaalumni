@@ -55,29 +55,7 @@
       });
     });
     
-    /* If Scroll is not top, make Nav Bar opaque */ 
-      $(window).scroll(function () {
-       if ($(this).scrollTop()==0){ 
-         $("#horizontalbar_container").css("opacity","1.0");
-         $("#logo_bar_container").css("height","120px");  
-       }
-       else{
-         $("#horizontalbar_container").css("opacity","0.5");
-           
-       }
-     });
-
-     /* If User puts mouse on Nav Bar, make Nav Bar not opaque */ 
-    $("#horizontalbar_container").hover(
-    function () {
-       $(this).css("opacity","1.0");
-     },  
-     function () {
-        if ($(window).scrollTop()!=0){ 
-           $(this).css("opacity","0.5");
-         }
-     }
-     );
+  
      /* If User puts mouse on Title of Nav Bar , show SubList */      
     $('#horizontalbar li').hover(
       function () {

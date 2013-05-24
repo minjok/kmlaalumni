@@ -1,12 +1,11 @@
 
 #horizontalbar_container{
   width:100%;
-  position:fixed;
-  opacity:1.0;	  
+ /* position:fixed;*/
   top:0;
   left:0;
   z-index:100;
-
+  position:absolute;
 }
 
 #logo_bar_container{	
