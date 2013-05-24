@@ -1,19 +1,36 @@
 <% careernote_name = 'careernote_' + careernote.id.to_s %>
 <div id="<%= careernote_name %>" class='careernote_container'>
-  <div id="<%= careernote_name + '_author' %>" class='float-left'>
-    <div id="<%= careernote_name + '_profile_pic' %>">
-      <%= image_tag asset_path('default_profile_pic.png') %>
+  <!--Long Section (author, content, comment) -->
+  <div class='careernote_long_container float-left'>
+    <!-- Title -->
+     <div class='careernote_title'>
+        <h1><%= careernote.employment.organization.name %></h1>
+        <%= render partial: 'careernotes/careernote_employment_additional_information', locals: {employment: careernote.employment} %>
+     </div>
+    <div id="<%= careernote_name + '_author' %>", class="careernote_author float-left">
+      <div id="<%= careernote_name + '_profile_pic' %>">
+	<%= image_tag(asset_path('default_profile_pic.png'), size:"60x60") %>
+      </div>
+      <div id="<%= careernote_name + '_author_name' %>" class="careernote_author_name">
+	<%= link_to careernote.user.wave.to_s + '기 ' + careernote.user.name, profile_url(careernote.user) %>
+      </div>
     </div>
-    <div id="<%= careernote_name + '_author_name' %>" class="careernote_author_name">
-      <%= link_to careernote.user.wave.to_s + '기 ' + careernote.user.name, profile_url(careernote.user) %>
+    <div class='careernote_content_container float-right'>
+      <!-- Content -->
+      <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote, view: true} %>
+      
+      <!-- DIVIDER -->
+      <div class='commentable_divider'><%= image_tag(asset_path ('commentable_divider.png'), size:"520x15") %></div>
+      
+      <!-- Comment -->
+      <div class='careernote_commentable_area'>
+	<%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
+      </div>
     </div>
   </div>
-  <div class='careernote_content_container float-right'>
-    <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
-    <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote} %>
-    <div class='careernote_commentable_area'>
-      <%= render partial: 'comments/commentable_area', locals: {commentable: careernote} %>
-    </div>
+  <!--Short Section (Tags, etc.) -->
+  <div class='careernote_short_container float-right'>
+    tags
   </div>
-  
+
 </div>

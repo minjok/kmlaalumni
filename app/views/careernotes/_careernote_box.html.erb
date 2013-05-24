@@ -1,0 +1,31 @@
+<% careernote_name = 'careernote_' + careernote.id.to_s %>
+
+<div class="careernote_box">
+  <div class = "careernote_box_header">
+    <%= image_tag(asset_path('default_profile_pic.png'), size:"30x30", class:"careernote_box_profile_pic") %>
+    <div id="#{careernote_name}_author_name", class="careernote_box_author_name">
+      <%= link_to careernote.user.wave.to_s + '기 ' + careernote.user.name, profile_url(careernote.user) %> 
+    </div>
+ </div>
+ <%= link_to careernote_path(careernote) do %>
+ <div>
+   <div class = "careernote_box_employmentinfo careernote_box_color_true">
+       <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
+    </div>
+   <div class="careernote_box_content">
+     <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote, view:false} %>
+   </div>
+   <div class="careernote_box_likes_comments">
+     <span class ="likes_comment">
+       <%= "좋아요 #{careernote.likes.length}" %>
+       <%= "댓글 #{careernote.comments.length}" %>
+     </span>
+   </div> 
+ </div>
+ <% end %>
+
+</div>
+
+
+
+

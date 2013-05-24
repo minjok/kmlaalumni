@@ -4,9 +4,10 @@
   </div>
   <div id='profile_user' class='float-left'>
     <div id='profile_name' class='header_title'>
-      <%= current_user.wave%>기 <%= current_user.name %>
+      <%=link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user) %>
     </div>
     <div id='status'></div>
+    
   </div>
 </div>
 
@@ -53,7 +54,6 @@
       <div id='password_body' class='settings_category_body'>
       </div>
     </div>
-    
   </div>
   
   <div id='settings_short_section' class='float-right'>
