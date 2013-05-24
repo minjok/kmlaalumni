@@ -7,8 +7,8 @@
       <%=link_to "#{current_user.wave}기 #{current_user.name}", profile_url(current_user) %>
     </div>
     <div id='status'></div>
-    
   </div>
+  <div id='profile_settings' class= 'float-right'><%= link_to '완료', profile_url(current_user) %></div>
 </div>
 
 <div id='settings_wrapper'>
