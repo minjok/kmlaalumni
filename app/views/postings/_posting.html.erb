@@ -10,12 +10,14 @@
   <div id="<%= posting_name + '_sources'%>">
   
     <% if posting.platform == Posting::PLATFORM['GROUP'] %>
-      <span class='posting_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
+     <span class='feedable_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
       <% if is_newsfeed %>
-        <span class='posting_group'><%= link_to '@' + posting.group.name, group_url(posting.group) %></span>
+         동문님이 
+        <span class='posting_group'><%= link_to '' + posting.group.name, group_url(posting.group) %></span>
+        에 글을 남기셨습니다.
       <% end %>
     <% elsif posting.platform == Posting::PLATFORM['WALL'] %>
-      <span class='posting_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
+      <span class='feedable_author'><%= link_to posting.user.wave.to_s + '기 ' + posting.user.name, profile_url(posting.user) %></span>
     <% elsif posting.platform == Posting::PLATFORM['ANNOUNCEMENT'] %>
       <span class='posting_group'><%= link_to '[동문회 공지]', announcement_url, class: 'posting_announcement_link' %></span>
     <% end %>
@@ -23,7 +25,7 @@
   </div>
   
   <!-- POSTING CONTENT -->
-  <div class='posting_content_container'>
+  <div class='posting_content_container feed_content_container'>
     
     <% if posting.content.length < 300 %>
       <div id="<%= posting_name + '_content' %>" class='posting_content content'><%= simple_format(posting.content) %></div>
@@ -39,6 +41,6 @@
   <% end %>
   
   <!-- DIVIDER -->
-  <div class='commentable_divider'><%= image_tag(asset_path 'commentable_divider.png') %></div>
+  <div class='commentable_divider feed-left-margin'><%= image_tag(asset_path 'commentable_divider.png') %></div>
 
 </div>

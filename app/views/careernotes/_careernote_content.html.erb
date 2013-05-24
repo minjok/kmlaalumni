@@ -1,13 +1,17 @@
 <% careernote_name = 'careernote_' + careernote.id.to_s %>
 <div class='careernote_content'>
-  <% if careernote.content.length < 300 %>
+  <% if careernote.content.length < 100 || view %>
     <div id="<%= careernote_name + '_content' %>" class='posting_content content'>
-      <%= simple_format(careernote.content) %>
+      <% if view %>
+        <%= simple_format(careernote.content) %>
+      <% else %>
+        <%= strip_html(careernote.content) %>
+      <% end %>
     </div>
   <% else %>
     <div id="<%= careernote_name + '_content' %>" class="posting_content posting_preview content">
-      <%= simple_format(careernote.content[0, 299]) %>...
-      <%= link_to "더 읽기", get_careernote_content_url(careernote), remote: true, class: "read_more_link" %>
+      <%= strip_html(careernote.content)[0,100] %>...
     </div>
   <% end %>
+
 </div>

@@ -4,19 +4,19 @@
 <% user_likes_commentable = current_user.likes?(commentable) %>
   
 <!-- ACTIVITY BAR (LIKE, DELETE etc.) -->
-  
-  <div class='content_activity_bar'>
-    <% if user_likes_commentable %>
-      <%= link_to "좋아요 취소", dislike_url + params, id: commentable_name + '_like_link', remote: true %>
-    <% else %>
-      <%= link_to "좋아요", like_url + params, id: commentable_name + '_like_link', remote: true %>
-    <% end %>
-    <% if current_user.wrote?(commentable) %>
-      · <%= link_to_commentable_modification(commentable) %>
-    <% end %>
-    <span class='commentable_date'><%= commentable.created_at %></span>
-  </div>
-      
+
+<div class='content_activity_bar'>
+  <% if user_likes_commentable %>
+    <%= link_to "좋아요 취소", dislike_url + params, id: commentable_name + '_like_link', remote: true %>
+  <% else %>
+    <%= link_to "좋아요", like_url + params, id: commentable_name + '_like_link', remote: true %>
+  <% end %>
+  <% if current_user.wrote?(commentable) %>
+    · <%= link_to_commentable_modification(commentable) %>
+  <% end %>
+  <span class='commentable_date'><%= commentable.created_at %></span>
+</div>
+    
 <!-- LIKES --->
 <div id="<%= commentable_name + '_likes_container' %>" class='likes_container'>
   <%= render partial: 'likes/likes_stats', locals: {likeable: commentable} %>
@@ -37,3 +37,4 @@
     <%= f.text_area :content, class: 'comment_textarea', placeholder: current_user.name + ' 동문님, 댓글 달아주세요!' %>
   <% end %>
 </div>
+

@@ -22,3 +22,4 @@ pickle-email-*.html
 /db/seeds.rb
 /config/env.yml
 /public/assets
+Thumbs.db

@@ -1,0 +1,71 @@
+
+#horizontalbar_container{
+  width:100%;
+ /* position:fixed;*/
+  top:0;
+  left:0;
+  z-index:100;
+  position:absolute;
+}
+
+#logo_bar_container{	
+  width:900px;  
+  height:120px;
+  padding-left:40px;
+  padding-right:40px;
+  background-color:white;  
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#horizontalbar li{
+  float:left;
+  display:inline-block;	
+  font-size: 12px;
+  font-weight: bold;  
+}
+
+#horizontalbar li.bar_title{
+  margin-top:90px;
+  width:120px;	
+  text-align:center;
+  padding-bottom:10px;
+
+}
+
+#horizontalbar a{
+}
+
+#horizontalbar li ul{
+  margin-top:14px;
+  display:none;
+  background:white;	  
+  border-top: 3px solid #AAD1E9;
+}
+
+#horizontalbar li ul li{ 
+  background:white;	
+  width:120px;
+  display:block; 
+  padding: 8px 0 8px;
+  border-bottom: 1px dotted #AAD1E9;
+}
+
+.horizontalbar_link { 
+  font-size: 12px;
+}
+
+#personal_bar_container{
+  float:right;
+  width:200px;
+  position: relative;
+}
+
+#personal_bar li{
+  display:inline-block;
+  margin-top:90px;
+  padding-bottom:10px;
+  
+}
+
+
