@@ -11,72 +11,9 @@
   <% if @notice %>
     <div id='notice'><%= @notice %></div>
   <% end %>
+  <%= render partial:'layouts/horizontalbar' %>
   <div id='wrapper'>
-    <div id='sidebar_container'>
-      <div class='logo'>
-        <a href='/'><%= image_tag(asset_path 'logo.png') %></a>
-      </div>
-      <div class='sidebar'>
-        
-        <div class='sidebar_title'><%= current_user.wave %>기 <%= current_user.name %></div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '뉴스피드', root_url, class:'sidebar_link' %>
-        </div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '프로필', profile_url(current_user), class: 'sidebar_link' %>
-        </div>
-        
-        <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
-        
-        <div class='sidebar_title'>KMLA Careers</div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to 'CareerNote', careernotes_url, class:'sidebar_link' %>
-        </div>
-        
-        <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
-        
-        <div class='sidebar_title'>동문회</div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '공지사항', announcement_url, class:'sidebar_link' %>
-        </div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '뉴스레터', newsletter_url, class:'sidebar_link' %>
-        </div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '정관', regulations_url, class:'sidebar_link' %>
-        </div>
-        
-        <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
-        
-        <div class='sidebar_title'>내 소모임</div>
-        <% for group in current_user.groups %>
-          <div class='sidebar_link_container float-right'><%= link_to group.name, group_url(group), class:'sidebar_link' %></div>
-        <% end %>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '소모임 찾기', groups_url, class: 'sidebar_option_link' %>
-        </div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '+ 소모임 만들기', new_group_url, class: 'sidebar_option_link' %>
-        </div>
-       
-        <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
-        
-        <div class='sidebar_title'>네트워크</div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '동문 검색', network_url, class:'sidebar_link' %>
-        </div>
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '학교별 동문 검색', network_school_url, class:'sidebar_link' %>
-        </div>
-            
-        <div><%= image_tag(asset_path 'sidebar_divider.png') %></div>
-        
-        <div class='sidebar_link_container float-right'>
-          <%= link_to '로그아웃', logout_url, id:'logout_link', class: 'sidebar_option_link', method: :delete %>
-        </div>
-      </div>
-    </div>
-    <div id='main_container'>
+    <div id='main_container', class='shadow'>
          <%= yield %>     
     </div>
     <div id='dialog_box' style='display:none'>
@@ -118,6 +55,17 @@
       });
     });
     
+  
+     /* If User puts mouse on Title of Nav Bar , show SubList */      
+    $('#horizontalbar li').hover(
+      function () {
+         $('ul',this).fadeIn();
+       },  
+       function () {
+         $('ul',this).fadeOut();
+       }
+     );
+    
     $('body').on('click', '#dialog_close_link', function(event){
       event.preventDefault();
       $('#dialog_title').html('');
@@ -126,11 +74,11 @@
     });
       
     $(document).ready( function() {
-      
       $('input, textarea').placeholder();
-      
+      $('li ul','#horizontalbar').hide();
+      $('body').css("background", "#E8EFF7");
     });
-
+   
   </script>
 <!-- begin olark code -->
 <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){

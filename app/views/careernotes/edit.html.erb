@@ -1,8 +1,12 @@
-<div id='write_careernote_container' class='careernotes_container'>
-  <div class='careernote_guide_container'>
-    <%= link_to '커리어 노트 작성 가이드 보기' %>
+<div id='write_careernote_long_container' class='careernote_long_container'>
+   <!-- Title -->
+  <div class='careernote_title'>
+    <h1><%= @employment.organization.name %></h1>
+    <%= render partial: 'careernotes/careernote_employment_additional_information', locals: {employment: @employment} %>
   </div>
   <div class='careernote_form_container'>
-    <%= render partial: 'careernotes/careernote_form' %>
+    <%= render partial: 'careernotes/careernote_form', locals: {edit: true}  %>
   </div>
+</div>
+<div id='write_careernote_short_container' class='careernote_short_container float-right'>
 </div>
