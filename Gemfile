@@ -7,6 +7,7 @@ gem 'devise'
 gem 'thin'
 gem 'kaminari'
 gem 'newrelic_rpm', '3.5.7.59'
+gem 'jquery-cookie-rails'
 
 group :assets do
   gem 'asset_sync'

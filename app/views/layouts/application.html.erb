@@ -12,6 +12,7 @@
     <div id='notice'><%= @notice %></div>
   <% end %>
   <%= render partial:'layouts/horizontalbar' %>
+  <%= render partial:'layouts/mainbanner' %>
   <div id='wrapper'>
     <div id='main_container', class='shadow'>
          <%= yield %>     
@@ -28,7 +29,6 @@
       </div>
     </div>
   </div>
-  
   <script type="text/javascript">
       
     var timezone = jstz.determine();
@@ -78,6 +78,22 @@
       $('li ul','#horizontalbar').hide();
       $('body').css("background", "#E8EFF7");
     });
+    
+    /* Shows icon for banner when hover */
+    $('#main_banner_wrapper').hover(
+     function () {
+        $('#x_button').fadeIn();
+      },  
+      function () {
+        $('#x_button').fadeOut();
+      }
+    );
+    /* Hides Banner when  x_button is pressed */
+    $('#x_button').on('click', function(event){
+      $.cookie('show_banner', 'not_show', { expires: 1});
+      $('#main_banner_wrapper').hide();
+      $('#main_container').css("margin-top", "120px");      
+    });  
    
   </script>
 <!-- begin olark code -->
