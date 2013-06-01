@@ -1,2 +1,7 @@
-﻿<div class='employment_organization_name'><%= employment.organization.name %></div>
+﻿<div class='employment_organization_name'>
+  <%= employment.organization.name %>
+  <% unless employment.careernote.blank? %>
+    <%= link_to careernote_url(employment.careernote), title:"커리어노트 보기" do %><span class='careernote_link'><%=  image_tag(asset_path('careernote.png',size:"10x10")) %></span><% end %> 
+  <% end %>
+</div> 
 <%= render partial: 'employments/additional_information', locals: {employment: employment} %>
