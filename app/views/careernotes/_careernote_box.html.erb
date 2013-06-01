@@ -16,9 +16,12 @@
      <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote, view:false} %>
    </div>
    <div class="careernote_box_likes_comments">
-     <span class ="likes_comment">
-       <%= "좋아요 #{careernote.likes.length}" %>
-       <%= "댓글 #{careernote.comments.length}" %>
+     <span class ="likes_comment_image"><%= image_tag(asset_path('like.png'), size:"20x20") %></span>
+     <span class ="likes_comment_text"><%= "#{careernote.likes.length}" %></span>
+     <span class ="likes_comment_image"><%= image_tag(asset_path('comment.png'),size:"20x20") %></span>
+     <span class ="likes_comment_text"><%= " #{careernote.comments.length}" %></span>  
+     
+       
      </span>
    </div> 
  </div>
