@@ -20,4 +20,19 @@ module CareernotesHelper
       strip_tags(text)
     end
   end
+  
+  # Method: strip_question(text)
+  # --------------------------------------------
+  # Removes question from text
+  def strip_question(text)
+    unless text.nil?
+      text2 = ""
+      text.split("\n").each do |str|
+        unless /\d\./.match(str[0,2])
+          text2 +=str
+        end
+      end
+      return text2
+    end
+  end
 end
