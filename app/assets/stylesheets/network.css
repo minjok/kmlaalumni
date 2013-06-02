@@ -46,13 +46,14 @@
 
 .search_result_item_row {
   width: 520px;
-  height: 15px;
+  height: 25px;
   margin-bottom: 15px;
 }
 
 .search_result_item {
-  width: 80px;
+  width: 100px;
   padding-left: 40px;
+  height:25px;
 }
 
 .search_list {

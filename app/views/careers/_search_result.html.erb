@@ -1,0 +1,25 @@
+<% row_count = 0 %>
+<% for user in @users %>
+   <% employment = user.employments.where("organization_id=?",@organization.id).first %>  
+   <% if row_count == 0 %>
+    <div class='search_result_item_row'>
+  <% end %>
+  <div class='search_result_item float-left'>
+    <!-- Put Background color If Employment is current job -->
+    <% unless employment.start_year.blank? || !(employment.end_year.blank?) %>
+      <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user), class:'careerlist_name', title:"현재 #{employment.organization.name}에서 근무 중" %>
+    <% else %>
+      <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user)%>
+    <% end %>
+    <!--See whether this user has a careernote for this organization --> 
+    <% unless employment.careernote.blank? %>
+       <%= render partial: 'careernotes/careernote_icon', locals:{careernote: employment.careernote} %>
+    <% end %>
+  </div>
+  <% if row_count == 3 %>
+    </div>
+    <% row_count = 0 %>
+  <% else %>
+    <% row_count += 1 %>
+  <% end %>
+<% end %>

@@ -1,5 +1,21 @@
+<div class='careernote_banner'>
+  <h1>직장별 동문 보기</h1>
+  <b><p class='careernote_promotion_text'>
+   <span style="font-size:20px"><%= @number %></span>
+   <%= "명의 동문들이 총" %>
+   <span style="font-size:20px"><%= @organizations.count %></span>
+   <%= "곳의 직장에서의 커리어를 가지고 있습니다!" %>  
+  </p>
+  </b>
+</div>
+
+
 <div class='search_list'>
   <% for organization in @organizations %>
-    <div><%= organization.name %></div>
+   <div class='search_list_elem'>
+      <div class='search_link'><%= link_to organization.name, search_organization_url(organization), remote:true %></div>
+      <div id="<%= 'organization_' + organization.id.to_s + '_alumnis' %>" class='search_result'>
+      </div>
+   </div>
   <% end %>
 </div>

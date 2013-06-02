@@ -1,0 +1,5 @@
+<% if @users.blank? %>
+  $("<%= '#organization_' + @organization.id.to_s + '_alumnis' %>").html("<div class='no_result_message'>해당 직장에 다닌 동문이 없습니다</div>");
+<% else %>
+  $("<%= '#organization_' + @organization.id.to_s + '_alumnis' %>").html("<%= escape_javascript(render partial: 'careers/search_result', locals:{users: @users}) %>");
+<% end %>

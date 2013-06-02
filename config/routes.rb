@@ -82,6 +82,7 @@ Kmlaalumni::Application.routes.draw do
   match '/search_school/:id',   to: 'network#search_school',             as: 'search_school'
   
   match '/organizations', to: 'careers#show_organization', as: 'organizations'
+  match '/search_organization/:id', to: 'careers#search_organization', as: 'search_organization'
   
   match '/careernote_dashboard', to: 'careernotes#dashboard', as: 'careernote_dashboard'
   match '/new_careernote', to: 'careernotes#new', as: 'new_careernote'
