@@ -9,20 +9,19 @@
  </div>
  <%= link_to careernote_path(careernote) do %>
  <div>
-   <div class = "careernote_box_employmentinfo careernote_box_color_true">
-       <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
-    </div>
-   <div class="careernote_box_content">
-     <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote, view:false} %>
+   <div class='box_container'>
+     <div class = "careernote_box_employmentinfo careernote_box_color_true">
+	 <%= render partial: 'careernotes/careernote_employment_information', locals: {employment: careernote.employment} %>
+      </div>
+     <div class="careernote_box_content">
+       <%= render partial: 'careernotes/careernote_content', locals: {careernote: careernote, view:false} %>
+     </div>
    </div>
    <div class="careernote_box_likes_comments">
      <span class ="likes_comment_image"><%= image_tag(asset_path('like.png'), size:"20x20") %></span>
      <span class ="likes_comment_text"><%= "#{careernote.likes.length}" %></span>
      <span class ="likes_comment_image"><%= image_tag(asset_path('comment.png'),size:"20x20") %></span>
-     <span class ="likes_comment_text"><%= " #{careernote.comments.length}" %></span>  
-     
-       
-     </span>
+     <span class ="likes_comment_text"><%= " #{careernote.comments.length}" %></span>     
    </div> 
  </div>
  <% end %>

@@ -1,34 +1,39 @@
 <% progress = get_progress_percentage %>
 
 <div id='progress_bar_container'>
-<%if progress < 100 %>
-<div class='progress_bar'> 
-  <% if progress == 25 %>
-    <span style="width: 25%">25%</span>
-  <% elsif progress == 50 %>
-    <span style="width: 50%">50%</span>
-  <% elsif progress == 75 %>
-    <span style="width: 75%">75%</span>
-  <% end %>
-</div>
-
-<div class='prgress_message_container'>
-  <% if progress == 25 %>
-    <p><%= "환영합니다, #{current_user.name} 동문님!" %></p>
-    <p>벌써 사이트 입학 과정의 <b>25%</b>를 끝내셨습니다.</p>
-    <p>아직 성별과 생일을 입력하지 않으셨군요.</p>
-    <p>다음 과정으로 
-    <b><%=link_to '프로필', profile_url(current_user)%></b>에서 기본 정보를 입력해주세요!</p> 
-  <% elsif progress == 50 %>
-    <p><%= "#{current_user.name} 동문님!" %></p>
-    <p>사이트 입학 과정의 <b>절반</b>을 성공하셨습니다.</p>
-    <p>이제
-    <b><%=link_to '프로필', profile_url(current_user)%></b>에서 직장 및 학교 정보를 입력해주세요!</p> 
-  <% elsif progress == 75 %>
-    <p><%= "#{current_user.name} 동문님!" %></p>
-    <p>사이트 입학 과정의 <b>마지막 숙제</b>입니다</p>
-    <p><b><%=link_to '커리어 노트', careernote_dashboard_url%></b>로 직장 경험을 공유해주세요!</p> 
-  <% end %>
-</div>
-<% end %>
+  <div class='progress_bar'> 
+    <% if progress == 25 %>
+      <span style="width: 25%">25%</span>
+    <% elsif progress == 50 %>
+      <span style="width: 50%">50%</span>
+    <% elsif progress == 75 %>
+      <span style="width: 75%">75%</span>
+    <% else %>
+      <span style="width: 100%">100%</span>
+    <% end %>
+  </div>
+  
+  <div class='prgress_message_container'>
+    <% if progress == 25 %>
+      <p><%= "환영합니다, #{current_user.name} 동문님!" %></p>
+      <p>벌써 사이트 입학 과정의 <b>25%</b>를 끝내셨습니다.</p>
+      <p>아직 성별과 생일을 입력하지 않으셨군요.</p>
+      <p>다음 과정으로 
+      <b><%=link_to '프로필', profile_url(current_user)%></b>에서 기본 정보를 입력해주세요!</p> 
+    <% elsif progress == 50 %>
+      <p><%= "#{current_user.name} 동문님!" %></p>
+      <p>사이트 입학 과정의 <b>절반</b>을 성공하셨습니다.</p>
+      <p>이제
+      <b><%=link_to '프로필', profile_url(current_user)%></b>에서 직장 및 학교 정보를 입력해주세요!</p> 
+    <% elsif progress == 75 %>
+      <p><%= "#{current_user.name} 동문님!" %></p>
+      <p>사이트 입학 과정의 <b>마지막 숙제</b>입니다</p>
+      <p><b><%=link_to '커리어 노트', careernote_dashboard_url%></b>에 다니셨던 직장 경험을 공유해주세요!</p> 
+    <% else %>
+      <p><%= "#{current_user.name} 동문님!" %></p>
+      <p>감사합니다, 사이트 입학 과정을 모두 마치셨습니다!</p>
+      <p>새로 출시된 <b><%=link_to '커리어 노트', careernotes_url %></b>를 계속 지켜봐주세요!</p>   
+      <p>아직 공유하실 직장 경험이 남아있으신가요?</p>
+    <% end %>
+  </div>
 </div>

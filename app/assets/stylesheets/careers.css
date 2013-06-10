@@ -91,10 +91,6 @@
   text-align: center;
 }
 
-.careernote_employment_information {
-  margin-bottom: 10px;
-}
-
 .careernote_title{
   text-align:center;
   padding-bottom: 5px;
@@ -151,12 +147,14 @@
   margin-right:2px;
 }
 .careernote_box_employmentinfo{
-  margin-top:40px;	
   text-align:center;
   position:relative;	
+  min-height:30px;
+  max-height:50px;
+  margin-top:5px;
 }
 .careernote_box_color_true{
-  height:30px;  
+  min-height:30px;
   border-radius:5px;
   padding:2px;
   background:#E8F0F7;  
@@ -167,16 +165,27 @@
   padding:2px;
   background:#E0E0E0;  
 }
-
 .careernote_dashboard_emyploymentinfo{
   margin-bottom:5px;
   text-align:center;
   position:relative;	
 }
 
+.careernote_box_content{
+  color:#999999;
+  font-size:11px;
+  margin-top:15px;
+}
+.box_container{
+ float:left; 
+ overflow:hidden;
+ height:150px;
+}
+
 .careernote_box_likes_comments{
   width:200px;
-  border-top: 1px solid #EAE9E8;  	
+  border-top: 1px solid #EAE9E8;
+  float:left;
 }
 .likes_comment_text{
   color: #777777;
@@ -190,13 +199,7 @@
   display:none;	
 }
 
-.careernote_box_content{
-  margin-top:35px; 
-  overflow:hidden;
-  height:78px;
-  color:#999999;
-  font-size:11px;
-}
+
 #careernote_read_more_link{
   float:right;
 }
