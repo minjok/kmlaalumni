@@ -6,7 +6,7 @@
   <% end %>
   <div class='search_result_item float-left'>
     <!-- Put Background color If Employment is current job -->
-    <% unless employment.start_year.blank? || !(employment.end_year.blank?) %>
+    <% if (!(employment.start_year.blank?) && employment.end_year.blank?) || (!(employment.end_year.blank?) && (employment.end_year.year-Date.today.year)>=0)  %>
       <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user), class:'careerlist_name', title:"현재 #{employment.organization.name}에서 근무 중" %>
     <% else %>
       <%= link_to user.wave.to_s + '기 ' + user.name, profile_url(user)%>
