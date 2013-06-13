@@ -100,7 +100,7 @@ class CareernotesController < ApplicationController
   # --------------------------------------------
   #
   def feed
-    @careernotes = Careernote.order('created_at DESC').page(params[:page]).per(10)
+    @careernotes = Careernote.order('created_at DESC').page(params[:page]).per(6)
     respond_to do |format|
       format.js
     end

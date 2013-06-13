@@ -1,1 +1,2 @@
 $("#careernotes").append("<% for careernote in @careernotes do%><%=  escape_javascript( render partial: 'careernotes/careernote_box', locals: {careernote: careernote}) %><% end %>");
+

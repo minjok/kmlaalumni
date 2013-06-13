@@ -25,6 +25,7 @@
 
 #careernotes {
   width: 700px;
+  min-height:500px;
 }
 
 #careernotes_menubar {
@@ -152,6 +153,7 @@
   min-height:30px;
   max-height:50px;
   margin-top:5px;
+  min-width:190px;
 }
 .careernote_box_color_true{
   min-height:30px;
@@ -227,6 +229,7 @@
   background:#d5e2f0; 
   padding:1px;
 }
+
 
 
 
