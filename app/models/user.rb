@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     has_many :likes,    dependent: :destroy
     
     has_many :tags, as: :tagger, through: :taggings
-    has_many :taggings, dependent: :destroy
+    has_many :taggings, as: :tagger, dependent: :destroy
 	
 	
 	# *** VALIDATIONS *** #

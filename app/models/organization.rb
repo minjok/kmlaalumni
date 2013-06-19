@@ -6,8 +6,8 @@ class Organization < ActiveRecord::Base
   has_many :careernotes, through: :employments
   has_many :employments, dependent: :destroy
   
-  has_many :taggings, as: :taggable, through: :careernotes, dependent: :destroy
-  has_many :tags, as: :taggable, through :taggings
+  has_many :taggings, as: :taggabble, through: :careernotes, dependent: :destroy
+  has_many :tags, as: :taggabble, through: :taggings
   
   # *** VALIDATIONS *** #
   validates_presence_of :name,
