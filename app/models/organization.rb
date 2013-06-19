@@ -5,7 +5,10 @@ class Organization < ActiveRecord::Base
   has_many :users, through: :employments
   has_many :careernotes, through: :employments
   has_many :employments, dependent: :destroy
-
+  
+  has_many :taggings, as: :taggable, through: :careernotes, dependent: :destroy
+  has_many :tags, as: :taggable, through :taggings
+  
   # *** VALIDATIONS *** #
   validates_presence_of :name,
                           message: "직장/단체 이름을 입력하세요"

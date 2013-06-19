@@ -11,7 +11,7 @@ class Careernote < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   
-  has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :taggings, as: :taggable
   has_many :tags, as: :taggable, through: :taggings
    
   # *** VALIDATIONS *** #

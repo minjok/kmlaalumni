@@ -1,5 +1,7 @@
 class Tagging < ActiveRecord::Base
   # *** ASSOCIATIONS *** #
-  belongs_to :taggable
-  belongs_to :tagger
-end
+  belongs_to :taggable, :polymorphic =>true
+  belongs_to :tagger, :polymorphic =>true
+  belongs_to :tags
+ end
+ 

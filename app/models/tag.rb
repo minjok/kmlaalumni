@@ -7,5 +7,4 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :taggables, through: :taggings
   has_many :taggers,  through: :taggings
-  
 end
