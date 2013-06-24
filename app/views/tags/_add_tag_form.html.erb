@@ -1,3 +1,15 @@
-<%=form_for(@tag, remote: true) do |f| %>
-  <%= f.text_field :name, placeholder: '태그를 써주세요' %>
+<%=form_for @tag, url:{action:'add_tag'}, remote: true, id:'tag_form' do |f| %>
+  <%= f.text_field :name, id:'tag_textfield', placeholder: '태그를 써주세요' %>
 <% end %>
+
+<script>
+//Let tag_form submit when enter pressed
+
+$(document).ready(function(){
+  $('#tag_textfield').keyup(function(event){
+    if (event.keyCode==13){
+	document.getElementById("tag_form").submit(); 	  
+    }
+  });
+});
+</script>
