@@ -90,6 +90,7 @@ Kmlaalumni::Application.routes.draw do
   match '/careernote_num_pages', to: 'careernotes#num_pages', as: 'careernote_num_pages'
   match '/careernote_feed', to: 'careernotes#feed', as: 'careernote_feed'
   match '/get_careernote_content/:id', to: 'careernotes#get_content', as: 'get_careernote_content'
-  
+ 
+  match '/add_tag_button', to:'tags#add_tag_button', as:'add_tag_button'
 end
 

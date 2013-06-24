@@ -31,6 +31,7 @@
   <!--Short Section (Tags, etc.) -->
   <div class='careernote_short_container float-right'>
     <%=link_to '목록으로 돌아가기', careernotes_url %>
+    <%= render partial: 'tags/tag_list', locals:{taggable:careernote} %>
   </div>
 
 </div>

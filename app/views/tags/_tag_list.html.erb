@@ -1,1 +1,16 @@
-	
+<div id ='tag_container'>
+  <h3>태그</h3>
+  <!-- Get all tags of taggable by alphabetical order-->
+  <div id='tag_list'>
+    <% taggable.tags.sort { |x,y| x.name <=> y.name }.each do |tag|  %>
+      <%= render tag %>
+    <% end %>
+  </div>
+  <div id='tag_add_button_container'>
+    <span id='tag_add_button'><%=link_to '태그 추가하기',add_tag_button_url, remote:true %></span>
+    <div id='tag_add_textfield'>
+     
+    </div>
+  </div>
+</div>
+
