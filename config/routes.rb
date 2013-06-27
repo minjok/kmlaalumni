@@ -26,6 +26,7 @@ Kmlaalumni::Application.routes.draw do
   
   resources :careernotes do
     resources :comments
+    resources :tags
   end
   
   resources :comments

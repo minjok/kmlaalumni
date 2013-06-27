@@ -9,8 +9,8 @@
   </div>
   <div id='tag_add_button_container'>
     <span id='tag_add_button'><%=link_to '태그 추가하기',add_tag_button_url, remote:true %></span>
-    <div id='tag_add_textfield'>
-     
+    <div id='tag_add_textfield', style='display:none'>
+     	<%= render partial: 'tags/add_tag_form', locals:{taggable:taggable} %>
     </div>
   </div>
 </div>
