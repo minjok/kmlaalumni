@@ -1,4 +1,4 @@
-<%=form_for @tag, url:{action:'add_tag'}, remote: true, id:'tag_form' do |f| %>
+<%=form_for [taggable,@tag], url:{action:'add_tag'}, remote: true, id:'tag_form' do |f| %>
   <%= f.text_field :name, id:'tag_textfield', placeholder: '태그를 써주세요' %>
 <% end %>
 
