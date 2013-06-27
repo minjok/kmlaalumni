@@ -1,6 +1,22 @@
 <div id='profile_header'>
   <div id='profile_pic' class='float-left'>
-    <%= image_tag asset_path('default_profile_pic.png') %>
+    <%= form_for current_user,  url: update_settings_url(attr:'profile_picture'), html: {multipart: true} do |f| %>
+      <div>
+        <% if current_user.profile_picture? %>
+          <%= image_tag current_user.profile_picture.thumb.url %>
+        <% else %>
+          <%= image_tag asset_path('default_profile_pic.png') %>
+        <% end %>
+        <%= f.file_field :profile_picture %>
+      </div>
+      <div>
+        <%= f.check_box :remove_profile_picture %>
+        프로필 사진 지우기
+      </div>
+      <div>
+        <%= f.submit "저장하기", class: 'ui-button' %>
+      </div>
+    <% end %>
   </div>
   <div id='profile_user' class='float-left'>
     <div id='profile_name' class='header_title'>

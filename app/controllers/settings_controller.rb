@@ -5,36 +5,41 @@ class SettingsController < ApplicationController
   # --------------------------------------------
   # 
   def update
-    @user = User.find(current_user.id)
-    @target = params[:attr]
+    @successfully_updated = false
     
-    @successfully_updated = if @target == 'password'
-      @user.update_with_password(params[:user])
-    else
-      @user.update_without_password(params[:user])
+    if params.has_key?(:attr) && params.has_key?(:user)
+      @user = User.find(current_user.id)
+      @target = params[:attr]
+      
+      @successfully_updated = if @target == 'password'
+        @user.update_with_password(params[:user])
+      else
+        @user.update_without_password(params[:user])
+      end
+    
+      if @target == 'contact_information'
+        unless @user.fb.blank?
+          @user.fb = url_with_protocol(@user.fb)
+        end
+        unless @user.tw.blank?
+          @user.tw = url_with_protocol(@user.tw)
+        end
+        unless @user.ln.blank?
+          @user.ln = url_with_protocol(@user.ln)
+        end
+        unless @user.blog.blank?
+          @user.blog = url_with_protocol(@user.blog)
+        end
+      end
+    
+      @successfully_updated = @user.save
+    
+      sign_in @user, bypass: true if @successfully_updated
     end
-    
-    if @target == 'contact_information'
-      unless @user.fb.blank?
-        @user.fb = url_with_protocol(@user.fb)
-      end
-      unless @user.tw.blank?
-        @user.tw = url_with_protocol(@user.tw)
-      end
-      unless @user.ln.blank?
-        @user.ln = url_with_protocol(@user.ln)
-      end
-      unless @user.blog.blank?
-        @user.blog = url_with_protocol(@user.blog)
-      end
-    end
-    
-    @successfully_updated = @user.save
-    
-    sign_in @user, bypass: true if @successfully_updated
     
     respond_to do |format|
       format.js
+      format.html { redirect_to settings_url }
     end
   end
   

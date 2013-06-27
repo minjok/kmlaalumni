@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303120955) do
+ActiveRecord::Schema.define(:version => 20130627143040) do
 
   create_table "activities", :force => true do |t|
     t.integer  "feedable_id"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20130303120955) do
     t.string   "blog"
     t.datetime "birthday"
     t.string   "sex"
+    t.string   "profile_picture"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

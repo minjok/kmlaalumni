@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 					:student_number,
 					:email, 
 					:password,
+                    :profile_picture,
+                    :remove_profile_picture,
                     :birthday,
                     :sex,
                     :fb,
@@ -106,8 +108,11 @@ class User < ActiveRecord::Base
                                     
     validates_format_of         :sex, with: @sex_format, allow_blank:true,
                                     message: "올바른 성별이 아닙니다"
-		  
-		  
+	
+    # *** CARRIERWAVE *** #
+    mount_uploader :profile_picture, ProfilePictureUploader	  
+  
+  
   # *** METHODS *** #
 	
     
