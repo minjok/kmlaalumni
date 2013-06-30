@@ -1,4 +1,4 @@
-<% unless @tag.errors.any? %>
+<% unless @uniq_error==true %>
   $('#tag_list').append('<%= escape_javascript(render @tag) %>');
 <% else %>
   $('#tag_error_message').html("같은 태그가 있습니다");
