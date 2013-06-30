@@ -17,6 +17,9 @@
       <li><%= link_to '내 커리어노트 쓰기/보기', careernote_dashboard_url, class: 'careernote_menu_link' %></li>
     </ul>
   </div>
+  <div class='careernote_tagcloud_container'>
+    <%= render partial:'tags/tag_cloud', locals: {taggable:"Careernote"} %>
+  </div>
 </div>
 
 
