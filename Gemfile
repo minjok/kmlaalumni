@@ -17,3 +17,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'routing_concerns'

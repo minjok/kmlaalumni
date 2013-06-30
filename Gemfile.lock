@@ -121,6 +121,10 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    routing_concerns (0.1.0)
+      actionpack (>= 3.2.0)
+      activemodel (>= 3.2.0)
+      railties (>= 3.2.0)
     ruby-hmac (0.4.0)
     sass (3.2.5)
     sass-rails (3.2.5)
@@ -163,6 +167,7 @@ DEPENDENCIES
   newrelic_rpm (= 3.5.7.59)
   pg
   rails (= 3.2.11)
+  routing_concerns
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)

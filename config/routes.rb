@@ -14,20 +14,23 @@ Kmlaalumni::Application.routes.draw do
 	delete	'/logout',	to: 'devise/sessions#destroy',		as: 'logout'
   end
   
+  #	*** CONCERNS *** for polymorphic models #
+  concern :commentable do
+    resources :comments
+  end
+  
+  concern :taggable do
+    resources :tags
+  end
+  
   
   #	*** RESOURCES ***	#
   resources :groups do
-	resources :postings
+    resources :postings
   end
     
-  resources :postings do
-    resources :comments
-  end
-  
-  resources :careernotes do
-    resources :comments
-    resources :tags
-  end
+  resources :postings, concerns: :commentable
+  resources :careernotes, concerns: [:taggable, :commentable]
   
   resources :comments
   
