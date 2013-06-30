@@ -1,0 +1,7 @@
+<ul>
+  <% @careernotes.each do |careernote| %>
+    <li>
+	<%= render partial:'careernotes/careernote_box', locals: {careernote: careernote}  %>
+    </li>
+  <% end %>
+</ul>                    

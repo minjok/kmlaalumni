@@ -2,6 +2,12 @@
 class TagsController < ApplicationController
    # *** BEFORE_FILTER *** #  
   before_filter :find_taggable, only: :create
+  before_filter :find_taggables_from_tag, only: :show
+  def index
+    respond_to do |format|
+      format.js
+    end
+  end
   
   def add_tag_button
     respond_to do |format|
@@ -38,8 +44,41 @@ class TagsController < ApplicationController
       end  
     end
   end
+   
+  #** Before_filter find_taggables_from_tag to get all taggables of tag to @taggables **#
+
+  def show
+    respond_to do |format|
+      format.html
+    end
+  end
   
   private
+  
+  def find_taggables_from_tag
+    @tag = Tag.find(params[:id])
+    @taggings = @tag.taggings
+    @taggables=[]
+    @taggings.each do |tagging|	
+      class_name = tagging.taggable_type.classify
+      taggable = class_name.constantize.find(tagging.taggable_id)
+      @taggables << [tagging.taggable, class_name]
+    end
+    @taggables.uniq{|x| x[0].id}
+    categorize_taggables
+  end
+  
+  # *** Categorize & Paginate Taggables to Careernote, User, etc. **#
+  def categorize_taggables
+    @careernotes=[]
+    @users=[]
+    @taggables.each do |x|
+      @careernotes << x[0] if (x[1]=="Careernote") 
+      @users << x[0] if (x[1]=="User")	
+    end
+    @careernotes = Kaminari.paginate_array(@careernotes).page(params[:page]).per(3)
+  end
+  
   # *** Check if same tagging exists  **#
   def check_tagging    
     @tag_new = false    

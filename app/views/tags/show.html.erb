@@ -1,0 +1,12 @@
+<div id ='show_tag_container'>
+  <h1><%= "##{@tag.name}" %></h1>
+  
+  <h2>커리어노트</h2>
+  <div id="tag_careernotes">
+      <%= render partial:'tags/careernote'  %>
+  </div>
+  <div id="paginator">
+    <%= paginate @careernotes, remote: true %>
+  </div>
+  
+</div>
