@@ -2,15 +2,26 @@
 
 <%=form_for [taggable,Tag.new], remote: true, id:'tag_form' do |f| %>
   <%= f.text_field :name, id:'tag_textfield', placeholder: '태그를 써주세요' %>
+  <div id='tag_error_message'></div>
 <% end %>
 
 <script>
 //Let tag_form submit when enter pressed
 
 $(document).ready(function(){
-  $('#tag_textfield').keyup(function(event){
+  $('#tag_textfield').keydown(function(event){
     if (event.keyCode==13){
-	document.getElementById("tag_form").submit(); 	  
+      if ($('#tag_textfield').val() == ""){ //When input is blank      	
+      	$('#tag_error_message').html("입력해주세요");
+      	return false;
+      }
+      if ($('#tag_textfield').val().length <= 15){	
+	document.getElementById("tag_form").submit();
+      }
+      else{
+      	$('#tag_error_message').html("15자이하로 입력해주세요");
+      	return false;
+      }
     }
   });
 });

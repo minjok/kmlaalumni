@@ -6,6 +6,10 @@ class TagsController < ApplicationController
     end
   end
   
+  def check_tag
+    
+  end
+  
   def create
     find_taggable
     @tag = Tag.new(params[:tag])
