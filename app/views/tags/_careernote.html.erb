@@ -1,7 +1,8 @@
 <ul>
   <% @careernotes.each do |careernote| %>
     <li>
-	<%= render partial:'careernotes/careernote_box', locals: {careernote: careernote}  %>
+	<%=link_to "#{careernote.organization.name}", careernote_url(careernote), title:"#{careernote.user.wave}기 #{careernote.user.name}님이 작성하셨습니다" %>
+	<%= render partial: 'careernotes/careernote_icon', locals:{careernote: careernote} %>	
     </li>
   <% end %>
 </ul>                    

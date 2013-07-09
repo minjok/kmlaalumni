@@ -1,8 +1,8 @@
 class Tag < ActiveRecord::Base
   
   # *** ATTRIBUTES *** #
-  attr_accessible :name
-  
+  attr_accessible :name, :tag_tokens
+  attr_reader :tag_tokens
   # *** VALIDATIONS *** #
   
   validates_presence_of :name
@@ -14,4 +14,8 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :taggables, through: :taggings
   has_many :taggers,  through: :taggings
+  
+  def tag_tokens=(ids)
+    self.tag_ids = ids.split(",")
+  end
 end

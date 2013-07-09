@@ -76,7 +76,6 @@ class TagsController < ApplicationController
       @careernotes << x[0] if (x[1]=="Careernote") 
       @users << x[0] if (x[1]=="User")	
     end
-    @careernotes = Kaminari.paginate_array(@careernotes).page(params[:page]).per(3)
   end
   
   # *** Check if same tagging exists  **#

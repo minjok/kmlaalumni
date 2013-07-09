@@ -1,7 +1,7 @@
 #tag_add_button_container{
   margin-top:8px;
 }
-#tag_textfield{
+.tag_textfield{
   width:100px;  
   height:20px;
   border-style: none none solid none;
@@ -11,3 +11,9 @@
 #tag_error_message{
  color:red; 
 }
+
+#tag_users{
+  margin-left:100px;
+  display:none;
+}  
+  

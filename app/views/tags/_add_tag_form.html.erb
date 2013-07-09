@@ -1,7 +1,8 @@
 <% class_name = taggable.class.name.downcase %>
 
 <%=form_for [taggable,Tag.new], remote: true, id:'tag_form' do |f| %>
-  <%= f.text_field :name, id:'tag_textfield', placeholder: '태그를 써주세요' %>
+  <%= f.text_field :name, class:'tag_textfield', placeholder: '태그를 써주세요' %>
+  <%= f.text_field :tag_tokens, class:'tag_textfield' %>    
   <div id='tag_error_message'></div>
 <% end %>
 
@@ -24,5 +25,9 @@ $(document).ready(function(){
       }
     }
   });
+});
+
+$(function () {
+  $('#careernote_tag_tokens').tokenInput('/tags.json', { crossDomain: false });
 });
 </script>
