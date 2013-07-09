@@ -98,6 +98,7 @@ Kmlaalumni::Application.routes.draw do
   match '/add_tag_button', to:'tags#add_tag_button', as:'add_tag_button'
   match '/add_tag', to:'tags#add_tag', as:'add_tag'
   match '/tags/:id', to:'tags#show', as: 'tag'
+  match '/tags', to:'tags#index', as: 'tags'
   
 end
 
