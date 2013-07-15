@@ -41,6 +41,10 @@ Kmlaalumni::Application.routes.draw do
   end
   
   resources :settings
+  
+  resources :tags do
+    get :autocomplete_tag_name, :on => :collection
+  end
     
   #	*** ROUTES ***	#
   match '/welcome',             to: 'home#welcome',               as: 'welcome'
@@ -99,6 +103,5 @@ Kmlaalumni::Application.routes.draw do
   match '/add_tag', to:'tags#add_tag', as:'add_tag'
   match '/tags/:id', to:'tags#show', as: 'tag'
   match '/tags', to:'tags#index', as: 'tags'
-  
 end
 

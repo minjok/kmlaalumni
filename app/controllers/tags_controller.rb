@@ -1,5 +1,6 @@
 # encoding: utf-8
 class TagsController < ApplicationController
+   autocomplete :tag, :name, full:true  
    # *** BEFORE_FILTER *** #  
   before_filter :find_taggable, only: :create
   before_filter :find_taggables_from_tag, only: :show
@@ -17,6 +18,7 @@ class TagsController < ApplicationController
   end
   
   def create
+    
     if check_tagging == false            #If same tagging exists, send error and quit
       @uniq_error=true
       respond_to do |format|
@@ -55,6 +57,7 @@ class TagsController < ApplicationController
   end
   
   private
+   
   
   def find_taggables_from_tag
     @tag = Tag.find(params[:id])
