@@ -89,41 +89,12 @@
             return false;
           }
         },
-        focus: function() {
-          // prevent value inserted on focus
-          return false;
-        },
         select: function( event, ui ) {
           var terms = split( this.value );
-          // remove the current input
           terms.pop();
-          // add the selected item
           terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          if (e.delimiter != null) {
-            terms.push( "" );
-            this.value = terms.join( e.delimiter );
-          } else {
-            this.value = terms.join("");
-            if (jQuery(this).attr('data-id-element')) {
-              jQuery(jQuery(this).attr('data-id-element')).val(ui.item.id);
-            }
-            if (jQuery(this).attr('data-update-elements')) {
-              var data = jQuery(this).data(ui.item.id.toString());
-              var update_elements = jQuery.parseJSON(jQuery(this).attr("data-update-elements"));
-              for (var key in update_elements) {
-                jQuery(update_elements[key]).val(data[key]);
-              }
-            }
-          }
-          var remember_string = this.value;
-          jQuery(this).bind('keyup.clearId', function(){
-            if(jQuery(this).val().trim() != remember_string.trim()){
-              jQuery(jQuery(this).attr('data-id-element')).val("");
-              jQuery(this).unbind('keyup.clearId');
-            }
-          });
-          jQuery(e).trigger('railsAutocomplete.select', ui);
+          this.value = terms.join("");
+         terms.push( "" );
           return false;
         }
       });
