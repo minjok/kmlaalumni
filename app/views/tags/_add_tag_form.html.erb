@@ -2,7 +2,6 @@
 
 <%=form_for [taggable,Tag.new], remote: true, id:'tag_form' do |f| %>
   <%= f.text_field :name, class:'tag_textfield', placeholder: '태그를 써주세요' %>
-  <%= f.text_field :tag_tokens, class:'tag_textfield' %>    
   <div id='tag_error_message'></div>
 <% end %>
 
@@ -10,13 +9,13 @@
 //Let tag_form submit when enter pressed
 
 $(document).ready(function(){
-  $('#tag_textfield').keydown(function(event){
+  $('.tag_textfield).keydown(function(event){
     if (event.keyCode==13){
-      if ($('#tag_textfield').val() == ""){ //When input is blank      	
+      if ($('.tag_textfield').val() == ""){ //When input is blank      	
       	$('#tag_error_message').html("입력해주세요");
       	return false;
       }
-      if ($('#tag_textfield').val().length <= 15){	
+      if ($('.tag_textfield').val().length <= 15){	
 	document.getElementById("tag_form").submit();
       }
       else{
@@ -27,7 +26,4 @@ $(document).ready(function(){
   });
 });
 
-$(function () {
-  $('#careernote_tag_tokens').tokenInput('/tags.json', { crossDomain: false });
-});
 </script>

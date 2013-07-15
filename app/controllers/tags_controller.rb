@@ -4,12 +4,9 @@ class TagsController < ApplicationController
   before_filter :find_taggable, only: :create
   before_filter :find_taggables_from_tag, only: :show
   
-  # Renders Tags.json for Tokeninput 
-  def index
-    @tags = Tag.all
+  def index 
     respond_to do |format|
       format.js
-      format.json { render :json => @tags.map(&:attributes) }
     end
   end
   
