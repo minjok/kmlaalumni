@@ -19,10 +19,19 @@
  color:red; 
 }
 
-#tag_users{
-  margin-left:100px;
+.tag_content{
+  margin-right:100px;
 }  
 #tag_suggestion ul{
   width: 100px;
   font-size:11px;
+}
+
+#show_tag_header{
+  width:700px;	    
+}
+
+#tag_like_container{
+  float:right;
+  margin-right:50px;    
 }

@@ -1,10 +1,17 @@
-<h1><%= "##{@tag.name}" %></h1>
-<div id='show_tag_container' class='float-left'>
+<div id='show_tag_header'>
+  <h1 class='float-left'><%= "##{@tag.name}" %></h1>
+  <div id ='tag_like_container'>
+    <%= render partial: 'tags/tag_like_button' %>
+  </div>
+</div>
+<div id='show_tag_container', class='float-left'>
   <%= render partial: 'tags/tag_content' %>
 </div>
 
-<div id='tag_menubar' class='float-right'>
+<div id='tag_menubar', class='float-right'>
   <div class='tagcloud_container'>
     <%= render partial:'tags/tag_cloud', locals: {taggable:"all", remote:true} %>
   </div>
 </div>
+
+
