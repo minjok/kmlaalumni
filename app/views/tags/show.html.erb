@@ -1,12 +1,10 @@
-<div id ='show_tag_container'>
-  <h1><%= "##{@tag.name}" %></h1>
-  
-  <div id="tag_careernotes", class='float-left'>
-    <h3>커리어노트</h3>
-    <%= render partial:'tags/careernote'  %>
-  </div>
-  <div id="tag_users", class='float-left'>
-    <h3>이 태그에 관심있는 동문</h3>  
-    
+<h1><%= "##{@tag.name}" %></h1>
+<div id='show_tag_container' class='float-left'>
+  <%= render partial: 'tags/tag_content' %>
+</div>
+
+<div id='tag_menubar' class='float-right'>
+  <div class='tagcloud_container'>
+    <%= render partial:'tags/tag_cloud', locals: {taggable:"all", remote:true} %>
   </div>
 </div>

@@ -1,0 +1,2 @@
+$('h1').html("<%= escape_javascript("##{@tag.name}") %>");
+$('#show_tag_container').html("<%= escape_javascript(render partial:'tags/tag_content') %>");

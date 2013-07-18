@@ -12,6 +12,7 @@
 $(document).ready(function(){
   $('#tag_form').keydown(function(event){
     if (event.keyCode==13){
+      $('#tag_suggestion').hide();
       if ($('#tag_form').val() == ""){ //When input is blank      	
       	$('#tag_error_message').html("입력해주세요");
       	return false;
@@ -24,6 +25,9 @@ $(document).ready(function(){
       	$('#tag_error_message').html("15자이하로 입력해주세요");
       	return false;
       }
+    }
+    else{
+      $('#tag_suggestion').show();
     }
   });
   $( "#tag_form" ).autocomplete({ appendTo: "#tag_suggestion"});

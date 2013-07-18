@@ -1,3 +1,10 @@
+#show_tag_container{
+  min-height:500px;	
+  width:700px;
+}
+#tag_menubar{
+  width:170px;
+}
 #tag_add_button_container{
   margin-top:8px;
 }
@@ -14,7 +21,6 @@
 
 #tag_users{
   margin-left:100px;
-  display:none;
 }  
 #tag_suggestion ul{
   width: 100px;

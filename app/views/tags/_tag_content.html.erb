@@ -1,0 +1,10 @@
+<div id="tag_careernotes", class='float-left'>
+  <h3>커리어노트</h3>
+  <%= render partial:'tags/careernote'  %>
+</div>
+<div id="tag_users", class='float-left'>
+  <h3>이 태그에 관심있는 동문</h3>  
+    <% if @users.count==0 %>
+      <p>관심있는 동문이 없습니다.</p>	
+    <% end %>
+</div>

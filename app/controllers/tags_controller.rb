@@ -18,7 +18,6 @@ class TagsController < ApplicationController
   end
   
   def create
-    
     if check_tagging == false            #If same tagging exists, send error and quit
       @uniq_error=true
       respond_to do |format|
@@ -28,7 +27,6 @@ class TagsController < ApplicationController
       @tagging = Tagging.new
       @tagging.tag = @tag
       @tagging.tagger = current_user
-    
       @tagging.taggable = @taggable
       
       # Sets the commentable's updated time if comment is successfully saved without errors
@@ -52,6 +50,7 @@ class TagsController < ApplicationController
 
   def show
     respond_to do |format|
+      format.js
       format.html
     end
   end
