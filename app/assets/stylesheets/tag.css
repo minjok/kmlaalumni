@@ -2,9 +2,16 @@
   min-height:500px;	
   width:700px;
 }
+
 #tag_menubar{
   width:170px;
 }
+
+#show_tag_header{
+  width:700px;	   
+  margin-bottom:20px;
+}
+
 #tag_add_button_container{
   margin-top:8px;
 }
@@ -27,11 +34,21 @@
   font-size:11px;
 }
 
-#show_tag_header{
-  width:700px;	    
-}
-
 #tag_like_container{
   float:right;
-  margin-right:50px;    
+  margin-right:90px;    
+  margin-top:40px;
+}
+
+.tag_like_button{
+  padding:6px;
+  border: 1px solid #BDBDBD;
+  color:#A4A4A4;
+  font-weight:bold;
+}
+
+.tag_like_button:hover{
+  border: 1px solid #38ACEC;
+  color:#38ACEC;
+  font-weight:bold;
 }

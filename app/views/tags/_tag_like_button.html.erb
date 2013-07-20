@@ -1,2 +1,7 @@
-<span><%= image_tag(asset_path('like_big_yes.png'), size:"28x28") %></span>
-
+<span class='tag_like_button'>
+  <% unless current_user_has_tag %>
+    <%= link_to '좋아요', tag_user_url, remote:true %>
+  <% else %>
+    좋아요 취소 
+  <% end %>
+</span>

@@ -55,6 +55,23 @@ class TagsController < ApplicationController
     end
   end
   
+  #** When current_user press '좋아요' **#
+  def tag_user
+    @tag = Tag.find(params[:id])
+    @taggable=current_user
+    @tagging = Tagging.new
+    @tagging.tag = @tag
+    @tagging.tagger = current_user
+    @tagging.taggable = @taggable
+    
+    respond_to do |format|
+      if @tagging.save
+	@tagging.created_at = Time.now
+      end
+      format.js    
+    end
+  end
+  
   private
    
   
