@@ -68,7 +68,7 @@ class TagsController < ApplicationController
       if @tagging.save
 	@tagging.created_at = Time.now
       end
-      format.js    
+      format.html { redirect_to tag_path(@tag)}   
     end
   end
   

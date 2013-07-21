@@ -103,7 +103,7 @@ Kmlaalumni::Application.routes.draw do
   match '/add_tag', to:'tags#add_tag', as:'add_tag'
   match '/tags/:id', to:'tags#show', as: 'tag'
   match '/tags', to:'tags#index', as: 'tags'
-  match '/tag_user', to:'tags#tag_user', as:'tag_user'
+  match '/tag_user/:id', to:'tags#tag_user', as:'tag_user'
   
 end
 

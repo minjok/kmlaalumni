@@ -1,6 +1,6 @@
 <span class='tag_like_button'>
   <% unless current_user_has_tag %>
-    <%= link_to '좋아요', tag_user_url, remote:true %>
+    <%= link_to '좋아요', tag_user_url(@tag), remote:true %>
   <% else %>
     좋아요 취소 
   <% end %>

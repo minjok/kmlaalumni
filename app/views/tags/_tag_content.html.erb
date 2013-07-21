@@ -4,8 +4,6 @@
 </div>
 <div id="tag_users", class='float-left tag_content'>
   <h3>이 태그에 좋아하는 동문</h3>  
-  <% if @users.count==0 %>
-    <p>좋아하는 동문이 없습니다.</p>	
-  <% end %>  
+  <%= render partial:'tags/like_users'  %>
 </div>
 

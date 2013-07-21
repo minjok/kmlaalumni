@@ -1,0 +1,11 @@
+<% if @users.count==0 %>
+  <p>좋아하는 동문이 없습니다.</p>
+<% else %>
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+	  <%= link_to "#{user.wave}기 #{user.name}",profile_url(user) %>
+      </li>
+    <% end %>
+  </ul>       
+<% end %>  
