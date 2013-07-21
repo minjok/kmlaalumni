@@ -49,6 +49,7 @@ class TagsController < ApplicationController
   #** Before_filter find_taggables_from_tag to get all taggables of tag to @taggables **#
 
   def show
+    @tags=get_tags("all")
     respond_to do |format|
       format.js
       format.html
@@ -145,5 +146,7 @@ class TagsController < ApplicationController
 	end
       end
      end
-    
+   
+  
+     
 end

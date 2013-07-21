@@ -1,6 +1,4 @@
 <div id='tag_cloud'>
-  <h3>태그 Cloud</h3>
-  <% get_tags(taggable) %>
   <% @tags.sort { |x,y| x.name <=> y.name }.each do |tag| %>
       <%= link_to tag_url(tag),	remote:remote do%> 	
 	<%= render tag %> 

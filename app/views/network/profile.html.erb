@@ -58,6 +58,15 @@
         <%= render partial: 'network/contact_information', locals:{user: @user} %>
       </div>
     </div>
+    
+    <div id='tag_information_container' class='settings_category_container'>
+      <div id='tag_information_header' class='settings_category_header'>
+        <div class='settings_category_title'>좋아하는 태그</div>
+	  <div id='tag_information_body' class='settings_category_body'>
+	    <%= render partial: 'tags/tag_cloud', locals:{remote:false} %>
+	  </div>
+      </div>
+   </div>
 
   </div>
 

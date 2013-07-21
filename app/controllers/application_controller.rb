@@ -149,6 +149,15 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # *** Get all tags from specific taggable  **#
+  def get_tags(type)
+    unless type=="all" 
+      @tags = Tag.includes(:taggings).where(taggings: {taggable_type: type}).sort { |x,y| x.name <=> y.name }
+    else
+      @tags= Tag.all.sort { |x,y| x.name <=> y.name }
+    end
+  end
+  
   private
     
     # Method: set_timezone

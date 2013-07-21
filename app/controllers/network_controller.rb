@@ -6,6 +6,7 @@
   def profile
     @user = User.find(params[:id])
     @is_current_user = @user == current_user ? true : false
+    @tags = get_tags_of_user
   end
   
   # Method: school
@@ -51,6 +52,11 @@
     respond_to do |format|
       format.js
     end
+  end
+  
+  #Get tags that this user liked
+  def get_tags_of_user
+    Tag.includes(:taggings).where(taggings: {taggable_type: "User", taggable_id: @user.id})
   end
 
 end

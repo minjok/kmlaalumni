@@ -24,6 +24,7 @@ class CareernotesController < ApplicationController
   # --------------------------------------------
   #
   def index
+    @tags=get_tags("Careernote")
   end
   
   # Method:
@@ -73,6 +74,7 @@ class CareernotesController < ApplicationController
   # --------------------------------------------
   #
   def show
+    @tags=@careernote.tags.sort { |x,y| x.name <=> y.name }
     respond_to do |format|
       format.html
     end

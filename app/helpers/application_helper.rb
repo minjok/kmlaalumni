@@ -20,5 +20,6 @@ module ApplicationHelper
     text.gsub!(/\r\n/, "<br>")
     text.html_safe
   end
+  
    
 end
