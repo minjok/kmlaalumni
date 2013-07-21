@@ -72,6 +72,17 @@ class TagsController < ApplicationController
     end
   end
   
+  #** When current_user press '좋아요 취소' **#
+  def detag_user
+    @tag = Tag.find(params[:id])
+    @taggable=current_user
+    @tagging=Tagging.where({taggable_type: "User", taggable_id: current_user.id, tag_id:@tag.id}).first
+    @tagging.destroy	
+    respond_to do |format|
+      format.html { redirect_to tag_path(@tag)}   
+    end
+  end
+  
   private
    
   
