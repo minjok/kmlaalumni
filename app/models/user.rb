@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
     @url_format = /^((https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?)?$/
     @email_format =  /\A[^@]+@[^@]+\z/
     @sex_format = /m|f/
-    
+
 	validates_presence_of		:name,
 									message: "이름을 입력해주세요"
 	
@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
                                     
     validates_format_of         :sex, with: @sex_format, allow_blank:true,
                                     message: "올바른 성별이 아닙니다"
-		  
+
 		  
   # *** METHODS *** #
 	
