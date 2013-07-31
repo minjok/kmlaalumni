@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Careernote do
-  before :each do
-    @careernote = Careernote.new(content:"abcdefg")	    
-  end
   
+  it 'has a content' do
+    FactoryGirl.build(:careernote, content:nil).should_not be_valid   
+  end
   
 end
