@@ -53,6 +53,12 @@
   font-weight:bold;
 }
 
+/* Tag Cloud */
+
+#tag_index_link{
+  margin-top:10px;    
+}
+
 /* Index.html */
 
 #index_tag_cloud_container{
