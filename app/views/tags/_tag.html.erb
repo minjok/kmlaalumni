@@ -1,3 +1,7 @@
-<span class='tag_span', id="<%= 'tag_#{tag.id}' %>"><%="##{tag.name}" %></span>
+<% if tag.type=="HashTag" %>
+  <span class='tag_span', id="<%= 'tag_#{tag.id}' %>"><%="##{tag.name}" %></span>
+<% else %>
+  <span class='tag_span', id="<%= 'tag_#{tag.id}' %>"><%="@#{tag.name}" %></span>
+<% end %>
 
 

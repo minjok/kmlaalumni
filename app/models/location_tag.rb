@@ -1,0 +1,2 @@
+class LocationTag < Tag
+end

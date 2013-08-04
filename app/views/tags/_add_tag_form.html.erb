@@ -2,6 +2,7 @@
 
 <%=form_for [taggable,Tag.new], remote: true do |f| %>
   <%= f.autocomplete_field :name, autocomplete_tag_name_tags_path, class:'tag_textfield', placeholder: '태그를 써주세요',id:'tag_form' %>
+  <%= f.text_field :type, value:"HashTag", style:'display:none' %>
   <div id='tag_suggestion'></div>
   <div id='tag_error_message'></div>
 <% end %>

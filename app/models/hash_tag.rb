@@ -1,0 +1,2 @@
+class HashTag < Tag
+end

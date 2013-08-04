@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627102530) do
+ActiveRecord::Schema.define(:version => 20130804104301) do
 
   create_table "activities", :force => true do |t|
     t.integer  "feedable_id"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20130627102530) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+    t.string "type", :default => "HashTag"
   end
 
   create_table "users", :force => true do |t|
