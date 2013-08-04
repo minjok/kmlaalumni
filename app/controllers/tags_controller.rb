@@ -19,13 +19,13 @@ class TagsController < ApplicationController
     end
   end
   
-  def create
+  def create    
     if check_tagging == false            #If same tagging exists, send error and quit
       @uniq_error=true
       respond_to do |format|
 	format.js
       end
-    else
+    else      
       @tagging = Tagging.new
       @tagging.tag = @tag
       @tagging.tagger = current_user
@@ -42,8 +42,8 @@ class TagsController < ApplicationController
 	  if @tagging.save
 	    @tagging.created_at = Time.now
 	  end
-	end		  
-	format.js
+	end
+	format.js 
       end  
     end
   end

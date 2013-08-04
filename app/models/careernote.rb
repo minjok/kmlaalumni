@@ -13,7 +13,7 @@ class Careernote < ActiveRecord::Base
   
   has_many :taggings, as: :taggable
   has_many :tags, as: :taggable, through: :taggings
-   
+
   # *** VALIDATIONS *** #
   validates_presence_of :content,
                           message: '빈 소개글을 올릴 수 없습니다'
