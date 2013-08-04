@@ -7,7 +7,7 @@ class TagsController < ApplicationController
   
   def index 
     @tags = Tag.all
-    @taggings = Tagging.all
+    @taggings = Tagging.order('created_at DESC').all
     respond_to do |format|
       format.html
     end
