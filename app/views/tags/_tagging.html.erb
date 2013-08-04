@@ -1,0 +1,24 @@
+<div class='tagging_div', id="<%= 'tagging_#{tagging.id}' %>">
+  <% info=find_tagging_information(tagging) %>
+  <% if tagging.taggable_type=="User" %>
+    <%= link_to "#{info[:tagger].wave}기 #{info[:tagger].name}", profile_url(info[:tagger]) %>
+    <%= "동문님이" %>
+    <%= link_to "##{info[:tag].name}", tag_url(info[:tag]) %>      
+    <%= "태그를 좋아하셨습니다" %>
+  <% elsif tagging.taggable_type=="Careernote" %>
+    <%= link_to "#{info[:tagger].wave}기 #{info[:tagger].name}", profile_url(info[:tagger]) %>
+    <%= "동문님이" %>    
+    <%= link_to "#{info[:taggable].organization.name}", careernote_url(info[:taggable]) %>
+    <span class='careernote_icon'>
+      <%= render partial: 'careernotes/careernote_icon', locals:{careernote:info[:taggable]} %>
+    </span>
+    <span class ='latter'>
+      <%= "에 " %>
+      <%= link_to "##{info[:tag].name}", tag_url(info[:tag]) %>
+      <%= "태그를 달았습니다" %>
+    </span>
+  <% end %>
+  <span class='commentable_date'><%= tagging.created_at %></span>
+</div>
+
+

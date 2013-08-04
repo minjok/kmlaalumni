@@ -1,7 +1,7 @@
 <% class_name = taggable.class.name.downcase %>
 
 <%=form_for [taggable,Tag.new], remote: true do |f| %>
-  <%= f.autocomplete_field :name, autocomplete_tag_name_tags_path, class:'tag_textfield', placeholder: '태그를 써주세요',id:'tag_form','data-delimiter' => ',', :multiple => true %>
+  <%= f.autocomplete_field :name, autocomplete_tag_name_tags_path, class:'tag_textfield', placeholder: '태그를 써주세요',id:'tag_form' %>
   <div id='tag_suggestion'></div>
   <div id='tag_error_message'></div>
 <% end %>
@@ -17,8 +17,8 @@ $(document).ready(function(){
       	$('#tag_error_message').html("입력해주세요");
       	return false;
       }
-      if ($('#tag_form').val().length <= 15){
-	document.getElementById("#tag_form").submit();
+      if ($('#tag_form').val().length <= 15){        
+	$('#tag_form').submit();
 	return false;
       }
       else{

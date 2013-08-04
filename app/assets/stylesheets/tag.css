@@ -52,3 +52,23 @@
   color:#38ACEC;
   font-weight:bold;
 }
+
+/* Index.html */
+
+#index_tag_cloud_container{
+  width:300px;    
+}
+#index_tagging_container{
+  width:550px;
+}
+
+.tagging_div span.latter{
+  margin-left:10px;    
+}
+.tagging_div span.careernote_icon{
+  margin-left:-5px;
+}
+
+.tagging_div{
+  margin-bottom:10px;    
+}

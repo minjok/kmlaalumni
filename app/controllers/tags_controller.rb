@@ -6,8 +6,10 @@ class TagsController < ApplicationController
   before_filter :find_taggables_from_tag, only: :show
   
   def index 
+    @tags = Tag.all
+    @taggings = Tagging.all
     respond_to do |format|
-      format.js
+      format.html
     end
   end
   
