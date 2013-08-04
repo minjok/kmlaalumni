@@ -1,6 +1,5 @@
-
 <% unless @uniq_error==true %>
-  $('#tag_list').append('<%= escape_javascript(link_to "##{@tag.name}", tag_url(@tag)) %>');
+  $('#hashtag_list').append('<%= escape_javascript(link_to "##{@tag.name}", tag_url(@tag)) %>');
   $('#tag_error_message').html("");
 <% else %>
   $('#tag_error_message').html("같은 태그가 있습니다");

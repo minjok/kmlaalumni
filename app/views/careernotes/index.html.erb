@@ -18,8 +18,11 @@
     </ul>
   </div>
   <div class='careernote_tagcloud_container'>
-    <h3>커리어노트 태그 </h3>
-    <%= render partial:'tags/tag_cloud', locals: {taggable:"Careernote", remote:false} %>
+    <h3>해시태그</h3>
+    <%= render partial:'tags/tag_cloud', locals: {taggable:"Careernote", type:'HashTag', remote:false} %>
+    <h3>위치태그</h3>
+    <%= render partial:'tags/tag_cloud', locals: {remote:false, type:"LocationTag"} %>
+    <%= render partial:'tags/tags_url_link' %>
   </div>
 </div>
 

@@ -10,8 +10,11 @@
 
 <div id='tag_menubar', class='float-right'>
   <div class='tagcloud_container'>
-    <h3>Tag Cloud</h3>
-    <%= render partial:'tags/tag_cloud', locals: {remote:true} %>
+    <h3>해시태그</h3>
+    <%= render partial:'tags/tag_cloud', locals: {remote:true, type:"HashTag"} %>
+    <h3>위치태그</h3>
+    <%= render partial:'tags/tag_cloud', locals: {remote:true, type:"LocationTag"} %>
+    <%= render partial:'tags/tags_url_link' %>
   </div>
 </div>
 

@@ -1,17 +1,11 @@
-<div id='tag_cloud'>
-  <div id='tag_list'>
-    <% @tags.sort { |x,y| x.name <=> y.name }.each do |tag| %>
-	<%= link_to tag_url(tag),	remote:remote do%> 	
+<div class='tag_cloud', id="<%=type.downcase+"_cloud" %>">
+  <div class='tag_list', id="<%=type.downcase+"_list" %>">
+    <% @tags.select{|t| t.type==type}.sort { |x,y| x.name <=> y.name }.each do |tag| %>
+	<%= link_to tag_url(tag), remote:remote do%> 	
 	  <%= render partial:'tags/tag', locals:{tag:tag} %> 
 	<% end %>
     <% end %>
   </div>
-  <% unless request.original_url==tags_url %>
-    <div id='tag_index_link'>
-      <%= link_to '모든 태그 보기', tags_url %>
-    </div>
-  <% end %>
-  
 </div>
 
 

@@ -1,7 +1,11 @@
 <h1>모든 태그</h1>
 <div id ='index_content_container'>
   <div id='index_tag_cloud_container', class='float-left'>
-    <%= render partial:'tags/tag_cloud', locals:{remote:false} %>
+    <h3>해시태그</h3>
+    <%= render partial:'tags/tag_cloud', locals:{remote:false, type:"HashTag"} %>
+    <h3>위치태그</h3>
+    <%= render partial:'tags/tag_cloud', locals: {remote:false, type:"LocationTag"} %>
+    
   </div>
   <div id='index_tagging_container', class='float-right'>
     <% @taggings.each do |t| %>
